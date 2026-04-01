@@ -1,0 +1,102 @@
+{
+  "id": "qualys",
+  "service": "Qualys",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Qualys integration with 3 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#ED2E26\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">Q</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "host_list",
+      "name": "Qualys Host List",
+      "description": "GET /api/2.0/fo/asset/host/?action=list",
+      "method": "GET",
+      "path": "/api/2.0/fo/asset/host/?action=list",
+      "inputs": [
+        {
+          "name": "IPs",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Hosts XML",
+          "path": "hosts"
+        }
+      ]
+    },
+    {
+      "id": "scan_launch",
+      "name": "Qualys Scan Launch",
+      "description": "POST /api/2.0/fo/scan/?action=launch",
+      "method": "POST",
+      "path": "/api/2.0/fo/scan/?action=launch",
+      "inputs": [
+        {
+          "name": "Scan Title",
+          "required": true,
+          "mapTo": "Scan Title"
+        },
+        {
+          "name": "IP",
+          "required": true,
+          "mapTo": "IP"
+        },
+        {
+          "name": "Option Title",
+          "required": true,
+          "mapTo": "Option Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Scan Reference",
+          "path": "value"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Qualys Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

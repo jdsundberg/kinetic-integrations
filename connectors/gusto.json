@@ -1,0 +1,186 @@
+{
+  "id": "gusto",
+  "service": "Gusto",
+  "version": 1,
+  "category": "HR & People",
+  "description": "Gusto integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#F45D48\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">G</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "employee_create",
+      "name": "Gusto Employee Create",
+      "description": "POST /v1/companies/{company_id}/employees",
+      "method": "POST",
+      "path": "/v1/companies/{company_id}/employees",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Employee ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "employee_retrieve",
+      "name": "Gusto Employee Retrieve",
+      "description": "GET /v1/employees/{employee_id}",
+      "method": "GET",
+      "path": "/v1/employees/{employee_id}",
+      "inputs": [
+        {
+          "name": "Employee ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        }
+      ]
+    },
+    {
+      "id": "employee_update",
+      "name": "Gusto Employee Update",
+      "description": "PUT /v1/employees/{employee_id}",
+      "method": "PUT",
+      "path": "/v1/employees/{employee_id}",
+      "inputs": [
+        {
+          "name": "Employee ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Employee ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "payroll_list",
+      "name": "Gusto Payroll List",
+      "description": "GET /v1/companies/{company_id}/payrolls",
+      "method": "GET",
+      "path": "/v1/companies/{company_id}/payrolls",
+      "inputs": [
+        {
+          "name": "Company ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payrolls JSON",
+          "path": "payrolls"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Gusto Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "time_off_request",
+      "name": "Gusto Time Off Request",
+      "description": "POST /v1/employees/{employee_id}/time_off_requests",
+      "method": "POST",
+      "path": "/v1/employees/{employee_id}/time_off_requests",
+      "inputs": [
+        {
+          "name": "Employee ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": true,
+          "mapTo": "End Date"
+        },
+        {
+          "name": "Request Type",
+          "required": true,
+          "mapTo": "Request Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "id"
+        }
+      ]
+    }
+  ]
+}

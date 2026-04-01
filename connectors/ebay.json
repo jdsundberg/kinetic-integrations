@@ -1,0 +1,78 @@
+{
+  "id": "ebay",
+  "service": "Ebay",
+  "version": 1,
+  "category": "Social & Marketplace",
+  "description": "Ebay integration with 2 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#E65100\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">E</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "item_search",
+      "name": "eBay Item Search",
+      "description": "GET /buy/browse/v1/item_summary/search?q={query}",
+      "method": "GET",
+      "path": "/buy/browse/v1/item_summary/search?q={query}",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Items JSON",
+          "path": "itemSummaries"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Ebay Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

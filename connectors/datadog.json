@@ -3,7 +3,7 @@
   "service": "Datadog",
   "version": 1,
   "category": "Observability & Analytics",
-  "description": "Datadog integration with 8 pre-built routines.",
+  "description": "Datadog integration with 9 pre-built routines.",
   "auth": {
     "type": "apikey",
     "properties": [
@@ -31,6 +31,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#632CA6\"><path d=\"M16.9 10.2l-3.1 1.6c-.4.2-.6.3-.8.6l2.9 2.1-5.5 3.3 6.1-1.1.4 5.1 3-4.6.5 2.2 2.7-2.1-3.6-5.5 2.3-.6-5-1zM12.8.7L5.5 5.4l.2 8.5 3.1-1.9V7.1L12.8.7z\"/></svg>",
+  "docsUrl": "https://docs.datadoghq.com/api/latest/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -471,6 +473,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Datadog Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

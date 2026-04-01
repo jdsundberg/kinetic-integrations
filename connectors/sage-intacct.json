@@ -1,0 +1,169 @@
+{
+  "id": "sage-intacct",
+  "service": "Sage Intacct",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "Sage Intacct integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "company_id",
+        "required": true,
+        "description": "company id."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#00D639\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">S</text></svg>",
+  "docsUrl": "https://developer.intacct.com/api/",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "customer_create",
+      "name": "Sage Intacct Customer Create",
+      "description": "POST /ia/xml/xmlgw.phtml",
+      "method": "POST",
+      "path": "/ia/xml/xmlgw.phtml",
+      "inputs": [
+        {
+          "name": "Customer ID",
+          "required": true,
+          "mapTo": "Customer ID"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "result.data.customer.CUSTOMERID"
+        }
+      ]
+    },
+    {
+      "id": "gl_entry_create",
+      "name": "Sage Intacct GL Entry Create",
+      "description": "POST /ia/xml/xmlgw.phtml",
+      "method": "POST",
+      "path": "/ia/xml/xmlgw.phtml",
+      "inputs": [
+        {
+          "name": "Journal ID",
+          "required": true,
+          "mapTo": "Journal ID"
+        },
+        {
+          "name": "Date",
+          "required": true,
+          "mapTo": "Date"
+        },
+        {
+          "name": "Lines XML",
+          "required": true,
+          "mapTo": "Lines XML"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record No",
+          "path": "result.data.glbatch.RECORDNO"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Sage Intacct Invoice Create",
+      "description": "POST /ia/xml/xmlgw.phtml",
+      "method": "POST",
+      "path": "/ia/xml/xmlgw.phtml",
+      "inputs": [
+        {
+          "name": "Customer ID",
+          "required": true,
+          "mapTo": "Customer ID"
+        },
+        {
+          "name": "Date Created",
+          "required": true,
+          "mapTo": "Date Created"
+        },
+        {
+          "name": "Lines XML",
+          "required": true,
+          "mapTo": "Lines XML"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record No",
+          "path": "result.data.arinvoice.RECORDNO"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Sage Intacct Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "Sage Intacct Vendor Create",
+      "description": "POST /ia/xml/xmlgw.phtml",
+      "method": "POST",
+      "path": "/ia/xml/xmlgw.phtml",
+      "inputs": [
+        {
+          "name": "Vendor ID",
+          "required": true,
+          "mapTo": "Vendor ID"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor ID",
+          "path": "result.data.vendor.VENDORID"
+        }
+      ]
+    }
+  ]
+}

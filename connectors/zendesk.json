@@ -3,7 +3,7 @@
   "service": "Zendesk",
   "version": 1,
   "category": "ITSM & Service Management",
-  "description": "Zendesk integration with 8 pre-built routines.",
+  "description": "Zendesk integration with 9 pre-built routines.",
   "auth": {
     "type": "basic",
     "properties": [
@@ -36,6 +36,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#03363D\"><path d=\"M11.1 0v17.8L0 24V6.9C0 3.1 2.5 0 5.5 0h5.5zM12.9 24V6.2L24 0v17.1c0 3.8-2.5 6.9-5.5 6.9h-5.5zM0 6.9a5.5 5.5 0 0111.1 0H0zm12.9 10.3a5.5 5.5 0 0011.1 0H12.9z\"/></svg>",
+  "docsUrl": "https://developer.zendesk.com/api-reference/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -166,6 +168,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Zendesk Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

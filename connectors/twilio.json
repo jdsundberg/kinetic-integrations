@@ -3,7 +3,7 @@
   "service": "Twilio",
   "version": 1,
   "category": "Communication",
-  "description": "Twilio integration with 7 pre-built routines.",
+  "description": "Twilio integration with 8 pre-built routines.",
   "auth": {
     "type": "basic",
     "properties": [
@@ -31,6 +31,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#F22F46\"><path d=\"M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 20.4a8.4 8.4 0 110-16.8 8.4 8.4 0 010 16.8zm3.6-11.4a1.8 1.8 0 11-3.6 0 1.8 1.8 0 013.6 0zm0 4.8a1.8 1.8 0 11-3.6 0 1.8 1.8 0 013.6 0zm-4.8-4.8a1.8 1.8 0 11-3.6 0 1.8 1.8 0 013.6 0zm0 4.8a1.8 1.8 0 11-3.6 0 1.8 1.8 0 013.6 0z\"/></svg>",
+  "docsUrl": "https://www.twilio.com/docs/usage/api",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -270,6 +272,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Twilio Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

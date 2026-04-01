@@ -1,0 +1,78 @@
+{
+  "id": "eight-x-eight",
+  "service": "Eight X Eight",
+  "version": 1,
+  "category": "Other",
+  "description": "Eight X Eight integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#2E7D32\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">E</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "sms_send",
+      "name": "8x8 SMS Send",
+      "description": "POST /api/v1/subaccounts/{subaccountId}/messages",
+      "method": "POST",
+      "path": "/api/v1/subaccounts/{subaccountId}/messages",
+      "inputs": [
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "umid"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Eight X Eight Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

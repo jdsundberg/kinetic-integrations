@@ -3,7 +3,7 @@
   "service": "Dropbox",
   "version": 1,
   "category": "Documents & Storage",
-  "description": "Dropbox integration with 6 pre-built routines.",
+  "description": "Dropbox integration with 7 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -15,6 +15,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#0061FF\"><path d=\"M6 1.8L0 5.6l6 3.8 6-3.8-6-3.8zM18 1.8l-6 3.8 6 3.8 6-3.8-6-3.8zM0 13.3l6 3.8 6-3.8-6-3.8-6 3.8zM18 9.5l-6 3.8 6 3.8 6-3.8-6-3.8zM6 18.4l6 3.8 6-3.8-6-3.8-6 3.8z\"/></svg>",
+  "docsUrl": "https://www.dropbox.com/developers/documentation/http/overview",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -310,6 +312,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Dropbox Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

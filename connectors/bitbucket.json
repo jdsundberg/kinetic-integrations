@@ -3,7 +3,7 @@
   "service": "Bitbucket",
   "version": 1,
   "category": "DevOps & Collaboration",
-  "description": "Bitbucket integration with 6 pre-built routines.",
+  "description": "Bitbucket integration with 7 pre-built routines.",
   "auth": {
     "type": "basic",
     "properties": [
@@ -26,6 +26,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#0052CC\"><path d=\"M.8 1.2a.8.8 0 00-.8.9l3.3 19.8c.1.5.5.9 1 .9H20a.8.8 0 00.8-.6l3.3-20a.8.8 0 00-.8-.9zM14.5 15.5H9.5L8.2 8.5h7.6z\"/></svg>",
+  "docsUrl": "https://developer.atlassian.com/cloud/bitbucket/rest/intro/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -334,6 +336,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Bitbucket Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

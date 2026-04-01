@@ -3,7 +3,7 @@
   "service": "Auth0",
   "version": 1,
   "category": "Security & Identity",
-  "description": "Auth0 integration with 5 pre-built routines.",
+  "description": "Auth0 integration with 6 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -20,6 +20,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#EB5424\"><path d=\"M16.5 24l-4.5-7.8 4.5-7.8h-9L3 16.2 7.5 24h9zm-9-24l-4.5 7.8 4.5 7.8h9L21 7.8 16.5 0h-9z\"/></svg>",
+  "docsUrl": "https://auth0.com/docs/api",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -59,6 +61,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Auth0 Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

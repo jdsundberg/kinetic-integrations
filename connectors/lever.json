@@ -1,0 +1,87 @@
+{
+  "id": "lever",
+  "service": "Lever",
+  "version": 1,
+  "category": "HR & People",
+  "description": "Lever integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#3FB483\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">L</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "opportunity_create",
+      "name": "Lever Opportunity Create",
+      "description": "POST /v1/opportunities",
+      "method": "POST",
+      "path": "/v1/opportunities",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Posting ID",
+          "required": false,
+          "mapTo": "Posting ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Opportunity ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "opportunity_list",
+      "name": "Lever Opportunity List",
+      "description": "GET /v1/opportunities",
+      "method": "GET",
+      "path": "/v1/opportunities",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Opportunities JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Lever Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

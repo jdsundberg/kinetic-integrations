@@ -1,0 +1,130 @@
+{
+  "id": "pandadoc",
+  "service": "Pandadoc",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "Pandadoc integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#2E7D32\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">P</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "document_create",
+      "name": "PandaDoc Document Create",
+      "description": "POST /public/v1/documents",
+      "method": "POST",
+      "path": "/public/v1/documents",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Template UUID",
+          "required": true,
+          "mapTo": "Template UUID"
+        },
+        {
+          "name": "Recipient Email",
+          "required": true,
+          "mapTo": "Recipient Email"
+        },
+        {
+          "name": "Recipient Name",
+          "required": true,
+          "mapTo": "Recipient Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Document ID",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "document_send",
+      "name": "PandaDoc Document Send",
+      "description": "POST /public/v1/documents/{id}/send",
+      "method": "POST",
+      "path": "/public/v1/documents/{id}/send",
+      "inputs": [
+        {
+          "name": "Document ID",
+          "required": true,
+          "mapTo": "Document ID"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "document_status",
+      "name": "PandaDoc Document Status",
+      "description": "GET /public/v1/documents/{id}",
+      "method": "GET",
+      "path": "/public/v1/documents/{id}",
+      "inputs": [
+        {
+          "name": "Document ID",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Pandadoc Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

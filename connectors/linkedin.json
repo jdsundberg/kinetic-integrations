@@ -1,0 +1,91 @@
+{
+  "id": "linkedin",
+  "service": "Linkedin",
+  "version": 1,
+  "category": "Social & Marketplace",
+  "description": "Linkedin integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#2E7D32\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">L</text></svg>",
+  "docsUrl": "https://learn.microsoft.com/en-us/linkedin/shared/api-guide",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "profile_retrieve",
+      "name": "LinkedIn Profile Retrieve",
+      "description": "GET /v2/me",
+      "method": "GET",
+      "path": "/v2/me",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ID",
+          "path": "id"
+        },
+        {
+          "name": "First Name",
+          "path": "localizedFirstName"
+        },
+        {
+          "name": "Last Name",
+          "path": "localizedLastName"
+        }
+      ]
+    },
+    {
+      "id": "share_create",
+      "name": "LinkedIn Share Create",
+      "description": "POST /v2/shares",
+      "method": "POST",
+      "path": "/v2/shares",
+      "inputs": [
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Owner URN",
+          "required": true,
+          "mapTo": "Owner URN"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Share ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Linkedin Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

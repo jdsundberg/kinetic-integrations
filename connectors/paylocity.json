@@ -1,0 +1,86 @@
+{
+  "id": "paylocity",
+  "service": "Paylocity",
+  "version": 1,
+  "category": "HR & People",
+  "description": "Paylocity integration with 2 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      },
+      {
+        "name": "company_id",
+        "required": true,
+        "description": "company id."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#EB6F1C\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">P</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "employee_retrieve",
+      "name": "Paylocity Employee Retrieve",
+      "description": "GET /api/v2/companies/{companyId}/employees/{employeeId}",
+      "method": "GET",
+      "path": "/api/v2/companies/{companyId}/employees/{employeeId}",
+      "inputs": [
+        {
+          "name": "Company ID",
+          "required": true
+        },
+        {
+          "name": "Employee ID",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Employee JSON",
+          "path": "employee"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Paylocity Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "facebook",
+  "service": "Facebook",
+  "version": 1,
+  "category": "Social & Marketplace",
+  "description": "Facebook integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#2E7D32\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">F</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "me_retrieve",
+      "name": "Facebook Me Retrieve",
+      "description": "GET /v19.0/me",
+      "method": "GET",
+      "path": "/v19.0/me",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "ID",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "page_post_create",
+      "name": "Facebook Page Post Create",
+      "description": "POST /v19.0/{page_id}/feed",
+      "method": "POST",
+      "path": "/v19.0/{page_id}/feed",
+      "inputs": [
+        {
+          "name": "Page ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Message",
+          "required": true,
+          "mapTo": "Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Post ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Facebook Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

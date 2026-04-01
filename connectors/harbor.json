@@ -1,0 +1,87 @@
+{
+  "id": "harbor",
+  "service": "Harbor",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Harbor integration with 3 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#60B932\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">H</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "project_list",
+      "name": "Harbor Project List",
+      "description": "GET /api/v2.0/projects",
+      "method": "GET",
+      "path": "/api/v2.0/projects",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Projects JSON",
+          "path": "projects"
+        }
+      ]
+    },
+    {
+      "id": "repository_list",
+      "name": "Harbor Repository List",
+      "description": "GET /api/v2.0/projects/{project_name}/repositories",
+      "method": "GET",
+      "path": "/api/v2.0/projects/{project_name}/repositories",
+      "inputs": [
+        {
+          "name": "Project Name",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Repositories JSON",
+          "path": "repositories"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Harbor Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

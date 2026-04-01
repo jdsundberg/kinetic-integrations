@@ -1,0 +1,171 @@
+{
+  "id": "bill",
+  "service": "Bill",
+  "version": 1,
+  "category": "Other",
+  "description": "Bill integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "org_id",
+        "required": true,
+        "description": "org id."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0097A7\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">B</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "bill_create",
+      "name": "Bill.com Bill Create",
+      "description": "POST /v3/bills",
+      "method": "POST",
+      "path": "/v3/bills",
+      "inputs": [
+        {
+          "name": "Vendor ID",
+          "required": true,
+          "mapTo": "Vendor ID"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Due Date",
+          "required": true,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bill ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Bill.com Invoice Create",
+      "description": "POST /v3/invoices",
+      "method": "POST",
+      "path": "/v3/invoices",
+      "inputs": [
+        {
+          "name": "Customer ID",
+          "required": true,
+          "mapTo": "Customer ID"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Due Date",
+          "required": true,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice ID",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "paymentStatus"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "Bill.com Payment Create",
+      "description": "POST /v3/sent-payments",
+      "method": "POST",
+      "path": "/v3/sent-payments",
+      "inputs": [
+        {
+          "name": "Bill ID",
+          "required": true,
+          "mapTo": "Bill ID"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Payment Date",
+          "required": true,
+          "mapTo": "Payment Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment ID",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Bill Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "Bill.com Vendor Create",
+      "description": "POST /v3/vendors",
+      "method": "POST",
+      "path": "/v3/vendors",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor ID",
+          "path": "id"
+        }
+      ]
+    }
+  ]
+}

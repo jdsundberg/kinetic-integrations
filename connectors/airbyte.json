@@ -1,0 +1,77 @@
+{
+  "id": "airbyte",
+  "service": "Airbyte",
+  "version": 1,
+  "category": "Data & Analytics",
+  "description": "Airbyte integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#615EFF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">A</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "job_trigger",
+      "name": "Airbyte Sync Job Trigger",
+      "description": "POST /v1/jobs",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "inputs": [
+        {
+          "name": "Connection ID",
+          "required": true,
+          "mapTo": "Connection ID"
+        },
+        {
+          "name": "Job Type",
+          "required": true,
+          "mapTo": "Job Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "jobId"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Airbyte Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "service": "Jira",
   "version": 1,
   "category": "ITSM & Service Management",
-  "description": "Jira integration with 10 pre-built routines.",
+  "description": "Jira integration with 11 pre-built routines.",
   "auth": {
     "type": "basic",
     "properties": [
@@ -36,6 +36,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#0052CC\"><path d=\"M11.6 11.5H0a5.2 5.2 0 005.2 5.2h2.1v2.1a5.2 5.2 0 005.2 5.2V12.5a1 1 0 00-1-1zm5.7-5.8H5.7a5.2 5.2 0 005.2 5.2h2.1v2.1a5.2 5.2 0 005.2 5.2V6.7a1 1 0 00-1-1zM23 .3H11.4a5.2 5.2 0 005.2 5.2h2.1v2.1A5.2 5.2 0 0024 12.7V1.3A1 1 0 0023 .3z\"/></svg>",
+  "docsUrl": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -559,6 +561,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Jira Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

@@ -3,7 +3,7 @@
   "service": "Okta",
   "version": 1,
   "category": "Security & Identity",
-  "description": "Okta integration with 8 pre-built routines.",
+  "description": "Okta integration with 9 pre-built routines.",
   "auth": {
     "type": "apikey",
     "properties": [
@@ -31,6 +31,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#007DC1\"><path d=\"M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z\"/></svg>",
+  "docsUrl": "https://developer.okta.com/docs/reference/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -187,6 +189,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Okta Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

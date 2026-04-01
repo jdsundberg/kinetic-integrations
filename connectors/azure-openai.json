@@ -1,0 +1,87 @@
+{
+  "id": "azure-openai",
+  "service": "Azure Openai",
+  "version": 1,
+  "category": "AI & Machine Learning",
+  "description": "Azure Openai integration with 2 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      },
+      {
+        "name": "api_version",
+        "required": true,
+        "description": "api version."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#E65100\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">A</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "chat_completion",
+      "name": "Azure OpenAI Chat Completion",
+      "description": "POST /openai/deployments/{deployment_id}/chat/completions?api-version=2024-02-01",
+      "method": "POST",
+      "path": "/openai/deployments/{deployment_id}/chat/completions?api-version=2024-02-01",
+      "inputs": [
+        {
+          "name": "Deployment ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Messages JSON",
+          "required": true,
+          "mapTo": "Messages JSON"
+        },
+        {
+          "name": "Max Tokens",
+          "required": false,
+          "mapTo": "Max Tokens"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Text",
+          "path": "choices[0].message.content"
+        },
+        {
+          "name": "Finish Reason",
+          "path": "choices[0].finish_reason"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Azure Openai Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "twitter",
+  "service": "Twitter",
+  "version": 1,
+  "category": "Social & Marketplace",
+  "description": "Twitter integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#7B1FA2\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">T</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "test",
+      "name": "Twitter Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "tweet_create",
+      "name": "X Tweet Create",
+      "description": "POST /2/tweets",
+      "method": "POST",
+      "path": "/2/tweets",
+      "inputs": [
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tweet ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "user_lookup",
+      "name": "X User Lookup",
+      "description": "GET /2/users/by/username/{username}",
+      "method": "GET",
+      "path": "/2/users/by/username/{username}",
+      "inputs": [
+        {
+          "name": "Username",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "data.id"
+        },
+        {
+          "name": "Name",
+          "path": "data.name"
+        }
+      ]
+    }
+  ]
+}

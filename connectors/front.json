@@ -1,0 +1,92 @@
+{
+  "id": "front",
+  "service": "Front",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Front integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#001B38\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">F</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "conversation_list",
+      "name": "Front Conversation List",
+      "description": "GET /conversations?q[statuses][]=assigned",
+      "method": "GET",
+      "path": "/conversations?q[statuses][]=assigned",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Conversations JSON",
+          "path": "_results"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Front Message Send",
+      "description": "POST /channels/{channel_id}/messages",
+      "method": "POST",
+      "path": "/channels/{channel_id}/messages",
+      "inputs": [
+        {
+          "name": "Channel ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Subject",
+          "required": false,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Front Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

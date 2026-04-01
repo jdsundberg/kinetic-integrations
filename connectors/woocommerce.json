@@ -1,0 +1,98 @@
+{
+  "id": "woocommerce",
+  "service": "Woocommerce",
+  "version": 1,
+  "category": "Commerce & Content",
+  "description": "Woocommerce integration with 3 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "store_url",
+        "required": true,
+        "description": "store url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#2E7D32\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">W</text></svg>",
+  "docsUrl": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "order_list",
+      "name": "WooCommerce Order List",
+      "description": "GET /wp-json/wc/v3/orders",
+      "method": "GET",
+      "path": "/wp-json/wc/v3/orders",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Orders JSON",
+          "path": "orders"
+        }
+      ]
+    },
+    {
+      "id": "product_create",
+      "name": "WooCommerce Product Create",
+      "description": "POST /wp-json/wc/v3/products",
+      "method": "POST",
+      "path": "/wp-json/wc/v3/products",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Regular Price",
+          "required": true,
+          "mapTo": "Regular Price"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Product ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Woocommerce Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

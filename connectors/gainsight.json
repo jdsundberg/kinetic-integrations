@@ -1,0 +1,68 @@
+{
+  "id": "gainsight",
+  "service": "Gainsight",
+  "version": 1,
+  "category": "Other",
+  "description": "Gainsight integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#01B9AC\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">G</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "company_list",
+      "name": "Gainsight Company List",
+      "description": "POST /v1/data/objects/query/Company",
+      "method": "POST",
+      "path": "/v1/data/objects/query/Company",
+      "inputs": [
+        {
+          "name": "Select JSON",
+          "required": true,
+          "mapTo": "Select JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Records JSON",
+          "path": "data.records"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Gainsight Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "instagram",
+  "service": "Instagram",
+  "version": 1,
+  "category": "Social & Marketplace",
+  "description": "Instagram integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#E4405F\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">I</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "media_list",
+      "name": "Instagram Media List",
+      "description": "GET /v19.0/{user_id}/media",
+      "method": "GET",
+      "path": "/v19.0/{user_id}/media",
+      "inputs": [
+        {
+          "name": "User ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Media JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Instagram Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

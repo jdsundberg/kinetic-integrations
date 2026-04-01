@@ -1,0 +1,142 @@
+{
+  "id": "sentinel",
+  "service": "Sentinel",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Sentinel integration with 3 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      },
+      {
+        "name": "tenant_id",
+        "required": true,
+        "description": "tenant id."
+      },
+      {
+        "name": "subscription_id",
+        "required": true,
+        "description": "subscription id."
+      },
+      {
+        "name": "resource_group",
+        "required": true,
+        "description": "resource group."
+      },
+      {
+        "name": "workspace_name",
+        "required": true,
+        "description": "workspace name."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#C62828\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">S</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "incident_create",
+      "name": "Microsoft Sentinel Incident Create",
+      "description": "PUT /subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents/{incident_id}?api-version=2024-03-01",
+      "method": "PUT",
+      "path": "/subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents/{incident_id}?api-version=2024-03-01",
+      "inputs": [
+        {
+          "name": "Subscription ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Resource Group",
+          "required": true,
+          "mapTo": "Resource Group"
+        },
+        {
+          "name": "Incident ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Severity",
+          "required": true,
+          "mapTo": "Severity"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident ID",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "incident_list",
+      "name": "Microsoft Sentinel Incident List",
+      "description": "GET /subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01",
+      "method": "GET",
+      "path": "/subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01",
+      "inputs": [
+        {
+          "name": "Subscription ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Resource Group",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incidents JSON",
+          "path": "value"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Sentinel Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

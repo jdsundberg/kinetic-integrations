@@ -3,7 +3,7 @@
   "service": "Discord",
   "version": 1,
   "category": "Communication",
-  "description": "Discord integration with 4 pre-built routines.",
+  "description": "Discord integration with 5 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -21,6 +21,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#5865F2\"><path d=\"M20.3 4.4a19.8 19.8 0 00-4.9-1.5.1.1 0 00-.1 0c-.2.4-.4.9-.6 1.3a18.3 18.3 0 00-5.5 0 12.6 12.6 0 00-.6-1.3.1.1 0 00-.1 0A19.7 19.7 0 003.7 4.4a.1.1 0 000 0C.5 9 -.3 13.6.1 18.1a.1.1 0 000 .1 19.9 19.9 0 006 3 .1.1 0 00.1 0c.5-.6.9-1.3 1.2-2a.1.1 0 000-.1 13.1 13.1 0 01-1.9-.9.1.1 0 010-.1 10.2 10.2 0 00.4-.3.1.1 0 01.1 0c3.9 1.8 8.2 1.8 12.1 0a.1.1 0 01.1 0l.4.3a.1.1 0 010 .1 12.3 12.3 0 01-1.9.9.1.1 0 000 .1c.4.7.8 1.4 1.2 2a.1.1 0 00.1 0 19.8 19.8 0 006-3 .1.1 0 000-.1c.5-5.2-.8-9.7-3.5-13.7z\"/></svg>",
+  "docsUrl": "https://discord.com/developers/docs/reference",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -249,6 +251,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Discord Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

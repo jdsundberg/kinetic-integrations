@@ -1,0 +1,71 @@
+{
+  "id": "better-uptime",
+  "service": "Better Uptime",
+  "version": 1,
+  "category": "Other",
+  "description": "Better Uptime integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#202937\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">B</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "incident_list",
+      "name": "Better Uptime Incident List",
+      "description": "GET /api/v2/incidents",
+      "method": "GET",
+      "path": "/api/v2/incidents",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Incidents JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "monitor_list",
+      "name": "Better Uptime Monitor List",
+      "description": "GET /api/v2/monitors",
+      "method": "GET",
+      "path": "/api/v2/monitors",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Monitors JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Better Uptime Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "bigcommerce",
+  "service": "Bigcommerce",
+  "version": 1,
+  "category": "Commerce & Content",
+  "description": "Bigcommerce integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "store_hash",
+        "required": true,
+        "description": "store hash."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#7B1FA2\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">B</text></svg>",
+  "docsUrl": "https://developer.bigcommerce.com/docs/rest-catalog",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "order_list",
+      "name": "BigCommerce Order List",
+      "description": "GET /v2/orders",
+      "method": "GET",
+      "path": "/v2/orders",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Orders JSON",
+          "path": "orders"
+        }
+      ]
+    },
+    {
+      "id": "product_create",
+      "name": "BigCommerce Product Create",
+      "description": "POST /v3/catalog/products",
+      "method": "POST",
+      "path": "/v3/catalog/products",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Weight",
+          "required": true,
+          "mapTo": "Weight"
+        },
+        {
+          "name": "Price",
+          "required": true,
+          "mapTo": "Price"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Product ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "product_list",
+      "name": "BigCommerce Product List",
+      "description": "GET /v3/catalog/products",
+      "method": "GET",
+      "path": "/v3/catalog/products",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Products JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Bigcommerce Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

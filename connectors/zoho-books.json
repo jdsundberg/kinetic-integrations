@@ -3,7 +3,7 @@
   "service": "Zoho Books",
   "version": 1,
   "category": "Accounting",
-  "description": "Zoho Books integration with 8 pre-built routines.",
+  "description": "Zoho Books integration with 9 pre-built routines.",
   "auth": {
     "type": "oauth2_refresh",
     "properties": [
@@ -31,6 +31,7 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#283593\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">Z</text></svg>",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -272,6 +273,24 @@
         {
           "name": "Status",
           "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Zoho Books Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

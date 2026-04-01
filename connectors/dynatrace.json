@@ -1,0 +1,113 @@
+{
+  "id": "dynatrace",
+  "service": "Dynatrace",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Dynatrace integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#1496FF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">D</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "entity_list",
+      "name": "Dynatrace Entity List",
+      "description": "GET /api/v2/entities?entitySelector={selector}",
+      "method": "GET",
+      "path": "/api/v2/entities?entitySelector={selector}",
+      "inputs": [
+        {
+          "name": "Entity Selector",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Entities JSON",
+          "path": "entities"
+        }
+      ]
+    },
+    {
+      "id": "metric_query",
+      "name": "Dynatrace Metric Query",
+      "description": "GET /api/v2/metrics/query?metricSelector={selector}",
+      "method": "GET",
+      "path": "/api/v2/metrics/query?metricSelector={selector}",
+      "inputs": [
+        {
+          "name": "Metric Selector",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result JSON",
+          "path": "result"
+        }
+      ]
+    },
+    {
+      "id": "problem_list",
+      "name": "Dynatrace Problem List",
+      "description": "GET /api/v2/problems",
+      "method": "GET",
+      "path": "/api/v2/problems",
+      "inputs": [
+        {
+          "name": "From",
+          "required": false
+        },
+        {
+          "name": "To",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Problems JSON",
+          "path": "problems"
+        },
+        {
+          "name": "Total Count",
+          "path": "totalCount"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Dynatrace Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "service": "Vonage",
   "version": 1,
   "category": "Communication",
-  "description": "Vonage integration with 4 pre-built routines.",
+  "description": "Vonage integration with 5 pre-built routines.",
   "auth": {
     "type": "apikey",
     "properties": [
@@ -32,6 +32,7 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#333\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">V</text></svg>",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -84,6 +85,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Vonage Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

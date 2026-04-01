@@ -1,0 +1,123 @@
+{
+  "id": "dynamics365",
+  "service": "Dynamics365",
+  "version": 1,
+  "category": "Other",
+  "description": "Dynamics365 integration with 3 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      },
+      {
+        "name": "tenant_id",
+        "required": true,
+        "description": "tenant id."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#2E7D32\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">D</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_create",
+      "name": "Dynamics 365 Account Create",
+      "description": "POST /api/data/v9.2/accounts",
+      "method": "POST",
+      "path": "/api/data/v9.2/accounts",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Account ID",
+          "path": "accountid"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Dynamics 365 Contact Create",
+      "description": "POST /api/data/v9.2/contacts",
+      "method": "POST",
+      "path": "/api/data/v9.2/contacts",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contactid"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Dynamics365 Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "service": "Jenkins",
   "version": 1,
   "category": "DevOps & Collaboration",
-  "description": "Jenkins integration with 4 pre-built routines.",
+  "description": "Jenkins integration with 5 pre-built routines.",
   "auth": {
     "type": "basic",
     "properties": [
@@ -31,6 +31,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#D24939\"><path d=\"M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22a10 10 0 110-20 10 10 0 010 20zm-2-15a2 2 0 114 0c0 .8-.5 1.5-1.2 1.8l.7 3.2H10.5l.7-3.2A2 2 0 0110 7zm-1 8h6v4H9v-4z\"/></svg>",
+  "docsUrl": "https://www.jenkins.io/doc/book/using/remote-access-api/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -214,6 +216,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Jenkins Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

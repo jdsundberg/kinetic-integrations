@@ -1,9 +1,9 @@
 {
   "id": "gcp-pubsub",
-  "service": "GCP Pub/Sub",
+  "service": "Gcp Pubsub",
   "version": 1,
   "category": "Cloud & Infrastructure",
-  "description": "GCP Pub/Sub integration with 4 pre-built routines.",
+  "description": "Gcp Pubsub integration with 5 pre-built routines.",
   "auth": {
     "type": "jwt",
     "properties": [
@@ -41,6 +41,7 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#00695C\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">G</text></svg>",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -173,6 +174,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Gcp Pubsub Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

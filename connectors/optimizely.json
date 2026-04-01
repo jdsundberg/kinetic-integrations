@@ -1,0 +1,83 @@
+{
+  "id": "optimizely",
+  "service": "Optimizely",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Optimizely integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0037FF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">O</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "experiment_list",
+      "name": "Optimizely Experiment List",
+      "description": "GET /v2/experiments?project_id={project_id}",
+      "method": "GET",
+      "path": "/v2/experiments?project_id={project_id}",
+      "inputs": [
+        {
+          "name": "Project ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Experiments JSON",
+          "path": "experiments"
+        }
+      ]
+    },
+    {
+      "id": "experiment_results",
+      "name": "Optimizely Experiment Results",
+      "description": "GET /v2/experiments/{experiment_id}/results",
+      "method": "GET",
+      "path": "/v2/experiments/{experiment_id}/results",
+      "inputs": [
+        {
+          "name": "Experiment ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Optimizely Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "churnzero",
+  "service": "Churnzero",
+  "version": 1,
+  "category": "Other",
+  "description": "Churnzero integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#C62828\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">C</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "event_track",
+      "name": "ChurnZero Event Track",
+      "description": "POST /v1/events",
+      "method": "POST",
+      "path": "/v1/events",
+      "inputs": [
+        {
+          "name": "Account External ID",
+          "required": true,
+          "mapTo": "Account External ID"
+        },
+        {
+          "name": "Contact External ID",
+          "required": true,
+          "mapTo": "Contact External ID"
+        },
+        {
+          "name": "Event Name",
+          "required": true,
+          "mapTo": "Event Name"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "test",
+      "name": "Churnzero Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

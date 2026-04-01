@@ -1,0 +1,88 @@
+{
+  "id": "loggly",
+  "service": "Loggly",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Loggly integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "subdomain",
+        "required": true,
+        "description": "subdomain."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#231F20\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">L</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "event_retrieve",
+      "name": "Loggly Events Retrieve",
+      "description": "GET /apiv2/events?rsid={rsid}",
+      "method": "GET",
+      "path": "/apiv2/events?rsid={rsid}",
+      "inputs": [
+        {
+          "name": "RSID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Events JSON",
+          "path": "events"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "Loggly Search",
+      "description": "GET /apiv2/search?q={query}",
+      "method": "GET",
+      "path": "/apiv2/search?q={query}",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RSID",
+          "path": "rsid.id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Loggly Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

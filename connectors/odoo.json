@@ -3,7 +3,7 @@
   "service": "Odoo",
   "version": 1,
   "category": "Accounting",
-  "description": "Odoo integration with 8 pre-built routines.",
+  "description": "Odoo integration with 9 pre-built routines.",
   "auth": {
     "type": "apikey",
     "properties": [
@@ -25,6 +25,7 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#E65100\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">O</text></svg>",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -266,6 +267,24 @@
         {
           "name": "Status",
           "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Odoo Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     },

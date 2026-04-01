@@ -1,0 +1,192 @@
+{
+  "id": "xero",
+  "service": "Xero",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "Xero integration with 6 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      },
+      {
+        "name": "tenant_id",
+        "required": true,
+        "description": "tenant id."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#13B5EA\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">X</text></svg>",
+  "docsUrl": "https://developer.xero.com/documentation/api/",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_list",
+      "name": "Xero Account List",
+      "description": "GET /api.xro/2.0/Accounts",
+      "method": "GET",
+      "path": "/api.xro/2.0/Accounts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Accounts JSON",
+          "path": "Accounts"
+        }
+      ]
+    },
+    {
+      "id": "bank_transaction_create",
+      "name": "Xero Bank Transaction Create",
+      "description": "POST /api.xro/2.0/BankTransactions",
+      "method": "POST",
+      "path": "/api.xro/2.0/BankTransactions",
+      "inputs": [
+        {
+          "name": "Bank Account Code",
+          "required": true,
+          "mapTo": "Bank Account Code"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Transaction ID",
+          "path": "BankTransactions[0].BankTransactionID"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Xero Contact Create",
+      "description": "POST /api.xro/2.0/Contacts",
+      "method": "POST",
+      "path": "/api.xro/2.0/Contacts",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "Contacts[0].ContactID"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Xero Invoice Create",
+      "description": "POST /api.xro/2.0/Invoices",
+      "method": "POST",
+      "path": "/api.xro/2.0/Invoices",
+      "inputs": [
+        {
+          "name": "Contact ID",
+          "required": true,
+          "mapTo": "Contact ID"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice ID",
+          "path": "Invoices[0].InvoiceID"
+        },
+        {
+          "name": "Status",
+          "path": "Invoices[0].Status"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "Xero Payment Create",
+      "description": "POST /api.xro/2.0/Payments",
+      "method": "POST",
+      "path": "/api.xro/2.0/Payments",
+      "inputs": [
+        {
+          "name": "Invoice ID",
+          "required": true,
+          "mapTo": "Invoice ID"
+        },
+        {
+          "name": "Account Code",
+          "required": true,
+          "mapTo": "Account Code"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment ID",
+          "path": "Payments[0].PaymentID"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Xero Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "pendo",
+  "service": "Pendo",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Pendo integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#E75490\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">P</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "guide_list",
+      "name": "Pendo Guide List",
+      "description": "GET /api/v1/guide",
+      "method": "GET",
+      "path": "/api/v1/guide",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Guides JSON",
+          "path": "guides"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Pendo Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "track",
+      "name": "Pendo Track Event",
+      "description": "POST /data/track",
+      "method": "POST",
+      "path": "/data/track",
+      "inputs": [
+        {
+          "name": "Account ID",
+          "required": true,
+          "mapTo": "Account ID"
+        },
+        {
+          "name": "Visitor ID",
+          "required": true,
+          "mapTo": "Visitor ID"
+        },
+        {
+          "name": "Event",
+          "required": true,
+          "mapTo": "Event"
+        },
+        {
+          "name": "Properties JSON",
+          "required": false,
+          "mapTo": "Properties JSON"
+        }
+      ],
+      "outputs": []
+    }
+  ]
+}

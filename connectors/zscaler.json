@@ -1,0 +1,87 @@
+{
+  "id": "zscaler",
+  "service": "Zscaler",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Zscaler integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0090CF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">Z</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "test",
+      "name": "Zscaler Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "url_lookup",
+      "name": "Zscaler URL Lookup",
+      "description": "POST /api/v1/urlLookup",
+      "method": "POST",
+      "path": "/api/v1/urlLookup",
+      "inputs": [
+        {
+          "name": "URLs JSON",
+          "required": true,
+          "mapTo": "URLs JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results"
+        }
+      ]
+    },
+    {
+      "id": "user_list",
+      "name": "Zscaler User List",
+      "description": "GET /api/v1/users",
+      "method": "GET",
+      "path": "/api/v1/users",
+      "inputs": [
+        {
+          "name": "Search",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Users JSON",
+          "path": "users"
+        }
+      ]
+    }
+  ]
+}

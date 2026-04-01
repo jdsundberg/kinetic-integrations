@@ -1,0 +1,107 @@
+{
+  "id": "vault",
+  "service": "Vault",
+  "version": 1,
+  "category": "Other",
+  "description": "Vault integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#283593\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">V</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "secret_read",
+      "name": "Vault Secret Read",
+      "description": "GET /v1/{mount}/data/{path}",
+      "method": "GET",
+      "path": "/v1/{mount}/data/{path}",
+      "inputs": [
+        {
+          "name": "Mount",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Path",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data JSON",
+          "path": "data.data"
+        },
+        {
+          "name": "Version",
+          "path": "data.metadata.version"
+        }
+      ]
+    },
+    {
+      "id": "secret_write",
+      "name": "Vault Secret Write",
+      "description": "POST /v1/{mount}/data/{path}",
+      "method": "POST",
+      "path": "/v1/{mount}/data/{path}",
+      "inputs": [
+        {
+          "name": "Mount",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Path",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Data JSON",
+          "required": true,
+          "mapTo": "Data JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Version",
+          "path": "data.version"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Vault Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

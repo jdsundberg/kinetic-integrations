@@ -1,0 +1,84 @@
+{
+  "id": "snyk",
+  "service": "Snyk",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Snyk integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#4C4A73\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">S</text></svg>",
+  "docsUrl": "https://snyk.docs.apiary.io/",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "issue_list",
+      "name": "Snyk Issue List",
+      "description": "GET /rest/orgs/{org_id}/issues?version=2024-06-10",
+      "method": "GET",
+      "path": "/rest/orgs/{org_id}/issues?version=2024-06-10",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issues JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "project_list",
+      "name": "Snyk Project List",
+      "description": "GET /rest/orgs/{org_id}/projects?version=2024-06-10",
+      "method": "GET",
+      "path": "/rest/orgs/{org_id}/projects?version=2024-06-10",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Projects JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Snyk Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

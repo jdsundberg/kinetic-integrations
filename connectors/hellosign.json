@@ -1,0 +1,117 @@
+{
+  "id": "hellosign",
+  "service": "Hellosign",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "Hellosign integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#00695C\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">H</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "signature_request_cancel",
+      "name": "HelloSign Signature Request Cancel",
+      "description": "POST /v3/signature_request/cancel/{signature_request_id}",
+      "method": "POST",
+      "path": "/v3/signature_request/cancel/{signature_request_id}",
+      "inputs": [
+        {
+          "name": "Signature Request ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "id": "signature_request_retrieve",
+      "name": "HelloSign Signature Request Retrieve",
+      "description": "GET /v3/signature_request/{signature_request_id}",
+      "method": "GET",
+      "path": "/v3/signature_request/{signature_request_id}",
+      "inputs": [
+        {
+          "name": "Signature Request ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "signature_request.is_complete"
+        },
+        {
+          "name": "Title",
+          "path": "signature_request.title"
+        }
+      ]
+    },
+    {
+      "id": "signature_request_send",
+      "name": "HelloSign Signature Request Send",
+      "description": "POST /v3/signature_request/send",
+      "method": "POST",
+      "path": "/v3/signature_request/send",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Signer Email",
+          "required": true,
+          "mapTo": "Signer Email"
+        },
+        {
+          "name": "Signer Name",
+          "required": true,
+          "mapTo": "Signer Name"
+        },
+        {
+          "name": "File URL",
+          "required": false,
+          "mapTo": "File URL"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Signature Request ID",
+          "path": "signature_request.signature_request_id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Hellosign Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

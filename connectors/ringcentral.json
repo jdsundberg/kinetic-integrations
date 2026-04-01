@@ -1,0 +1,106 @@
+{
+  "id": "ringcentral",
+  "service": "Ringcentral",
+  "version": 1,
+  "category": "Communication",
+  "description": "Ringcentral integration with 3 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#7B1FA2\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">R</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "call_log_list",
+      "name": "RingCentral Call Log List",
+      "description": "GET /restapi/v1.0/account/~/extension/~/call-log",
+      "method": "GET",
+      "path": "/restapi/v1.0/account/~/extension/~/call-log",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Records JSON",
+          "path": "records"
+        }
+      ]
+    },
+    {
+      "id": "sms_send",
+      "name": "RingCentral SMS Send",
+      "description": "POST /restapi/v1.0/account/~/extension/~/sms",
+      "method": "POST",
+      "path": "/restapi/v1.0/account/~/extension/~/sms",
+      "inputs": [
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "messageStatus"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Ringcentral Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

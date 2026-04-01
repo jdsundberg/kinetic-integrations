@@ -1,0 +1,78 @@
+{
+  "id": "lightstep",
+  "service": "Lightstep",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Lightstep integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "organization",
+        "required": true,
+        "description": "organization."
+      },
+      {
+        "name": "project",
+        "required": true,
+        "description": "project."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#6658FF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">L</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "stream_list",
+      "name": "Lightstep Stream List",
+      "description": "GET /public/v0.2/{organization}/projects/{project}/streams",
+      "method": "GET",
+      "path": "/public/v0.2/{organization}/projects/{project}/streams",
+      "inputs": [
+        {
+          "name": "Organization",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Project",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Streams JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Lightstep Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

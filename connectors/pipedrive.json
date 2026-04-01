@@ -1,0 +1,117 @@
+{
+  "id": "pipedrive",
+  "service": "Pipedrive",
+  "version": 1,
+  "category": "CRM & Sales",
+  "description": "Pipedrive integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#1A1F36\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">P</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "deal_create",
+      "name": "Pipedrive Deal Create",
+      "description": "POST /v1/deals",
+      "method": "POST",
+      "path": "/v1/deals",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Value",
+          "required": false,
+          "mapTo": "Value"
+        },
+        {
+          "name": "Currency",
+          "required": false,
+          "mapTo": "Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deal ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "deal_list",
+      "name": "Pipedrive Deal List",
+      "description": "GET /v1/deals",
+      "method": "GET",
+      "path": "/v1/deals",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Deals JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "person_create",
+      "name": "Pipedrive Person Create",
+      "description": "POST /v1/persons",
+      "method": "POST",
+      "path": "/v1/persons",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Person ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Pipedrive Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

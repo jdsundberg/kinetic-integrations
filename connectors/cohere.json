@@ -1,0 +1,102 @@
+{
+  "id": "cohere",
+  "service": "Cohere",
+  "version": 1,
+  "category": "AI & Machine Learning",
+  "description": "Cohere integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#39594D\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">C</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "chat",
+      "name": "Cohere Chat",
+      "description": "POST /v2/chat",
+      "method": "POST",
+      "path": "/v2/chat",
+      "inputs": [
+        {
+          "name": "Model",
+          "required": true,
+          "mapTo": "Model"
+        },
+        {
+          "name": "Message",
+          "required": true,
+          "mapTo": "Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Text",
+          "path": "message.content[0].text"
+        },
+        {
+          "name": "Finish Reason",
+          "path": "finish_reason"
+        }
+      ]
+    },
+    {
+      "id": "embed",
+      "name": "Cohere Embed",
+      "description": "POST /v2/embed",
+      "method": "POST",
+      "path": "/v2/embed",
+      "inputs": [
+        {
+          "name": "Model",
+          "required": true,
+          "mapTo": "Model"
+        },
+        {
+          "name": "Texts JSON",
+          "required": true,
+          "mapTo": "Texts JSON"
+        },
+        {
+          "name": "Input Type",
+          "required": true,
+          "mapTo": "Input Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Embeddings JSON",
+          "path": "embeddings"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Cohere Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

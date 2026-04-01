@@ -1,0 +1,102 @@
+{
+  "id": "ga4",
+  "service": "Ga4",
+  "version": 1,
+  "category": "Other",
+  "description": "Ga4 integration with 2 pre-built routines.",
+  "auth": {
+    "type": "jwt",
+    "properties": [
+      {
+        "name": "service_account_email",
+        "required": true,
+        "description": "Google service account email."
+      },
+      {
+        "name": "private_key",
+        "required": true,
+        "description": "PEM private key.",
+        "encrypted": true
+      },
+      {
+        "name": "jwt_subject",
+        "required": false,
+        "description": "Email to impersonate."
+      },
+      {
+        "name": "jwt_scope",
+        "required": true,
+        "description": "OAuth2 scope."
+      },
+      {
+        "name": "property_id",
+        "required": true,
+        "description": "property id."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#283593\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">G</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "report_run",
+      "name": "Google Analytics 4 Report Run",
+      "description": "POST /v1beta/properties/{property_id}:runReport",
+      "method": "POST",
+      "path": "/v1beta/properties/{property_id}:runReport",
+      "inputs": [
+        {
+          "name": "Property ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Date Ranges JSON",
+          "required": true,
+          "mapTo": "Date Ranges JSON"
+        },
+        {
+          "name": "Metrics JSON",
+          "required": true,
+          "mapTo": "Metrics JSON"
+        },
+        {
+          "name": "Dimensions JSON",
+          "required": false,
+          "mapTo": "Dimensions JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Rows JSON",
+          "path": "rows"
+        },
+        {
+          "name": "Row Count",
+          "path": "rowCount"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Ga4 Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "magento",
+  "service": "Magento",
+  "version": 1,
+  "category": "Commerce & Content",
+  "description": "Magento integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#EE672F\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">M</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "order_list",
+      "name": "Magento Order List",
+      "description": "GET /rest/V1/orders?searchCriteria",
+      "method": "GET",
+      "path": "/rest/V1/orders?searchCriteria",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Orders JSON",
+          "path": "items"
+        }
+      ]
+    },
+    {
+      "id": "product_create",
+      "name": "Magento Product Create",
+      "description": "POST /rest/V1/products",
+      "method": "POST",
+      "path": "/rest/V1/products",
+      "inputs": [
+        {
+          "name": "SKU",
+          "required": true,
+          "mapTo": "SKU"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Price",
+          "required": true,
+          "mapTo": "Price"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SKU",
+          "path": "sku"
+        },
+        {
+          "name": "ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Magento Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

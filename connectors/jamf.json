@@ -1,9 +1,9 @@
 {
   "id": "jamf",
-  "service": "Jamf Pro",
+  "service": "Jamf",
   "version": 1,
   "category": "Observability & Analytics",
-  "description": "Jamf Pro integration with 4 pre-built routines.",
+  "description": "Jamf integration with 7 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -20,6 +20,7 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#1565C0\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">J</text></svg>",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -68,6 +69,45 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "computer_list",
+      "name": "Jamf Pro Computer List",
+      "description": "GET /api/v1/computers-inventory",
+      "method": "GET",
+      "path": "/api/v1/computers-inventory",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Computers JSON",
+          "path": "results"
+        }
+      ]
+    },
+    {
+      "id": "device_command",
+      "name": "Jamf Pro Device Command",
+      "description": "POST /api/v1/mdm/commands",
+      "method": "POST",
+      "path": "/api/v1/mdm/commands",
+      "inputs": [
+        {
+          "name": "Command Type",
+          "required": true,
+          "mapTo": "Command Type"
+        },
+        {
+          "name": "Device IDs JSON",
+          "required": true,
+          "mapTo": "Device IDs JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Command ID",
+          "path": "id"
         }
       ]
     },
@@ -221,6 +261,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Jamf Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

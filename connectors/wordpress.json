@@ -1,0 +1,102 @@
+{
+  "id": "wordpress",
+  "service": "Wordpress",
+  "version": 1,
+  "category": "Commerce & Content",
+  "description": "Wordpress integration with 3 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "site_url",
+        "required": true,
+        "description": "site url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0097A7\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">W</text></svg>",
+  "docsUrl": "https://developer.wordpress.org/rest-api/",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "post_create",
+      "name": "WordPress Post Create",
+      "description": "POST /wp-json/wp/v2/posts",
+      "method": "POST",
+      "path": "/wp-json/wp/v2/posts",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Post ID",
+          "path": "id"
+        },
+        {
+          "name": "Link",
+          "path": "link"
+        }
+      ]
+    },
+    {
+      "id": "post_list",
+      "name": "WordPress Post List",
+      "description": "GET /wp-json/wp/v2/posts",
+      "method": "GET",
+      "path": "/wp-json/wp/v2/posts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Posts JSON",
+          "path": "posts"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Wordpress Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

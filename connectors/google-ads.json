@@ -1,0 +1,93 @@
+{
+  "id": "google-ads",
+  "service": "Google Ads",
+  "version": 1,
+  "category": "Other",
+  "description": "Google Ads integration with 2 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      },
+      {
+        "name": "developer_token",
+        "required": true,
+        "description": "developer token."
+      },
+      {
+        "name": "customer_id",
+        "required": true,
+        "description": "customer id."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#4285F4\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">G</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "search",
+      "name": "Google Ads Search",
+      "description": "POST /v17/customers/{customer_id}/googleAds:search",
+      "method": "POST",
+      "path": "/v17/customers/{customer_id}/googleAds:search",
+      "inputs": [
+        {
+          "name": "Customer ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Google Ads Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "cortex-xsoar",
+  "service": "Cortex Xsoar",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Cortex Xsoar integration with 3 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "base url."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#283593\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">C</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "incident_create",
+      "name": "Cortex XSOAR Incident Create",
+      "description": "POST /incident",
+      "method": "POST",
+      "path": "/incident",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Severity",
+          "required": true,
+          "mapTo": "Severity"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident ID",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "incident_search",
+      "name": "Cortex XSOAR Incident Search",
+      "description": "POST /incidents/search",
+      "method": "POST",
+      "path": "/incidents/search",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incidents JSON",
+          "path": "data"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Cortex Xsoar Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

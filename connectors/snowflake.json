@@ -3,7 +3,7 @@
   "service": "Snowflake",
   "version": 1,
   "category": "Data & Analytics",
-  "description": "Snowflake integration with 4 pre-built routines.",
+  "description": "Snowflake integration with 5 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -26,6 +26,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"#29B5E8\"><path d=\"M12 0l2.5 4.3 2.5-1.4v2.9L20 7.2l-2.5 4.3L20 12l-2.5.5 2.5 4.3-3 1.4v2.9l-2.5-1.4L12 24l-2.5-4.3L7 21.1v-2.9l-3-1.4 2.5-4.3L4 12l2.5-.5L4 7.2l3-1.4V2.9l2.5 1.4L12 0z\"/></svg>",
+  "docsUrl": "https://docs.snowflake.com/en/developer-guide/sql-api/reference",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -270,6 +272,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Snowflake Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

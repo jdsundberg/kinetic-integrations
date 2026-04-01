@@ -3,7 +3,7 @@
   "service": "Marketo",
   "version": 1,
   "category": "Email & Marketing",
-  "description": "Marketo integration with 5 pre-built routines.",
+  "description": "Marketo integration with 6 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -20,6 +20,8 @@
       }
     ]
   },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#5C4C9F\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">M</text></svg>",
+  "docsUrl": "https://developers.marketo.com/rest-api/",
   "defaultHeaders": {
     "Accept": "application/json",
     "Content-Type": "application/json"
@@ -309,6 +311,24 @@
         {
           "name": "Handler Error Message",
           "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Marketo Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
         }
       ]
     }

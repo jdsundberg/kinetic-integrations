@@ -1,0 +1,152 @@
+{
+  "id": "crowdstrike",
+  "service": "Crowdstrike",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Crowdstrike integration with 5 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#00695C\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">C</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "detection_detail",
+      "name": "CrowdStrike Detection Detail",
+      "description": "POST /detects/entities/summaries/GET/v1",
+      "method": "POST",
+      "path": "/detects/entities/summaries/GET/v1",
+      "inputs": [
+        {
+          "name": "Detection IDs JSON",
+          "required": true,
+          "mapTo": "Detection IDs JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Detections JSON",
+          "path": "resources"
+        }
+      ]
+    },
+    {
+      "id": "detection_list",
+      "name": "CrowdStrike Detection List",
+      "description": "GET /detects/queries/detects/v1",
+      "method": "GET",
+      "path": "/detects/queries/detects/v1",
+      "inputs": [
+        {
+          "name": "Filter",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Detection IDs JSON",
+          "path": "resources"
+        }
+      ]
+    },
+    {
+      "id": "host_search",
+      "name": "CrowdStrike Host Search",
+      "description": "GET /devices/queries/devices/v1?filter={filter}",
+      "method": "GET",
+      "path": "/devices/queries/devices/v1?filter={filter}",
+      "inputs": [
+        {
+          "name": "Filter",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Host IDs JSON",
+          "path": "resources"
+        }
+      ]
+    },
+    {
+      "id": "ioc_create",
+      "name": "CrowdStrike IOC Create",
+      "description": "POST /iocs/entities/indicators/v1",
+      "method": "POST",
+      "path": "/iocs/entities/indicators/v1",
+      "inputs": [
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "mapTo": "Value"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "Action"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IOC ID",
+          "path": "resources[0].id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Crowdstrike Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "drift",
+  "service": "Drift",
+  "version": 1,
+  "category": "Other",
+  "description": "Drift integration with 3 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0176FF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">D</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "contact_create",
+      "name": "Drift Contact Create",
+      "description": "POST /contacts",
+      "method": "POST",
+      "path": "/contacts",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Attributes JSON",
+          "required": false,
+          "mapTo": "Attributes JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Drift Message Send",
+      "description": "POST /conversations/{conversation_id}/messages",
+      "method": "POST",
+      "path": "/conversations/{conversation_id}/messages",
+      "inputs": [
+        {
+          "name": "Conversation ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "data.id"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Drift Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

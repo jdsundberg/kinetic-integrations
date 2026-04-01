@@ -1,0 +1,73 @@
+{
+  "id": "amazon-sp",
+  "service": "Amazon Sp",
+  "version": 1,
+  "category": "Other",
+  "description": "Amazon Sp integration with 2 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "marketplace_id",
+        "required": true,
+        "description": "marketplace id."
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "region."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0097A7\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">A</text></svg>",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "order_list",
+      "name": "Amazon Seller Order List",
+      "description": "GET /orders/v0/orders?CreatedAfter={created_after}",
+      "method": "GET",
+      "path": "/orders/v0/orders?CreatedAfter={created_after}",
+      "inputs": [
+        {
+          "name": "Created After",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Orders JSON",
+          "path": "Orders"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Amazon Sp Connection Test",
+      "description": "GET /",
+      "method": "GET",
+      "path": "/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    }
+  ]
+}

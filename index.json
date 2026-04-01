@@ -7,1160 +7,2016 @@
       "service": "Accountedge",
       "category": "Accounting",
       "auth": "basic",
-      "routines": 8,
-      "description": "Accountedge integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Accountedge integration with 9 pre-built routines."
     },
     {
       "id": "acumatica",
       "service": "Acumatica",
       "category": "Accounting",
       "auth": "oauth2",
-      "routines": 8,
-      "description": "Acumatica integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Acumatica integration with 9 pre-built routines."
+    },
+    {
+      "id": "adobe-sign",
+      "service": "Adobe Sign",
+      "category": "Documents & Storage",
+      "auth": "bearer",
+      "routines": 5,
+      "description": "Adobe Sign integration with 5 pre-built routines."
     },
     {
       "id": "adp",
-      "service": "ADP",
+      "service": "Adp",
       "category": "HR & People",
       "auth": "bearer",
-      "routines": 5,
-      "description": "ADP integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Adp integration with 6 pre-built routines."
+    },
+    {
+      "id": "adyen",
+      "service": "Adyen",
+      "category": "Finance & Payments",
+      "auth": "apikey",
+      "routines": 4,
+      "description": "Adyen integration with 4 pre-built routines."
+    },
+    {
+      "id": "airbyte",
+      "service": "Airbyte",
+      "category": "Data & Analytics",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Airbyte integration with 2 pre-built routines."
     },
     {
       "id": "airtable",
       "service": "Airtable",
       "category": "DevOps & Collaboration",
       "auth": "apikey",
-      "routines": 4,
-      "description": "Airtable integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Airtable integration with 5 pre-built routines."
+    },
+    {
+      "id": "amazon-sp",
+      "service": "Amazon Sp",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Amazon Sp integration with 2 pre-built routines."
+    },
+    {
+      "id": "amplitude",
+      "service": "Amplitude",
+      "category": "Observability & Analytics",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Amplitude integration with 3 pre-built routines."
     },
     {
       "id": "ansible",
-      "service": "Ansible Tower",
+      "service": "Ansible",
       "category": "Observability & Analytics",
       "auth": "basic",
-      "routines": 4,
-      "description": "Ansible Tower integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Ansible integration with 5 pre-built routines."
+    },
+    {
+      "id": "anthropic",
+      "service": "Anthropic",
+      "category": "AI & Machine Learning",
+      "auth": "apikey",
+      "routines": 2,
+      "description": "Anthropic integration with 2 pre-built routines."
     },
     {
       "id": "aplos",
       "service": "Aplos",
       "category": "Accounting",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Aplos integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Aplos integration with 9 pre-built routines."
+    },
+    {
+      "id": "appdynamics",
+      "service": "Appdynamics",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Appdynamics integration with 3 pre-built routines."
     },
     {
       "id": "asana",
       "service": "Asana",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Asana integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Asana integration with 9 pre-built routines."
     },
     {
       "id": "atx",
       "service": "Atx",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Atx integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Atx integration with 6 pre-built routines."
     },
     {
       "id": "auth0",
       "service": "Auth0",
       "category": "Security & Identity",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Auth0 integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Auth0 integration with 6 pre-built routines."
     },
     {
       "id": "aws-dynamodb",
-      "service": "AWS DynamoDB",
+      "service": "Aws Dynamodb",
       "category": "Cloud & Infrastructure",
       "auth": "aws",
-      "routines": 4,
-      "description": "AWS DynamoDB integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Aws Dynamodb integration with 5 pre-built routines."
     },
     {
       "id": "aws-lambda",
-      "service": "AWS Lambda",
+      "service": "Aws Lambda",
       "category": "Cloud & Infrastructure",
       "auth": "aws",
-      "routines": 4,
-      "description": "AWS Lambda integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Aws Lambda integration with 5 pre-built routines."
     },
     {
       "id": "aws-s3",
-      "service": "AWS S3",
+      "service": "Aws S3",
       "category": "Cloud & Infrastructure",
       "auth": "aws",
-      "routines": 10,
-      "description": "AWS S3 integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Aws S3 integration with 11 pre-built routines."
+    },
+    {
+      "id": "aws-secrets",
+      "service": "Aws Secrets",
+      "category": "Cloud & Infrastructure",
+      "auth": "aws",
+      "routines": 3,
+      "description": "Aws Secrets integration with 3 pre-built routines."
     },
     {
       "id": "aws-ses",
-      "service": "AWS SES",
+      "service": "Aws Ses",
       "category": "Cloud & Infrastructure",
       "auth": "aws",
-      "routines": 4,
-      "description": "AWS SES integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Aws Ses integration with 5 pre-built routines."
     },
     {
       "id": "aws-sns",
-      "service": "AWS SNS",
+      "service": "Aws Sns",
       "category": "Cloud & Infrastructure",
       "auth": "aws",
-      "routines": 4,
-      "description": "AWS SNS integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Aws Sns integration with 5 pre-built routines."
     },
     {
       "id": "aws-sqs",
-      "service": "AWS SQS",
+      "service": "Aws Sqs",
       "category": "Cloud & Infrastructure",
       "auth": "aws",
-      "routines": 4,
-      "description": "AWS SQS integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Aws Sqs integration with 5 pre-built routines."
     },
     {
       "id": "azure-ad",
-      "service": "Azure AD",
+      "service": "Azure Ad",
       "category": "Cloud & Infrastructure",
       "auth": "oauth2",
-      "routines": 10,
-      "description": "Azure AD integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Azure Ad integration with 11 pre-built routines."
     },
     {
       "id": "azure-blob",
-      "service": "Azure Blob Storage",
+      "service": "Azure Blob",
       "category": "Cloud & Infrastructure",
       "auth": "apikey",
-      "routines": 4,
-      "description": "Azure Blob Storage integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Azure Blob integration with 5 pre-built routines."
     },
     {
       "id": "azure-functions",
       "service": "Azure Functions",
       "category": "Cloud & Infrastructure",
       "auth": "apikey",
-      "routines": 4,
-      "description": "Azure Functions integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Azure Functions integration with 5 pre-built routines."
+    },
+    {
+      "id": "azure-keyvault",
+      "service": "Azure Keyvault",
+      "category": "Cloud & Infrastructure",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Azure Keyvault integration with 3 pre-built routines."
+    },
+    {
+      "id": "azure-openai",
+      "service": "Azure Openai",
+      "category": "AI & Machine Learning",
+      "auth": "apikey",
+      "routines": 2,
+      "description": "Azure Openai integration with 2 pre-built routines."
     },
     {
       "id": "azure-servicebus",
-      "service": "Azure Service Bus",
+      "service": "Azure Servicebus",
       "category": "Cloud & Infrastructure",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Azure Service Bus integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Azure Servicebus integration with 5 pre-built routines."
     },
     {
       "id": "bamboohr",
-      "service": "BambooHR",
+      "service": "Bamboohr",
       "category": "HR & People",
       "auth": "basic",
-      "routines": 5,
-      "description": "BambooHR integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Bamboohr integration with 6 pre-built routines."
+    },
+    {
+      "id": "bandwidth",
+      "service": "Bandwidth",
+      "category": "Communication",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Bandwidth integration with 2 pre-built routines."
     },
     {
       "id": "basecamp",
       "service": "Basecamp",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
+      "routines": 5,
+      "description": "Basecamp integration with 5 pre-built routines."
+    },
+    {
+      "id": "better-uptime",
+      "service": "Better Uptime",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Better Uptime integration with 3 pre-built routines."
+    },
+    {
+      "id": "bigcommerce",
+      "service": "Bigcommerce",
+      "category": "Commerce & Content",
+      "auth": "bearer",
       "routines": 4,
-      "description": "Basecamp integration with 4 pre-built routines."
+      "description": "Bigcommerce integration with 4 pre-built routines."
     },
     {
       "id": "bigpanda",
-      "service": "BigPanda",
+      "service": "Bigpanda",
       "category": "Observability & Analytics",
       "auth": "bearer",
-      "routines": 4,
-      "description": "BigPanda integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Bigpanda integration with 5 pre-built routines."
+    },
+    {
+      "id": "bill",
+      "service": "Bill",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 5,
+      "description": "Bill integration with 5 pre-built routines."
     },
     {
       "id": "bitbucket",
       "service": "Bitbucket",
       "category": "DevOps & Collaboration",
       "auth": "basic",
-      "routines": 6,
-      "description": "Bitbucket integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Bitbucket integration with 7 pre-built routines."
     },
     {
       "id": "box",
       "service": "Box",
       "category": "Documents & Storage",
       "auth": "bearer",
-      "routines": 6,
-      "description": "Box integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Box integration with 7 pre-built routines."
+    },
+    {
+      "id": "braintree",
+      "service": "Braintree",
+      "category": "Finance & Payments",
+      "auth": "basic",
+      "routines": 4,
+      "description": "Braintree integration with 4 pre-built routines."
+    },
+    {
+      "id": "bullhorn",
+      "service": "Bullhorn",
+      "category": "HR & People",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Bullhorn integration with 3 pre-built routines."
     },
     {
       "id": "cashapp-taxes",
       "service": "Cashapp Taxes",
       "category": "Tax Software",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Cashapp Taxes integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Cashapp Taxes integration with 6 pre-built routines."
     },
     {
       "id": "cch-axcess",
       "service": "Cch Axcess",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Cch Axcess integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Cch Axcess integration with 6 pre-built routines."
     },
     {
       "id": "cch-prosystem",
       "service": "Cch Prosystem",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Cch Prosystem integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Cch Prosystem integration with 6 pre-built routines."
+    },
+    {
+      "id": "churnzero",
+      "service": "Churnzero",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Churnzero integration with 2 pre-built routines."
     },
     {
       "id": "circleci",
-      "service": "CircleCI",
+      "service": "Circleci",
       "category": "DevOps & Collaboration",
       "auth": "apikey",
-      "routines": 4,
-      "description": "CircleCI integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Circleci integration with 5 pre-built routines."
     },
     {
       "id": "clickup",
-      "service": "ClickUp",
+      "service": "Clickup",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
-      "routines": 6,
-      "description": "ClickUp integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Clickup integration with 7 pre-built routines."
+    },
+    {
+      "id": "close",
+      "service": "Close",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Close integration with 2 pre-built routines."
     },
     {
       "id": "cloudflare",
       "service": "Cloudflare",
       "category": "Cloud & Infrastructure",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Cloudflare integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Cloudflare integration with 5 pre-built routines."
+    },
+    {
+      "id": "cohere",
+      "service": "Cohere",
+      "category": "AI & Machine Learning",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Cohere integration with 3 pre-built routines."
     },
     {
       "id": "confluence",
       "service": "Confluence",
       "category": "DevOps & Collaboration",
       "auth": "basic",
-      "routines": 6,
-      "description": "Confluence integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Confluence integration with 7 pre-built routines."
     },
     {
       "id": "constant-contact",
       "service": "Constant Contact",
       "category": "Email & Marketing",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Constant Contact integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Constant Contact integration with 6 pre-built routines."
+    },
+    {
+      "id": "contentful",
+      "service": "Contentful",
+      "category": "Commerce & Content",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Contentful integration with 3 pre-built routines."
+    },
+    {
+      "id": "copper",
+      "service": "Copper",
+      "category": "CRM & Sales",
+      "auth": "apikey",
+      "routines": 3,
+      "description": "Copper integration with 3 pre-built routines."
+    },
+    {
+      "id": "cortex-xsoar",
+      "service": "Cortex Xsoar",
+      "category": "Security & Identity",
+      "auth": "apikey",
+      "routines": 3,
+      "description": "Cortex Xsoar integration with 3 pre-built routines."
     },
     {
       "id": "crosslink-1040",
       "service": "Crosslink 1040",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Crosslink 1040 integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Crosslink 1040 integration with 6 pre-built routines."
     },
     {
       "id": "crosslink-online",
       "service": "Crosslink Online",
       "category": "Tax Software",
       "auth": "apikey",
+      "routines": 6,
+      "description": "Crosslink Online integration with 6 pre-built routines."
+    },
+    {
+      "id": "crowdstrike",
+      "service": "Crowdstrike",
+      "category": "Security & Identity",
+      "auth": "oauth2",
       "routines": 5,
-      "description": "Crosslink Online integration with 5 pre-built routines."
+      "description": "Crowdstrike integration with 5 pre-built routines."
     },
     {
       "id": "cyberark",
-      "service": "CyberArk",
+      "service": "Cyberark",
       "category": "Security & Identity",
       "auth": "bearer",
-      "routines": 5,
-      "description": "CyberArk integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Cyberark integration with 6 pre-built routines."
     },
     {
       "id": "databricks",
       "service": "Databricks",
       "category": "Data & Analytics",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Databricks integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Databricks integration with 5 pre-built routines."
     },
     {
       "id": "datadog",
       "service": "Datadog",
       "category": "Observability & Analytics",
       "auth": "apikey",
-      "routines": 8,
-      "description": "Datadog integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Datadog integration with 9 pre-built routines."
+    },
+    {
+      "id": "dayforce",
+      "service": "Dayforce",
+      "category": "Other",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Dayforce integration with 2 pre-built routines."
+    },
+    {
+      "id": "dbt-cloud",
+      "service": "Dbt Cloud",
+      "category": "Data & Analytics",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Dbt Cloud integration with 2 pre-built routines."
     },
     {
       "id": "digits",
       "service": "Digits",
       "category": "Accounting",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Digits integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Digits integration with 9 pre-built routines."
     },
     {
       "id": "discord",
       "service": "Discord",
       "category": "Communication",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Discord integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Discord integration with 5 pre-built routines."
     },
     {
       "id": "docker",
-      "service": "Docker Hub",
+      "service": "Docker",
       "category": "Cloud & Infrastructure",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Docker Hub integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Docker integration with 5 pre-built routines."
     },
     {
       "id": "docusign",
-      "service": "DocuSign",
+      "service": "Docusign",
       "category": "Documents & Storage",
       "auth": "bearer",
-      "routines": 6,
-      "description": "DocuSign integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Docusign integration with 7 pre-built routines."
     },
     {
       "id": "drake-tax",
       "service": "Drake Tax",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Drake Tax integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Drake Tax integration with 6 pre-built routines."
     },
     {
       "id": "drake-tax-online",
       "service": "Drake Tax Online",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Drake Tax Online integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Drake Tax Online integration with 6 pre-built routines."
+    },
+    {
+      "id": "drift",
+      "service": "Drift",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Drift integration with 3 pre-built routines."
     },
     {
       "id": "dropbox",
       "service": "Dropbox",
       "category": "Documents & Storage",
       "auth": "bearer",
-      "routines": 6,
-      "description": "Dropbox integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Dropbox integration with 7 pre-built routines."
+    },
+    {
+      "id": "dynamics365",
+      "service": "Dynamics365",
+      "category": "Other",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Dynamics365 integration with 3 pre-built routines."
     },
     {
       "id": "dynamics365-bc",
       "service": "Dynamics365 Bc",
       "category": "Accounting",
       "auth": "oauth2",
-      "routines": 8,
-      "description": "Dynamics365 Bc integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Dynamics365 Bc integration with 9 pre-built routines."
+    },
+    {
+      "id": "dynatrace",
+      "service": "Dynatrace",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 4,
+      "description": "Dynatrace integration with 4 pre-built routines."
+    },
+    {
+      "id": "ebay",
+      "service": "Ebay",
+      "category": "Social & Marketplace",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Ebay integration with 2 pre-built routines."
+    },
+    {
+      "id": "eight-x-eight",
+      "service": "Eight X Eight",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Eight X Eight integration with 2 pre-built routines."
     },
     {
       "id": "elasticsearch",
       "service": "Elasticsearch",
       "category": "Observability & Analytics",
       "auth": "basic",
-      "routines": 5,
-      "description": "Elasticsearch integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Elasticsearch integration with 6 pre-built routines."
     },
     {
       "id": "eloqua",
       "service": "Eloqua",
       "category": "Email & Marketing",
       "auth": "basic",
-      "routines": 5,
-      "description": "Eloqua integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Eloqua integration with 6 pre-built routines."
+    },
+    {
+      "id": "facebook",
+      "service": "Facebook",
+      "category": "Social & Marketplace",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Facebook integration with 3 pre-built routines."
     },
     {
       "id": "fastly",
       "service": "Fastly",
       "category": "Observability & Analytics",
       "auth": "apikey",
-      "routines": 4,
-      "description": "Fastly integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Fastly integration with 5 pre-built routines."
+    },
+    {
+      "id": "five9",
+      "service": "Five9",
+      "category": "Other",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Five9 integration with 2 pre-built routines."
+    },
+    {
+      "id": "fivetran",
+      "service": "Fivetran",
+      "category": "Data & Analytics",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Fivetran integration with 3 pre-built routines."
     },
     {
       "id": "freeagent",
       "service": "Freeagent",
       "category": "Accounting",
       "auth": "oauth2_refresh",
-      "routines": 8,
-      "description": "Freeagent integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Freeagent integration with 9 pre-built routines."
     },
     {
       "id": "freetaxusa",
       "service": "Freetaxusa",
       "category": "Tax Software",
       "auth": "apikey",
+      "routines": 6,
+      "description": "Freetaxusa integration with 6 pre-built routines."
+    },
+    {
+      "id": "freshbooks",
+      "service": "Freshbooks",
+      "category": "Finance & Payments",
+      "auth": "bearer",
       "routines": 5,
-      "description": "Freetaxusa integration with 5 pre-built routines."
+      "description": "Freshbooks integration with 5 pre-built routines."
     },
     {
       "id": "freshdesk",
       "service": "Freshdesk",
       "category": "ITSM & Service Management",
       "auth": "basic",
-      "routines": 6,
-      "description": "Freshdesk integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Freshdesk integration with 7 pre-built routines."
+    },
+    {
+      "id": "freshsales",
+      "service": "Freshsales",
+      "category": "CRM & Sales",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Freshsales integration with 2 pre-built routines."
     },
     {
       "id": "freshservice",
       "service": "Freshservice",
       "category": "ITSM & Service Management",
       "auth": "basic",
-      "routines": 6,
-      "description": "Freshservice integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Freshservice integration with 7 pre-built routines."
+    },
+    {
+      "id": "front",
+      "service": "Front",
+      "category": "ITSM & Service Management",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Front integration with 3 pre-built routines."
+    },
+    {
+      "id": "ga4",
+      "service": "Ga4",
+      "category": "Other",
+      "auth": "jwt",
+      "routines": 2,
+      "description": "Ga4 integration with 2 pre-built routines."
+    },
+    {
+      "id": "gainsight",
+      "service": "Gainsight",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Gainsight integration with 2 pre-built routines."
     },
     {
       "id": "gcp-bigquery",
-      "service": "GCP BigQuery",
+      "service": "Gcp Bigquery",
       "category": "Cloud & Infrastructure",
       "auth": "jwt",
-      "routines": 4,
-      "description": "GCP BigQuery integration with 4 pre-built routines."
-    },
-    {
-      "id": "gcp-storage",
-      "service": "GCP Cloud Storage",
-      "category": "Cloud & Infrastructure",
-      "auth": "jwt",
-      "routines": 4,
-      "description": "GCP Cloud Storage integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Gcp Bigquery integration with 5 pre-built routines."
     },
     {
       "id": "gcp-pubsub",
-      "service": "GCP Pub/Sub",
+      "service": "Gcp Pubsub",
       "category": "Cloud & Infrastructure",
       "auth": "jwt",
-      "routines": 4,
-      "description": "GCP Pub/Sub integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Gcp Pubsub integration with 5 pre-built routines."
+    },
+    {
+      "id": "gcp-storage",
+      "service": "Gcp Storage",
+      "category": "Cloud & Infrastructure",
+      "auth": "jwt",
+      "routines": 5,
+      "description": "Gcp Storage integration with 5 pre-built routines."
+    },
+    {
+      "id": "genesys",
+      "service": "Genesys",
+      "category": "Other",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Genesys integration with 3 pre-built routines."
     },
     {
       "id": "github",
-      "service": "GitHub",
+      "service": "Github",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
-      "routines": 10,
-      "description": "GitHub integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Github integration with 11 pre-built routines."
     },
     {
       "id": "gitlab",
-      "service": "GitLab",
+      "service": "Gitlab",
       "category": "DevOps & Collaboration",
       "auth": "apikey",
-      "routines": 6,
-      "description": "GitLab integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Gitlab integration with 7 pre-built routines."
     },
     {
       "id": "google",
-      "service": "Google Workspace",
-      "category": "Documents & Storage",
+      "service": "Google",
+      "category": "Other",
       "auth": "jwt",
-      "routines": 10,
-      "description": "Google Workspace integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Google integration with 11 pre-built routines."
+    },
+    {
+      "id": "google-ads",
+      "service": "Google Ads",
+      "category": "Other",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Google Ads integration with 2 pre-built routines."
     },
     {
       "id": "gosystem-tax",
       "service": "Gosystem Tax",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Gosystem Tax integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Gosystem Tax integration with 6 pre-built routines."
     },
     {
       "id": "grafana",
       "service": "Grafana",
       "category": "Observability & Analytics",
       "auth": "apikey",
+      "routines": 5,
+      "description": "Grafana integration with 5 pre-built routines."
+    },
+    {
+      "id": "graylog",
+      "service": "Graylog",
+      "category": "Observability & Analytics",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Graylog integration with 2 pre-built routines."
+    },
+    {
+      "id": "greenhouse",
+      "service": "Greenhouse",
+      "category": "HR & People",
+      "auth": "basic",
       "routines": 4,
-      "description": "Grafana integration with 4 pre-built routines."
+      "description": "Greenhouse integration with 4 pre-built routines."
+    },
+    {
+      "id": "gusto",
+      "service": "Gusto",
+      "category": "HR & People",
+      "auth": "bearer",
+      "routines": 6,
+      "description": "Gusto integration with 6 pre-built routines."
+    },
+    {
+      "id": "harbor",
+      "service": "Harbor",
+      "category": "Cloud & Infrastructure",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Harbor integration with 3 pre-built routines."
+    },
+    {
+      "id": "heap",
+      "service": "Heap",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Heap integration with 3 pre-built routines."
+    },
+    {
+      "id": "hellosign",
+      "service": "Hellosign",
+      "category": "Documents & Storage",
+      "auth": "bearer",
+      "routines": 4,
+      "description": "Hellosign integration with 4 pre-built routines."
+    },
+    {
+      "id": "helpscout",
+      "service": "Helpscout",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Helpscout integration with 3 pre-built routines."
+    },
+    {
+      "id": "honeycomb",
+      "service": "Honeycomb",
+      "category": "Observability & Analytics",
+      "auth": "apikey",
+      "routines": 3,
+      "description": "Honeycomb integration with 3 pre-built routines."
     },
     {
       "id": "hrblock",
       "service": "Hrblock",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Hrblock integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Hrblock integration with 6 pre-built routines."
     },
     {
       "id": "hubspot",
-      "service": "HubSpot",
+      "service": "Hubspot",
       "category": "CRM & Sales",
       "auth": "bearer",
-      "routines": 10,
-      "description": "HubSpot integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Hubspot integration with 11 pre-built routines."
+    },
+    {
+      "id": "icims",
+      "service": "Icims",
+      "category": "HR & People",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Icims integration with 2 pre-built routines."
     },
     {
       "id": "infor-cloudsuite",
       "service": "Infor Cloudsuite",
       "category": "Accounting",
       "auth": "oauth2",
-      "routines": 8,
-      "description": "Infor Cloudsuite integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Infor Cloudsuite integration with 9 pre-built routines."
+    },
+    {
+      "id": "instagram",
+      "service": "Instagram",
+      "category": "Social & Marketplace",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Instagram integration with 2 pre-built routines."
     },
     {
       "id": "intercom",
       "service": "Intercom",
       "category": "ITSM & Service Management",
       "auth": "bearer",
-      "routines": 6,
-      "description": "Intercom integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Intercom integration with 7 pre-built routines."
+    },
+    {
+      "id": "intune",
+      "service": "Intune",
+      "category": "Cloud & Infrastructure",
+      "auth": "bearer",
+      "routines": 7,
+      "description": "Intune integration with 7 pre-built routines."
     },
     {
       "id": "jackson-hewitt",
       "service": "Jackson Hewitt",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Jackson Hewitt integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Jackson Hewitt integration with 6 pre-built routines."
     },
     {
       "id": "jamf",
-      "service": "Jamf Pro",
+      "service": "Jamf",
       "category": "Observability & Analytics",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Jamf Pro integration with 4 pre-built routines."
+      "routines": 7,
+      "description": "Jamf integration with 7 pre-built routines."
     },
     {
       "id": "jenkins",
       "service": "Jenkins",
       "category": "DevOps & Collaboration",
       "auth": "basic",
-      "routines": 4,
-      "description": "Jenkins integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Jenkins integration with 5 pre-built routines."
+    },
+    {
+      "id": "jfrog",
+      "service": "Jfrog",
+      "category": "DevOps & Collaboration",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Jfrog integration with 3 pre-built routines."
     },
     {
       "id": "jira",
       "service": "Jira",
       "category": "ITSM & Service Management",
       "auth": "basic",
-      "routines": 10,
-      "description": "Jira integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Jira integration with 11 pre-built routines."
+    },
+    {
+      "id": "jobvite",
+      "service": "Jobvite",
+      "category": "HR & People",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Jobvite integration with 2 pre-built routines."
     },
     {
       "id": "kashoo",
       "service": "Kashoo",
       "category": "Accounting",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Kashoo integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Kashoo integration with 9 pre-built routines."
     },
     {
       "id": "kubernetes",
       "service": "Kubernetes",
       "category": "Cloud & Infrastructure",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Kubernetes integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Kubernetes integration with 5 pre-built routines."
     },
     {
       "id": "lacerte",
       "service": "Lacerte",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Lacerte integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Lacerte integration with 6 pre-built routines."
+    },
+    {
+      "id": "launchdarkly",
+      "service": "Launchdarkly",
+      "category": "DevOps & Collaboration",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Launchdarkly integration with 3 pre-built routines."
+    },
+    {
+      "id": "ldap",
+      "service": "Ldap",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Ldap integration with 3 pre-built routines."
+    },
+    {
+      "id": "lever",
+      "service": "Lever",
+      "category": "HR & People",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Lever integration with 3 pre-built routines."
+    },
+    {
+      "id": "lightstep",
+      "service": "Lightstep",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Lightstep integration with 2 pre-built routines."
     },
     {
       "id": "linear",
       "service": "Linear",
       "category": "DevOps & Collaboration",
       "auth": "apikey",
-      "routines": 6,
-      "description": "Linear integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Linear integration with 7 pre-built routines."
+    },
+    {
+      "id": "linkedin",
+      "service": "Linkedin",
+      "category": "Social & Marketplace",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Linkedin integration with 3 pre-built routines."
+    },
+    {
+      "id": "loggly",
+      "service": "Loggly",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Loggly integration with 3 pre-built routines."
+    },
+    {
+      "id": "logzio",
+      "service": "Logzio",
+      "category": "Observability & Analytics",
+      "auth": "apikey",
+      "routines": 2,
+      "description": "Logzio integration with 2 pre-built routines."
+    },
+    {
+      "id": "magento",
+      "service": "Magento",
+      "category": "Commerce & Content",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Magento integration with 3 pre-built routines."
     },
     {
       "id": "mailchimp",
       "service": "Mailchimp",
       "category": "Email & Marketing",
       "auth": "basic",
-      "routines": 6,
-      "description": "Mailchimp integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Mailchimp integration with 7 pre-built routines."
     },
     {
       "id": "marketo",
       "service": "Marketo",
       "category": "Email & Marketing",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Marketo integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Marketo integration with 6 pre-built routines."
     },
     {
-      "id": "intune",
-      "service": "Microsoft Intune",
-      "category": "Cloud & Infrastructure",
-      "auth": "bearer",
-      "routines": 4,
-      "description": "Microsoft Intune integration with 4 pre-built routines."
+      "id": "meraki",
+      "service": "Meraki",
+      "category": "Other",
+      "auth": "apikey",
+      "routines": 3,
+      "description": "Meraki integration with 3 pre-built routines."
     },
     {
-      "id": "teams",
-      "service": "Microsoft Teams",
-      "category": "Communication",
-      "auth": "oauth2",
-      "routines": 10,
-      "description": "Microsoft Teams integration with 10 pre-built routines."
+      "id": "mixpanel",
+      "service": "Mixpanel",
+      "category": "Observability & Analytics",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Mixpanel integration with 3 pre-built routines."
     },
     {
       "id": "monday",
-      "service": "Monday.com",
+      "service": "Monday",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Monday.com integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Monday integration with 9 pre-built routines."
     },
     {
       "id": "mongodb",
-      "service": "MongoDB Atlas",
+      "service": "Mongodb",
       "category": "Data & Analytics",
       "auth": "apikey",
-      "routines": 5,
-      "description": "MongoDB Atlas integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Mongodb integration with 6 pre-built routines."
+    },
+    {
+      "id": "mulesoft",
+      "service": "Mulesoft",
+      "category": "Data & Analytics",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Mulesoft integration with 2 pre-built routines."
     },
     {
       "id": "namely",
       "service": "Namely",
       "category": "HR & People",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Namely integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Namely integration with 6 pre-built routines."
+    },
+    {
+      "id": "netskope",
+      "service": "Netskope",
+      "category": "Security & Identity",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Netskope integration with 2 pre-built routines."
     },
     {
       "id": "netsuite",
-      "service": "NetSuite",
+      "service": "Netsuite",
       "category": "Finance & Payments",
       "auth": "bearer",
-      "routines": 5,
-      "description": "NetSuite integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Netsuite integration with 6 pre-built routines."
     },
     {
       "id": "newrelic",
-      "service": "New Relic",
-      "category": "Observability & Analytics",
+      "service": "Newrelic",
+      "category": "Other",
       "auth": "apikey",
-      "routines": 5,
-      "description": "New Relic integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Newrelic integration with 6 pre-built routines."
     },
     {
       "id": "notion",
       "service": "Notion",
       "category": "DevOps & Collaboration",
       "auth": "apikey",
-      "routines": 6,
-      "description": "Notion integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Notion integration with 7 pre-built routines."
     },
     {
       "id": "odoo",
       "service": "Odoo",
       "category": "Accounting",
       "auth": "apikey",
-      "routines": 8,
-      "description": "Odoo integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Odoo integration with 9 pre-built routines."
     },
     {
       "id": "okta",
       "service": "Okta",
       "category": "Security & Identity",
       "auth": "apikey",
-      "routines": 8,
-      "description": "Okta integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Okta integration with 9 pre-built routines."
     },
     {
       "id": "olt-pro",
       "service": "Olt Pro",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Olt Pro integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Olt Pro integration with 6 pre-built routines."
     },
     {
       "id": "onedrive",
-      "service": "OneDrive",
+      "service": "Onedrive",
       "category": "Documents & Storage",
       "auth": "oauth2",
-      "routines": 6,
-      "description": "OneDrive integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Onedrive integration with 7 pre-built routines."
     },
     {
       "id": "onelogin",
-      "service": "OneLogin",
+      "service": "Onelogin",
       "category": "Security & Identity",
       "auth": "bearer",
-      "routines": 5,
-      "description": "OneLogin integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Onelogin integration with 6 pre-built routines."
+    },
+    {
+      "id": "onepassword",
+      "service": "Onepassword",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Onepassword integration with 3 pre-built routines."
+    },
+    {
+      "id": "openai",
+      "service": "Openai",
+      "category": "AI & Machine Learning",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Openai integration with 3 pre-built routines."
     },
     {
       "id": "opsgenie",
       "service": "Opsgenie",
       "category": "Observability & Analytics",
       "auth": "apikey",
-      "routines": 4,
-      "description": "Opsgenie integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Opsgenie integration with 5 pre-built routines."
+    },
+    {
+      "id": "optimizely",
+      "service": "Optimizely",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Optimizely integration with 3 pre-built routines."
     },
     {
       "id": "oracle-fusion-fin",
       "service": "Oracle Fusion Fin",
       "category": "Accounting",
       "auth": "basic",
-      "routines": 8,
-      "description": "Oracle Fusion Fin integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Oracle Fusion Fin integration with 9 pre-built routines."
     },
     {
       "id": "oracle-hcm",
-      "service": "Oracle HCM",
+      "service": "Oracle Hcm",
       "category": "HR & People",
       "auth": "basic",
-      "routines": 5,
-      "description": "Oracle HCM integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Oracle Hcm integration with 6 pre-built routines."
     },
     {
       "id": "pagerduty",
-      "service": "PagerDuty",
+      "service": "Pagerduty",
       "category": "Observability & Analytics",
       "auth": "apikey",
-      "routines": 8,
-      "description": "PagerDuty integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Pagerduty integration with 9 pre-built routines."
+    },
+    {
+      "id": "palo-alto",
+      "service": "Palo Alto",
+      "category": "Security & Identity",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Palo Alto integration with 2 pre-built routines."
+    },
+    {
+      "id": "pandadoc",
+      "service": "Pandadoc",
+      "category": "Documents & Storage",
+      "auth": "bearer",
+      "routines": 4,
+      "description": "Pandadoc integration with 4 pre-built routines."
+    },
+    {
+      "id": "papertrail",
+      "service": "Papertrail",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Papertrail integration with 2 pre-built routines."
     },
     {
       "id": "pardot",
       "service": "Pardot",
       "category": "Email & Marketing",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Pardot integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Pardot integration with 6 pre-built routines."
     },
     {
       "id": "patriot",
       "service": "Patriot",
       "category": "Accounting",
       "auth": "apikey",
-      "routines": 8,
-      "description": "Patriot integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Patriot integration with 9 pre-built routines."
+    },
+    {
+      "id": "paycom",
+      "service": "Paycom",
+      "category": "HR & People",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Paycom integration with 2 pre-built routines."
+    },
+    {
+      "id": "paylocity",
+      "service": "Paylocity",
+      "category": "HR & People",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Paylocity integration with 2 pre-built routines."
     },
     {
       "id": "paypal",
-      "service": "PayPal",
+      "service": "Paypal",
       "category": "Finance & Payments",
       "auth": "oauth2",
-      "routines": 6,
-      "description": "PayPal integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Paypal integration with 7 pre-built routines."
+    },
+    {
+      "id": "pendo",
+      "service": "Pendo",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Pendo integration with 3 pre-built routines."
     },
     {
       "id": "ping-identity",
       "service": "Ping Identity",
       "category": "Security & Identity",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Ping Identity integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Ping Identity integration with 6 pre-built routines."
+    },
+    {
+      "id": "pipedrive",
+      "service": "Pipedrive",
+      "category": "CRM & Sales",
+      "auth": "bearer",
+      "routines": 4,
+      "description": "Pipedrive integration with 4 pre-built routines."
     },
     {
       "id": "plivo",
       "service": "Plivo",
       "category": "Communication",
       "auth": "basic",
-      "routines": 4,
-      "description": "Plivo integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Plivo integration with 5 pre-built routines."
     },
     {
       "id": "powerbi",
-      "service": "Power BI",
-      "category": "Data & Analytics",
+      "service": "Powerbi",
+      "category": "Other",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Power BI integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Powerbi integration with 5 pre-built routines."
     },
     {
       "id": "proconnect",
       "service": "Proconnect",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Proconnect integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Proconnect integration with 6 pre-built routines."
     },
     {
       "id": "prometheus",
       "service": "Prometheus",
       "category": "Observability & Analytics",
       "auth": "basic",
-      "routines": 4,
-      "description": "Prometheus integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Prometheus integration with 5 pre-built routines."
     },
     {
       "id": "proseries",
       "service": "Proseries",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Proseries integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Proseries integration with 6 pre-built routines."
+    },
+    {
+      "id": "qualys",
+      "service": "Qualys",
+      "category": "Security & Identity",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Qualys integration with 3 pre-built routines."
     },
     {
       "id": "quickbooks",
-      "service": "QuickBooks",
+      "service": "Quickbooks",
       "category": "Finance & Payments",
       "auth": "bearer",
-      "routines": 6,
-      "description": "QuickBooks integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Quickbooks integration with 7 pre-built routines."
     },
     {
       "id": "quickbooks-enterprise",
       "service": "Quickbooks Enterprise",
       "category": "Accounting",
       "auth": "oauth2_refresh",
-      "routines": 8,
-      "description": "Quickbooks Enterprise integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Quickbooks Enterprise integration with 9 pre-built routines."
+    },
+    {
+      "id": "redis",
+      "service": "Redis",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 4,
+      "description": "Redis integration with 4 pre-built routines."
+    },
+    {
+      "id": "ringcentral",
+      "service": "Ringcentral",
+      "category": "Communication",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Ringcentral integration with 3 pre-built routines."
+    },
+    {
+      "id": "rippling",
+      "service": "Rippling",
+      "category": "HR & People",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Rippling integration with 2 pre-built routines."
     },
     {
       "id": "sage-50",
       "service": "Sage 50",
       "category": "Accounting",
       "auth": "basic",
-      "routines": 8,
-      "description": "Sage 50 integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Sage 50 integration with 9 pre-built routines."
     },
     {
       "id": "sage-bc-accounting",
       "service": "Sage Bc Accounting",
       "category": "Accounting",
       "auth": "oauth2_refresh",
-      "routines": 8,
-      "description": "Sage Bc Accounting integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Sage Bc Accounting integration with 9 pre-built routines."
+    },
+    {
+      "id": "sage-intacct",
+      "service": "Sage Intacct",
+      "category": "Finance & Payments",
+      "auth": "basic",
+      "routines": 5,
+      "description": "Sage Intacct integration with 5 pre-built routines."
     },
     {
       "id": "salesforce",
       "service": "Salesforce",
       "category": "CRM & Sales",
       "auth": "bearer",
-      "routines": 10,
-      "description": "Salesforce integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Salesforce integration with 11 pre-built routines."
     },
     {
       "id": "sap",
-      "service": "SAP",
+      "service": "Sap",
       "category": "Cloud & Infrastructure",
       "auth": "basic",
-      "routines": 5,
-      "description": "SAP integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Sap integration with 6 pre-built routines."
     },
     {
       "id": "sap-b1",
       "service": "Sap B1",
       "category": "Accounting",
       "auth": "basic",
-      "routines": 8,
-      "description": "Sap B1 integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Sap B1 integration with 9 pre-built routines."
     },
     {
       "id": "sap-s4hana",
       "service": "Sap S4hana",
       "category": "Cloud & Infrastructure",
       "auth": "oauth2",
-      "routines": 8,
-      "description": "Sap S4hana integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Sap S4hana integration with 9 pre-built routines."
     },
     {
       "id": "sap-successfactors",
-      "service": "SAP SuccessFactors",
+      "service": "Sap Successfactors",
       "category": "HR & People",
       "auth": "basic",
-      "routines": 5,
-      "description": "SAP SuccessFactors integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Sap Successfactors integration with 6 pre-built routines."
+    },
+    {
+      "id": "segment",
+      "service": "Segment",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Segment integration with 3 pre-built routines."
     },
     {
       "id": "sendgrid",
-      "service": "SendGrid",
+      "service": "Sendgrid",
       "category": "Email & Marketing",
       "auth": "apikey",
-      "routines": 8,
-      "description": "SendGrid integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Sendgrid integration with 9 pre-built routines."
+    },
+    {
+      "id": "sentinel",
+      "service": "Sentinel",
+      "category": "Security & Identity",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Sentinel integration with 3 pre-built routines."
+    },
+    {
+      "id": "sentinelone",
+      "service": "Sentinelone",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Sentinelone integration with 3 pre-built routines."
     },
     {
       "id": "servicenow",
-      "service": "ServiceNow",
+      "service": "Servicenow",
       "category": "ITSM & Service Management",
       "auth": "basic",
-      "routines": 10,
-      "description": "ServiceNow integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Servicenow integration with 11 pre-built routines."
     },
     {
       "id": "shopify",
       "service": "Shopify",
       "category": "Commerce & Content",
       "auth": "apikey",
-      "routines": 8,
-      "description": "Shopify integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Shopify integration with 9 pre-built routines."
     },
     {
       "id": "signalfx",
-      "service": "SignalFx",
+      "service": "Signalfx",
       "category": "Observability & Analytics",
       "auth": "apikey",
-      "routines": 4,
-      "description": "SignalFx integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Signalfx integration with 5 pre-built routines."
     },
     {
       "id": "slack",
       "service": "Slack",
       "category": "Communication",
       "auth": "bearer",
-      "routines": 10,
-      "description": "Slack integration with 10 pre-built routines."
+      "routines": 11,
+      "description": "Slack integration with 11 pre-built routines."
     },
     {
       "id": "smartsheet",
       "service": "Smartsheet",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Smartsheet integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Smartsheet integration with 5 pre-built routines."
     },
     {
       "id": "snowflake",
       "service": "Snowflake",
       "category": "Data & Analytics",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Snowflake integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Snowflake integration with 5 pre-built routines."
+    },
+    {
+      "id": "snyk",
+      "service": "Snyk",
+      "category": "Security & Identity",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Snyk integration with 3 pre-built routines."
     },
     {
       "id": "splunk",
       "service": "Splunk",
       "category": "Observability & Analytics",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Splunk integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Splunk integration with 6 pre-built routines."
+    },
+    {
+      "id": "sql-mysql",
+      "service": "Sql Mysql",
+      "category": "Other",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Sql Mysql integration with 2 pre-built routines."
+    },
+    {
+      "id": "sql-oracle",
+      "service": "Sql Oracle",
+      "category": "Other",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Sql Oracle integration with 2 pre-built routines."
+    },
+    {
+      "id": "sql-postgres",
+      "service": "Sql Postgres",
+      "category": "Other",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Sql Postgres integration with 2 pre-built routines."
+    },
+    {
+      "id": "sql-sqlite",
+      "service": "Sql Sqlite",
+      "category": "Other",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Sql Sqlite integration with 2 pre-built routines."
+    },
+    {
+      "id": "sql-sqlserver",
+      "service": "Sql Sqlserver",
+      "category": "Other",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Sql Sqlserver integration with 2 pre-built routines."
     },
     {
       "id": "square",
       "service": "Square",
       "category": "Finance & Payments",
       "auth": "bearer",
-      "routines": 6,
-      "description": "Square integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Square integration with 7 pre-built routines."
+    },
+    {
+      "id": "statuspage",
+      "service": "Statuspage",
+      "category": "Observability & Analytics",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Statuspage integration with 3 pre-built routines."
     },
     {
       "id": "stripe",
       "service": "Stripe",
       "category": "Finance & Payments",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Stripe integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Stripe integration with 9 pre-built routines."
     },
     {
       "id": "sumologic",
-      "service": "Sumo Logic",
+      "service": "Sumologic",
       "category": "Observability & Analytics",
       "auth": "basic",
-      "routines": 4,
-      "description": "Sumo Logic integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Sumologic integration with 5 pre-built routines."
     },
     {
       "id": "tableau",
       "service": "Tableau",
       "category": "Data & Analytics",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Tableau integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Tableau integration with 5 pre-built routines."
+    },
+    {
+      "id": "talkdesk",
+      "service": "Talkdesk",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Talkdesk integration with 2 pre-built routines."
     },
     {
       "id": "taxact",
       "service": "Taxact",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Taxact integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Taxact integration with 6 pre-built routines."
     },
     {
       "id": "taxact-pro",
       "service": "Taxact Pro",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Taxact Pro integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Taxact Pro integration with 6 pre-built routines."
     },
     {
       "id": "taxslayer",
       "service": "Taxslayer",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Taxslayer integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Taxslayer integration with 6 pre-built routines."
     },
     {
       "id": "taxslayer-pro",
       "service": "Taxslayer Pro",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Taxslayer Pro integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Taxslayer Pro integration with 6 pre-built routines."
     },
     {
       "id": "taxwise",
       "service": "Taxwise",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Taxwise integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Taxwise integration with 6 pre-built routines."
     },
     {
       "id": "taxwise-online",
       "service": "Taxwise Online",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Taxwise Online integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Taxwise Online integration with 6 pre-built routines."
+    },
+    {
+      "id": "teams",
+      "service": "Teams",
+      "category": "Communication",
+      "auth": "oauth2",
+      "routines": 11,
+      "description": "Teams integration with 11 pre-built routines."
+    },
+    {
+      "id": "tenable",
+      "service": "Tenable",
+      "category": "Security & Identity",
+      "auth": "apikey",
+      "routines": 3,
+      "description": "Tenable integration with 3 pre-built routines."
     },
     {
       "id": "terraform",
-      "service": "Terraform Cloud",
+      "service": "Terraform",
       "category": "Cloud & Infrastructure",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Terraform Cloud integration with 4 pre-built routines."
+      "routines": 6,
+      "description": "Terraform integration with 6 pre-built routines."
+    },
+    {
+      "id": "tiktok",
+      "service": "Tiktok",
+      "category": "Social & Marketplace",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Tiktok integration with 2 pre-built routines."
+    },
+    {
+      "id": "tines",
+      "service": "Tines",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Tines integration with 2 pre-built routines."
+    },
+    {
+      "id": "totango",
+      "service": "Totango",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Totango integration with 2 pre-built routines."
     },
     {
       "id": "trello",
       "service": "Trello",
       "category": "DevOps & Collaboration",
       "auth": "apikey",
-      "routines": 6,
-      "description": "Trello integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Trello integration with 7 pre-built routines."
     },
     {
       "id": "turbotax",
       "service": "Turbotax",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Turbotax integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Turbotax integration with 6 pre-built routines."
     },
     {
       "id": "twilio",
       "service": "Twilio",
       "category": "Communication",
       "auth": "basic",
-      "routines": 7,
-      "description": "Twilio integration with 7 pre-built routines."
+      "routines": 8,
+      "description": "Twilio integration with 8 pre-built routines."
+    },
+    {
+      "id": "twitter",
+      "service": "Twitter",
+      "category": "Social & Marketplace",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Twitter integration with 3 pre-built routines."
+    },
+    {
+      "id": "ukg",
+      "service": "Ukg",
+      "category": "HR & People",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Ukg integration with 2 pre-built routines."
     },
     {
       "id": "ultimatetax",
       "service": "Ultimatetax",
       "category": "Tax Software",
       "auth": "apikey",
-      "routines": 5,
-      "description": "Ultimatetax integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Ultimatetax integration with 6 pre-built routines."
     },
     {
       "id": "ultratax-cs",
       "service": "Ultratax Cs",
       "category": "Tax Software",
       "auth": "oauth2_refresh",
-      "routines": 5,
-      "description": "Ultratax Cs integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Ultratax Cs integration with 6 pre-built routines."
+    },
+    {
+      "id": "vault",
+      "service": "Vault",
+      "category": "Other",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Vault integration with 3 pre-built routines."
+    },
+    {
+      "id": "vertex-ai",
+      "service": "Vertex Ai",
+      "category": "Other",
+      "auth": "jwt",
+      "routines": 2,
+      "description": "Vertex Ai integration with 2 pre-built routines."
     },
     {
       "id": "victorops",
-      "service": "VictorOps",
+      "service": "Victorops",
       "category": "Observability & Analytics",
       "auth": "apikey",
-      "routines": 4,
-      "description": "VictorOps integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Victorops integration with 5 pre-built routines."
     },
     {
       "id": "vonage",
       "service": "Vonage",
       "category": "Communication",
       "auth": "apikey",
-      "routines": 4,
-      "description": "Vonage integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Vonage integration with 5 pre-built routines."
     },
     {
       "id": "wave",
       "service": "Wave",
       "category": "Accounting",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Wave integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Wave integration with 9 pre-built routines."
     },
     {
       "id": "webex",
       "service": "Webex",
       "category": "Communication",
       "auth": "bearer",
-      "routines": 6,
-      "description": "Webex integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Webex integration with 7 pre-built routines."
+    },
+    {
+      "id": "webflow",
+      "service": "Webflow",
+      "category": "Commerce & Content",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Webflow integration with 3 pre-built routines."
+    },
+    {
+      "id": "wiz",
+      "service": "Wiz",
+      "category": "Security & Identity",
+      "auth": "oauth2",
+      "routines": 2,
+      "description": "Wiz integration with 2 pre-built routines."
+    },
+    {
+      "id": "woocommerce",
+      "service": "Woocommerce",
+      "category": "Commerce & Content",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Woocommerce integration with 3 pre-built routines."
+    },
+    {
+      "id": "wordpress",
+      "service": "Wordpress",
+      "category": "Commerce & Content",
+      "auth": "basic",
+      "routines": 3,
+      "description": "Wordpress integration with 3 pre-built routines."
+    },
+    {
+      "id": "workable",
+      "service": "Workable",
+      "category": "HR & People",
+      "auth": "bearer",
+      "routines": 2,
+      "description": "Workable integration with 2 pre-built routines."
     },
     {
       "id": "workday",
       "service": "Workday",
       "category": "HR & People",
       "auth": "bearer",
-      "routines": 5,
-      "description": "Workday integration with 5 pre-built routines."
+      "routines": 6,
+      "description": "Workday integration with 6 pre-built routines."
     },
     {
       "id": "workday-fin",
       "service": "Workday Fin",
       "category": "Accounting",
       "auth": "bearer",
-      "routines": 8,
-      "description": "Workday Fin integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Workday Fin integration with 9 pre-built routines."
     },
     {
       "id": "wrike",
       "service": "Wrike",
       "category": "DevOps & Collaboration",
       "auth": "bearer",
-      "routines": 4,
-      "description": "Wrike integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Wrike integration with 5 pre-built routines."
+    },
+    {
+      "id": "xero",
+      "service": "Xero",
+      "category": "Finance & Payments",
+      "auth": "oauth2",
+      "routines": 6,
+      "description": "Xero integration with 6 pre-built routines."
     },
     {
       "id": "xmatters",
-      "service": "xMatters",
+      "service": "Xmatters",
       "category": "Observability & Analytics",
       "auth": "basic",
-      "routines": 4,
-      "description": "xMatters integration with 4 pre-built routines."
+      "routines": 5,
+      "description": "Xmatters integration with 5 pre-built routines."
+    },
+    {
+      "id": "youtube",
+      "service": "Youtube",
+      "category": "Social & Marketplace",
+      "auth": "apikey",
+      "routines": 3,
+      "description": "Youtube integration with 3 pre-built routines."
     },
     {
       "id": "zarmoney",
       "service": "Zarmoney",
       "category": "Accounting",
       "auth": "apikey",
-      "routines": 8,
-      "description": "Zarmoney integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Zarmoney integration with 9 pre-built routines."
     },
     {
       "id": "zendesk",
       "service": "Zendesk",
       "category": "ITSM & Service Management",
       "auth": "basic",
-      "routines": 8,
-      "description": "Zendesk integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Zendesk integration with 9 pre-built routines."
     },
     {
       "id": "zoho-books",
       "service": "Zoho Books",
       "category": "Accounting",
       "auth": "oauth2_refresh",
-      "routines": 8,
-      "description": "Zoho Books integration with 8 pre-built routines."
+      "routines": 9,
+      "description": "Zoho Books integration with 9 pre-built routines."
+    },
+    {
+      "id": "zoho-crm",
+      "service": "Zoho Crm",
+      "category": "CRM & Sales",
+      "auth": "oauth2",
+      "routines": 3,
+      "description": "Zoho Crm integration with 3 pre-built routines."
     },
     {
       "id": "zoom",
       "service": "Zoom",
       "category": "Communication",
       "auth": "bearer",
-      "routines": 6,
-      "description": "Zoom integration with 6 pre-built routines."
+      "routines": 7,
+      "description": "Zoom integration with 7 pre-built routines."
+    },
+    {
+      "id": "zscaler",
+      "service": "Zscaler",
+      "category": "Security & Identity",
+      "auth": "bearer",
+      "routines": 3,
+      "description": "Zscaler integration with 3 pre-built routines."
     },
     {
       "id": "generic-aws-v4",
