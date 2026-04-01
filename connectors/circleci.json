@@ -1,0 +1,207 @@
+{
+  "id": "circleci",
+  "service": "CircleCI",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "CircleCI integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: Circle-Token"
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "CircleCI personal API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "artifact_retrieve",
+      "name": "CircleCI Artifact Retrieve",
+      "description": "GET https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/<%= @inputs['Job Number'] %>/artifacts",
+      "method": "GET",
+      "path": "https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/<%= @inputs['Job Number'] %>/artifacts",
+      "inputs": [
+        {
+          "name": "Project Slug",
+          "required": true
+        },
+        {
+          "name": "Job Number",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Artifacts JSON",
+          "path": "artifacts_json"
+        },
+        {
+          "name": "Next Page Token",
+          "path": "next_page_token"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_cancel",
+      "name": "CircleCI Job Cancel",
+      "description": "POST https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/job/<%= @inputs['Job Number'] %>/cancel",
+      "method": "POST",
+      "path": "https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/job/<%= @inputs['Job Number'] %>/cancel",
+      "inputs": [
+        {
+          "name": "Project Slug",
+          "required": true,
+          "mapTo": "Project Slug"
+        },
+        {
+          "name": "Job Number",
+          "required": true,
+          "mapTo": "Job Number"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message",
+          "path": "message"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pipeline_trigger",
+      "name": "CircleCI Pipeline Trigger",
+      "description": "POST https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/pipeline",
+      "method": "POST",
+      "path": "https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/pipeline",
+      "inputs": [
+        {
+          "name": "Project Slug",
+          "required": true,
+          "mapTo": "Project Slug"
+        },
+        {
+          "name": "Branch",
+          "required": false,
+          "mapTo": "Branch"
+        },
+        {
+          "name": "Tag",
+          "required": false,
+          "mapTo": "Tag"
+        },
+        {
+          "name": "Parameters Json",
+          "required": false,
+          "mapTo": "Parameters Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Pipeline ID",
+          "path": "pipeline_id"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "workflow_approve",
+      "name": "CircleCI Workflow Approve",
+      "description": "POST https://circleci.com/api/v2/workflow/<%= @inputs['Workflow Id'] %>/approve/<%= @inputs['Approval Request Id'] %>",
+      "method": "POST",
+      "path": "https://circleci.com/api/v2/workflow/<%= @inputs['Workflow Id'] %>/approve/<%= @inputs['Approval Request Id'] %>",
+      "inputs": [
+        {
+          "name": "Workflow Id",
+          "required": true,
+          "mapTo": "Workflow Id"
+        },
+        {
+          "name": "Approval Request Id",
+          "required": true,
+          "mapTo": "Approval Request Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message",
+          "path": "message"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

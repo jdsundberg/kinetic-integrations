@@ -1,0 +1,314 @@
+{
+  "id": "docusign",
+  "service": "DocuSign",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "DocuSign integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "DocuSign base URL (e.g. https://na4.docusign.net)."
+      },
+      {
+        "name": "account_id",
+        "required": true,
+        "description": "DocuSign account ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "document_download",
+      "name": "DocuSign Document Download",
+      "description": "GET <%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>/documents/<%= @inputs['Document Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>/documents/<%= @inputs['Document Id'] %>",
+      "inputs": [
+        {
+          "name": "Envelope Id",
+          "required": true
+        },
+        {
+          "name": "Document Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Document Content",
+          "path": "document_content"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "envelope_create",
+      "name": "DocuSign Envelope Create",
+      "description": "POST <%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes",
+      "inputs": [
+        {
+          "name": "Email Subject",
+          "required": true,
+          "mapTo": "Email Subject"
+        },
+        {
+          "name": "Email Blurb",
+          "required": false,
+          "mapTo": "Email Blurb"
+        },
+        {
+          "name": "Template Id",
+          "required": false,
+          "mapTo": "Template Id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Envelope ID",
+          "path": "envelope_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "URI",
+          "path": "uri"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "envelope_retrieve",
+      "name": "DocuSign Envelope Retrieve",
+      "description": "GET <%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>",
+      "inputs": [
+        {
+          "name": "Envelope Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Envelope ID",
+          "path": "envelope_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Subject",
+          "path": "subject"
+        },
+        {
+          "name": "Sent",
+          "path": "sent"
+        },
+        {
+          "name": "Completed",
+          "path": "completed"
+        },
+        {
+          "name": "Envelope JSON",
+          "path": "envelope_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "envelope_send",
+      "name": "DocuSign Envelope Send",
+      "description": "PUT <%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>",
+      "inputs": [
+        {
+          "name": "Envelope Id",
+          "required": true,
+          "mapTo": "Envelope Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Envelope ID",
+          "path": "envelope_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "recipient_add",
+      "name": "DocuSign Recipient Add",
+      "description": "POST <%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>/recipients",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/envelopes/<%= @inputs['Envelope Id'] %>/recipients",
+      "inputs": [
+        {
+          "name": "Envelope Id",
+          "required": true,
+          "mapTo": "Envelope Id"
+        },
+        {
+          "name": "Signer Email",
+          "required": true,
+          "mapTo": "Signer Email"
+        },
+        {
+          "name": "Signer Name",
+          "required": true,
+          "mapTo": "Signer Name"
+        },
+        {
+          "name": "Routing Order",
+          "required": false,
+          "mapTo": "Routing Order"
+        },
+        {
+          "name": "Recipient Id",
+          "required": true,
+          "mapTo": "Recipient Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Signers",
+          "path": "signers"
+        },
+        {
+          "name": "Recipient Count",
+          "path": "recipient_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "template_retrieve",
+      "name": "DocuSign Template Retrieve",
+      "description": "GET <%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/templates/<%= @inputs['Template Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/restapi/v2.1/accounts/<%= @info['account_id'] %>/templates/<%= @inputs['Template Id'] %>",
+      "inputs": [
+        {
+          "name": "Template Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Template ID",
+          "path": "template_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Description",
+          "path": "description"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Template JSON",
+          "path": "template_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "id": "sap-s4hana",
+  "service": "Sap S4hana",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Sap S4hana integration with 8 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "SAP OAuth2 token endpoint."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "instance_url",
+        "required": true,
+        "description": "S/4HANA Cloud API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_list",
+      "name": "SAP S/4HANA Cloud Chart of Accounts",
+      "description": "GET /sap/opu/odata4/sap/accounts",
+      "method": "GET",
+      "path": "/sap/opu/odata4/sap/accounts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Accounts JSON",
+          "path": "accounts"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        }
+      ]
+    },
+    {
+      "id": "bill_create",
+      "name": "SAP S/4HANA Cloud Bill Create",
+      "description": "POST /sap/opu/odata4/sap/bills",
+      "method": "POST",
+      "path": "/sap/opu/odata4/sap/bills",
+      "inputs": [
+        {
+          "name": "Vendor Id",
+          "required": true,
+          "mapTo": "Vendor Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bill Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "SAP S/4HANA Cloud Customer Create",
+      "description": "POST /sap/opu/odata4/sap/customers",
+      "method": "POST",
+      "path": "/sap/opu/odata4/sap/customers",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Address",
+          "required": false,
+          "mapTo": "Address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "SAP S/4HANA Cloud Invoice Create",
+      "description": "POST /sap/opu/odata4/sap/invoices",
+      "method": "POST",
+      "path": "/sap/opu/odata4/sap/invoices",
+      "inputs": [
+        {
+          "name": "Customer Id",
+          "required": true,
+          "mapTo": "Customer Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Currency",
+          "required": false,
+          "mapTo": "Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Id",
+          "path": "id"
+        },
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "invoice_retrieve",
+      "name": "SAP S/4HANA Cloud Invoice Retrieve",
+      "description": "GET /sap/opu/odata4/sap/invoices/{invoice_id}",
+      "method": "GET",
+      "path": "/sap/opu/odata4/sap/invoices/{invoice_id}",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Balance Due",
+          "path": "balance"
+        }
+      ]
+    },
+    {
+      "id": "journal_entry_create",
+      "name": "SAP S/4HANA Cloud Journal Entry Create",
+      "description": "POST /sap/opu/odata4/sap/journal-entries",
+      "method": "POST",
+      "path": "/sap/opu/odata4/sap/journal-entries",
+      "inputs": [
+        {
+          "name": "Date",
+          "required": true,
+          "mapTo": "Date"
+        },
+        {
+          "name": "Lines JSON",
+          "required": true,
+          "mapTo": "Lines JSON"
+        },
+        {
+          "name": "Memo",
+          "required": false,
+          "mapTo": "Memo"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Entry Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "SAP S/4HANA Cloud Payment Create",
+      "description": "POST /sap/opu/odata4/sap/payments",
+      "method": "POST",
+      "path": "/sap/opu/odata4/sap/payments",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "mapTo": "Invoice Id"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Payment Date",
+          "required": false,
+          "mapTo": "Payment Date"
+        },
+        {
+          "name": "Payment Method",
+          "required": false,
+          "mapTo": "Payment Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "SAP S/4HANA Cloud Vendor Create",
+      "description": "POST /sap/opu/odata4/sap/vendors",
+      "method": "POST",
+      "path": "/sap/opu/odata4/sap/vendors",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    }
+  ]
+}

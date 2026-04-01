@@ -1,0 +1,253 @@
+{
+  "id": "basecamp",
+  "service": "Basecamp",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Basecamp integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "account_id",
+        "required": true,
+        "description": "Basecamp account ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "comment_add",
+      "name": "Basecamp Comment Add",
+      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
+      "method": "POST",
+      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Recording Id",
+          "required": true,
+          "mapTo": "Recording Id"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "Content",
+          "path": "content"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_create",
+      "name": "Basecamp Message Create",
+      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
+      "method": "POST",
+      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Message Board Id",
+          "required": true,
+          "mapTo": "Message Board Id"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Content",
+          "required": false,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Category Id",
+          "required": false,
+          "mapTo": "Category Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Subject",
+          "path": "subject"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "project_create",
+      "name": "Basecamp Project Create",
+      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/projects.json",
+      "method": "POST",
+      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/projects.json",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Project ID",
+          "path": "project_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "todo_create",
+      "name": "Basecamp Todo Create",
+      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
+      "method": "POST",
+      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Todolist Id",
+          "required": true,
+          "mapTo": "Todolist Id"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Assignee Ids",
+          "required": false,
+          "mapTo": "Assignee Ids"
+        },
+        {
+          "name": "Due On",
+          "required": false,
+          "mapTo": "Due On"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Todo ID",
+          "path": "todo_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

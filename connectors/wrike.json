@@ -1,0 +1,255 @@
+{
+  "id": "wrike",
+  "service": "Wrike",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Wrike integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "comment_add",
+      "name": "Wrike Comment Add",
+      "description": "POST https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>/comments",
+      "method": "POST",
+      "path": "https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>/comments",
+      "inputs": [
+        {
+          "name": "Task Id",
+          "required": true,
+          "mapTo": "Task Id"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "Text",
+          "path": "text"
+        },
+        {
+          "name": "Author ID",
+          "path": "author_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "folder_create",
+      "name": "Wrike Folder Create",
+      "description": "POST https://www.wrike.com/api/v4/folders/<%= @inputs['Parent Id'] %>/folders",
+      "method": "POST",
+      "path": "https://www.wrike.com/api/v4/folders/<%= @inputs['Parent Id'] %>/folders",
+      "inputs": [
+        {
+          "name": "Parent Id",
+          "required": true,
+          "mapTo": "Parent Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Shareds",
+          "required": false,
+          "mapTo": "Shareds"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Folder ID",
+          "path": "folder_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_create",
+      "name": "Wrike Task Create",
+      "description": "POST https://www.wrike.com/api/v4/folders/<%= @inputs['Folder Id'] %>/tasks",
+      "method": "POST",
+      "path": "https://www.wrike.com/api/v4/folders/<%= @inputs['Folder Id'] %>/tasks",
+      "inputs": [
+        {
+          "name": "Folder Id",
+          "required": true,
+          "mapTo": "Folder Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Importance",
+          "required": false,
+          "mapTo": "Importance"
+        },
+        {
+          "name": "Dates Json",
+          "required": false,
+          "mapTo": "Dates Json"
+        },
+        {
+          "name": "Responsibles",
+          "required": false,
+          "mapTo": "Responsibles"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Task ID",
+          "path": "task_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Permalink",
+          "path": "permalink"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_update",
+      "name": "Wrike Task Update",
+      "description": "PUT https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>",
+      "method": "PUT",
+      "path": "https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>",
+      "inputs": [
+        {
+          "name": "Task Id",
+          "required": true,
+          "mapTo": "Task Id"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Importance",
+          "required": false,
+          "mapTo": "Importance"
+        },
+        {
+          "name": "Dates Json",
+          "required": false,
+          "mapTo": "Dates Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Task ID",
+          "path": "task_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

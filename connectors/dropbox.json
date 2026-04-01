@@ -1,0 +1,317 @@
+{
+  "id": "dropbox",
+  "service": "Dropbox",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "Dropbox integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "file_delete",
+      "name": "Dropbox File Delete",
+      "description": "POST https://api.dropboxapi.com/2/files/delete_v2",
+      "method": "POST",
+      "path": "https://api.dropboxapi.com/2/files/delete_v2",
+      "inputs": [
+        {
+          "name": "Path",
+          "required": true,
+          "mapTo": "Path"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "file_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Path",
+          "path": "path"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_download",
+      "name": "Dropbox File Download",
+      "description": "POST https://content.dropboxapi.com/2/files/download",
+      "method": "POST",
+      "path": "https://content.dropboxapi.com/2/files/download",
+      "inputs": [
+        {
+          "name": "Path",
+          "required": true,
+          "mapTo": "Path"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File Content",
+          "path": "file_content"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Size",
+          "path": "size"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_move",
+      "name": "Dropbox File Move",
+      "description": "POST https://api.dropboxapi.com/2/files/move_v2",
+      "method": "POST",
+      "path": "https://api.dropboxapi.com/2/files/move_v2",
+      "inputs": [
+        {
+          "name": "From Path",
+          "required": true,
+          "mapTo": "From Path"
+        },
+        {
+          "name": "To Path",
+          "required": true,
+          "mapTo": "To Path"
+        },
+        {
+          "name": "Autorename",
+          "required": false,
+          "mapTo": "Autorename"
+        },
+        {
+          "name": "Allow Ownership Transfer",
+          "required": false,
+          "mapTo": "Allow Ownership Transfer"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "file_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Path",
+          "path": "path"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_upload",
+      "name": "Dropbox File Upload",
+      "description": "POST https://content.dropboxapi.com/2/files/upload",
+      "method": "POST",
+      "path": "https://content.dropboxapi.com/2/files/upload",
+      "inputs": [
+        {
+          "name": "Path",
+          "required": true,
+          "mapTo": "Path"
+        },
+        {
+          "name": "File Content",
+          "required": true,
+          "mapTo": "File Content"
+        },
+        {
+          "name": "Mode",
+          "required": false,
+          "mapTo": "Mode"
+        },
+        {
+          "name": "Autorename",
+          "required": false,
+          "mapTo": "Autorename"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "file_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Path",
+          "path": "path"
+        },
+        {
+          "name": "Size",
+          "path": "size"
+        },
+        {
+          "name": "Content Hash",
+          "path": "content_hash"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "folder_create",
+      "name": "Dropbox Folder Create",
+      "description": "POST https://api.dropboxapi.com/2/files/create_folder_v2",
+      "method": "POST",
+      "path": "https://api.dropboxapi.com/2/files/create_folder_v2",
+      "inputs": [
+        {
+          "name": "Path",
+          "required": true,
+          "mapTo": "Path"
+        },
+        {
+          "name": "Autorename",
+          "required": false,
+          "mapTo": "Autorename"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Folder ID",
+          "path": "folder_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Path",
+          "path": "path"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "share_create",
+      "name": "Dropbox Shared Link Create",
+      "description": "POST https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings",
+      "method": "POST",
+      "path": "https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings",
+      "inputs": [
+        {
+          "name": "Path",
+          "required": true,
+          "mapTo": "Path"
+        },
+        {
+          "name": "Requested Visibility",
+          "required": false,
+          "mapTo": "Requested Visibility"
+        },
+        {
+          "name": "Link Password",
+          "required": false,
+          "mapTo": "Link Password"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Path",
+          "path": "path"
+        },
+        {
+          "name": "Visibility",
+          "path": "visibility"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

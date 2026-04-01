@@ -1,0 +1,236 @@
+{
+  "id": "intune",
+  "service": "Microsoft Intune",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Microsoft Intune integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "app_assign",
+      "name": "Microsoft Intune App Assign",
+      "description": "POST https://graph.microsoft.com/v1.0/deviceAppManagement/mobileApps/<%= @inputs['App Id'] %>/assign",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/deviceAppManagement/mobileApps/<%= @inputs['App Id'] %>/assign",
+      "inputs": [
+        {
+          "name": "App Id",
+          "required": true,
+          "mapTo": "App Id"
+        },
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "Intent",
+          "required": false,
+          "mapTo": "Intent"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "compliance_create",
+      "name": "Microsoft Intune Compliance Create",
+      "description": "POST https://graph.microsoft.com/v1.0/deviceManagement/deviceCompliancePolicies",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/deviceManagement/deviceCompliancePolicies",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Platform",
+          "required": true,
+          "mapTo": "Platform"
+        },
+        {
+          "name": "Password Required",
+          "required": false,
+          "mapTo": "Password Required"
+        },
+        {
+          "name": "Min Password Length",
+          "required": false,
+          "mapTo": "Min Password Length"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Policy ID",
+          "path": "policy_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Created DateTime",
+          "path": "created_datetime"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "device_retrieve",
+      "name": "Microsoft Intune Device Retrieve",
+      "description": "GET https://graph.microsoft.com/v1.0/deviceManagement/managedDevices/<%= @inputs['Device Id'] %>",
+      "method": "GET",
+      "path": "https://graph.microsoft.com/v1.0/deviceManagement/managedDevices/<%= @inputs['Device Id'] %>",
+      "inputs": [
+        {
+          "name": "Device Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Device ID",
+          "path": "device_id"
+        },
+        {
+          "name": "Device Name",
+          "path": "device_name"
+        },
+        {
+          "name": "OS Version",
+          "path": "os_version"
+        },
+        {
+          "name": "Compliance State",
+          "path": "compliance_state"
+        },
+        {
+          "name": "Last Sync",
+          "path": "last_sync"
+        },
+        {
+          "name": "User Principal Name",
+          "path": "user_principal_name"
+        },
+        {
+          "name": "Device JSON",
+          "path": "device_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "policy_create",
+      "name": "Microsoft Intune Policy Create",
+      "description": "POST https://graph.microsoft.com/v1.0/deviceManagement/deviceConfigurations",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/deviceManagement/deviceConfigurations",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Platform",
+          "required": true,
+          "mapTo": "Platform"
+        },
+        {
+          "name": "Settings Json",
+          "required": false,
+          "mapTo": "Settings Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Policy ID",
+          "path": "policy_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Created DateTime",
+          "path": "created_datetime"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

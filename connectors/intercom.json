@@ -1,0 +1,325 @@
+{
+  "id": "intercom",
+  "service": "Intercom",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Intercom integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "contact_create",
+      "name": "Intercom Contact Create",
+      "description": "POST https://api.intercom.io/contacts",
+      "method": "POST",
+      "path": "https://api.intercom.io/contacts",
+      "inputs": [
+        {
+          "name": "Role",
+          "required": true,
+          "mapTo": "Role"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "External Id",
+          "required": false,
+          "mapTo": "External Id"
+        },
+        {
+          "name": "Custom Attributes Json",
+          "required": false,
+          "mapTo": "Custom Attributes Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Role",
+          "path": "role"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "Intercom Contact Update",
+      "description": "PUT https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>",
+      "method": "PUT",
+      "path": "https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Custom Attributes Json",
+          "required": false,
+          "mapTo": "Custom Attributes Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "conversation_create",
+      "name": "Intercom Conversation Create",
+      "description": "POST https://api.intercom.io/conversations",
+      "method": "POST",
+      "path": "https://api.intercom.io/conversations",
+      "inputs": [
+        {
+          "name": "From Id",
+          "required": true,
+          "mapTo": "From Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Conversation ID",
+          "path": "conversation_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Intercom Message Send",
+      "description": "POST https://api.intercom.io/messages",
+      "method": "POST",
+      "path": "https://api.intercom.io/messages",
+      "inputs": [
+        {
+          "name": "Message Type",
+          "required": true,
+          "mapTo": "Message Type"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "From Admin Id",
+          "required": true,
+          "mapTo": "From Admin Id"
+        },
+        {
+          "name": "To Email",
+          "required": false,
+          "mapTo": "To Email"
+        },
+        {
+          "name": "To Id",
+          "required": false,
+          "mapTo": "To Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Message Type",
+          "path": "message_type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "note_create",
+      "name": "Intercom Note Create",
+      "description": "POST https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>/notes",
+      "method": "POST",
+      "path": "https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>/notes",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Admin Id",
+          "required": true,
+          "mapTo": "Admin Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Note ID",
+          "path": "note_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "tag_create",
+      "name": "Intercom Tag Create",
+      "description": "POST https://api.intercom.io/tags",
+      "method": "POST",
+      "path": "https://api.intercom.io/tags",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tag ID",
+          "path": "tag_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "id": "trello",
+  "service": "Trello",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Trello integration with 6 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "token",
+        "required": true,
+        "description": "Trello API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "board_create",
+      "name": "Trello Board Create",
+      "description": "POST https://api.trello.com/1/boards",
+      "method": "POST",
+      "path": "https://api.trello.com/1/boards",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Desc",
+          "required": false,
+          "mapTo": "Desc"
+        },
+        {
+          "name": "Default Lists",
+          "required": false,
+          "mapTo": "Default Lists"
+        },
+        {
+          "name": "Organization Id",
+          "required": false,
+          "mapTo": "Organization Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Board ID",
+          "path": "board_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Short URL",
+          "path": "short_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "card_create",
+      "name": "Trello Card Create",
+      "description": "POST https://api.trello.com/1/cards",
+      "method": "POST",
+      "path": "https://api.trello.com/1/cards",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Desc",
+          "required": false,
+          "mapTo": "Desc"
+        },
+        {
+          "name": "Pos",
+          "required": false,
+          "mapTo": "Pos"
+        },
+        {
+          "name": "Due",
+          "required": false,
+          "mapTo": "Due"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Card ID",
+          "path": "card_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Short URL",
+          "path": "short_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "card_move",
+      "name": "Trello Card Move",
+      "description": "PUT https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "method": "PUT",
+      "path": "https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "inputs": [
+        {
+          "name": "Card Id",
+          "required": true,
+          "mapTo": "Card Id"
+        },
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Pos",
+          "required": false,
+          "mapTo": "Pos"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Card ID",
+          "path": "card_id"
+        },
+        {
+          "name": "List ID",
+          "path": "list_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "card_update",
+      "name": "Trello Card Update",
+      "description": "PUT https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "method": "PUT",
+      "path": "https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "inputs": [
+        {
+          "name": "Card Id",
+          "required": true,
+          "mapTo": "Card Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Desc",
+          "required": false,
+          "mapTo": "Desc"
+        },
+        {
+          "name": "Closed",
+          "required": false,
+          "mapTo": "Closed"
+        },
+        {
+          "name": "Due",
+          "required": false,
+          "mapTo": "Due"
+        },
+        {
+          "name": "List Id",
+          "required": false,
+          "mapTo": "List Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Card ID",
+          "path": "card_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_create",
+      "name": "Trello List Create",
+      "description": "POST https://api.trello.com/1/lists",
+      "method": "POST",
+      "path": "https://api.trello.com/1/lists",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Pos",
+          "required": false,
+          "mapTo": "Pos"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "List ID",
+          "path": "list_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "member_add",
+      "name": "Trello Member Add",
+      "description": "PUT https://api.trello.com/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
+      "method": "PUT",
+      "path": "https://api.trello.com/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Member Id",
+          "required": true,
+          "mapTo": "Member Id"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Board ID",
+          "path": "board_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

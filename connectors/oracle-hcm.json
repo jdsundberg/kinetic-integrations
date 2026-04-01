@@ -1,0 +1,339 @@
+{
+  "id": "oracle-hcm",
+  "service": "Oracle HCM",
+  "version": 1,
+  "category": "HR & People",
+  "description": "Oracle HCM integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Oracle HCM Cloud base URL (e.g. https://mycompany.oraclecloud.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "absence_create",
+      "name": "Oracle HCM Absence Create",
+      "description": "POST <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/absences",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/absences",
+      "inputs": [
+        {
+          "name": "Person Id",
+          "required": true,
+          "mapTo": "Person Id"
+        },
+        {
+          "name": "Absence Type Id",
+          "required": true,
+          "mapTo": "Absence Type Id"
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": true,
+          "mapTo": "End Date"
+        },
+        {
+          "name": "Absence Status",
+          "required": false,
+          "mapTo": "Absence Status"
+        },
+        {
+          "name": "Comments",
+          "required": false,
+          "mapTo": "Comments"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Absence ID",
+          "path": "absence_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Start Date",
+          "path": "start_date"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "assignment_update",
+      "name": "Oracle HCM Assignment Update",
+      "description": "PATCH <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
+      "method": "PATCH",
+      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
+      "inputs": [
+        {
+          "name": "Person Id",
+          "required": true,
+          "mapTo": "Person Id"
+        },
+        {
+          "name": "Assignment Id",
+          "required": true,
+          "mapTo": "Assignment Id"
+        },
+        {
+          "name": "Effective Start Date",
+          "required": true,
+          "mapTo": "Effective Start Date"
+        },
+        {
+          "name": "Department Name",
+          "required": false,
+          "mapTo": "Department Name"
+        },
+        {
+          "name": "Job Code",
+          "required": false,
+          "mapTo": "Job Code"
+        },
+        {
+          "name": "Location Code",
+          "required": false,
+          "mapTo": "Location Code"
+        },
+        {
+          "name": "Manager Person Number",
+          "required": false,
+          "mapTo": "Manager Person Number"
+        },
+        {
+          "name": "Action Code",
+          "required": false,
+          "mapTo": "Action Code"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Assignment ID",
+          "path": "assignment_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_retrieve",
+      "name": "Oracle HCM Job Retrieve",
+      "description": "GET <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
+      "inputs": [
+        {
+          "name": "Job Code",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Job Code",
+          "path": "job_code"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Job Family",
+          "path": "job_family"
+        },
+        {
+          "name": "Job JSON",
+          "path": "job_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "worker_create",
+      "name": "Oracle HCM Worker Create",
+      "description": "POST <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Date Of Birth",
+          "required": false,
+          "mapTo": "Date Of Birth"
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "Legal Employer Name",
+          "required": true,
+          "mapTo": "Legal Employer Name"
+        },
+        {
+          "name": "Business Unit",
+          "required": false,
+          "mapTo": "Business Unit"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Person ID",
+          "path": "person_id"
+        },
+        {
+          "name": "Person Number",
+          "path": "person_number"
+        },
+        {
+          "name": "Created By",
+          "path": "created_by"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "worker_retrieve",
+      "name": "Oracle HCM Worker Retrieve",
+      "description": "GET <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
+      "inputs": [
+        {
+          "name": "Person Number",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Person ID",
+          "path": "person_id"
+        },
+        {
+          "name": "Person Number",
+          "path": "person_number"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Worker JSON",
+          "path": "worker_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

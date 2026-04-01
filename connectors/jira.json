@@ -1,0 +1,566 @@
+{
+  "id": "jira",
+  "service": "Jira",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Jira integration with 10 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "site_url",
+        "required": true,
+        "description": "Jira Cloud site URL (e.g. https://myco.atlassian.net)."
+      },
+      {
+        "name": "email",
+        "required": true,
+        "description": "Atlassian account email."
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Jira API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "board_retrieve",
+      "name": "Jira Board Retrieve",
+      "description": "GET <%= @info['site_url'] %>/rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['site_url'] %>/rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Board ID",
+          "path": "board_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Board JSON",
+          "path": "board_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_add_comment",
+      "name": "Jira Issue Add Comment",
+      "description": "POST <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
+      "inputs": [
+        {
+          "name": "Issue Key",
+          "required": true,
+          "mapTo": "Issue Key"
+        },
+        {
+          "name": "Comment",
+          "required": true,
+          "mapTo": "Comment"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_create",
+      "name": "Jira Issue Create",
+      "description": "POST <%= @info['site_url'] %>/rest/api/3/issue",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/rest/api/3/issue",
+      "inputs": [
+        {
+          "name": "Project Key",
+          "required": true,
+          "mapTo": "Project Key"
+        },
+        {
+          "name": "Summary",
+          "required": true,
+          "mapTo": "Summary"
+        },
+        {
+          "name": "Issue Type",
+          "required": false,
+          "mapTo": "Issue Type"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        },
+        {
+          "name": "Labels",
+          "required": false,
+          "mapTo": "Labels"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue Key",
+          "path": "issue_key"
+        },
+        {
+          "name": "Issue ID",
+          "path": "issue_id"
+        },
+        {
+          "name": "Self URL",
+          "path": "self_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_retrieve",
+      "name": "Jira Issue Retrieve",
+      "description": "GET <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "method": "GET",
+      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "inputs": [
+        {
+          "name": "Issue Key",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue Key",
+          "path": "issue_key"
+        },
+        {
+          "name": "Summary",
+          "path": "summary"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Assignee",
+          "path": "assignee"
+        },
+        {
+          "name": "Priority",
+          "path": "priority"
+        },
+        {
+          "name": "Issue Type",
+          "path": "issue_type"
+        },
+        {
+          "name": "Description",
+          "path": "description"
+        },
+        {
+          "name": "Issue JSON",
+          "path": "issue_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_search",
+      "name": "Jira Issue Search",
+      "description": "POST <%= @info['site_url'] %>/rest/api/3/search",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/rest/api/3/search",
+      "inputs": [
+        {
+          "name": "Jql",
+          "required": true,
+          "mapTo": "Jql"
+        },
+        {
+          "name": "Max Results",
+          "required": false,
+          "mapTo": "Max Results"
+        },
+        {
+          "name": "Fields",
+          "required": false,
+          "mapTo": "Fields"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Issues JSON",
+          "path": "issues_json"
+        },
+        {
+          "name": "Start At",
+          "path": "start_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_transition",
+      "name": "Jira Issue Transition",
+      "description": "POST <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
+      "inputs": [
+        {
+          "name": "Issue Key",
+          "required": true,
+          "mapTo": "Issue Key"
+        },
+        {
+          "name": "Transition Id",
+          "required": true,
+          "mapTo": "Transition Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_update",
+      "name": "Jira Issue Update",
+      "description": "PUT <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "method": "PUT",
+      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "inputs": [
+        {
+          "name": "Issue Key",
+          "required": true,
+          "mapTo": "Issue Key"
+        },
+        {
+          "name": "Summary",
+          "required": false,
+          "mapTo": "Summary"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        },
+        {
+          "name": "Labels",
+          "required": false,
+          "mapTo": "Labels"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "project_retrieve",
+      "name": "Jira Project Retrieve",
+      "description": "GET <%= @info['site_url'] %>/rest/api/3/project/<%= @inputs['Project Key'] %>",
+      "method": "GET",
+      "path": "<%= @info['site_url'] %>/rest/api/3/project/<%= @inputs['Project Key'] %>",
+      "inputs": [
+        {
+          "name": "Project Key",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Project Key",
+          "path": "project_key"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Lead",
+          "path": "lead"
+        },
+        {
+          "name": "Project JSON",
+          "path": "project_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "sprint_create",
+      "name": "Jira Sprint Create",
+      "description": "POST <%= @info['site_url'] %>/rest/agile/1.0/sprint",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/rest/agile/1.0/sprint",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Start Date",
+          "required": false,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": false,
+          "mapTo": "End Date"
+        },
+        {
+          "name": "Goal",
+          "required": false,
+          "mapTo": "Goal"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sprint ID",
+          "path": "sprint_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "sprint_update",
+      "name": "Jira Sprint Update",
+      "description": "PUT <%= @info['site_url'] %>/rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['site_url'] %>/rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
+      "inputs": [
+        {
+          "name": "Sprint Id",
+          "required": true,
+          "mapTo": "Sprint Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        },
+        {
+          "name": "Goal",
+          "required": false,
+          "mapTo": "Goal"
+        },
+        {
+          "name": "Start Date",
+          "required": false,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": false,
+          "mapTo": "End Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sprint ID",
+          "path": "sprint_id"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

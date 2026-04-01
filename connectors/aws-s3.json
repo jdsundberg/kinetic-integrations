@@ -1,0 +1,464 @@
+{
+  "id": "aws-s3",
+  "service": "AWS S3",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "AWS S3 integration with 10 pre-built routines.",
+  "auth": {
+    "type": "aws",
+    "properties": [
+      {
+        "name": "aws_access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "aws_secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      },
+      {
+        "name": "aws_region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "aws_service",
+        "required": false,
+        "description": "AWS service name for signing."
+      },
+      {
+        "name": "access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "bucket_create",
+      "name": "AWS S3 Bucket Create",
+      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "method": "PUT",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true,
+          "mapTo": "Bucket"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Location",
+          "path": "location"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "bucket_delete",
+      "name": "AWS S3 Bucket Delete",
+      "description": "DELETE https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "method": "DELETE",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "bucket_list",
+      "name": "AWS S3 Bucket List",
+      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "method": "GET",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Buckets JSON",
+          "path": "buckets_json"
+        },
+        {
+          "name": "Owner",
+          "path": "owner"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_copy",
+      "name": "AWS S3 Object Copy",
+      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Destination Key'] %>",
+      "method": "PUT",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Destination Key'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true,
+          "mapTo": "Bucket"
+        },
+        {
+          "name": "Source Bucket",
+          "required": true,
+          "mapTo": "Source Bucket"
+        },
+        {
+          "name": "Source Key",
+          "required": true,
+          "mapTo": "Source Key"
+        },
+        {
+          "name": "Destination Key",
+          "required": true,
+          "mapTo": "Destination Key"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ETag",
+          "path": "etag"
+        },
+        {
+          "name": "Last Modified",
+          "path": "last_modified"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_delete",
+      "name": "AWS S3 Object Delete",
+      "description": "DELETE https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "method": "DELETE",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        },
+        {
+          "name": "Key",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Delete Marker",
+          "path": "delete_marker"
+        },
+        {
+          "name": "Version ID",
+          "path": "version_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_get",
+      "name": "AWS S3 Object Get",
+      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "method": "GET",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        },
+        {
+          "name": "Key",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Body",
+          "path": "body"
+        },
+        {
+          "name": "Content Type",
+          "path": "content_type"
+        },
+        {
+          "name": "Content Length",
+          "path": "content_length"
+        },
+        {
+          "name": "ETag",
+          "path": "etag"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_list",
+      "name": "AWS S3 Object List",
+      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/?list-type=2&prefix=<%= @inputs['Prefix'] %>&max-keys=<%= @inputs['Max Keys'] %>",
+      "method": "GET",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/?list-type=2&prefix=<%= @inputs['Prefix'] %>&max-keys=<%= @inputs['Max Keys'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        },
+        {
+          "name": "Prefix",
+          "required": false
+        },
+        {
+          "name": "Max Keys",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contents JSON",
+          "path": "contents_json"
+        },
+        {
+          "name": "Key Count",
+          "path": "key_count"
+        },
+        {
+          "name": "Is Truncated",
+          "path": "is_truncated"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_put",
+      "name": "AWS S3 Object Put",
+      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "method": "PUT",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true,
+          "mapTo": "Bucket"
+        },
+        {
+          "name": "Key",
+          "required": true,
+          "mapTo": "Key"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ETag",
+          "path": "etag"
+        },
+        {
+          "name": "Version ID",
+          "path": "version_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_tag",
+      "name": "AWS S3 Object Tag",
+      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>?tagging",
+      "method": "PUT",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>?tagging",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true,
+          "mapTo": "Bucket"
+        },
+        {
+          "name": "Key",
+          "required": true,
+          "mapTo": "Key"
+        },
+        {
+          "name": "Tags Json",
+          "required": true,
+          "mapTo": "Tags Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "presigned_url",
+      "name": "AWS S3 Presigned URL",
+      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/?presign&key=<%= @inputs['Key'] %>&expires=<%= @inputs['Expires'] %>",
+      "method": "GET",
+      "path": "https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/?presign&key=<%= @inputs['Key'] %>&expires=<%= @inputs['Expires'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        },
+        {
+          "name": "Key",
+          "required": true
+        },
+        {
+          "name": "Expires",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Presigned URL",
+          "path": "presigned_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

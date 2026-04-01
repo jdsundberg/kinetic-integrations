@@ -1,0 +1,430 @@
+{
+  "id": "square",
+  "service": "Square",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "Square integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "catalog_create",
+      "name": "Square Catalog Object Create",
+      "description": "POST https://connect.squareup.com/v2/catalog/object",
+      "method": "POST",
+      "path": "https://connect.squareup.com/v2/catalog/object",
+      "inputs": [
+        {
+          "name": "Idempotency Key",
+          "required": true,
+          "mapTo": "Idempotency Key"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Item Name",
+          "required": true,
+          "mapTo": "Item Name"
+        },
+        {
+          "name": "Variation Name",
+          "required": true,
+          "mapTo": "Variation Name"
+        },
+        {
+          "name": "Price",
+          "required": true,
+          "mapTo": "Price"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Catalog Object ID",
+          "path": "catalog_object_id"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "Square Customer Create",
+      "description": "POST https://connect.squareup.com/v2/customers",
+      "method": "POST",
+      "path": "https://connect.squareup.com/v2/customers",
+      "inputs": [
+        {
+          "name": "Given Name",
+          "required": true,
+          "mapTo": "Given Name"
+        },
+        {
+          "name": "Family Name",
+          "required": true,
+          "mapTo": "Family Name"
+        },
+        {
+          "name": "Email Address",
+          "required": false,
+          "mapTo": "Email Address"
+        },
+        {
+          "name": "Phone Number",
+          "required": false,
+          "mapTo": "Phone Number"
+        },
+        {
+          "name": "Company Name",
+          "required": false,
+          "mapTo": "Company Name"
+        },
+        {
+          "name": "Idempotency Key",
+          "required": true,
+          "mapTo": "Idempotency Key"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "customer_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "inventory_update",
+      "name": "Square Inventory Update",
+      "description": "POST https://connect.squareup.com/v2/inventory/changes/batch-create",
+      "method": "POST",
+      "path": "https://connect.squareup.com/v2/inventory/changes/batch-create",
+      "inputs": [
+        {
+          "name": "Idempotency Key",
+          "required": true,
+          "mapTo": "Idempotency Key"
+        },
+        {
+          "name": "Catalog Object Id",
+          "required": true,
+          "mapTo": "Catalog Object Id"
+        },
+        {
+          "name": "Location Id",
+          "required": true,
+          "mapTo": "Location Id"
+        },
+        {
+          "name": "Quantity",
+          "required": true,
+          "mapTo": "Quantity"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Occurred At",
+          "required": false,
+          "mapTo": "Occurred At"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Counts JSON",
+          "path": "counts_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Square Invoice Create",
+      "description": "POST https://connect.squareup.com/v2/invoices",
+      "method": "POST",
+      "path": "https://connect.squareup.com/v2/invoices",
+      "inputs": [
+        {
+          "name": "Location Id",
+          "required": true,
+          "mapTo": "Location Id"
+        },
+        {
+          "name": "Order Id",
+          "required": true,
+          "mapTo": "Order Id"
+        },
+        {
+          "name": "Idempotency Key",
+          "required": true,
+          "mapTo": "Idempotency Key"
+        },
+        {
+          "name": "Primary Recipient Customer Id",
+          "required": true,
+          "mapTo": "Primary Recipient Customer Id"
+        },
+        {
+          "name": "Due Date",
+          "required": true,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Delivery Method",
+          "required": false,
+          "mapTo": "Delivery Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice ID",
+          "path": "invoice_id"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "order_create",
+      "name": "Square Order Create",
+      "description": "POST https://connect.squareup.com/v2/orders",
+      "method": "POST",
+      "path": "https://connect.squareup.com/v2/orders",
+      "inputs": [
+        {
+          "name": "Location Id",
+          "required": true,
+          "mapTo": "Location Id"
+        },
+        {
+          "name": "Idempotency Key",
+          "required": true,
+          "mapTo": "Idempotency Key"
+        },
+        {
+          "name": "Line Item Name",
+          "required": true,
+          "mapTo": "Line Item Name"
+        },
+        {
+          "name": "Line Item Quantity",
+          "required": true,
+          "mapTo": "Line Item Quantity"
+        },
+        {
+          "name": "Line Item Base Price",
+          "required": true,
+          "mapTo": "Line Item Base Price"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Customer Id",
+          "required": false,
+          "mapTo": "Customer Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Order ID",
+          "path": "order_id"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "Square Payment Create",
+      "description": "POST https://connect.squareup.com/v2/payments",
+      "method": "POST",
+      "path": "https://connect.squareup.com/v2/payments",
+      "inputs": [
+        {
+          "name": "Source Id",
+          "required": true,
+          "mapTo": "Source Id"
+        },
+        {
+          "name": "Amount Money",
+          "required": true,
+          "mapTo": "Amount Money"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Idempotency Key",
+          "required": true,
+          "mapTo": "Idempotency Key"
+        },
+        {
+          "name": "Location Id",
+          "required": false,
+          "mapTo": "Location Id"
+        },
+        {
+          "name": "Customer Id",
+          "required": false,
+          "mapTo": "Customer Id"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment ID",
+          "path": "payment_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Amount",
+          "path": "amount"
+        },
+        {
+          "name": "Receipt URL",
+          "path": "receipt_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

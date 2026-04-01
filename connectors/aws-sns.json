@@ -1,0 +1,218 @@
+{
+  "id": "aws-sns",
+  "service": "AWS SNS",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "AWS SNS integration with 4 pre-built routines.",
+  "auth": {
+    "type": "aws",
+    "properties": [
+      {
+        "name": "aws_access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "aws_secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      },
+      {
+        "name": "aws_region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "aws_service",
+        "required": false,
+        "description": "AWS service name for signing."
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "AWS region."
+      },
+      {
+        "name": "access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "publish",
+      "name": "AWS SNS Publish",
+      "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "method": "POST",
+      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [
+        {
+          "name": "Topic Arn",
+          "required": true,
+          "mapTo": "Topic Arn"
+        },
+        {
+          "name": "Message",
+          "required": true,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Subject",
+          "required": false,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Message Structure",
+          "required": false,
+          "mapTo": "Message Structure"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "subscribe",
+      "name": "AWS SNS Subscribe",
+      "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "method": "POST",
+      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [
+        {
+          "name": "Topic Arn",
+          "required": true,
+          "mapTo": "Topic Arn"
+        },
+        {
+          "name": "Protocol",
+          "required": true,
+          "mapTo": "Protocol"
+        },
+        {
+          "name": "Endpoint",
+          "required": true,
+          "mapTo": "Endpoint"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Subscription ARN",
+          "path": "subscription_arn"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "topic_create",
+      "name": "AWS SNS Topic Create",
+      "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "method": "POST",
+      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Display Name",
+          "required": false,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Fifo Topic",
+          "required": false,
+          "mapTo": "Fifo Topic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Topic ARN",
+          "path": "topic_arn"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "unsubscribe",
+      "name": "AWS SNS Unsubscribe",
+      "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "method": "POST",
+      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "inputs": [
+        {
+          "name": "Subscription Arn",
+          "required": true,
+          "mapTo": "Subscription Arn"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "generic-noauth",
+  "service": "Generic REST (No Auth)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any public or internal REST API that requires no authentication.",
+  "auth": {
+    "type": "noauth",
+    "properties": [
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

@@ -1,0 +1,313 @@
+{
+  "id": "quickbooks-enterprise",
+  "service": "Quickbooks Enterprise",
+  "version": 1,
+  "category": "Accounting",
+  "description": "Quickbooks Enterprise integration with 8 pre-built routines.",
+  "auth": {
+    "type": "oauth2_refresh",
+    "properties": [
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "Intuit OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "Intuit OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "refresh_token",
+        "required": true,
+        "description": "OAuth2 refresh token.",
+        "encrypted": true
+      },
+      {
+        "name": "realm_id",
+        "required": true,
+        "description": "QuickBooks company ID (realm)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_list",
+      "name": "QuickBooks Enterprise Chart of Accounts",
+      "description": "GET /v3/company/{realm_id}/accounts",
+      "method": "GET",
+      "path": "/v3/company/{realm_id}/accounts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Accounts JSON",
+          "path": "accounts"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        }
+      ]
+    },
+    {
+      "id": "bill_create",
+      "name": "QuickBooks Enterprise Bill Create",
+      "description": "POST /v3/company/{realm_id}/bills",
+      "method": "POST",
+      "path": "/v3/company/{realm_id}/bills",
+      "inputs": [
+        {
+          "name": "Vendor Id",
+          "required": true,
+          "mapTo": "Vendor Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bill Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "QuickBooks Enterprise Customer Create",
+      "description": "POST /v3/company/{realm_id}/customers",
+      "method": "POST",
+      "path": "/v3/company/{realm_id}/customers",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Address",
+          "required": false,
+          "mapTo": "Address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "QuickBooks Enterprise Invoice Create",
+      "description": "POST /v3/company/{realm_id}/invoices",
+      "method": "POST",
+      "path": "/v3/company/{realm_id}/invoices",
+      "inputs": [
+        {
+          "name": "Customer Id",
+          "required": true,
+          "mapTo": "Customer Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Currency",
+          "required": false,
+          "mapTo": "Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Id",
+          "path": "id"
+        },
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "invoice_retrieve",
+      "name": "QuickBooks Enterprise Invoice Retrieve",
+      "description": "GET /v3/company/{realm_id}/invoices/{invoice_id}",
+      "method": "GET",
+      "path": "/v3/company/{realm_id}/invoices/{invoice_id}",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Balance Due",
+          "path": "balance"
+        }
+      ]
+    },
+    {
+      "id": "journal_entry_create",
+      "name": "QuickBooks Enterprise Journal Entry Create",
+      "description": "POST /v3/company/{realm_id}/journal-entries",
+      "method": "POST",
+      "path": "/v3/company/{realm_id}/journal-entries",
+      "inputs": [
+        {
+          "name": "Date",
+          "required": true,
+          "mapTo": "Date"
+        },
+        {
+          "name": "Lines JSON",
+          "required": true,
+          "mapTo": "Lines JSON"
+        },
+        {
+          "name": "Memo",
+          "required": false,
+          "mapTo": "Memo"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Entry Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "QuickBooks Enterprise Payment Create",
+      "description": "POST /v3/company/{realm_id}/payments",
+      "method": "POST",
+      "path": "/v3/company/{realm_id}/payments",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "mapTo": "Invoice Id"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Payment Date",
+          "required": false,
+          "mapTo": "Payment Date"
+        },
+        {
+          "name": "Payment Method",
+          "required": false,
+          "mapTo": "Payment Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "QuickBooks Enterprise Vendor Create",
+      "description": "POST /v3/company/{realm_id}/vendors",
+      "method": "POST",
+      "path": "/v3/company/{realm_id}/vendors",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    }
+  ]
+}

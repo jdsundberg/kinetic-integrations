@@ -1,0 +1,277 @@
+{
+  "id": "snowflake",
+  "service": "Snowflake",
+  "version": 1,
+  "category": "Data & Analytics",
+  "description": "Snowflake integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "account_url",
+        "required": true,
+        "description": "Snowflake account URL (e.g. https://myaccount.snowflakecomputing.com)."
+      },
+      {
+        "name": "jwt_token",
+        "required": true,
+        "description": "Snowflake JWT token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "pipe_create",
+      "name": "Snowflake Pipe Create",
+      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "method": "POST",
+      "path": "<%= @info['account_url'] %>/api/v2/statements",
+      "inputs": [
+        {
+          "name": "Pipe Name",
+          "required": true,
+          "mapTo": "Pipe Name"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Schema",
+          "required": true,
+          "mapTo": "Schema"
+        },
+        {
+          "name": "Warehouse",
+          "required": true,
+          "mapTo": "Warehouse"
+        },
+        {
+          "name": "Copy Statement",
+          "required": true,
+          "mapTo": "Copy Statement"
+        },
+        {
+          "name": "Auto Ingest",
+          "required": false,
+          "mapTo": "Auto Ingest"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Statement Handle",
+          "path": "statement_handle"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "query_execute",
+      "name": "Snowflake Query Execute",
+      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "method": "POST",
+      "path": "<%= @info['account_url'] %>/api/v2/statements",
+      "inputs": [
+        {
+          "name": "Statement",
+          "required": true,
+          "mapTo": "Statement"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Schema",
+          "required": true,
+          "mapTo": "Schema"
+        },
+        {
+          "name": "Warehouse",
+          "required": true,
+          "mapTo": "Warehouse"
+        },
+        {
+          "name": "Timeout",
+          "required": false,
+          "mapTo": "Timeout"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Statement Handle",
+          "path": "statement_handle"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Data JSON",
+          "path": "data_json"
+        },
+        {
+          "name": "Result Set Metadata",
+          "path": "result_set_metadata"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "stage_upload",
+      "name": "Snowflake Stage Upload",
+      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "method": "POST",
+      "path": "<%= @info['account_url'] %>/api/v2/statements",
+      "inputs": [
+        {
+          "name": "Stage Path",
+          "required": true,
+          "mapTo": "Stage Path"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Schema",
+          "required": true,
+          "mapTo": "Schema"
+        },
+        {
+          "name": "Warehouse",
+          "required": true,
+          "mapTo": "Warehouse"
+        },
+        {
+          "name": "File Data",
+          "required": true,
+          "mapTo": "File Data"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Statement Handle",
+          "path": "statement_handle"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_create",
+      "name": "Snowflake Task Create",
+      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "method": "POST",
+      "path": "<%= @info['account_url'] %>/api/v2/statements",
+      "inputs": [
+        {
+          "name": "Task Name",
+          "required": true,
+          "mapTo": "Task Name"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Schema",
+          "required": true,
+          "mapTo": "Schema"
+        },
+        {
+          "name": "Warehouse",
+          "required": true,
+          "mapTo": "Warehouse"
+        },
+        {
+          "name": "Schedule",
+          "required": true,
+          "mapTo": "Schedule"
+        },
+        {
+          "name": "Sql Statement",
+          "required": true,
+          "mapTo": "Sql Statement"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Statement Handle",
+          "path": "statement_handle"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

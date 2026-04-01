@@ -1,0 +1,191 @@
+{
+  "id": "taxact-pro",
+  "service": "Taxact Pro",
+  "version": 1,
+  "category": "Tax Software",
+  "description": "Taxact Pro integration with 5 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "TaxAct Professional API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "client_create",
+      "name": "TaxAct Professional Client Create",
+      "description": "POST /api/v1/clients",
+      "method": "POST",
+      "path": "/api/v1/clients",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "SSN",
+          "required": true,
+          "mapTo": "SSN"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Client Id",
+          "path": "id"
+        }
+      ]
+    },
+    {
+      "id": "return_create",
+      "name": "TaxAct Professional Return Create",
+      "description": "POST /api/v1/returns",
+      "method": "POST",
+      "path": "/api/v1/returns",
+      "inputs": [
+        {
+          "name": "Taxpayer SSN",
+          "required": true,
+          "mapTo": "Taxpayer SSN"
+        },
+        {
+          "name": "Tax Year",
+          "required": true,
+          "mapTo": "Tax Year"
+        },
+        {
+          "name": "Filing Status",
+          "required": true,
+          "mapTo": "Filing Status"
+        },
+        {
+          "name": "Taxpayer Name",
+          "required": true,
+          "mapTo": "Taxpayer Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Return Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "return_retrieve",
+      "name": "TaxAct Professional Return Retrieve",
+      "description": "GET /api/v1/returns/{return_id}",
+      "method": "GET",
+      "path": "/api/v1/returns/{return_id}",
+      "inputs": [
+        {
+          "name": "Return Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Federal Refund",
+          "path": "federal_refund"
+        },
+        {
+          "name": "State Refund",
+          "path": "state_refund"
+        },
+        {
+          "name": "Tax Year",
+          "path": "tax_year"
+        }
+      ]
+    },
+    {
+      "id": "return_status",
+      "name": "TaxAct Professional Return Status",
+      "description": "GET /api/v1/returns/{return_id}/status",
+      "method": "GET",
+      "path": "/api/v1/returns/{return_id}/status",
+      "inputs": [
+        {
+          "name": "Return Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Accepted Date",
+          "path": "accepted_date"
+        },
+        {
+          "name": "Rejection Reason",
+          "path": "rejection_reason"
+        }
+      ]
+    },
+    {
+      "id": "return_submit",
+      "name": "TaxAct Professional Return E-File",
+      "description": "POST /api/v1/returns/{return_id}/efile",
+      "method": "POST",
+      "path": "/api/v1/returns/{return_id}/efile",
+      "inputs": [
+        {
+          "name": "Return Id",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "PIN",
+          "required": false,
+          "mapTo": "PIN"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Submission Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Confirmation",
+          "path": "confirmation_number"
+        }
+      ]
+    }
+  ]
+}

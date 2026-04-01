@@ -1,0 +1,397 @@
+{
+  "id": "zoom",
+  "service": "Zoom",
+  "version": 1,
+  "category": "Communication",
+  "description": "Zoom integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "meeting_create",
+      "name": "Zoom Meeting Create",
+      "description": "POST https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/meetings",
+      "method": "POST",
+      "path": "https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/meetings",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Topic",
+          "required": true,
+          "mapTo": "Topic"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Start Time",
+          "required": false,
+          "mapTo": "Start Time"
+        },
+        {
+          "name": "Duration",
+          "required": false,
+          "mapTo": "Duration"
+        },
+        {
+          "name": "Timezone",
+          "required": false,
+          "mapTo": "Timezone"
+        },
+        {
+          "name": "Agenda",
+          "required": false,
+          "mapTo": "Agenda"
+        },
+        {
+          "name": "Password",
+          "required": false,
+          "mapTo": "Password"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Meeting ID",
+          "path": "meeting_id"
+        },
+        {
+          "name": "Join URL",
+          "path": "join_url"
+        },
+        {
+          "name": "Start URL",
+          "path": "start_url"
+        },
+        {
+          "name": "Password",
+          "path": "password"
+        },
+        {
+          "name": "Topic",
+          "path": "topic"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "meeting_delete",
+      "name": "Zoom Meeting Delete",
+      "description": "DELETE https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "method": "DELETE",
+      "path": "https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "inputs": [
+        {
+          "name": "Meeting Id",
+          "required": true
+        },
+        {
+          "name": "Occurrence Id",
+          "required": false
+        },
+        {
+          "name": "Schedule For Reminder",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deleted",
+          "path": "deleted"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "meeting_update",
+      "name": "Zoom Meeting Update",
+      "description": "PATCH https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "method": "PATCH",
+      "path": "https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "inputs": [
+        {
+          "name": "Meeting Id",
+          "required": true,
+          "mapTo": "Meeting Id"
+        },
+        {
+          "name": "Topic",
+          "required": false,
+          "mapTo": "Topic"
+        },
+        {
+          "name": "Start Time",
+          "required": false,
+          "mapTo": "Start Time"
+        },
+        {
+          "name": "Duration",
+          "required": false,
+          "mapTo": "Duration"
+        },
+        {
+          "name": "Timezone",
+          "required": false,
+          "mapTo": "Timezone"
+        },
+        {
+          "name": "Agenda",
+          "required": false,
+          "mapTo": "Agenda"
+        },
+        {
+          "name": "Password",
+          "required": false,
+          "mapTo": "Password"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Updated",
+          "path": "updated"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "recording_list",
+      "name": "Zoom Recording List",
+      "description": "GET https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/recordings",
+      "method": "GET",
+      "path": "https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/recordings",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        },
+        {
+          "name": "From",
+          "required": false
+        },
+        {
+          "name": "To",
+          "required": false
+        },
+        {
+          "name": "Page Size",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Meetings JSON",
+          "path": "meetings_json"
+        },
+        {
+          "name": "Total Records",
+          "path": "total_records"
+        },
+        {
+          "name": "Next Page Token",
+          "path": "next_page_token"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Zoom User Create",
+      "description": "POST https://api.zoom.us/v2/users",
+      "method": "POST",
+      "path": "https://api.zoom.us/v2/users",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Action",
+          "required": false,
+          "mapTo": "Action"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "webinar_create",
+      "name": "Zoom Webinar Create",
+      "description": "POST https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/webinars",
+      "method": "POST",
+      "path": "https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/webinars",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Topic",
+          "required": true,
+          "mapTo": "Topic"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Start Time",
+          "required": false,
+          "mapTo": "Start Time"
+        },
+        {
+          "name": "Duration",
+          "required": false,
+          "mapTo": "Duration"
+        },
+        {
+          "name": "Timezone",
+          "required": false,
+          "mapTo": "Timezone"
+        },
+        {
+          "name": "Agenda",
+          "required": false,
+          "mapTo": "Agenda"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Webinar ID",
+          "path": "webinar_id"
+        },
+        {
+          "name": "Join URL",
+          "path": "join_url"
+        },
+        {
+          "name": "Start URL",
+          "path": "start_url"
+        },
+        {
+          "name": "Topic",
+          "path": "topic"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

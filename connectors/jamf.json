@@ -1,0 +1,228 @@
+{
+  "id": "jamf",
+  "service": "Jamf Pro",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Jamf Pro integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Jamf Pro server URL (e.g. https://myco.jamfcloud.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "command_send",
+      "name": "Jamf Pro Command Send",
+      "description": "POST <%= @info['base_url'] %>/api/v1/mdm/commands",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/mdm/commands",
+      "inputs": [
+        {
+          "name": "Command Type",
+          "required": true,
+          "mapTo": "Command Type"
+        },
+        {
+          "name": "Device Ids",
+          "required": true,
+          "mapTo": "Device Ids"
+        },
+        {
+          "name": "Passcode",
+          "required": false,
+          "mapTo": "Passcode"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Command UUID",
+          "path": "command_uuid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "device_retrieve",
+      "name": "Jamf Pro Device Retrieve",
+      "description": "GET <%= @info['base_url'] %>/api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
+      "inputs": [
+        {
+          "name": "Device Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Device ID",
+          "path": "device_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Serial Number",
+          "path": "serial_number"
+        },
+        {
+          "name": "OS Version",
+          "path": "os_version"
+        },
+        {
+          "name": "Last Check-In",
+          "path": "last_check-in"
+        },
+        {
+          "name": "Device JSON",
+          "path": "device_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_create",
+      "name": "Jamf Pro Group Create",
+      "description": "POST <%= @info['base_url'] %>/api/v1/computer-groups",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/computer-groups",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Is Smart",
+          "required": false,
+          "mapTo": "Is Smart"
+        },
+        {
+          "name": "Criteria Json",
+          "required": false,
+          "mapTo": "Criteria Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group ID",
+          "path": "group_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "policy_create",
+      "name": "Jamf Pro Policy Create",
+      "description": "POST <%= @info['base_url'] %>/api/v1/policies",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/policies",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Enabled",
+          "required": false,
+          "mapTo": "Enabled"
+        },
+        {
+          "name": "Trigger",
+          "required": false,
+          "mapTo": "Trigger"
+        },
+        {
+          "name": "Frequency",
+          "required": false,
+          "mapTo": "Frequency"
+        },
+        {
+          "name": "Scope Json",
+          "required": false,
+          "mapTo": "Scope Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Policy ID",
+          "path": "policy_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

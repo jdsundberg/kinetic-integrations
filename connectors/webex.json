@@ -1,0 +1,374 @@
+{
+  "id": "webex",
+  "service": "Webex",
+  "version": 1,
+  "category": "Communication",
+  "description": "Webex integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "meeting_create",
+      "name": "Webex Meeting Create",
+      "description": "POST https://webexapis.com/v1/meetings",
+      "method": "POST",
+      "path": "https://webexapis.com/v1/meetings",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Start",
+          "required": true,
+          "mapTo": "Start"
+        },
+        {
+          "name": "End",
+          "required": true,
+          "mapTo": "End"
+        },
+        {
+          "name": "Timezone",
+          "required": false,
+          "mapTo": "Timezone"
+        },
+        {
+          "name": "Invitees",
+          "required": false,
+          "mapTo": "Invitees"
+        },
+        {
+          "name": "Agenda",
+          "required": false,
+          "mapTo": "Agenda"
+        },
+        {
+          "name": "Allow Any User To Be Co Host",
+          "required": false,
+          "mapTo": "Allow Any User To Be Co Host"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Meeting ID",
+          "path": "meeting_id"
+        },
+        {
+          "name": "Web Link",
+          "path": "web_link"
+        },
+        {
+          "name": "SIP Address",
+          "path": "sip_address"
+        },
+        {
+          "name": "Password",
+          "path": "password"
+        },
+        {
+          "name": "Meeting Number",
+          "path": "meeting_number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "membership_add",
+      "name": "Webex Membership Add",
+      "description": "POST https://webexapis.com/v1/memberships",
+      "method": "POST",
+      "path": "https://webexapis.com/v1/memberships",
+      "inputs": [
+        {
+          "name": "Room Id",
+          "required": true,
+          "mapTo": "Room Id"
+        },
+        {
+          "name": "Person Email",
+          "required": false,
+          "mapTo": "Person Email"
+        },
+        {
+          "name": "Person Id",
+          "required": false,
+          "mapTo": "Person Id"
+        },
+        {
+          "name": "Is Moderator",
+          "required": false,
+          "mapTo": "Is Moderator"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Membership ID",
+          "path": "membership_id"
+        },
+        {
+          "name": "Person Email",
+          "path": "person_email"
+        },
+        {
+          "name": "Room ID",
+          "path": "room_id"
+        },
+        {
+          "name": "Is Moderator",
+          "path": "is_moderator"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Webex Message Send",
+      "description": "POST https://webexapis.com/v1/messages",
+      "method": "POST",
+      "path": "https://webexapis.com/v1/messages",
+      "inputs": [
+        {
+          "name": "Room Id",
+          "required": false,
+          "mapTo": "Room Id"
+        },
+        {
+          "name": "To Person Email",
+          "required": false,
+          "mapTo": "To Person Email"
+        },
+        {
+          "name": "To Person Id",
+          "required": false,
+          "mapTo": "To Person Id"
+        },
+        {
+          "name": "Text",
+          "required": false,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Markdown",
+          "required": false,
+          "mapTo": "Markdown"
+        },
+        {
+          "name": "File Urls",
+          "required": false,
+          "mapTo": "File Urls"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Room ID",
+          "path": "room_id"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "person_retrieve",
+      "name": "Webex Person Retrieve",
+      "description": "GET https://webexapis.com/v1/people/<%= @inputs['Person Id'] %>",
+      "method": "GET",
+      "path": "https://webexapis.com/v1/people/<%= @inputs['Person Id'] %>",
+      "inputs": [
+        {
+          "name": "Person Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Person ID",
+          "path": "person_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Emails",
+          "path": "emails"
+        },
+        {
+          "name": "Org ID",
+          "path": "org_id"
+        },
+        {
+          "name": "Person JSON",
+          "path": "person_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "recording_list",
+      "name": "Webex Recording List",
+      "description": "GET https://webexapis.com/v1/recordings",
+      "method": "GET",
+      "path": "https://webexapis.com/v1/recordings",
+      "inputs": [
+        {
+          "name": "From",
+          "required": false
+        },
+        {
+          "name": "To",
+          "required": false
+        },
+        {
+          "name": "Meeting Id",
+          "required": false
+        },
+        {
+          "name": "Max",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Recordings JSON",
+          "path": "recordings_json"
+        },
+        {
+          "name": "Recording Count",
+          "path": "recording_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "room_create",
+      "name": "Webex Room Create",
+      "description": "POST https://webexapis.com/v1/rooms",
+      "method": "POST",
+      "path": "https://webexapis.com/v1/rooms",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Team Id",
+          "required": false,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Is Locked",
+          "required": false,
+          "mapTo": "Is Locked"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Room ID",
+          "path": "room_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

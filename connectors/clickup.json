@@ -1,0 +1,345 @@
+{
+  "id": "clickup",
+  "service": "ClickUp",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "ClickUp integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "ClickUp personal API token or OAuth token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "comment_create",
+      "name": "ClickUp Comment Create",
+      "description": "POST https://api.clickup.com/api/v2/task/<%= @inputs['Task Id'] %>/comment",
+      "method": "POST",
+      "path": "https://api.clickup.com/api/v2/task/<%= @inputs['Task Id'] %>/comment",
+      "inputs": [
+        {
+          "name": "Task Id",
+          "required": true,
+          "mapTo": "Task Id"
+        },
+        {
+          "name": "Comment Text",
+          "required": true,
+          "mapTo": "Comment Text"
+        },
+        {
+          "name": "Assignee",
+          "required": false,
+          "mapTo": "Assignee"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "folder_create",
+      "name": "ClickUp Folder Create",
+      "description": "POST https://api.clickup.com/api/v2/space/<%= @inputs['Space Id'] %>/folder",
+      "method": "POST",
+      "path": "https://api.clickup.com/api/v2/space/<%= @inputs['Space Id'] %>/folder",
+      "inputs": [
+        {
+          "name": "Space Id",
+          "required": true,
+          "mapTo": "Space Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Folder ID",
+          "path": "folder_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_create",
+      "name": "ClickUp List Create",
+      "description": "POST https://api.clickup.com/api/v2/folder/<%= @inputs['Folder Id'] %>/list",
+      "method": "POST",
+      "path": "https://api.clickup.com/api/v2/folder/<%= @inputs['Folder Id'] %>/list",
+      "inputs": [
+        {
+          "name": "Folder Id",
+          "required": true,
+          "mapTo": "Folder Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Content",
+          "required": false,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "List ID",
+          "path": "list_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "space_create",
+      "name": "ClickUp Space Create",
+      "description": "POST https://api.clickup.com/api/v2/team/<%= @inputs['Team Id'] %>/space",
+      "method": "POST",
+      "path": "https://api.clickup.com/api/v2/team/<%= @inputs['Team Id'] %>/space",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Multiple Assignees",
+          "required": false,
+          "mapTo": "Multiple Assignees"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Space ID",
+          "path": "space_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_create",
+      "name": "ClickUp Task Create",
+      "description": "POST https://api.clickup.com/api/v2/list/<%= @inputs['List Id'] %>/task",
+      "method": "POST",
+      "path": "https://api.clickup.com/api/v2/list/<%= @inputs['List Id'] %>/task",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Assignees",
+          "required": false,
+          "mapTo": "Assignees"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Task ID",
+          "path": "task_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_update",
+      "name": "ClickUp Task Update",
+      "description": "PUT https://api.clickup.com/api/v2/task/<%= @inputs['Task Id'] %>",
+      "method": "PUT",
+      "path": "https://api.clickup.com/api/v2/task/<%= @inputs['Task Id'] %>",
+      "inputs": [
+        {
+          "name": "Task Id",
+          "required": true,
+          "mapTo": "Task Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Task ID",
+          "path": "task_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

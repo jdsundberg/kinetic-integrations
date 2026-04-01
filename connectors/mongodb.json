@@ -1,0 +1,287 @@
+{
+  "id": "mongodb",
+  "service": "MongoDB Atlas",
+  "version": 1,
+  "category": "Data & Analytics",
+  "description": "MongoDB Atlas integration with 5 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: api-key"
+      },
+      {
+        "name": "app_id",
+        "required": true,
+        "description": "MongoDB Atlas Data API app ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "collection_create",
+      "name": "MongoDB Atlas Collection Create",
+      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/aggregate",
+      "method": "POST",
+      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/aggregate",
+      "inputs": [
+        {
+          "name": "Data Source",
+          "required": true,
+          "mapTo": "Data Source"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Collection",
+          "required": true,
+          "mapTo": "Collection"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_delete",
+      "name": "MongoDB Atlas Document Delete",
+      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/deleteOne",
+      "method": "POST",
+      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/deleteOne",
+      "inputs": [
+        {
+          "name": "Data Source",
+          "required": true,
+          "mapTo": "Data Source"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Collection",
+          "required": true,
+          "mapTo": "Collection"
+        },
+        {
+          "name": "Filter Json",
+          "required": true,
+          "mapTo": "Filter Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deleted Count",
+          "path": "deleted_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_find",
+      "name": "MongoDB Atlas Document Find",
+      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/find",
+      "method": "POST",
+      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/find",
+      "inputs": [
+        {
+          "name": "Data Source",
+          "required": true,
+          "mapTo": "Data Source"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Collection",
+          "required": true,
+          "mapTo": "Collection"
+        },
+        {
+          "name": "Filter Json",
+          "required": false,
+          "mapTo": "Filter Json"
+        },
+        {
+          "name": "Projection Json",
+          "required": false,
+          "mapTo": "Projection Json"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "Limit"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Documents JSON",
+          "path": "documents_json"
+        },
+        {
+          "name": "Document Count",
+          "path": "document_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_insert",
+      "name": "MongoDB Atlas Document Insert",
+      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/insertOne",
+      "method": "POST",
+      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/insertOne",
+      "inputs": [
+        {
+          "name": "Data Source",
+          "required": true,
+          "mapTo": "Data Source"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Collection",
+          "required": true,
+          "mapTo": "Collection"
+        },
+        {
+          "name": "Document Json",
+          "required": true,
+          "mapTo": "Document Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Inserted ID",
+          "path": "inserted_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_update",
+      "name": "MongoDB Atlas Document Update",
+      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/updateOne",
+      "method": "POST",
+      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/updateOne",
+      "inputs": [
+        {
+          "name": "Data Source",
+          "required": true,
+          "mapTo": "Data Source"
+        },
+        {
+          "name": "Database",
+          "required": true,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Collection",
+          "required": true,
+          "mapTo": "Collection"
+        },
+        {
+          "name": "Filter Json",
+          "required": true,
+          "mapTo": "Filter Json"
+        },
+        {
+          "name": "Update Json",
+          "required": true,
+          "mapTo": "Update Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Matched Count",
+          "path": "matched_count"
+        },
+        {
+          "name": "Modified Count",
+          "path": "modified_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

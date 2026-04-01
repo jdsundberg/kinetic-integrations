@@ -1,0 +1,329 @@
+{
+  "id": "namely",
+  "service": "Namely",
+  "version": 1,
+  "category": "HR & People",
+  "description": "Namely integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "subdomain",
+        "required": true,
+        "description": "Namely company subdomain."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "employee_create",
+      "name": "Namely Employee Create",
+      "description": "POST https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles",
+      "method": "POST",
+      "path": "https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Start Date",
+          "required": false,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Reports To Id",
+          "required": false,
+          "mapTo": "Reports To Id"
+        },
+        {
+          "name": "Salary Amount",
+          "required": false,
+          "mapTo": "Salary Amount"
+        },
+        {
+          "name": "Salary Currency",
+          "required": false,
+          "mapTo": "Salary Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Profile ID",
+          "path": "profile_id"
+        },
+        {
+          "name": "Full Name",
+          "path": "full_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "employee_retrieve",
+      "name": "Namely Employee Retrieve",
+      "description": "GET https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "method": "GET",
+      "path": "https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "inputs": [
+        {
+          "name": "Profile Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Profile ID",
+          "path": "profile_id"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Job Title",
+          "path": "job_title"
+        },
+        {
+          "name": "Department",
+          "path": "department"
+        },
+        {
+          "name": "Profile JSON",
+          "path": "profile_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "employee_update",
+      "name": "Namely Employee Update",
+      "description": "PUT https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "method": "PUT",
+      "path": "https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "inputs": [
+        {
+          "name": "Profile Id",
+          "required": true,
+          "mapTo": "Profile Id"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Profile ID",
+          "path": "profile_id"
+        },
+        {
+          "name": "Updated",
+          "path": "updated"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "report_retrieve",
+      "name": "Namely Report Retrieve",
+      "description": "GET https://<%= @info['subdomain'] %>.namely.com/api/v1/reports/<%= @inputs['Report Id'] %>",
+      "method": "GET",
+      "path": "https://<%= @info['subdomain'] %>.namely.com/api/v1/reports/<%= @inputs['Report Id'] %>",
+      "inputs": [
+        {
+          "name": "Report Id",
+          "required": true
+        },
+        {
+          "name": "Format",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Report Content",
+          "path": "report_content"
+        },
+        {
+          "name": "Report Title",
+          "path": "report_title"
+        },
+        {
+          "name": "Report JSON",
+          "path": "report_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "time_off_create",
+      "name": "Namely Time Off Create",
+      "description": "POST https://<%= @info['subdomain'] %>.namely.com/api/v1/time_off/requests",
+      "method": "POST",
+      "path": "https://<%= @info['subdomain'] %>.namely.com/api/v1/time_off/requests",
+      "inputs": [
+        {
+          "name": "Profile Id",
+          "required": true,
+          "mapTo": "Profile Id"
+        },
+        {
+          "name": "Leave Type Id",
+          "required": true,
+          "mapTo": "Leave Type Id"
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": true,
+          "mapTo": "End Date"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "Notes"
+        },
+        {
+          "name": "Approver Id",
+          "required": false,
+          "mapTo": "Approver Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

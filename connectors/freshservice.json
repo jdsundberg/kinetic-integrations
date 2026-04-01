@@ -1,0 +1,367 @@
+{
+  "id": "freshservice",
+  "service": "Freshservice",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Freshservice integration with 6 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "domain_url",
+        "required": true,
+        "description": "Freshservice domain URL (e.g. https://myco.freshservice.com)."
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Freshservice API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "asset_create",
+      "name": "Freshservice Asset Create",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/assets",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/assets",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Asset Type Id",
+          "required": true,
+          "mapTo": "Asset Type Id"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Asset Tag",
+          "required": false,
+          "mapTo": "Asset Tag"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Asset ID",
+          "path": "asset_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Asset Tag",
+          "path": "asset_tag"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "asset_update",
+      "name": "Freshservice Asset Update",
+      "description": "PUT <%= @info['domain_url'] %>/api/v2/assets/<%= @inputs['Asset Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['domain_url'] %>/api/v2/assets/<%= @inputs['Asset Id'] %>",
+      "inputs": [
+        {
+          "name": "Asset Id",
+          "required": true,
+          "mapTo": "Asset Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Asset Tag",
+          "required": false,
+          "mapTo": "Asset Tag"
+        },
+        {
+          "name": "Assigned To Id",
+          "required": false,
+          "mapTo": "Assigned To Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Asset ID",
+          "path": "asset_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "requester_create",
+      "name": "Freshservice Requester Create",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/requesters",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/requesters",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Primary Email",
+          "required": true,
+          "mapTo": "Primary Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Department Ids",
+          "required": false,
+          "mapTo": "Department Ids"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Requester ID",
+          "path": "requester_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_create",
+      "name": "Freshservice Ticket Create",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/tickets",
+      "inputs": [
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Description",
+          "required": true,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Department Id",
+          "required": false,
+          "mapTo": "Department Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Subject",
+          "path": "subject"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_note",
+      "name": "Freshservice Ticket Add Note",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true,
+          "mapTo": "Ticket Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Private",
+          "required": false,
+          "mapTo": "Private"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Note ID",
+          "path": "note_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_update",
+      "name": "Freshservice Ticket Update",
+      "description": "PUT <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true,
+          "mapTo": "Ticket Id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Agent Id",
+          "required": false,
+          "mapTo": "Agent Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "id": "ansible",
+  "service": "Ansible Tower",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Ansible Tower integration with 4 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Ansible Tower/AWX base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "credential_create",
+      "name": "Ansible Tower Credential Create",
+      "description": "POST <%= @info['base_url'] %>/api/v2/credentials/",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v2/credentials/",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Credential Type",
+          "required": true,
+          "mapTo": "Credential Type"
+        },
+        {
+          "name": "Organization",
+          "required": true,
+          "mapTo": "Organization"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Inputs Json",
+          "required": false,
+          "mapTo": "Inputs Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Credential ID",
+          "path": "credential_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "inventory_create",
+      "name": "Ansible Tower Inventory Create",
+      "description": "POST <%= @info['base_url'] %>/api/v2/inventories/",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v2/inventories/",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Organization",
+          "required": true,
+          "mapTo": "Organization"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Variables Json",
+          "required": false,
+          "mapTo": "Variables Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Inventory ID",
+          "path": "inventory_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_launch",
+      "name": "Ansible Tower Job Launch",
+      "description": "POST <%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
+      "inputs": [
+        {
+          "name": "Template Id",
+          "required": true,
+          "mapTo": "Template Id"
+        },
+        {
+          "name": "Inventory",
+          "required": false,
+          "mapTo": "Inventory"
+        },
+        {
+          "name": "Extra Vars Json",
+          "required": false,
+          "mapTo": "Extra Vars Json"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "Limit"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Job URL",
+          "path": "job_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "template_retrieve",
+      "name": "Ansible Tower Template Retrieve",
+      "description": "GET <%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/",
+      "inputs": [
+        {
+          "name": "Template Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Template ID",
+          "path": "template_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Description",
+          "path": "description"
+        },
+        {
+          "name": "Playbook",
+          "path": "playbook"
+        },
+        {
+          "name": "Template JSON",
+          "path": "template_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

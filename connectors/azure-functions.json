@@ -1,0 +1,188 @@
+{
+  "id": "azure-functions",
+  "service": "Azure Functions",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Azure Functions integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: x-functions-key"
+      },
+      {
+        "name": "app_name",
+        "required": true,
+        "description": "Azure Function App name."
+      },
+      {
+        "name": "function_key",
+        "required": true,
+        "description": "Azure Functions host key or function key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "function_create",
+      "name": "Azure Functions Function Create",
+      "description": "PUT https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>",
+      "method": "PUT",
+      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>",
+      "inputs": [
+        {
+          "name": "Function Name",
+          "required": true,
+          "mapTo": "Function Name"
+        },
+        {
+          "name": "Script File",
+          "required": false,
+          "mapTo": "Script File"
+        },
+        {
+          "name": "Bindings Json",
+          "required": true,
+          "mapTo": "Bindings Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "function_list",
+      "name": "Azure Functions Function List",
+      "description": "GET https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions",
+      "method": "GET",
+      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Functions JSON",
+          "path": "functions_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "invoke",
+      "name": "Azure Functions Invoke",
+      "description": "POST https://<%= @info['app_name'] %>.azurewebsites.net/api/<%= @inputs['Function Name'] %>",
+      "method": "POST",
+      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/api/<%= @inputs['Function Name'] %>",
+      "inputs": [
+        {
+          "name": "Function Name",
+          "required": true,
+          "mapTo": "Function Name"
+        },
+        {
+          "name": "Payload Json",
+          "required": false,
+          "mapTo": "Payload Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response JSON",
+          "path": "response_json"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "key_retrieve",
+      "name": "Azure Functions Key Retrieve",
+      "description": "GET https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>/keys",
+      "method": "GET",
+      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>/keys",
+      "inputs": [
+        {
+          "name": "Function Name",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Keys JSON",
+          "path": "keys_json"
+        },
+        {
+          "name": "Default Key",
+          "path": "default_key"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

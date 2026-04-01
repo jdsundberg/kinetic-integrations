@@ -1,0 +1,281 @@
+{
+  "id": "newrelic",
+  "service": "New Relic",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "New Relic integration with 5 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: Api-Key"
+      },
+      {
+        "name": "account_id",
+        "required": true,
+        "description": "New Relic account ID."
+      },
+      {
+        "name": "insert_key",
+        "required": true,
+        "description": "New Relic Insights insert key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "alert_create",
+      "name": "New Relic Alert Create",
+      "description": "POST https://api.newrelic.com/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
+      "method": "POST",
+      "path": "https://api.newrelic.com/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
+      "inputs": [
+        {
+          "name": "Policy Id",
+          "required": true,
+          "mapTo": "Policy Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Metric",
+          "required": true,
+          "mapTo": "Metric"
+        },
+        {
+          "name": "Condition Scope",
+          "required": false,
+          "mapTo": "Condition Scope"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Condition ID",
+          "path": "condition_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "dashboard_create",
+      "name": "New Relic Dashboard Create",
+      "description": "POST https://api.newrelic.com/graphql",
+      "method": "POST",
+      "path": "https://api.newrelic.com/graphql",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Widgets Json",
+          "required": true,
+          "mapTo": "Widgets Json"
+        },
+        {
+          "name": "Permissions",
+          "required": false,
+          "mapTo": "Permissions"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dashboard GUID",
+          "path": "dashboard_guid"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "deployment_create",
+      "name": "New Relic Deployment Create",
+      "description": "POST https://api.newrelic.com/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
+      "method": "POST",
+      "path": "https://api.newrelic.com/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
+      "inputs": [
+        {
+          "name": "App Id",
+          "required": true,
+          "mapTo": "App Id"
+        },
+        {
+          "name": "Revision",
+          "required": true,
+          "mapTo": "Revision"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "User",
+          "required": false,
+          "mapTo": "User"
+        },
+        {
+          "name": "Changelog",
+          "required": false,
+          "mapTo": "Changelog"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deployment ID",
+          "path": "deployment_id"
+        },
+        {
+          "name": "Revision",
+          "path": "revision"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "event_send",
+      "name": "New Relic Event Send",
+      "description": "POST https://insights-collector.newrelic.com/v1/accounts/<%= @info['account_id'] %>/events",
+      "method": "POST",
+      "path": "https://insights-collector.newrelic.com/v1/accounts/<%= @info['account_id'] %>/events",
+      "inputs": [
+        {
+          "name": "Event Type",
+          "required": true,
+          "mapTo": "Event Type"
+        },
+        {
+          "name": "Event Data Json",
+          "required": true,
+          "mapTo": "Event Data Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "UUID",
+          "path": "uuid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "metric_submit",
+      "name": "New Relic Metric Submit",
+      "description": "POST https://metric-api.newrelic.com/metric/v1",
+      "method": "POST",
+      "path": "https://metric-api.newrelic.com/metric/v1",
+      "inputs": [
+        {
+          "name": "Metric Name",
+          "required": true,
+          "mapTo": "Metric Name"
+        },
+        {
+          "name": "Metric Value",
+          "required": true,
+          "mapTo": "Metric Value"
+        },
+        {
+          "name": "Timestamp",
+          "required": false,
+          "mapTo": "Timestamp"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

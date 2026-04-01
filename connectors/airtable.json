@@ -1,0 +1,233 @@
+{
+  "id": "airtable",
+  "service": "Airtable",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Airtable integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Airtable personal access token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "record_create",
+      "name": "Airtable Record Create",
+      "description": "POST https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
+      "method": "POST",
+      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
+      "inputs": [
+        {
+          "name": "Base Id",
+          "required": true,
+          "mapTo": "Base Id"
+        },
+        {
+          "name": "Table Name",
+          "required": true,
+          "mapTo": "Table Name"
+        },
+        {
+          "name": "Fields Json",
+          "required": true,
+          "mapTo": "Fields Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Fields JSON",
+          "path": "fields_json"
+        },
+        {
+          "name": "Created Time",
+          "path": "created_time"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "record_list",
+      "name": "Airtable Record List",
+      "description": "GET https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
+      "method": "GET",
+      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
+      "inputs": [
+        {
+          "name": "Base Id",
+          "required": true
+        },
+        {
+          "name": "Table Name",
+          "required": true
+        },
+        {
+          "name": "Max Records",
+          "required": false
+        },
+        {
+          "name": "View",
+          "required": false
+        },
+        {
+          "name": "Filter Formula",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Records JSON",
+          "path": "records_json"
+        },
+        {
+          "name": "Offset",
+          "path": "offset"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "record_retrieve",
+      "name": "Airtable Record Retrieve",
+      "description": "GET https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "method": "GET",
+      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Base Id",
+          "required": true
+        },
+        {
+          "name": "Table Name",
+          "required": true
+        },
+        {
+          "name": "Record Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Fields JSON",
+          "path": "fields_json"
+        },
+        {
+          "name": "Created Time",
+          "path": "created_time"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "record_update",
+      "name": "Airtable Record Update",
+      "description": "PATCH https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "method": "PATCH",
+      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Base Id",
+          "required": true,
+          "mapTo": "Base Id"
+        },
+        {
+          "name": "Table Name",
+          "required": true,
+          "mapTo": "Table Name"
+        },
+        {
+          "name": "Record Id",
+          "required": true,
+          "mapTo": "Record Id"
+        },
+        {
+          "name": "Fields Json",
+          "required": true,
+          "mapTo": "Fields Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Fields JSON",
+          "path": "fields_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

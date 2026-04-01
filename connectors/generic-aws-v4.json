@@ -1,0 +1,44 @@
+{
+  "id": "generic-aws-v4",
+  "service": "Generic AWS (Signature V4)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any AWS service using IAM Signature V4 authentication.",
+  "auth": {
+    "type": "aws",
+    "properties": [
+      {
+        "name": "access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "secret_access_key",
+        "required": true,
+        "encrypted": true,
+        "description": "AWS secret access key."
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "service",
+        "required": true,
+        "description": "AWS service name (e.g. s3, execute-api)."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Service endpoint URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

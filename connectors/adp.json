@@ -1,0 +1,277 @@
+{
+  "id": "adp",
+  "service": "ADP",
+  "version": 1,
+  "category": "HR & People",
+  "description": "ADP integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "event_notify",
+      "name": "ADP Event Notification",
+      "description": "POST https://api.adp.com/events/hr/v1/<%= @inputs['Event Type'] %>",
+      "method": "POST",
+      "path": "https://api.adp.com/events/hr/v1/<%= @inputs['Event Type'] %>",
+      "inputs": [
+        {
+          "name": "Event Type",
+          "required": true,
+          "mapTo": "Event Type"
+        },
+        {
+          "name": "Associate Oid",
+          "required": true,
+          "mapTo": "Associate Oid"
+        },
+        {
+          "name": "Effective Date",
+          "required": true,
+          "mapTo": "Effective Date"
+        },
+        {
+          "name": "Reason Code",
+          "required": false,
+          "mapTo": "Reason Code"
+        },
+        {
+          "name": "Comment",
+          "required": false,
+          "mapTo": "Comment"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Event ID",
+          "path": "event_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "org_retrieve",
+      "name": "ADP Organization Retrieve",
+      "description": "GET https://api.adp.com/core/v1/organization-departments/<%= @inputs['Department Code'] %>",
+      "method": "GET",
+      "path": "https://api.adp.com/core/v1/organization-departments/<%= @inputs['Department Code'] %>",
+      "inputs": [
+        {
+          "name": "Department Code",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Department Code",
+          "path": "department_code"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Org JSON",
+          "path": "org_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pay_data_retrieve",
+      "name": "ADP Pay Data Retrieve",
+      "description": "GET https://api.adp.com/payroll/v1/workers/<%= @inputs['Associate Oid'] %>/pay-distributions",
+      "method": "GET",
+      "path": "https://api.adp.com/payroll/v1/workers/<%= @inputs['Associate Oid'] %>/pay-distributions",
+      "inputs": [
+        {
+          "name": "Associate Oid",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Pay Distributions JSON",
+          "path": "pay_distributions_json"
+        },
+        {
+          "name": "Distribution Count",
+          "path": "distribution_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "worker_create",
+      "name": "ADP Worker Create",
+      "description": "POST https://api.adp.com/events/hr/v1/worker.hire",
+      "method": "POST",
+      "path": "https://api.adp.com/events/hr/v1/worker.hire",
+      "inputs": [
+        {
+          "name": "Given Name",
+          "required": true,
+          "mapTo": "Given Name"
+        },
+        {
+          "name": "Family Name",
+          "required": true,
+          "mapTo": "Family Name"
+        },
+        {
+          "name": "Birth Date",
+          "required": false,
+          "mapTo": "Birth Date"
+        },
+        {
+          "name": "Hire Date",
+          "required": true,
+          "mapTo": "Hire Date"
+        },
+        {
+          "name": "Ssn Last Four",
+          "required": false,
+          "mapTo": "Ssn Last Four"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Department Code",
+          "required": false,
+          "mapTo": "Department Code"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Worker Type",
+          "required": false,
+          "mapTo": "Worker Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Event ID",
+          "path": "event_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "worker_retrieve",
+      "name": "ADP Worker Retrieve",
+      "description": "GET https://api.adp.com/hr/v2/workers/<%= @inputs['Associate Oid'] %>",
+      "method": "GET",
+      "path": "https://api.adp.com/hr/v2/workers/<%= @inputs['Associate Oid'] %>",
+      "inputs": [
+        {
+          "name": "Associate Oid",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Associate OID",
+          "path": "associate_oid"
+        },
+        {
+          "name": "Legal Name",
+          "path": "legal_name"
+        },
+        {
+          "name": "Worker ID",
+          "path": "worker_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Worker JSON",
+          "path": "worker_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

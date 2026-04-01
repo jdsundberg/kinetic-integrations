@@ -1,0 +1,280 @@
+{
+  "id": "aws-lambda",
+  "service": "AWS Lambda",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "AWS Lambda integration with 4 pre-built routines.",
+  "auth": {
+    "type": "aws",
+    "properties": [
+      {
+        "name": "aws_access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "aws_secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      },
+      {
+        "name": "aws_region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "aws_service",
+        "required": false,
+        "description": "AWS service name for signing."
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "AWS region."
+      },
+      {
+        "name": "access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "function_create",
+      "name": "AWS Lambda Function Create",
+      "description": "POST https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions",
+      "method": "POST",
+      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions",
+      "inputs": [
+        {
+          "name": "Function Name",
+          "required": true,
+          "mapTo": "Function Name"
+        },
+        {
+          "name": "Runtime",
+          "required": true,
+          "mapTo": "Runtime"
+        },
+        {
+          "name": "Role",
+          "required": true,
+          "mapTo": "Role"
+        },
+        {
+          "name": "Handler",
+          "required": true,
+          "mapTo": "Handler"
+        },
+        {
+          "name": "Zip File Base64",
+          "required": true,
+          "mapTo": "Zip File Base64"
+        },
+        {
+          "name": "Memory Size",
+          "required": false,
+          "mapTo": "Memory Size"
+        },
+        {
+          "name": "Timeout",
+          "required": false,
+          "mapTo": "Timeout"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Function Name",
+          "path": "function_name"
+        },
+        {
+          "name": "Function ARN",
+          "path": "function_arn"
+        },
+        {
+          "name": "Runtime",
+          "path": "runtime"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "function_list",
+      "name": "AWS Lambda Function List",
+      "description": "GET https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions?MaxItems=<%= @inputs['Max Items'] %>",
+      "method": "GET",
+      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions?MaxItems=<%= @inputs['Max Items'] %>",
+      "inputs": [
+        {
+          "name": "Max Items",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Functions JSON",
+          "path": "functions_json"
+        },
+        {
+          "name": "Next Marker",
+          "path": "next_marker"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "function_update",
+      "name": "AWS Lambda Function Update",
+      "description": "PUT https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/configuration",
+      "method": "PUT",
+      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/configuration",
+      "inputs": [
+        {
+          "name": "Function Name",
+          "required": true,
+          "mapTo": "Function Name"
+        },
+        {
+          "name": "Memory Size",
+          "required": false,
+          "mapTo": "Memory Size"
+        },
+        {
+          "name": "Timeout",
+          "required": false,
+          "mapTo": "Timeout"
+        },
+        {
+          "name": "Runtime",
+          "required": false,
+          "mapTo": "Runtime"
+        },
+        {
+          "name": "Handler",
+          "required": false,
+          "mapTo": "Handler"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Environment Json",
+          "required": false,
+          "mapTo": "Environment Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Function Name",
+          "path": "function_name"
+        },
+        {
+          "name": "Function ARN",
+          "path": "function_arn"
+        },
+        {
+          "name": "Last Modified",
+          "path": "last_modified"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "invoke",
+      "name": "AWS Lambda Invoke",
+      "description": "POST https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/invocations",
+      "method": "POST",
+      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/invocations",
+      "inputs": [
+        {
+          "name": "Function Name",
+          "required": true,
+          "mapTo": "Function Name"
+        },
+        {
+          "name": "Payload Json",
+          "required": false,
+          "mapTo": "Payload Json"
+        },
+        {
+          "name": "Invocation Type",
+          "required": false,
+          "mapTo": "Invocation Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status Code",
+          "path": "status_code"
+        },
+        {
+          "name": "Response JSON",
+          "path": "response_json"
+        },
+        {
+          "name": "Function Error",
+          "path": "function_error"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

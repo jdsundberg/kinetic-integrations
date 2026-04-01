@@ -1,0 +1,34 @@
+{
+  "id": "generic-apikey-header",
+  "service": "Generic REST (API Key Header)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any REST API using an API key sent in a custom header.",
+  "auth": {
+    "type": "apikey_header",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "encrypted": true,
+        "description": "API key value."
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name (default: X-API-Key)."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

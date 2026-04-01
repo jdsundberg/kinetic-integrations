@@ -1,0 +1,573 @@
+{
+  "id": "servicenow",
+  "service": "ServiceNow",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "ServiceNow integration with 10 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "instance_url",
+        "required": true,
+        "description": "ServiceNow instance URL (e.g. https://myco.service-now.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "change_request_create",
+      "name": "ServiceNow Change Request Create",
+      "description": "POST /api/now/table/change_request",
+      "method": "POST",
+      "path": "/api/now/table/change_request",
+      "inputs": [
+        {
+          "name": "Short Description",
+          "required": true,
+          "mapTo": "Short Description"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Assignment Group",
+          "required": false,
+          "mapTo": "Assignment Group"
+        },
+        {
+          "name": "Requested By",
+          "required": false,
+          "mapTo": "Requested By"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "change_request_update",
+      "name": "ServiceNow Change Request Update",
+      "description": "PATCH /api/now/table/change_request/<%= @inputs['Sys Id'] %>",
+      "method": "PATCH",
+      "path": "/api/now/table/change_request/<%= @inputs['Sys Id'] %>",
+      "inputs": [
+        {
+          "name": "Sys Id",
+          "required": true,
+          "mapTo": "Sys Id"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        },
+        {
+          "name": "Work Notes",
+          "required": false,
+          "mapTo": "Work Notes"
+        },
+        {
+          "name": "Assignment Group",
+          "required": false,
+          "mapTo": "Assignment Group"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ci_retrieve",
+      "name": "ServiceNow CI Retrieve",
+      "description": "GET /api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "method": "GET",
+      "path": "/api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "inputs": [
+        {
+          "name": "Sys Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Class",
+          "path": "class"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ci_update",
+      "name": "ServiceNow CI Update",
+      "description": "PATCH /api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "method": "PATCH",
+      "path": "/api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "inputs": [
+        {
+          "name": "Sys Id",
+          "required": true,
+          "mapTo": "Sys Id"
+        },
+        {
+          "name": "Operational Status",
+          "required": false,
+          "mapTo": "Operational Status"
+        },
+        {
+          "name": "Assigned To",
+          "required": false,
+          "mapTo": "Assigned To"
+        },
+        {
+          "name": "Comments",
+          "required": false,
+          "mapTo": "Comments"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_close",
+      "name": "ServiceNow Incident Close",
+      "description": "PATCH /api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "method": "PATCH",
+      "path": "/api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "inputs": [
+        {
+          "name": "Sys Id",
+          "required": true,
+          "mapTo": "Sys Id"
+        },
+        {
+          "name": "Close Code",
+          "required": true,
+          "mapTo": "Close Code"
+        },
+        {
+          "name": "Close Notes",
+          "required": true,
+          "mapTo": "Close Notes"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_create",
+      "name": "ServiceNow Incident Create",
+      "description": "POST /api/now/table/incident",
+      "method": "POST",
+      "path": "/api/now/table/incident",
+      "inputs": [
+        {
+          "name": "Short Description",
+          "required": true,
+          "mapTo": "Short Description"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Urgency",
+          "required": false,
+          "mapTo": "Urgency"
+        },
+        {
+          "name": "Impact",
+          "required": false,
+          "mapTo": "Impact"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Assignment Group",
+          "required": false,
+          "mapTo": "Assignment Group"
+        },
+        {
+          "name": "Caller Id",
+          "required": false,
+          "mapTo": "Caller Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_retrieve",
+      "name": "ServiceNow Incident Retrieve",
+      "description": "GET /api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "method": "GET",
+      "path": "/api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "inputs": [
+        {
+          "name": "Sys Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Short Description",
+          "path": "short_description"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Priority",
+          "path": "priority"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_update",
+      "name": "ServiceNow Incident Update",
+      "description": "PATCH /api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "method": "PATCH",
+      "path": "/api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "inputs": [
+        {
+          "name": "Sys Id",
+          "required": true,
+          "mapTo": "Sys Id"
+        },
+        {
+          "name": "Short Description",
+          "required": false,
+          "mapTo": "Short Description"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        },
+        {
+          "name": "Assigned To",
+          "required": false,
+          "mapTo": "Assigned To"
+        },
+        {
+          "name": "Work Notes",
+          "required": false,
+          "mapTo": "Work Notes"
+        },
+        {
+          "name": "Close Notes",
+          "required": false,
+          "mapTo": "Close Notes"
+        },
+        {
+          "name": "Close Code",
+          "required": false,
+          "mapTo": "Close Code"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "ServiceNow User Create",
+      "description": "POST /api/now/table/sys_user",
+      "method": "POST",
+      "path": "/api/now/table/sys_user",
+      "inputs": [
+        {
+          "name": "User Name",
+          "required": true,
+          "mapTo": "User Name"
+        },
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "User Name",
+          "path": "user_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "ServiceNow User Retrieve",
+      "description": "GET /api/now/table/sys_user?sysparm_query=user_name=<%= @inputs['Username'] %>",
+      "method": "GET",
+      "path": "/api/now/table/sys_user?sysparm_query=user_name=<%= @inputs['Username'] %>",
+      "inputs": [
+        {
+          "name": "Username",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sys ID",
+          "path": "sys_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Active",
+          "path": "active"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

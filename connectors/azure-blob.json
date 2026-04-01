@@ -1,0 +1,214 @@
+{
+  "id": "azure-blob",
+  "service": "Azure Blob Storage",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Azure Blob Storage integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: x-ms-access-key"
+      },
+      {
+        "name": "account_name",
+        "required": true,
+        "description": "Azure storage account name."
+      },
+      {
+        "name": "access_key",
+        "required": true,
+        "description": "Azure storage access key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "blob_download",
+      "name": "Azure Blob Blob Download",
+      "description": "GET https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "method": "GET",
+      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "inputs": [
+        {
+          "name": "Container",
+          "required": true
+        },
+        {
+          "name": "Blob Name",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Content",
+          "path": "content"
+        },
+        {
+          "name": "Content Type",
+          "path": "content_type"
+        },
+        {
+          "name": "Content Length",
+          "path": "content_length"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "blob_list",
+      "name": "Azure Blob Blob List",
+      "description": "GET https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
+      "method": "GET",
+      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
+      "inputs": [
+        {
+          "name": "Container",
+          "required": true
+        },
+        {
+          "name": "Prefix",
+          "required": false
+        },
+        {
+          "name": "Max Results",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Blobs XML",
+          "path": "blobs_xml"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "blob_upload",
+      "name": "Azure Blob Blob Upload",
+      "description": "PUT https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "method": "PUT",
+      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "inputs": [
+        {
+          "name": "Container",
+          "required": true,
+          "mapTo": "Container"
+        },
+        {
+          "name": "Blob Name",
+          "required": true,
+          "mapTo": "Blob Name"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ETag",
+          "path": "etag"
+        },
+        {
+          "name": "Last Modified",
+          "path": "last_modified"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "container_create",
+      "name": "Azure Blob Container Create",
+      "description": "PUT https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container",
+      "method": "PUT",
+      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container",
+      "inputs": [
+        {
+          "name": "Container",
+          "required": true,
+          "mapTo": "Container"
+        },
+        {
+          "name": "Access Level",
+          "required": false,
+          "mapTo": "Access Level"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ETag",
+          "path": "etag"
+        },
+        {
+          "name": "Last Modified",
+          "path": "last_modified"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

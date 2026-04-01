@@ -1,0 +1,280 @@
+{
+  "id": "ping-identity",
+  "service": "Ping Identity",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Ping Identity integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "env_id",
+        "required": true,
+        "description": "PingOne environment ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "group_add",
+      "name": "Ping Identity Group Add Member",
+      "description": "POST https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/memberOfGroups",
+      "method": "POST",
+      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/memberOfGroups",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group ID",
+          "path": "group_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "password_set",
+      "name": "Ping Identity Password Set",
+      "description": "PUT https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/password",
+      "method": "PUT",
+      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/password",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Password",
+          "required": true,
+          "mapTo": "Password"
+        },
+        {
+          "name": "Force Change",
+          "required": false,
+          "mapTo": "Force Change"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Ping Identity User Create",
+      "description": "POST https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users",
+      "method": "POST",
+      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users",
+      "inputs": [
+        {
+          "name": "Username",
+          "required": true,
+          "mapTo": "Username"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Population Id",
+          "required": true,
+          "mapTo": "Population Id"
+        },
+        {
+          "name": "Name Given",
+          "required": false,
+          "mapTo": "Name Given"
+        },
+        {
+          "name": "Name Family",
+          "required": false,
+          "mapTo": "Name Family"
+        },
+        {
+          "name": "Enabled",
+          "required": false,
+          "mapTo": "Enabled"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Username",
+          "path": "username"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Ping Identity User Retrieve",
+      "description": "GET https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "method": "GET",
+      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Username",
+          "path": "username"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Enabled",
+          "path": "enabled"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_update",
+      "name": "Ping Identity User Update",
+      "description": "PATCH https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "method": "PATCH",
+      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Name Given",
+          "required": false,
+          "mapTo": "Name Given"
+        },
+        {
+          "name": "Name Family",
+          "required": false,
+          "mapTo": "Name Family"
+        },
+        {
+          "name": "Enabled",
+          "required": false,
+          "mapTo": "Enabled"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

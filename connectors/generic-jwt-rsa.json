@@ -1,0 +1,49 @@
+{
+  "id": "generic-jwt-rsa",
+  "service": "Generic REST (JWT RSA-SHA256)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any REST API using a signed JWT (Google Service Accounts, custom JWT auth).",
+  "auth": {
+    "type": "jwt",
+    "properties": [
+      {
+        "name": "private_key_pem",
+        "required": true,
+        "encrypted": true,
+        "description": "RSA private key in PEM format."
+      },
+      {
+        "name": "issuer",
+        "required": true,
+        "description": "JWT issuer (iss claim)."
+      },
+      {
+        "name": "subject",
+        "required": false,
+        "description": "JWT subject (sub claim) — for impersonation."
+      },
+      {
+        "name": "audience",
+        "required": true,
+        "description": "JWT audience (aud claim) — usually the token URL."
+      },
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "Token endpoint to exchange JWT for access token."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

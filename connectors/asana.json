@@ -1,0 +1,401 @@
+{
+  "id": "asana",
+  "service": "Asana",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Asana integration with 8 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "project_add_member",
+      "name": "Asana Project Add Member",
+      "description": "POST https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
+      "method": "POST",
+      "path": "https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
+      "inputs": [
+        {
+          "name": "Project Gid",
+          "required": true,
+          "mapTo": "Project Gid"
+        },
+        {
+          "name": "Members",
+          "required": true,
+          "mapTo": "Members"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Project GID",
+          "path": "project_gid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "project_create",
+      "name": "Asana Project Create",
+      "description": "POST https://app.asana.com/api/1.0/projects",
+      "method": "POST",
+      "path": "https://app.asana.com/api/1.0/projects",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "Notes"
+        },
+        {
+          "name": "Layout",
+          "required": false,
+          "mapTo": "Layout"
+        },
+        {
+          "name": "Color",
+          "required": false,
+          "mapTo": "Color"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Project GID",
+          "path": "project_gid"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Permalink",
+          "path": "permalink"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "section_create",
+      "name": "Asana Section Create",
+      "description": "POST https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
+      "method": "POST",
+      "path": "https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
+      "inputs": [
+        {
+          "name": "Project Gid",
+          "required": true,
+          "mapTo": "Project Gid"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Section GID",
+          "path": "section_gid"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "tag_create",
+      "name": "Asana Tag Create",
+      "description": "POST https://app.asana.com/api/1.0/tags",
+      "method": "POST",
+      "path": "https://app.asana.com/api/1.0/tags",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Color",
+          "required": false,
+          "mapTo": "Color"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tag GID",
+          "path": "tag_gid"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_add_comment",
+      "name": "Asana Task Add Comment",
+      "description": "POST https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
+      "method": "POST",
+      "path": "https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
+      "inputs": [
+        {
+          "name": "Task Gid",
+          "required": true,
+          "mapTo": "Task Gid"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Story GID",
+          "path": "story_gid"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_create",
+      "name": "Asana Task Create",
+      "description": "POST https://app.asana.com/api/1.0/tasks",
+      "method": "POST",
+      "path": "https://app.asana.com/api/1.0/tasks",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "Notes"
+        },
+        {
+          "name": "Assignee",
+          "required": false,
+          "mapTo": "Assignee"
+        },
+        {
+          "name": "Due On",
+          "required": false,
+          "mapTo": "Due On"
+        },
+        {
+          "name": "Projects",
+          "required": false,
+          "mapTo": "Projects"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Task GID",
+          "path": "task_gid"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Permalink",
+          "path": "permalink"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "task_update",
+      "name": "Asana Task Update",
+      "description": "PUT https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
+      "method": "PUT",
+      "path": "https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
+      "inputs": [
+        {
+          "name": "Task Gid",
+          "required": true,
+          "mapTo": "Task Gid"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "Notes"
+        },
+        {
+          "name": "Assignee",
+          "required": false,
+          "mapTo": "Assignee"
+        },
+        {
+          "name": "Due On",
+          "required": false,
+          "mapTo": "Due On"
+        },
+        {
+          "name": "Completed",
+          "required": false,
+          "mapTo": "Completed"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Task GID",
+          "path": "task_gid"
+        },
+        {
+          "name": "Completed",
+          "path": "completed"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "workspace_list",
+      "name": "Asana Workspace List",
+      "description": "GET https://app.asana.com/api/1.0/workspaces",
+      "method": "GET",
+      "path": "https://app.asana.com/api/1.0/workspaces",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Workspaces JSON",
+          "path": "workspaces_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

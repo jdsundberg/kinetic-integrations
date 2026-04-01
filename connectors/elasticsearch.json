@@ -1,0 +1,280 @@
+{
+  "id": "elasticsearch",
+  "service": "Elasticsearch",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Elasticsearch integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Elasticsearch cluster URL (e.g. https://es.myco.com:9200)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "bulk_index",
+      "name": "Elasticsearch Bulk Index",
+      "description": "POST <%= @info['base_url'] %>/_bulk",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/_bulk",
+      "inputs": [
+        {
+          "name": "Bulk Data",
+          "required": true,
+          "mapTo": "Bulk Data"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Took",
+          "path": "took"
+        },
+        {
+          "name": "Errors",
+          "path": "errors"
+        },
+        {
+          "name": "Items JSON",
+          "path": "items_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_get",
+      "name": "Elasticsearch Document Get",
+      "description": "GET <%= @info['base_url'] %>/<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "inputs": [
+        {
+          "name": "Index",
+          "required": true
+        },
+        {
+          "name": "Document Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Document ID",
+          "path": "document_id"
+        },
+        {
+          "name": "Index",
+          "path": "index"
+        },
+        {
+          "name": "Found",
+          "path": "found"
+        },
+        {
+          "name": "Source JSON",
+          "path": "source_json"
+        },
+        {
+          "name": "Document JSON",
+          "path": "document_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_index",
+      "name": "Elasticsearch Document Index",
+      "description": "POST <%= @info['base_url'] %>/<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "inputs": [
+        {
+          "name": "Index",
+          "required": true,
+          "mapTo": "Index"
+        },
+        {
+          "name": "Document Id",
+          "required": false,
+          "mapTo": "Document Id"
+        },
+        {
+          "name": "Document Json",
+          "required": true,
+          "mapTo": "Document Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Document ID",
+          "path": "document_id"
+        },
+        {
+          "name": "Index",
+          "path": "index"
+        },
+        {
+          "name": "Result",
+          "path": "result"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "document_search",
+      "name": "Elasticsearch Document Search",
+      "description": "POST <%= @info['base_url'] %>/<%= @inputs['Index'] %>/_search",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/<%= @inputs['Index'] %>/_search",
+      "inputs": [
+        {
+          "name": "Index",
+          "required": true,
+          "mapTo": "Index"
+        },
+        {
+          "name": "Query Json",
+          "required": true,
+          "mapTo": "Query Json"
+        },
+        {
+          "name": "Size",
+          "required": false,
+          "mapTo": "Size"
+        },
+        {
+          "name": "From",
+          "required": false,
+          "mapTo": "From"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total Hits",
+          "path": "total_hits"
+        },
+        {
+          "name": "Hits JSON",
+          "path": "hits_json"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "index_create",
+      "name": "Elasticsearch Index Create",
+      "description": "PUT <%= @info['base_url'] %>/<%= @inputs['Index'] %>",
+      "method": "PUT",
+      "path": "<%= @info['base_url'] %>/<%= @inputs['Index'] %>",
+      "inputs": [
+        {
+          "name": "Index",
+          "required": true,
+          "mapTo": "Index"
+        },
+        {
+          "name": "Settings Json",
+          "required": false,
+          "mapTo": "Settings Json"
+        },
+        {
+          "name": "Mappings Json",
+          "required": false,
+          "mapTo": "Mappings Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Acknowledged",
+          "path": "acknowledged"
+        },
+        {
+          "name": "Index",
+          "path": "index"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

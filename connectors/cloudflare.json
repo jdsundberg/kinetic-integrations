@@ -1,0 +1,251 @@
+{
+  "id": "cloudflare",
+  "service": "Cloudflare",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Cloudflare integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Cloudflare API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "dns_create",
+      "name": "Cloudflare DNS Create",
+      "description": "POST https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
+      "method": "POST",
+      "path": "https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
+      "inputs": [
+        {
+          "name": "Zone Id",
+          "required": true,
+          "mapTo": "Zone Id"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Ttl",
+          "required": false,
+          "mapTo": "Ttl"
+        },
+        {
+          "name": "Proxied",
+          "required": false,
+          "mapTo": "Proxied"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Content",
+          "path": "content"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "dns_delete",
+      "name": "Cloudflare DNS Delete",
+      "description": "DELETE https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "method": "DELETE",
+      "path": "https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Zone Id",
+          "required": true
+        },
+        {
+          "name": "Record Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "dns_update",
+      "name": "Cloudflare DNS Update",
+      "description": "PUT https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "method": "PUT",
+      "path": "https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Zone Id",
+          "required": true,
+          "mapTo": "Zone Id"
+        },
+        {
+          "name": "Record Id",
+          "required": true,
+          "mapTo": "Record Id"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Ttl",
+          "required": false,
+          "mapTo": "Ttl"
+        },
+        {
+          "name": "Proxied",
+          "required": false,
+          "mapTo": "Proxied"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Content",
+          "path": "content"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "zone_list",
+      "name": "Cloudflare Zone List",
+      "description": "GET https://api.cloudflare.com/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
+      "method": "GET",
+      "path": "https://api.cloudflare.com/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": false
+        },
+        {
+          "name": "Page",
+          "required": false
+        },
+        {
+          "name": "Per Page",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Zones JSON",
+          "path": "zones_json"
+        },
+        {
+          "name": "Total Count",
+          "path": "total_count"
+        },
+        {
+          "name": "Total Pages",
+          "path": "total_pages"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "id": "constant-contact",
+  "service": "Constant Contact",
+  "version": 1,
+  "category": "Email & Marketing",
+  "description": "Constant Contact integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "campaign_create",
+      "name": "Constant Contact Campaign Create",
+      "description": "POST https://api.cc.email/v3/emails",
+      "method": "POST",
+      "path": "https://api.cc.email/v3/emails",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "From Name",
+          "required": true,
+          "mapTo": "From Name"
+        },
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        },
+        {
+          "name": "Reply To Email",
+          "required": true,
+          "mapTo": "Reply To Email"
+        },
+        {
+          "name": "Html Content",
+          "required": true,
+          "mapTo": "Html Content"
+        },
+        {
+          "name": "Format Type",
+          "required": false,
+          "mapTo": "Format Type"
+        },
+        {
+          "name": "Contact List Ids",
+          "required": true,
+          "mapTo": "Contact List Ids"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Campaign ID",
+          "path": "campaign_id"
+        },
+        {
+          "name": "Activity ID",
+          "path": "activity_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "campaign_send",
+      "name": "Constant Contact Campaign Send",
+      "description": "POST https://api.cc.email/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
+      "method": "POST",
+      "path": "https://api.cc.email/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
+      "inputs": [
+        {
+          "name": "Campaign Activity Id",
+          "required": true,
+          "mapTo": "Campaign Activity Id"
+        },
+        {
+          "name": "Scheduled Date",
+          "required": true,
+          "mapTo": "Scheduled Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Schedule ID",
+          "path": "schedule_id"
+        },
+        {
+          "name": "Scheduled Date",
+          "path": "scheduled_date"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Constant Contact Contact Create",
+      "description": "POST https://api.cc.email/v3/contacts",
+      "method": "POST",
+      "path": "https://api.cc.email/v3/contacts",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Company Name",
+          "required": false,
+          "mapTo": "Company Name"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "List Memberships",
+          "required": true,
+          "mapTo": "List Memberships"
+        },
+        {
+          "name": "Permission To Send",
+          "required": false,
+          "mapTo": "Permission To Send"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "Constant Contact Contact Update",
+      "description": "PUT https://api.cc.email/v3/contacts/<%= @inputs['Contact Id'] %>",
+      "method": "PUT",
+      "path": "https://api.cc.email/v3/contacts/<%= @inputs['Contact Id'] %>",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Company Name",
+          "required": false,
+          "mapTo": "Company Name"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "List Memberships",
+          "required": false,
+          "mapTo": "List Memberships"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_add",
+      "name": "Constant Contact List Add Contact",
+      "description": "POST https://api.cc.email/v3/activities/add_list_memberships",
+      "method": "POST",
+      "path": "https://api.cc.email/v3/activities/add_list_memberships",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Contact Ids",
+          "required": true,
+          "mapTo": "Contact Ids"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Activity ID",
+          "path": "activity_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

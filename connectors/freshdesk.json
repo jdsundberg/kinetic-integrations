@@ -1,0 +1,371 @@
+{
+  "id": "freshdesk",
+  "service": "Freshdesk",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Freshdesk integration with 6 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "domain_url",
+        "required": true,
+        "description": "Freshdesk domain URL (e.g. https://myco.freshdesk.com)."
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Freshdesk API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "agent_retrieve",
+      "name": "Freshdesk Agent Retrieve",
+      "description": "GET <%= @info['domain_url'] %>/api/v2/agents/<%= @inputs['Agent Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['domain_url'] %>/api/v2/agents/<%= @inputs['Agent Id'] %>",
+      "inputs": [
+        {
+          "name": "Agent Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Agent ID",
+          "path": "agent_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Active",
+          "path": "active"
+        },
+        {
+          "name": "Agent JSON",
+          "path": "agent_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Freshdesk Contact Create",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/contacts",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/contacts",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Company Id",
+          "required": false,
+          "mapTo": "Company Id"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "Freshdesk Contact Update",
+      "description": "PUT <%= @info['domain_url'] %>/api/v2/contacts/<%= @inputs['Contact Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['domain_url'] %>/api/v2/contacts/<%= @inputs['Contact Id'] %>",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_create",
+      "name": "Freshdesk Ticket Create",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/tickets",
+      "inputs": [
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Description",
+          "required": true,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Group Id",
+          "required": false,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "Agent Id",
+          "required": false,
+          "mapTo": "Agent Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Subject",
+          "path": "subject"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_reply",
+      "name": "Freshdesk Ticket Reply",
+      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
+      "method": "POST",
+      "path": "<%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true,
+          "mapTo": "Ticket Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Reply ID",
+          "path": "reply_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_update",
+      "name": "Freshdesk Ticket Update",
+      "description": "PUT <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true,
+          "mapTo": "Ticket Id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Agent Id",
+          "required": false,
+          "mapTo": "Agent Id"
+        },
+        {
+          "name": "Group Id",
+          "required": false,
+          "mapTo": "Group Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

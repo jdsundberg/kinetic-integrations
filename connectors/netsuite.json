@@ -1,0 +1,248 @@
+{
+  "id": "netsuite",
+  "service": "NetSuite",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "NetSuite integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "account_url",
+        "required": true,
+        "description": "NetSuite account URL (e.g. https://1234567.suitetalk.api.netsuite.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "record_create",
+      "name": "NetSuite Record Create",
+      "description": "POST <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>",
+      "method": "POST",
+      "path": "<%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>",
+      "inputs": [
+        {
+          "name": "Record Type",
+          "required": true,
+          "mapTo": "Record Type"
+        },
+        {
+          "name": "Body Json",
+          "required": true,
+          "mapTo": "Body Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Record Link",
+          "path": "record_link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "record_retrieve",
+      "name": "NetSuite Record Retrieve",
+      "description": "GET <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Type",
+          "required": true
+        },
+        {
+          "name": "Record Id",
+          "required": true
+        },
+        {
+          "name": "Expand Sub Resources",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "record_update",
+      "name": "NetSuite Record Update",
+      "description": "PATCH <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "method": "PATCH",
+      "path": "<%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Type",
+          "required": true,
+          "mapTo": "Record Type"
+        },
+        {
+          "name": "Record Id",
+          "required": true,
+          "mapTo": "Record Id"
+        },
+        {
+          "name": "Body Json",
+          "required": true,
+          "mapTo": "Body Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Updated",
+          "path": "updated"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "saved_search",
+      "name": "NetSuite Saved Search Run",
+      "description": "GET <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Type",
+          "required": true
+        },
+        {
+          "name": "Saved Search Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Total Results",
+          "path": "total_results"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "NetSuite SuiteQL Search",
+      "description": "POST <%= @info['account_url'] %>/services/rest/query/v1/suiteql",
+      "method": "POST",
+      "path": "<%= @info['account_url'] %>/services/rest/query/v1/suiteql",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "Limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "Offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Items JSON",
+          "path": "items_json"
+        },
+        {
+          "name": "Total Results",
+          "path": "total_results"
+        },
+        {
+          "name": "Has More",
+          "path": "has_more"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

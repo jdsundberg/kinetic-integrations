@@ -1,0 +1,29 @@
+{
+  "id": "generic-bearer",
+  "service": "Generic REST (Bearer Token)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any REST API using a bearer token.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "encrypted": true,
+        "description": "Bearer token, API token, or PAT."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL (e.g. https://api.example.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

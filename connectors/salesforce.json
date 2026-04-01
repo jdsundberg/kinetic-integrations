@@ -1,0 +1,566 @@
+{
+  "id": "salesforce",
+  "service": "Salesforce",
+  "version": 1,
+  "category": "CRM & Sales",
+  "description": "Salesforce integration with 10 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "instance_url",
+        "required": true,
+        "description": "Salesforce instance URL (e.g. https://myco.my.salesforce.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_create",
+      "name": "Salesforce Account Create",
+      "description": "POST /services/data/v59.0/sobjects/Account",
+      "method": "POST",
+      "path": "/services/data/v59.0/sobjects/Account",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Industry",
+          "required": false,
+          "mapTo": "Industry"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Website",
+          "required": false,
+          "mapTo": "Website"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "account_retrieve",
+      "name": "Salesforce Account Retrieve",
+      "description": "GET /services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "method": "GET",
+      "path": "/services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Industry",
+          "path": "industry"
+        },
+        {
+          "name": "Phone",
+          "path": "phone"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "account_update",
+      "name": "Salesforce Account Update",
+      "description": "PATCH /services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "method": "PATCH",
+      "path": "/services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Id",
+          "required": true,
+          "mapTo": "Record Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Industry",
+          "required": false,
+          "mapTo": "Industry"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Website",
+          "required": false,
+          "mapTo": "Website"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "case_create",
+      "name": "Salesforce Case Create",
+      "description": "POST /services/data/v59.0/sobjects/Case",
+      "method": "POST",
+      "path": "/services/data/v59.0/sobjects/Case",
+      "inputs": [
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Contact Id",
+          "required": false,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Account Id",
+          "required": false,
+          "mapTo": "Account Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Case Number",
+          "path": "case_number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Salesforce Contact Create",
+      "description": "POST /services/data/v59.0/sobjects/Contact",
+      "method": "POST",
+      "path": "/services/data/v59.0/sobjects/Contact",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Account Id",
+          "required": false,
+          "mapTo": "Account Id"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_retrieve",
+      "name": "Salesforce Contact Retrieve",
+      "description": "GET /services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "method": "GET",
+      "path": "/services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Phone",
+          "path": "phone"
+        },
+        {
+          "name": "Record JSON",
+          "path": "record_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "Salesforce Contact Update",
+      "description": "PATCH /services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "method": "PATCH",
+      "path": "/services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Id",
+          "required": true,
+          "mapTo": "Record Id"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "opportunity_create",
+      "name": "Salesforce Opportunity Create",
+      "description": "POST /services/data/v59.0/sobjects/Opportunity",
+      "method": "POST",
+      "path": "/services/data/v59.0/sobjects/Opportunity",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Stage Name",
+          "required": true,
+          "mapTo": "Stage Name"
+        },
+        {
+          "name": "Close Date",
+          "required": true,
+          "mapTo": "Close Date"
+        },
+        {
+          "name": "Amount",
+          "required": false,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Account Id",
+          "required": false,
+          "mapTo": "Account Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Record ID",
+          "path": "record_id"
+        },
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "opportunity_update",
+      "name": "Salesforce Opportunity Update",
+      "description": "PATCH /services/data/v59.0/sobjects/Opportunity/<%= @inputs['Record Id'] %>",
+      "method": "PATCH",
+      "path": "/services/data/v59.0/sobjects/Opportunity/<%= @inputs['Record Id'] %>",
+      "inputs": [
+        {
+          "name": "Record Id",
+          "required": true,
+          "mapTo": "Record Id"
+        },
+        {
+          "name": "Stage Name",
+          "required": false,
+          "mapTo": "Stage Name"
+        },
+        {
+          "name": "Amount",
+          "required": false,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Close Date",
+          "required": false,
+          "mapTo": "Close Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "soql_query",
+      "name": "Salesforce SOQL Query",
+      "description": "GET /services/data/v59.0/query?q=<%= @inputs['Query'] %>",
+      "method": "GET",
+      "path": "/services/data/v59.0/query?q=<%= @inputs['Query'] %>",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total Size",
+          "path": "total_size"
+        },
+        {
+          "name": "Records JSON",
+          "path": "records_json"
+        },
+        {
+          "name": "Done",
+          "path": "done"
+        },
+        {
+          "name": "Next URL",
+          "path": "next_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "id": "opsgenie",
+  "service": "Opsgenie",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Opsgenie integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "alert_acknowledge",
+      "name": "Opsgenie Alert Acknowledge",
+      "description": "POST https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
+      "method": "POST",
+      "path": "https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
+      "inputs": [
+        {
+          "name": "Alert Id",
+          "required": true,
+          "mapTo": "Alert Id"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        },
+        {
+          "name": "User",
+          "required": false,
+          "mapTo": "User"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Result",
+          "path": "result"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "alert_close",
+      "name": "Opsgenie Alert Close",
+      "description": "POST https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/close",
+      "method": "POST",
+      "path": "https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/close",
+      "inputs": [
+        {
+          "name": "Alert Id",
+          "required": true,
+          "mapTo": "Alert Id"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        },
+        {
+          "name": "User",
+          "required": false,
+          "mapTo": "User"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Result",
+          "path": "result"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "alert_create",
+      "name": "Opsgenie Alert Create",
+      "description": "POST https://api.opsgenie.com/v2/alerts",
+      "method": "POST",
+      "path": "https://api.opsgenie.com/v2/alerts",
+      "inputs": [
+        {
+          "name": "Message",
+          "required": true,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Alias",
+          "required": false,
+          "mapTo": "Alias"
+        },
+        {
+          "name": "Responders Json",
+          "required": false,
+          "mapTo": "Responders Json"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Result",
+          "path": "result"
+        },
+        {
+          "name": "Elapsed Time",
+          "path": "elapsed_time"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "schedule_create",
+      "name": "Opsgenie Schedule Create",
+      "description": "POST https://api.opsgenie.com/v2/schedules",
+      "method": "POST",
+      "path": "https://api.opsgenie.com/v2/schedules",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Timezone",
+          "required": false,
+          "mapTo": "Timezone"
+        },
+        {
+          "name": "Enabled",
+          "required": false,
+          "mapTo": "Enabled"
+        },
+        {
+          "name": "Owner Team Id",
+          "required": false,
+          "mapTo": "Owner Team Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Schedule ID",
+          "path": "schedule_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "id": "onelogin",
+  "service": "OneLogin",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "OneLogin integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "OneLogin region (e.g. us or eu)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "app_assign",
+      "name": "OneLogin App Assign",
+      "description": "POST https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/apps",
+      "method": "POST",
+      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/apps",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "App Id",
+          "required": true,
+          "mapTo": "App Id"
+        },
+        {
+          "name": "Provisioning Enabled",
+          "required": false,
+          "mapTo": "Provisioning Enabled"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "App ID",
+          "path": "app_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "OneLogin User Create",
+      "description": "POST https://api.<%= @info['region'] %>.onelogin.com/api/2/users",
+      "method": "POST",
+      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Firstname",
+          "required": true,
+          "mapTo": "Firstname"
+        },
+        {
+          "name": "Lastname",
+          "required": true,
+          "mapTo": "Lastname"
+        },
+        {
+          "name": "Username",
+          "required": false,
+          "mapTo": "Username"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Group Id",
+          "required": false,
+          "mapTo": "Group Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_deactivate",
+      "name": "OneLogin User Deactivate",
+      "description": "PUT https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/set_state",
+      "method": "PUT",
+      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/set_state",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "State",
+          "required": true,
+          "mapTo": "State"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "OneLogin User Retrieve",
+      "description": "GET https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "method": "GET",
+      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Firstname",
+          "path": "firstname"
+        },
+        {
+          "name": "Lastname",
+          "path": "lastname"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_update",
+      "name": "OneLogin User Update",
+      "description": "PUT https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "method": "PUT",
+      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Firstname",
+          "required": false,
+          "mapTo": "Firstname"
+        },
+        {
+          "name": "Lastname",
+          "required": false,
+          "mapTo": "Lastname"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

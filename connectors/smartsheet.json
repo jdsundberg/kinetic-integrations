@@ -1,0 +1,225 @@
+{
+  "id": "smartsheet",
+  "service": "Smartsheet",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Smartsheet integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "row_add",
+      "name": "Smartsheet Row Add",
+      "description": "POST https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "method": "POST",
+      "path": "https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "inputs": [
+        {
+          "name": "Sheet Id",
+          "required": true,
+          "mapTo": "Sheet Id"
+        },
+        {
+          "name": "Cells Json",
+          "required": true,
+          "mapTo": "Cells Json"
+        },
+        {
+          "name": "To Top",
+          "required": false,
+          "mapTo": "To Top"
+        },
+        {
+          "name": "To Bottom",
+          "required": false,
+          "mapTo": "To Bottom"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result JSON",
+          "path": "result_json"
+        },
+        {
+          "name": "Result Code",
+          "path": "result_code"
+        },
+        {
+          "name": "Message",
+          "path": "message"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "row_update",
+      "name": "Smartsheet Row Update",
+      "description": "PUT https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "method": "PUT",
+      "path": "https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "inputs": [
+        {
+          "name": "Sheet Id",
+          "required": true,
+          "mapTo": "Sheet Id"
+        },
+        {
+          "name": "Rows Json",
+          "required": true,
+          "mapTo": "Rows Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result JSON",
+          "path": "result_json"
+        },
+        {
+          "name": "Result Code",
+          "path": "result_code"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "share_create",
+      "name": "Smartsheet Share Create",
+      "description": "POST https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/shares",
+      "method": "POST",
+      "path": "https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/shares",
+      "inputs": [
+        {
+          "name": "Sheet Id",
+          "required": true,
+          "mapTo": "Sheet Id"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Access Level",
+          "required": true,
+          "mapTo": "Access Level"
+        },
+        {
+          "name": "Subject",
+          "required": false,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Share ID",
+          "path": "share_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Access Level",
+          "path": "access_level"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "sheet_create",
+      "name": "Smartsheet Sheet Create",
+      "description": "POST https://api.smartsheet.com/2.0/sheets",
+      "method": "POST",
+      "path": "https://api.smartsheet.com/2.0/sheets",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Columns Json",
+          "required": true,
+          "mapTo": "Columns Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sheet ID",
+          "path": "sheet_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Access Level",
+          "path": "access_level"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

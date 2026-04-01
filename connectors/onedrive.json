@@ -1,0 +1,318 @@
+{
+  "id": "onedrive",
+  "service": "OneDrive",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "OneDrive integration with 6 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope (if required)."
+      },
+      {
+        "name": "tenant_id",
+        "required": true,
+        "description": "Azure AD tenant ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "file_download",
+      "name": "OneDrive File Download",
+      "description": "GET https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/content",
+      "method": "GET",
+      "path": "https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/content",
+      "inputs": [
+        {
+          "name": "Item Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File Content",
+          "path": "file_content"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_move",
+      "name": "OneDrive File Move",
+      "description": "PATCH https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>",
+      "method": "PATCH",
+      "path": "https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>",
+      "inputs": [
+        {
+          "name": "Item Id",
+          "required": true,
+          "mapTo": "Item Id"
+        },
+        {
+          "name": "Parent Folder Id",
+          "required": true,
+          "mapTo": "Parent Folder Id"
+        },
+        {
+          "name": "New Name",
+          "required": false,
+          "mapTo": "New Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Item ID",
+          "path": "item_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_search",
+      "name": "OneDrive File Search",
+      "description": "GET https://graph.microsoft.com/v1.0/me/drive/root/search(q='<%= @inputs['Query'] %>')",
+      "method": "GET",
+      "path": "https://graph.microsoft.com/v1.0/me/drive/root/search(q='<%= @inputs['Query'] %>')",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Result Count",
+          "path": "result_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_upload",
+      "name": "OneDrive File Upload",
+      "description": "PUT https://graph.microsoft.com/v1.0/me/drive/root:/<%= @inputs['File Path'] %>:/content",
+      "method": "PUT",
+      "path": "https://graph.microsoft.com/v1.0/me/drive/root:/<%= @inputs['File Path'] %>:/content",
+      "inputs": [
+        {
+          "name": "File Path",
+          "required": true,
+          "mapTo": "File Path"
+        },
+        {
+          "name": "File Content",
+          "required": true,
+          "mapTo": "File Content"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Item ID",
+          "path": "item_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Size",
+          "path": "size"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "folder_create",
+      "name": "OneDrive Folder Create",
+      "description": "POST https://graph.microsoft.com/v1.0/me/drive/root<%= @inputs['Parent Path'] %>/children",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/me/drive/root<%= @inputs['Parent Path'] %>/children",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Parent Path",
+          "required": false,
+          "mapTo": "Parent Path"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Folder ID",
+          "path": "folder_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "share_create",
+      "name": "OneDrive Sharing Link Create",
+      "description": "POST https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/createLink",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/createLink",
+      "inputs": [
+        {
+          "name": "Item Id",
+          "required": true,
+          "mapTo": "Item Id"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Scope",
+          "required": false,
+          "mapTo": "Scope"
+        },
+        {
+          "name": "Password",
+          "required": false,
+          "mapTo": "Password"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Link URL",
+          "path": "link_url"
+        },
+        {
+          "name": "Link Type",
+          "path": "link_type"
+        },
+        {
+          "name": "Link Scope",
+          "path": "link_scope"
+        },
+        {
+          "name": "Share ID",
+          "path": "share_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

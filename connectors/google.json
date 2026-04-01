@@ -1,0 +1,550 @@
+{
+  "id": "google",
+  "service": "Google Workspace",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "Google Workspace integration with 10 pre-built routines.",
+  "auth": {
+    "type": "jwt",
+    "properties": [
+      {
+        "name": "service_account_email",
+        "required": true,
+        "description": "Google service account email."
+      },
+      {
+        "name": "private_key",
+        "required": true,
+        "description": "PEM private key from service account JSON.",
+        "encrypted": true
+      },
+      {
+        "name": "jwt_subject",
+        "required": false,
+        "description": "Email to impersonate (domain-wide delegation)."
+      },
+      {
+        "name": "jwt_scope",
+        "required": true,
+        "description": "OAuth2 scope for the JWT assertion."
+      },
+      {
+        "name": "admin_email",
+        "required": true,
+        "description": "Workspace admin email for domain-wide delegation."
+      },
+      {
+        "name": "domain",
+        "required": true,
+        "description": "Google Workspace domain."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "drive_create_doc",
+      "name": "Google Drive Create Document",
+      "description": "POST https://www.googleapis.com/drive/v3/files",
+      "method": "POST",
+      "path": "https://www.googleapis.com/drive/v3/files",
+      "inputs": [
+        {
+          "name": "Document Name",
+          "required": true,
+          "mapTo": "Document Name"
+        },
+        {
+          "name": "Parent Folder Id",
+          "required": false,
+          "mapTo": "Parent Folder Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Document ID",
+          "path": "document_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Web Link",
+          "path": "web_link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "drive_create_folder",
+      "name": "Google Drive Create Folder",
+      "description": "POST https://www.googleapis.com/drive/v3/files",
+      "method": "POST",
+      "path": "https://www.googleapis.com/drive/v3/files",
+      "inputs": [
+        {
+          "name": "Folder Name",
+          "required": true,
+          "mapTo": "Folder Name"
+        },
+        {
+          "name": "Parent Folder Id",
+          "required": false,
+          "mapTo": "Parent Folder Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Folder ID",
+          "path": "folder_id"
+        },
+        {
+          "name": "Folder Name",
+          "path": "folder_name"
+        },
+        {
+          "name": "Web Link",
+          "path": "web_link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "drive_share",
+      "name": "Google Drive Share",
+      "description": "POST https://www.googleapis.com/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
+      "method": "POST",
+      "path": "https://www.googleapis.com/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
+      "inputs": [
+        {
+          "name": "File Id",
+          "required": true,
+          "mapTo": "File Id"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Role",
+          "required": true,
+          "mapTo": "Role"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Send Notification",
+          "required": false,
+          "mapTo": "Send Notification"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Permission ID",
+          "path": "permission_id"
+        },
+        {
+          "name": "Role",
+          "path": "role"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_add_member",
+      "name": "Google Group Add Member",
+      "description": "POST https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
+      "method": "POST",
+      "path": "https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
+      "inputs": [
+        {
+          "name": "Group Key",
+          "required": true,
+          "mapTo": "Group Key"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Role",
+          "required": false,
+          "mapTo": "Role"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Member ID",
+          "path": "member_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Role",
+          "path": "role"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_remove_member",
+      "name": "Google Group Remove Member",
+      "description": "DELETE https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
+      "method": "DELETE",
+      "path": "https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
+      "inputs": [
+        {
+          "name": "Group Key",
+          "required": true
+        },
+        {
+          "name": "Member Key",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "mail_send",
+      "name": "Google Gmail Send",
+      "description": "POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
+      "method": "POST",
+      "path": "https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
+      "inputs": [
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Cc",
+          "required": false,
+          "mapTo": "Cc"
+        },
+        {
+          "name": "Bcc",
+          "required": false,
+          "mapTo": "Bcc"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Html Body",
+          "required": false,
+          "mapTo": "Html Body"
+        },
+        {
+          "name": "Text Body",
+          "required": false,
+          "mapTo": "Text Body"
+        },
+        {
+          "name": "From Alias",
+          "required": false,
+          "mapTo": "From Alias"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Thread ID",
+          "path": "thread_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Google User Create",
+      "description": "POST https://admin.googleapis.com/admin/directory/v1/users",
+      "method": "POST",
+      "path": "https://admin.googleapis.com/admin/directory/v1/users",
+      "inputs": [
+        {
+          "name": "Primary Email",
+          "required": true,
+          "mapTo": "Primary Email"
+        },
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Password",
+          "required": true,
+          "mapTo": "Password"
+        },
+        {
+          "name": "Org Unit",
+          "required": false,
+          "mapTo": "Org Unit"
+        },
+        {
+          "name": "Change Password Next Login",
+          "required": false,
+          "mapTo": "Change Password Next Login"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Primary Email",
+          "path": "primary_email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Google User Retrieve",
+      "description": "GET https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "method": "GET",
+      "path": "https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "inputs": [
+        {
+          "name": "User Key",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Primary Email",
+          "path": "primary_email"
+        },
+        {
+          "name": "Full Name",
+          "path": "full_name"
+        },
+        {
+          "name": "Suspended",
+          "path": "suspended"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_suspend",
+      "name": "Google User Suspend",
+      "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "method": "PUT",
+      "path": "https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "inputs": [
+        {
+          "name": "User Key",
+          "required": true,
+          "mapTo": "User Key"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Primary Email",
+          "path": "primary_email"
+        },
+        {
+          "name": "Suspended",
+          "path": "suspended"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_update",
+      "name": "Google User Update",
+      "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "method": "PUT",
+      "path": "https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "inputs": [
+        {
+          "name": "User Key",
+          "required": true,
+          "mapTo": "User Key"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Org Unit",
+          "required": false,
+          "mapTo": "Org Unit"
+        },
+        {
+          "name": "Suspended",
+          "required": false,
+          "mapTo": "Suspended"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Primary Email",
+          "path": "primary_email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "id": "docker",
+  "service": "Docker Hub",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Docker Hub integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "token",
+        "required": true,
+        "description": "Docker Hub personal access token or JWT.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "image_list",
+      "name": "Docker Hub Image List",
+      "description": "GET https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/?page_size=<%= @inputs['Page Size'] %>",
+      "method": "GET",
+      "path": "https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/?page_size=<%= @inputs['Page Size'] %>",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true
+        },
+        {
+          "name": "Page Size",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Next",
+          "path": "next"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "repository_create",
+      "name": "Docker Hub Repository Create",
+      "description": "POST https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/",
+      "method": "POST",
+      "path": "https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true,
+          "mapTo": "Namespace"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Is Private",
+          "required": false,
+          "mapTo": "Is Private"
+        },
+        {
+          "name": "Full Description",
+          "required": false,
+          "mapTo": "Full Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Namespace",
+          "path": "namespace"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "tag_list",
+      "name": "Docker Hub Tag List",
+      "description": "GET https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/tags?page_size=<%= @inputs['Page Size'] %>",
+      "method": "GET",
+      "path": "https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/tags?page_size=<%= @inputs['Page Size'] %>",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true
+        },
+        {
+          "name": "Repository",
+          "required": true
+        },
+        {
+          "name": "Page Size",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tags JSON",
+          "path": "tags_json"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "webhook_create",
+      "name": "Docker Hub Webhook Create",
+      "description": "POST https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/webhooks/",
+      "method": "POST",
+      "path": "https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/webhooks/",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true,
+          "mapTo": "Namespace"
+        },
+        {
+          "name": "Repository",
+          "required": true,
+          "mapTo": "Repository"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Webhook Url",
+          "required": true,
+          "mapTo": "Webhook Url"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Webhook ID",
+          "path": "webhook_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

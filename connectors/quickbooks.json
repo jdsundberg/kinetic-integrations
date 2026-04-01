@@ -1,0 +1,444 @@
+{
+  "id": "quickbooks",
+  "service": "QuickBooks",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "QuickBooks integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "QuickBooks API base URL (e.g. https://quickbooks.api.intuit.com for production)."
+      },
+      {
+        "name": "realm_id",
+        "required": true,
+        "description": "QuickBooks company/realm ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "bill_create",
+      "name": "QuickBooks Bill Create",
+      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/bill",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/bill",
+      "inputs": [
+        {
+          "name": "Vendor Ref Value",
+          "required": true,
+          "mapTo": "Vendor Ref Value"
+        },
+        {
+          "name": "Line Item Description",
+          "required": true,
+          "mapTo": "Line Item Description"
+        },
+        {
+          "name": "Line Item Amount",
+          "required": true,
+          "mapTo": "Line Item Amount"
+        },
+        {
+          "name": "Account Ref Value",
+          "required": true,
+          "mapTo": "Account Ref Value"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Doc Number",
+          "required": false,
+          "mapTo": "Doc Number"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bill ID",
+          "path": "bill_id"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Balance",
+          "path": "balance"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "QuickBooks Customer Create",
+      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/customer",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/customer",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Given Name",
+          "required": false,
+          "mapTo": "Given Name"
+        },
+        {
+          "name": "Family Name",
+          "required": false,
+          "mapTo": "Family Name"
+        },
+        {
+          "name": "Primary Email",
+          "required": false,
+          "mapTo": "Primary Email"
+        },
+        {
+          "name": "Primary Phone",
+          "required": false,
+          "mapTo": "Primary Phone"
+        },
+        {
+          "name": "Company Name",
+          "required": false,
+          "mapTo": "Company Name"
+        },
+        {
+          "name": "Bill Addr Line1",
+          "required": false,
+          "mapTo": "Bill Addr Line1"
+        },
+        {
+          "name": "Bill Addr City",
+          "required": false,
+          "mapTo": "Bill Addr City"
+        },
+        {
+          "name": "Bill Addr State",
+          "required": false,
+          "mapTo": "Bill Addr State"
+        },
+        {
+          "name": "Bill Addr Postal Code",
+          "required": false,
+          "mapTo": "Bill Addr Postal Code"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "customer_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Balance",
+          "path": "balance"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "QuickBooks Invoice Create",
+      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/invoice",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/invoice",
+      "inputs": [
+        {
+          "name": "Customer Ref Value",
+          "required": true,
+          "mapTo": "Customer Ref Value"
+        },
+        {
+          "name": "Line Item Description",
+          "required": true,
+          "mapTo": "Line Item Description"
+        },
+        {
+          "name": "Line Item Amount",
+          "required": true,
+          "mapTo": "Line Item Amount"
+        },
+        {
+          "name": "Line Item Detail Type",
+          "required": false,
+          "mapTo": "Line Item Detail Type"
+        },
+        {
+          "name": "Item Ref Value",
+          "required": false,
+          "mapTo": "Item Ref Value"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Doc Number",
+          "required": false,
+          "mapTo": "Doc Number"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice ID",
+          "path": "invoice_id"
+        },
+        {
+          "name": "Doc Number",
+          "path": "doc_number"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Balance",
+          "path": "balance"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "item_create",
+      "name": "QuickBooks Item Create",
+      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/item",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/item",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Income Account Ref Value",
+          "required": true,
+          "mapTo": "Income Account Ref Value"
+        },
+        {
+          "name": "Expense Account Ref Value",
+          "required": false,
+          "mapTo": "Expense Account Ref Value"
+        },
+        {
+          "name": "Unit Price",
+          "required": false,
+          "mapTo": "Unit Price"
+        },
+        {
+          "name": "Purchase Cost",
+          "required": false,
+          "mapTo": "Purchase Cost"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Item ID",
+          "path": "item_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "QuickBooks Payment Create",
+      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/payment",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/payment",
+      "inputs": [
+        {
+          "name": "Customer Ref Value",
+          "required": true,
+          "mapTo": "Customer Ref Value"
+        },
+        {
+          "name": "Total Amt",
+          "required": true,
+          "mapTo": "Total Amt"
+        },
+        {
+          "name": "Payment Method Ref",
+          "required": false,
+          "mapTo": "Payment Method Ref"
+        },
+        {
+          "name": "Deposit To Account Ref",
+          "required": false,
+          "mapTo": "Deposit To Account Ref"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment ID",
+          "path": "payment_id"
+        },
+        {
+          "name": "Total Amount",
+          "path": "total_amount"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "QuickBooks Vendor Create",
+      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/vendor",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/vendor",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Given Name",
+          "required": false,
+          "mapTo": "Given Name"
+        },
+        {
+          "name": "Family Name",
+          "required": false,
+          "mapTo": "Family Name"
+        },
+        {
+          "name": "Primary Email",
+          "required": false,
+          "mapTo": "Primary Email"
+        },
+        {
+          "name": "Primary Phone",
+          "required": false,
+          "mapTo": "Primary Phone"
+        },
+        {
+          "name": "Company Name",
+          "required": false,
+          "mapTo": "Company Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor ID",
+          "path": "vendor_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Balance",
+          "path": "balance"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

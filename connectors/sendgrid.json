@@ -1,0 +1,378 @@
+{
+  "id": "sendgrid",
+  "service": "SendGrid",
+  "version": 1,
+  "category": "Email & Marketing",
+  "description": "SendGrid integration with 8 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "SendGrid API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "contact_create",
+      "name": "SendGrid Contact Create",
+      "description": "PUT https://api.sendgrid.com/v3/marketing/contacts",
+      "method": "PUT",
+      "path": "https://api.sendgrid.com/v3/marketing/contacts",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "City",
+          "required": false,
+          "mapTo": "City"
+        },
+        {
+          "name": "Country",
+          "required": false,
+          "mapTo": "Country"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "SendGrid Contact Update",
+      "description": "PUT https://api.sendgrid.com/v3/marketing/contacts",
+      "method": "PUT",
+      "path": "https://api.sendgrid.com/v3/marketing/contacts",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Custom Fields Json",
+          "required": false,
+          "mapTo": "Custom Fields Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "email_send",
+      "name": "SendGrid Email Send",
+      "description": "POST https://api.sendgrid.com/v3/mail/send",
+      "method": "POST",
+      "path": "https://api.sendgrid.com/v3/mail/send",
+      "inputs": [
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "From Name",
+          "required": false,
+          "mapTo": "From Name"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Html Content",
+          "required": false,
+          "mapTo": "Html Content"
+        },
+        {
+          "name": "Text Content",
+          "required": false,
+          "mapTo": "Text Content"
+        },
+        {
+          "name": "Reply To",
+          "required": false,
+          "mapTo": "Reply To"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_add_contact",
+      "name": "SendGrid List Add Contact",
+      "description": "PUT https://api.sendgrid.com/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
+      "method": "PUT",
+      "path": "https://api.sendgrid.com/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Contact Ids",
+          "required": true,
+          "mapTo": "Contact Ids"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_create",
+      "name": "SendGrid List Create",
+      "description": "POST https://api.sendgrid.com/v3/marketing/lists",
+      "method": "POST",
+      "path": "https://api.sendgrid.com/v3/marketing/lists",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "List ID",
+          "path": "list_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Contact Count",
+          "path": "contact_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "stats_retrieve",
+      "name": "SendGrid Stats Retrieve",
+      "description": "GET https://api.sendgrid.com/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
+      "method": "GET",
+      "path": "https://api.sendgrid.com/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
+      "inputs": [
+        {
+          "name": "Start Date",
+          "required": true
+        },
+        {
+          "name": "End Date",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Stats JSON",
+          "path": "stats_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "suppression_add",
+      "name": "SendGrid Suppression Add",
+      "description": "POST https://api.sendgrid.com/v3/asm/suppressions/global",
+      "method": "POST",
+      "path": "https://api.sendgrid.com/v3/asm/suppressions/global",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Emails",
+          "path": "emails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "template_retrieve",
+      "name": "SendGrid Template Retrieve",
+      "description": "GET https://api.sendgrid.com/v3/templates/<%= @inputs['Template Id'] %>",
+      "method": "GET",
+      "path": "https://api.sendgrid.com/v3/templates/<%= @inputs['Template Id'] %>",
+      "inputs": [
+        {
+          "name": "Template Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Template ID",
+          "path": "template_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Versions",
+          "path": "versions"
+        },
+        {
+          "name": "Template JSON",
+          "path": "template_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

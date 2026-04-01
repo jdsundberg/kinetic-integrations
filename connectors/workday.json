@@ -1,0 +1,323 @@
+{
+  "id": "workday",
+  "service": "Workday",
+  "version": 1,
+  "category": "HR & People",
+  "description": "Workday integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Workday REST API base URL (e.g. https://wd2-impl-services1.workday.com/ccx/api/v1/mycompany)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "job_change",
+      "name": "Workday Job Change",
+      "description": "POST <%= @info['base_url'] %>/api/v1/staffing/jobChanges",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/staffing/jobChanges",
+      "inputs": [
+        {
+          "name": "Worker Id",
+          "required": true,
+          "mapTo": "Worker Id"
+        },
+        {
+          "name": "Effective Date",
+          "required": true,
+          "mapTo": "Effective Date"
+        },
+        {
+          "name": "New Job Profile Id",
+          "required": false,
+          "mapTo": "New Job Profile Id"
+        },
+        {
+          "name": "New Position Id",
+          "required": false,
+          "mapTo": "New Position Id"
+        },
+        {
+          "name": "New Location Id",
+          "required": false,
+          "mapTo": "New Location Id"
+        },
+        {
+          "name": "Reason Id",
+          "required": true,
+          "mapTo": "Reason Id"
+        },
+        {
+          "name": "New Supervisory Org Id",
+          "required": false,
+          "mapTo": "New Supervisory Org Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Event ID",
+          "path": "event_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Descriptor",
+          "path": "descriptor"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "org_retrieve",
+      "name": "Workday Organization Retrieve",
+      "description": "GET <%= @info['base_url'] %>/api/v1/organizations/<%= @inputs['Org Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/organizations/<%= @inputs['Org Id'] %>",
+      "inputs": [
+        {
+          "name": "Org Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Org ID",
+          "path": "org_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Manager",
+          "path": "manager"
+        },
+        {
+          "name": "Org JSON",
+          "path": "org_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "position_create",
+      "name": "Workday Position Create",
+      "description": "POST <%= @info['base_url'] %>/api/v1/staffing/positions",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/staffing/positions",
+      "inputs": [
+        {
+          "name": "Job Profile Id",
+          "required": true,
+          "mapTo": "Job Profile Id"
+        },
+        {
+          "name": "Supervisory Organization Id",
+          "required": true,
+          "mapTo": "Supervisory Organization Id"
+        },
+        {
+          "name": "Position Title",
+          "required": false,
+          "mapTo": "Position Title"
+        },
+        {
+          "name": "Worker Type",
+          "required": false,
+          "mapTo": "Worker Type"
+        },
+        {
+          "name": "Time Type",
+          "required": false,
+          "mapTo": "Time Type"
+        },
+        {
+          "name": "Availability Date",
+          "required": false,
+          "mapTo": "Availability Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Position ID",
+          "path": "position_id"
+        },
+        {
+          "name": "Descriptor",
+          "path": "descriptor"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "time_off_request",
+      "name": "Workday Time Off Request",
+      "description": "POST <%= @info['base_url'] %>/api/v1/timeOff/requests",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/timeOff/requests",
+      "inputs": [
+        {
+          "name": "Worker Id",
+          "required": true,
+          "mapTo": "Worker Id"
+        },
+        {
+          "name": "Time Off Type Id",
+          "required": true,
+          "mapTo": "Time Off Type Id"
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": true,
+          "mapTo": "End Date"
+        },
+        {
+          "name": "Daily Quantity",
+          "required": false,
+          "mapTo": "Daily Quantity"
+        },
+        {
+          "name": "Comment",
+          "required": false,
+          "mapTo": "Comment"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Descriptor",
+          "path": "descriptor"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "worker_retrieve",
+      "name": "Workday Worker Retrieve",
+      "description": "GET <%= @info['base_url'] %>/api/v1/workers/<%= @inputs['Worker Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/workers/<%= @inputs['Worker Id'] %>",
+      "inputs": [
+        {
+          "name": "Worker Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Worker ID",
+          "path": "worker_id"
+        },
+        {
+          "name": "Full Name",
+          "path": "full_name"
+        },
+        {
+          "name": "Primary Email",
+          "path": "primary_email"
+        },
+        {
+          "name": "Manager",
+          "path": "manager"
+        },
+        {
+          "name": "Job Title",
+          "path": "job_title"
+        },
+        {
+          "name": "Worker JSON",
+          "path": "worker_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "id": "victorops",
+  "service": "VictorOps",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "VictorOps integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: X-VO-Api-Key"
+      },
+      {
+        "name": "api_id",
+        "required": true,
+        "description": "VictorOps API ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "incident_create",
+      "name": "VictorOps Incident Create",
+      "description": "POST https://api.victorops.com/api-public/v1/incidents",
+      "method": "POST",
+      "path": "https://api.victorops.com/api-public/v1/incidents",
+      "inputs": [
+        {
+          "name": "Summary",
+          "required": true,
+          "mapTo": "Summary"
+        },
+        {
+          "name": "Details",
+          "required": false,
+          "mapTo": "Details"
+        },
+        {
+          "name": "User Name",
+          "required": true,
+          "mapTo": "User Name"
+        },
+        {
+          "name": "Targets Json",
+          "required": false,
+          "mapTo": "Targets Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident Number",
+          "path": "incident_number"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_resolve",
+      "name": "VictorOps Incident Resolve",
+      "description": "PATCH https://api.victorops.com/api-public/v1/incidents/resolve",
+      "method": "PATCH",
+      "path": "https://api.victorops.com/api-public/v1/incidents/resolve",
+      "inputs": [
+        {
+          "name": "Incident Names",
+          "required": true,
+          "mapTo": "Incident Names"
+        },
+        {
+          "name": "User Name",
+          "required": true,
+          "mapTo": "User Name"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "policy_create",
+      "name": "VictorOps Policy Create",
+      "description": "POST https://api.victorops.com/api-public/v1/policies",
+      "method": "POST",
+      "path": "https://api.victorops.com/api-public/v1/policies",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Team Slug",
+          "required": true,
+          "mapTo": "Team Slug"
+        },
+        {
+          "name": "Steps Json",
+          "required": false,
+          "mapTo": "Steps Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Policy ID",
+          "path": "policy_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "team_create",
+      "name": "VictorOps Team Create",
+      "description": "POST https://api.victorops.com/api-public/v1/team",
+      "method": "POST",
+      "path": "https://api.victorops.com/api-public/v1/team",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Slug",
+          "required": false,
+          "mapTo": "Slug"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Team Slug",
+          "path": "team_slug"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "id": "confluence",
+  "service": "Confluence",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Confluence integration with 6 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "site_url",
+        "required": true,
+        "description": "Confluence Cloud URL (e.g. https://myco.atlassian.net/wiki)."
+      },
+      {
+        "name": "email",
+        "required": true,
+        "description": "Atlassian account email."
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Atlassian API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "comment_add",
+      "name": "Confluence Comment Add",
+      "description": "POST <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
+      "inputs": [
+        {
+          "name": "Page Id",
+          "required": true,
+          "mapTo": "Page Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "page_create",
+      "name": "Confluence Page Create",
+      "description": "POST <%= @info['site_url'] %>/api/v2/pages",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/api/v2/pages",
+      "inputs": [
+        {
+          "name": "Space Id",
+          "required": true,
+          "mapTo": "Space Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Parent Id",
+          "required": false,
+          "mapTo": "Parent Id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Page ID",
+          "path": "page_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "page_retrieve",
+      "name": "Confluence Page Retrieve",
+      "description": "GET <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
+      "method": "GET",
+      "path": "<%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
+      "inputs": [
+        {
+          "name": "Page Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Page ID",
+          "path": "page_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Body",
+          "path": "body"
+        },
+        {
+          "name": "Page JSON",
+          "path": "page_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "page_update",
+      "name": "Confluence Page Update",
+      "description": "PUT <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>",
+      "inputs": [
+        {
+          "name": "Page Id",
+          "required": true,
+          "mapTo": "Page Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Version Number",
+          "required": true,
+          "mapTo": "Version Number"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Page ID",
+          "path": "page_id"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "Confluence Search",
+      "description": "GET <%= @info['site_url'] %>/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
+      "method": "GET",
+      "path": "<%= @info['site_url'] %>/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
+      "inputs": [
+        {
+          "name": "Cql",
+          "required": true
+        },
+        {
+          "name": "Limit",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Total Size",
+          "path": "total_size"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "space_create",
+      "name": "Confluence Space Create",
+      "description": "POST <%= @info['site_url'] %>/api/v2/spaces",
+      "method": "POST",
+      "path": "<%= @info['site_url'] %>/api/v2/spaces",
+      "inputs": [
+        {
+          "name": "Key",
+          "required": true,
+          "mapTo": "Key"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Space ID",
+          "path": "space_id"
+        },
+        {
+          "name": "Key",
+          "path": "key"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

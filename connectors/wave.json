@@ -1,0 +1,302 @@
+{
+  "id": "wave",
+  "service": "Wave",
+  "version": 1,
+  "category": "Accounting",
+  "description": "Wave integration with 8 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "Wave API access token (OAuth2).",
+        "encrypted": true
+      },
+      {
+        "name": "business_id",
+        "required": true,
+        "description": "Wave business ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_list",
+      "name": "Wave Chart of Accounts",
+      "description": "GET /graphql/accounts",
+      "method": "GET",
+      "path": "/graphql/accounts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Accounts JSON",
+          "path": "accounts"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        }
+      ]
+    },
+    {
+      "id": "bill_create",
+      "name": "Wave Bill Create",
+      "description": "POST /graphql/bills",
+      "method": "POST",
+      "path": "/graphql/bills",
+      "inputs": [
+        {
+          "name": "Vendor Id",
+          "required": true,
+          "mapTo": "Vendor Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bill Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "Wave Customer Create",
+      "description": "POST /graphql/customers",
+      "method": "POST",
+      "path": "/graphql/customers",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Address",
+          "required": false,
+          "mapTo": "Address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Wave Invoice Create",
+      "description": "POST /graphql/invoices",
+      "method": "POST",
+      "path": "/graphql/invoices",
+      "inputs": [
+        {
+          "name": "Customer Id",
+          "required": true,
+          "mapTo": "Customer Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Currency",
+          "required": false,
+          "mapTo": "Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Id",
+          "path": "id"
+        },
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "invoice_retrieve",
+      "name": "Wave Invoice Retrieve",
+      "description": "GET /graphql/invoices/{invoice_id}",
+      "method": "GET",
+      "path": "/graphql/invoices/{invoice_id}",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Balance Due",
+          "path": "balance"
+        }
+      ]
+    },
+    {
+      "id": "journal_entry_create",
+      "name": "Wave Journal Entry Create",
+      "description": "POST /graphql/journal-entries",
+      "method": "POST",
+      "path": "/graphql/journal-entries",
+      "inputs": [
+        {
+          "name": "Date",
+          "required": true,
+          "mapTo": "Date"
+        },
+        {
+          "name": "Lines JSON",
+          "required": true,
+          "mapTo": "Lines JSON"
+        },
+        {
+          "name": "Memo",
+          "required": false,
+          "mapTo": "Memo"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Entry Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "Wave Payment Create",
+      "description": "POST /graphql/payments",
+      "method": "POST",
+      "path": "/graphql/payments",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "mapTo": "Invoice Id"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Payment Date",
+          "required": false,
+          "mapTo": "Payment Date"
+        },
+        {
+          "name": "Payment Method",
+          "required": false,
+          "mapTo": "Payment Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "Wave Vendor Create",
+      "description": "POST /graphql/vendors",
+      "method": "POST",
+      "path": "/graphql/vendors",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    }
+  ]
+}

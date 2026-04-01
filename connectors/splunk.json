@@ -1,0 +1,275 @@
+{
+  "id": "splunk",
+  "service": "Splunk",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Splunk integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Splunk base URL (e.g. https://splunk.myco.com:8089)."
+      },
+      {
+        "name": "token",
+        "required": true,
+        "description": "Splunk bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "hec_token",
+        "required": true,
+        "description": "Splunk HEC token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "alert_create",
+      "name": "Splunk Alert Create",
+      "description": "POST <%= @info['base_url'] %>/services/saved/searches",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/services/saved/searches",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Search Query",
+          "required": true,
+          "mapTo": "Search Query"
+        },
+        {
+          "name": "Cron Schedule",
+          "required": true,
+          "mapTo": "Cron Schedule"
+        },
+        {
+          "name": "Alert Type",
+          "required": false,
+          "mapTo": "Alert Type"
+        },
+        {
+          "name": "Alert Threshold",
+          "required": false,
+          "mapTo": "Alert Threshold"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Alert Name",
+          "path": "alert_name"
+        },
+        {
+          "name": "Search",
+          "path": "search"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "event_send",
+      "name": "Splunk Event Send",
+      "description": "POST <%= @info['base_url'] %>/services/collector/event",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/services/collector/event",
+      "inputs": [
+        {
+          "name": "Index",
+          "required": false,
+          "mapTo": "Index"
+        },
+        {
+          "name": "Source",
+          "required": false,
+          "mapTo": "Source"
+        },
+        {
+          "name": "Sourcetype",
+          "required": false,
+          "mapTo": "Sourcetype"
+        },
+        {
+          "name": "Event Data",
+          "required": true,
+          "mapTo": "Event Data"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "path": "text"
+        },
+        {
+          "name": "Code",
+          "path": "code"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "index_create",
+      "name": "Splunk Index Create",
+      "description": "POST <%= @info['base_url'] %>/services/data/indexes",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/services/data/indexes",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Datatype",
+          "required": false,
+          "mapTo": "Datatype"
+        },
+        {
+          "name": "Max Data Size Mb",
+          "required": false,
+          "mapTo": "Max Data Size Mb"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Index Name",
+          "path": "index_name"
+        },
+        {
+          "name": "Datatype",
+          "path": "datatype"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search_create",
+      "name": "Splunk Search Create",
+      "description": "POST <%= @info['base_url'] %>/services/search/jobs",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/services/search/jobs",
+      "inputs": [
+        {
+          "name": "Search Query",
+          "required": true,
+          "mapTo": "Search Query"
+        },
+        {
+          "name": "Earliest Time",
+          "required": false,
+          "mapTo": "Earliest Time"
+        },
+        {
+          "name": "Latest Time",
+          "required": false,
+          "mapTo": "Latest Time"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Search ID",
+          "path": "search_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search_results",
+      "name": "Splunk Search Results",
+      "description": "GET <%= @info['base_url'] %>/services/search/jobs/<%= @inputs['Search Id'] %>/results?output_mode=json&count=<%= @inputs['Count'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/services/search/jobs/<%= @inputs['Search Id'] %>/results?output_mode=json&count=<%= @inputs['Count'] %>",
+      "inputs": [
+        {
+          "name": "Search Id",
+          "required": true
+        },
+        {
+          "name": "Count",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Result Count",
+          "path": "result_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

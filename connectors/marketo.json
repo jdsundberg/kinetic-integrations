@@ -1,0 +1,316 @@
+{
+  "id": "marketo",
+  "service": "Marketo",
+  "version": 1,
+  "category": "Email & Marketing",
+  "description": "Marketo integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Marketo REST API base URL (e.g. https://123-ABC-456.mktorest.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "campaign_trigger",
+      "name": "Marketo Campaign Trigger",
+      "description": "POST <%= @info['base_url'] %>/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
+      "inputs": [
+        {
+          "name": "Campaign Id",
+          "required": true,
+          "mapTo": "Campaign Id"
+        },
+        {
+          "name": "Lead Ids",
+          "required": true,
+          "mapTo": "Lead Ids"
+        },
+        {
+          "name": "Tokens Json",
+          "required": false,
+          "mapTo": "Tokens Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "lead_create",
+      "name": "Marketo Lead Create",
+      "description": "POST <%= @info['base_url'] %>/rest/v1/leads.json",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/rest/v1/leads.json",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Action",
+          "required": false,
+          "mapTo": "Action"
+        },
+        {
+          "name": "Lookup Field",
+          "required": false,
+          "mapTo": "Lookup Field"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Lead ID",
+          "path": "lead_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "lead_merge",
+      "name": "Marketo Lead Merge",
+      "description": "POST <%= @info['base_url'] %>/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
+      "inputs": [
+        {
+          "name": "Winning Lead Id",
+          "required": true,
+          "mapTo": "Winning Lead Id"
+        },
+        {
+          "name": "Losing Lead Id",
+          "required": true,
+          "mapTo": "Losing Lead Id"
+        },
+        {
+          "name": "Merge In Crm",
+          "required": false,
+          "mapTo": "Merge In Crm"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "lead_update",
+      "name": "Marketo Lead Update",
+      "description": "POST <%= @info['base_url'] %>/rest/v1/leads.json",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/rest/v1/leads.json",
+      "inputs": [
+        {
+          "name": "Lead Id",
+          "required": true,
+          "mapTo": "Lead Id"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Lead ID",
+          "path": "lead_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_add_lead",
+      "name": "Marketo List Add Lead",
+      "description": "POST <%= @info['base_url'] %>/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Lead Ids",
+          "required": true,
+          "mapTo": "Lead Ids"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Added JSON",
+          "path": "added_json"
+        },
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

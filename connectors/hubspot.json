@@ -1,0 +1,574 @@
+{
+  "id": "hubspot",
+  "service": "HubSpot",
+  "version": 1,
+  "category": "CRM & Sales",
+  "description": "HubSpot integration with 10 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "company_create",
+      "name": "HubSpot Company Create",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/companies",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/companies",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Domain",
+          "required": false,
+          "mapTo": "Domain"
+        },
+        {
+          "name": "Industry",
+          "required": false,
+          "mapTo": "Industry"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "City",
+          "required": false,
+          "mapTo": "City"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        },
+        {
+          "name": "Country",
+          "required": false,
+          "mapTo": "Country"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Company ID",
+          "path": "company_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "HubSpot Contact Create",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/contacts",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/contacts",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Lifecycle Stage",
+          "required": false,
+          "mapTo": "Lifecycle Stage"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Contact JSON",
+          "path": "contact_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_retrieve",
+      "name": "HubSpot Contact Retrieve",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/contacts/search",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/contacts/search",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Found",
+          "path": "found"
+        },
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "HubSpot Contact Update",
+      "description": "PATCH https://api.hubapi.com/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
+      "method": "PATCH",
+      "path": "https://api.hubapi.com/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Lifecycle Stage",
+          "required": false,
+          "mapTo": "Lifecycle Stage"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "deal_create",
+      "name": "HubSpot Deal Create",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/deals",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/deals",
+      "inputs": [
+        {
+          "name": "Deal Name",
+          "required": true,
+          "mapTo": "Deal Name"
+        },
+        {
+          "name": "Deal Stage",
+          "required": true,
+          "mapTo": "Deal Stage"
+        },
+        {
+          "name": "Pipeline",
+          "required": false,
+          "mapTo": "Pipeline"
+        },
+        {
+          "name": "Amount",
+          "required": false,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Close Date",
+          "required": false,
+          "mapTo": "Close Date"
+        },
+        {
+          "name": "Associated Contact Id",
+          "required": false,
+          "mapTo": "Associated Contact Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deal ID",
+          "path": "deal_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Deal JSON",
+          "path": "deal_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "deal_update",
+      "name": "HubSpot Deal Update",
+      "description": "PATCH https://api.hubapi.com/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
+      "method": "PATCH",
+      "path": "https://api.hubapi.com/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
+      "inputs": [
+        {
+          "name": "Deal Id",
+          "required": true,
+          "mapTo": "Deal Id"
+        },
+        {
+          "name": "Deal Name",
+          "required": false,
+          "mapTo": "Deal Name"
+        },
+        {
+          "name": "Deal Stage",
+          "required": false,
+          "mapTo": "Deal Stage"
+        },
+        {
+          "name": "Amount",
+          "required": false,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Close Date",
+          "required": false,
+          "mapTo": "Close Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deal ID",
+          "path": "deal_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "engagement_create",
+      "name": "HubSpot Engagement Create",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/notes",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/notes",
+      "inputs": [
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Associated Contact Id",
+          "required": false,
+          "mapTo": "Associated Contact Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Engagement ID",
+          "path": "engagement_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_add_contact",
+      "name": "HubSpot List Add Contact",
+      "description": "PUT https://api.hubapi.com/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
+      "method": "PUT",
+      "path": "https://api.hubapi.com/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Updated",
+          "path": "updated"
+        },
+        {
+          "name": "Discarded",
+          "path": "discarded"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "note_create",
+      "name": "HubSpot Note Create",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/notes",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/notes",
+      "inputs": [
+        {
+          "name": "Note Body",
+          "required": true,
+          "mapTo": "Note Body"
+        },
+        {
+          "name": "Owner Id",
+          "required": false,
+          "mapTo": "Owner Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Note ID",
+          "path": "note_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_create",
+      "name": "HubSpot Ticket Create",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/tickets",
+      "method": "POST",
+      "path": "https://api.hubapi.com/crm/v3/objects/tickets",
+      "inputs": [
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Pipeline",
+          "required": false,
+          "mapTo": "Pipeline"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "generic-basic",
+  "service": "Generic REST (Basic Auth)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any REST API using username and password.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "encrypted": true,
+        "description": "Password or API token."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

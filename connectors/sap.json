@@ -1,0 +1,316 @@
+{
+  "id": "sap",
+  "service": "SAP",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "SAP integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "SAP system base URL (e.g. https://mysap.mycompany.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "bapi_call",
+      "name": "SAP BAPI Call",
+      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "inputs": [
+        {
+          "name": "Service Name",
+          "required": true,
+          "mapTo": "Service Name"
+        },
+        {
+          "name": "Entity Set",
+          "required": true,
+          "mapTo": "Entity Set"
+        },
+        {
+          "name": "Body Json",
+          "required": true,
+          "mapTo": "Body Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result JSON",
+          "path": "result_json"
+        },
+        {
+          "name": "Response JSON",
+          "path": "response_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "idoc_send",
+      "name": "SAP IDoc Send",
+      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "inputs": [
+        {
+          "name": "Service Name",
+          "required": true,
+          "mapTo": "Service Name"
+        },
+        {
+          "name": "Entity Set",
+          "required": true,
+          "mapTo": "Entity Set"
+        },
+        {
+          "name": "Idoc Type",
+          "required": true,
+          "mapTo": "Idoc Type"
+        },
+        {
+          "name": "Body Json",
+          "required": true,
+          "mapTo": "Body Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IDoc Number",
+          "path": "idoc_number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response JSON",
+          "path": "response_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "material_retrieve",
+      "name": "SAP Material Retrieve",
+      "description": "GET <%= @info['base_url'] %>/sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
+      "inputs": [
+        {
+          "name": "Material Number",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Material Number",
+          "path": "material_number"
+        },
+        {
+          "name": "Description",
+          "path": "description"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Group",
+          "path": "group"
+        },
+        {
+          "name": "Base UOM",
+          "path": "base_uom"
+        },
+        {
+          "name": "Material JSON",
+          "path": "material_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "purchase_order_create",
+      "name": "SAP Purchase Order Create",
+      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV/A_PurchaseOrder",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV/A_PurchaseOrder",
+      "inputs": [
+        {
+          "name": "Purchase Order Type",
+          "required": true,
+          "mapTo": "Purchase Order Type"
+        },
+        {
+          "name": "Supplier",
+          "required": true,
+          "mapTo": "Supplier"
+        },
+        {
+          "name": "Purchasing Organization",
+          "required": true,
+          "mapTo": "Purchasing Organization"
+        },
+        {
+          "name": "Purchasing Group",
+          "required": true,
+          "mapTo": "Purchasing Group"
+        },
+        {
+          "name": "Company Code",
+          "required": true,
+          "mapTo": "Company Code"
+        },
+        {
+          "name": "Item Material",
+          "required": true,
+          "mapTo": "Item Material"
+        },
+        {
+          "name": "Item Quantity",
+          "required": true,
+          "mapTo": "Item Quantity"
+        },
+        {
+          "name": "Item Plant",
+          "required": true,
+          "mapTo": "Item Plant"
+        },
+        {
+          "name": "Item Net Price",
+          "required": false,
+          "mapTo": "Item Net Price"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "PO Number",
+          "path": "po_number"
+        },
+        {
+          "name": "Supplier",
+          "path": "supplier"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "PO JSON",
+          "path": "po_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "rfc_call",
+      "name": "SAP RFC Call",
+      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
+      "inputs": [
+        {
+          "name": "Service Name",
+          "required": true,
+          "mapTo": "Service Name"
+        },
+        {
+          "name": "Function Import",
+          "required": true,
+          "mapTo": "Function Import"
+        },
+        {
+          "name": "Parameters Json",
+          "required": false,
+          "mapTo": "Parameters Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result JSON",
+          "path": "result_json"
+        },
+        {
+          "name": "Response JSON",
+          "path": "response_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

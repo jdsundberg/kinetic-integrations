@@ -1,0 +1,478 @@
+{
+  "id": "datadog",
+  "service": "Datadog",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Datadog integration with 8 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: DD-API-KEY"
+      },
+      {
+        "name": "app_key",
+        "required": true,
+        "description": "Datadog application key.",
+        "encrypted": true
+      },
+      {
+        "name": "site",
+        "required": false,
+        "description": "Datadog site (e.g. datadoghq.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "dashboard_create",
+      "name": "Datadog Dashboard Create",
+      "description": "POST https://api.<%= @info['site'] %>/api/v1/dashboard",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v1/dashboard",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Layout Type",
+          "required": false,
+          "mapTo": "Layout Type"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dashboard ID",
+          "path": "dashboard_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "downtime_create",
+      "name": "Datadog Downtime Create",
+      "description": "POST https://api.<%= @info['site'] %>/api/v1/downtime",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v1/downtime",
+      "inputs": [
+        {
+          "name": "Scope",
+          "required": true,
+          "mapTo": "Scope"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Start",
+          "required": false,
+          "mapTo": "Start"
+        },
+        {
+          "name": "End",
+          "required": false,
+          "mapTo": "End"
+        },
+        {
+          "name": "Monitor Id",
+          "required": false,
+          "mapTo": "Monitor Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Downtime ID",
+          "path": "downtime_id"
+        },
+        {
+          "name": "Scope",
+          "path": "scope"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "event_create",
+      "name": "Datadog Event Create",
+      "description": "POST https://api.<%= @info['site'] %>/api/v1/events",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v1/events",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Alert Type",
+          "required": false,
+          "mapTo": "Alert Type"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Event ID",
+          "path": "event_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_create",
+      "name": "Datadog Incident Create",
+      "description": "POST https://api.<%= @info['site'] %>/api/v2/incidents",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v2/incidents",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Severity",
+          "required": false,
+          "mapTo": "Severity"
+        },
+        {
+          "name": "Customer Impact Scope",
+          "required": false,
+          "mapTo": "Customer Impact Scope"
+        },
+        {
+          "name": "Commander Id",
+          "required": false,
+          "mapTo": "Commander Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident ID",
+          "path": "incident_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "log_send",
+      "name": "Datadog Log Send",
+      "description": "POST https://api.<%= @info['site'] %>/api/v2/logs",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v2/logs",
+      "inputs": [
+        {
+          "name": "Message",
+          "required": true,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Service",
+          "required": false,
+          "mapTo": "Service"
+        },
+        {
+          "name": "Hostname",
+          "required": false,
+          "mapTo": "Hostname"
+        },
+        {
+          "name": "Source",
+          "required": false,
+          "mapTo": "Source"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Level",
+          "required": false,
+          "mapTo": "Level"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "metric_submit",
+      "name": "Datadog Metric Submit",
+      "description": "POST https://api.<%= @info['site'] %>/api/v2/series",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v2/series",
+      "inputs": [
+        {
+          "name": "Metric",
+          "required": true,
+          "mapTo": "Metric"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "mapTo": "Value"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Host",
+          "required": false,
+          "mapTo": "Host"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "monitor_create",
+      "name": "Datadog Monitor Create",
+      "description": "POST https://api.<%= @info['site'] %>/api/v1/monitor",
+      "method": "POST",
+      "path": "https://api.<%= @info['site'] %>/api/v1/monitor",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        },
+        {
+          "name": "Message",
+          "required": true,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Monitor ID",
+          "path": "monitor_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "monitor_update",
+      "name": "Datadog Monitor Update",
+      "description": "PUT https://api.<%= @info['site'] %>/api/v1/monitor/<%= @inputs['Monitor Id'] %>",
+      "method": "PUT",
+      "path": "https://api.<%= @info['site'] %>/api/v1/monitor/<%= @inputs['Monitor Id'] %>",
+      "inputs": [
+        {
+          "name": "Monitor Id",
+          "required": true,
+          "mapTo": "Monitor Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Query",
+          "required": false,
+          "mapTo": "Query"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Monitor ID",
+          "path": "monitor_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

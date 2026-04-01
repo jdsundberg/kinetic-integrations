@@ -1,0 +1,229 @@
+{
+  "id": "azure-servicebus",
+  "service": "Azure Service Bus",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Azure Service Bus integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "namespace",
+        "required": true,
+        "description": "Azure Service Bus namespace."
+      },
+      {
+        "name": "sas_token",
+        "required": true,
+        "description": "Azure Service Bus SAS token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "message_receive",
+      "name": "Azure Service Bus Message Receive",
+      "description": "POST https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>/messages/head?timeout=<%= @inputs['Timeout'] %>",
+      "method": "POST",
+      "path": "https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>/messages/head?timeout=<%= @inputs['Timeout'] %>",
+      "inputs": [
+        {
+          "name": "Queue Name",
+          "required": true,
+          "mapTo": "Queue Name"
+        },
+        {
+          "name": "Timeout",
+          "required": false,
+          "mapTo": "Timeout"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message Body",
+          "path": "message_body"
+        },
+        {
+          "name": "Broker Properties",
+          "path": "broker_properties"
+        },
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Azure Service Bus Message Send",
+      "description": "POST https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>/messages",
+      "method": "POST",
+      "path": "https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>/messages",
+      "inputs": [
+        {
+          "name": "Queue Name",
+          "required": true,
+          "mapTo": "Queue Name"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        },
+        {
+          "name": "Label",
+          "required": false,
+          "mapTo": "Label"
+        },
+        {
+          "name": "Time To Live",
+          "required": false,
+          "mapTo": "Time To Live"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "queue_create",
+      "name": "Azure Service Bus Queue Create",
+      "description": "PUT https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>",
+      "method": "PUT",
+      "path": "https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>",
+      "inputs": [
+        {
+          "name": "Queue Name",
+          "required": true,
+          "mapTo": "Queue Name"
+        },
+        {
+          "name": "Max Size Mb",
+          "required": false,
+          "mapTo": "Max Size Mb"
+        },
+        {
+          "name": "Default Ttl",
+          "required": false,
+          "mapTo": "Default Ttl"
+        },
+        {
+          "name": "Lock Duration",
+          "required": false,
+          "mapTo": "Lock Duration"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Queue Name",
+          "path": "queue_name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "topic_create",
+      "name": "Azure Service Bus Topic Create",
+      "description": "PUT https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Topic Name'] %>",
+      "method": "PUT",
+      "path": "https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Topic Name'] %>",
+      "inputs": [
+        {
+          "name": "Topic Name",
+          "required": true,
+          "mapTo": "Topic Name"
+        },
+        {
+          "name": "Max Size Mb",
+          "required": false,
+          "mapTo": "Max Size Mb"
+        },
+        {
+          "name": "Default Ttl",
+          "required": false,
+          "mapTo": "Default Ttl"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Topic Name",
+          "path": "topic_name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

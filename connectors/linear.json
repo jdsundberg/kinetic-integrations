@@ -1,0 +1,351 @@
+{
+  "id": "linear",
+  "service": "Linear",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Linear integration with 6 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Linear API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "comment_create",
+      "name": "Linear Comment Create",
+      "description": "POST https://api.linear.app/graphql",
+      "method": "POST",
+      "path": "https://api.linear.app/graphql",
+      "inputs": [
+        {
+          "name": "Issue Id",
+          "required": true,
+          "mapTo": "Issue Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "cycle_create",
+      "name": "Linear Cycle Create",
+      "description": "POST https://api.linear.app/graphql",
+      "method": "POST",
+      "path": "https://api.linear.app/graphql",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": true,
+          "mapTo": "End Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Cycle ID",
+          "path": "cycle_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Number",
+          "path": "number"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_create",
+      "name": "Linear Issue Create",
+      "description": "POST https://api.linear.app/graphql",
+      "method": "POST",
+      "path": "https://api.linear.app/graphql",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        },
+        {
+          "name": "State Id",
+          "required": false,
+          "mapTo": "State Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue ID",
+          "path": "issue_id"
+        },
+        {
+          "name": "Identifier",
+          "path": "identifier"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_update",
+      "name": "Linear Issue Update",
+      "description": "POST https://api.linear.app/graphql",
+      "method": "POST",
+      "path": "https://api.linear.app/graphql",
+      "inputs": [
+        {
+          "name": "Issue Id",
+          "required": true,
+          "mapTo": "Issue Id"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "State Id",
+          "required": false,
+          "mapTo": "State Id"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue ID",
+          "path": "issue_id"
+        },
+        {
+          "name": "Identifier",
+          "path": "identifier"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "project_create",
+      "name": "Linear Project Create",
+      "description": "POST https://api.linear.app/graphql",
+      "method": "POST",
+      "path": "https://api.linear.app/graphql",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Team Ids",
+          "required": true,
+          "mapTo": "Team Ids"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Project ID",
+          "path": "project_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "team_retrieve",
+      "name": "Linear Team Retrieve",
+      "description": "POST https://api.linear.app/graphql",
+      "method": "POST",
+      "path": "https://api.linear.app/graphql",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Team ID",
+          "path": "team_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Key",
+          "path": "key"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

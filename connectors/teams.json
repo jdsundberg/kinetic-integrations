@@ -1,0 +1,513 @@
+{
+  "id": "teams",
+  "service": "Microsoft Teams",
+  "version": 1,
+  "category": "Communication",
+  "description": "Microsoft Teams integration with 10 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope (if required)."
+      },
+      {
+        "name": "tenant_id",
+        "required": true,
+        "description": "Azure AD tenant ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "channel_create",
+      "name": "Microsoft Teams Channel Create",
+      "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Membership Type",
+          "required": false,
+          "mapTo": "Membership Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Channel ID",
+          "path": "channel_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "channel_list",
+      "name": "Microsoft Teams Channel List",
+      "description": "GET https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
+      "method": "GET",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Channels JSON",
+          "path": "channels_json"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "chat_create",
+      "name": "Microsoft Teams Chat Create",
+      "description": "POST https://graph.microsoft.com/v1.0/chats",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/chats",
+      "inputs": [
+        {
+          "name": "Chat Type",
+          "required": true,
+          "mapTo": "Chat Type"
+        },
+        {
+          "name": "Member Ids",
+          "required": true,
+          "mapTo": "Member Ids"
+        },
+        {
+          "name": "Topic",
+          "required": false,
+          "mapTo": "Topic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Chat ID",
+          "path": "chat_id"
+        },
+        {
+          "name": "Topic",
+          "path": "topic"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "meeting_create",
+      "name": "Microsoft Teams Meeting Create",
+      "description": "POST https://graph.microsoft.com/v1.0/users/<%= @inputs['Organizer Id'] %>/onlineMeetings",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['Organizer Id'] %>/onlineMeetings",
+      "inputs": [
+        {
+          "name": "Organizer Id",
+          "required": true,
+          "mapTo": "Organizer Id"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Start Time",
+          "required": true,
+          "mapTo": "Start Time"
+        },
+        {
+          "name": "End Time",
+          "required": true,
+          "mapTo": "End Time"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Meeting ID",
+          "path": "meeting_id"
+        },
+        {
+          "name": "Join URL",
+          "path": "join_url"
+        },
+        {
+          "name": "Meeting JSON",
+          "path": "meeting_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "member_add",
+      "name": "Microsoft Teams Member Add",
+      "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Role",
+          "required": false,
+          "mapTo": "Role"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Member ID",
+          "path": "member_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "member_remove",
+      "name": "Microsoft Teams Member Remove",
+      "description": "DELETE https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members/<%= @inputs['Membership Id'] %>",
+      "method": "DELETE",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members/<%= @inputs['Membership Id'] %>",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true
+        },
+        {
+          "name": "Membership Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_reply",
+      "name": "Microsoft Teams Message Reply",
+      "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages/<%= @inputs['Message Id'] %>/replies",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages/<%= @inputs['Message Id'] %>/replies",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Channel Id",
+          "required": true,
+          "mapTo": "Channel Id"
+        },
+        {
+          "name": "Message Id",
+          "required": true,
+          "mapTo": "Message Id"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Reply ID",
+          "path": "reply_id"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Microsoft Teams Message Send",
+      "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Channel Id",
+          "required": true,
+          "mapTo": "Channel Id"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "tab_add",
+      "name": "Microsoft Teams Tab Add",
+      "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/tabs",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/tabs",
+      "inputs": [
+        {
+          "name": "Team Id",
+          "required": true,
+          "mapTo": "Team Id"
+        },
+        {
+          "name": "Channel Id",
+          "required": true,
+          "mapTo": "Channel Id"
+        },
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "App Id",
+          "required": true,
+          "mapTo": "App Id"
+        },
+        {
+          "name": "Content Url",
+          "required": true,
+          "mapTo": "Content Url"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tab ID",
+          "path": "tab_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "team_create",
+      "name": "Microsoft Teams Team Create",
+      "description": "POST https://graph.microsoft.com/v1.0/teams",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/teams",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Visibility",
+          "required": false,
+          "mapTo": "Visibility"
+        },
+        {
+          "name": "Owner Id",
+          "required": true,
+          "mapTo": "Owner Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Team ID",
+          "path": "team_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

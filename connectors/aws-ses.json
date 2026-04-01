@@ -1,0 +1,232 @@
+{
+  "id": "aws-ses",
+  "service": "AWS SES",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "AWS SES integration with 4 pre-built routines.",
+  "auth": {
+    "type": "aws",
+    "properties": [
+      {
+        "name": "aws_access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "aws_secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      },
+      {
+        "name": "aws_region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "aws_service",
+        "required": false,
+        "description": "AWS service name for signing."
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "email_send",
+      "name": "AWS SES Email Send",
+      "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/outbound-emails",
+      "method": "POST",
+      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/outbound-emails",
+      "inputs": [
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        },
+        {
+          "name": "To Email",
+          "required": true,
+          "mapTo": "To Email"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Body Html",
+          "required": false,
+          "mapTo": "Body Html"
+        },
+        {
+          "name": "Body Text",
+          "required": false,
+          "mapTo": "Body Text"
+        },
+        {
+          "name": "Reply To",
+          "required": false,
+          "mapTo": "Reply To"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "identity_verify",
+      "name": "AWS SES Identity Verify",
+      "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/identities",
+      "method": "POST",
+      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/identities",
+      "inputs": [
+        {
+          "name": "Email Identity",
+          "required": true,
+          "mapTo": "Email Identity"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Identity Type",
+          "path": "identity_type"
+        },
+        {
+          "name": "Verified",
+          "path": "verified"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "suppression_add",
+      "name": "AWS SES Suppression Add",
+      "description": "PUT https://email.<%= @info['region'] %>.amazonaws.com/v2/email/suppression/addresses",
+      "method": "PUT",
+      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/suppression/addresses",
+      "inputs": [
+        {
+          "name": "Email Address",
+          "required": true,
+          "mapTo": "Email Address"
+        },
+        {
+          "name": "Reason",
+          "required": false,
+          "mapTo": "Reason"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "template_create",
+      "name": "AWS SES Template Create",
+      "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/templates",
+      "method": "POST",
+      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/templates",
+      "inputs": [
+        {
+          "name": "Template Name",
+          "required": true,
+          "mapTo": "Template Name"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Html Body",
+          "required": false,
+          "mapTo": "Html Body"
+        },
+        {
+          "name": "Text Body",
+          "required": false,
+          "mapTo": "Text Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

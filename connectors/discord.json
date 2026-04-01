@@ -1,0 +1,256 @@
+{
+  "id": "discord",
+  "service": "Discord",
+  "version": 1,
+  "category": "Communication",
+  "description": "Discord integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "bot_token",
+        "required": true,
+        "description": "Discord bot token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "channel_create",
+      "name": "Discord Channel Create",
+      "description": "POST https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/channels",
+      "method": "POST",
+      "path": "https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/channels",
+      "inputs": [
+        {
+          "name": "Guild Id",
+          "required": true,
+          "mapTo": "Guild Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Topic",
+          "required": false,
+          "mapTo": "Topic"
+        },
+        {
+          "name": "Parent Id",
+          "required": false,
+          "mapTo": "Parent Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Channel ID",
+          "path": "channel_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "member_add_role",
+      "name": "Discord Member Add Role",
+      "description": "PUT https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/members/<%= @inputs['User Id'] %>/roles/<%= @inputs['Role Id'] %>",
+      "method": "PUT",
+      "path": "https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/members/<%= @inputs['User Id'] %>/roles/<%= @inputs['Role Id'] %>",
+      "inputs": [
+        {
+          "name": "Guild Id",
+          "required": true,
+          "mapTo": "Guild Id"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Role Id",
+          "required": true,
+          "mapTo": "Role Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Discord Message Send",
+      "description": "POST https://discord.com/api/v10/channels/<%= @inputs['Channel Id'] %>/messages",
+      "method": "POST",
+      "path": "https://discord.com/api/v10/channels/<%= @inputs['Channel Id'] %>/messages",
+      "inputs": [
+        {
+          "name": "Channel Id",
+          "required": true,
+          "mapTo": "Channel Id"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Tts",
+          "required": false,
+          "mapTo": "Tts"
+        },
+        {
+          "name": "Embeds Json",
+          "required": false,
+          "mapTo": "Embeds Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Channel ID",
+          "path": "channel_id"
+        },
+        {
+          "name": "Timestamp",
+          "path": "timestamp"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "role_create",
+      "name": "Discord Role Create",
+      "description": "POST https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/roles",
+      "method": "POST",
+      "path": "https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/roles",
+      "inputs": [
+        {
+          "name": "Guild Id",
+          "required": true,
+          "mapTo": "Guild Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Color",
+          "required": false,
+          "mapTo": "Color"
+        },
+        {
+          "name": "Hoist",
+          "required": false,
+          "mapTo": "Hoist"
+        },
+        {
+          "name": "Mentionable",
+          "required": false,
+          "mapTo": "Mentionable"
+        },
+        {
+          "name": "Permissions",
+          "required": false,
+          "mapTo": "Permissions"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Role ID",
+          "path": "role_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Color",
+          "path": "color"
+        },
+        {
+          "name": "Position",
+          "path": "position"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

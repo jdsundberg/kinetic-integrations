@@ -1,0 +1,635 @@
+{
+  "id": "github",
+  "service": "GitHub",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "GitHub integration with 10 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_url",
+        "required": false,
+        "description": "GitHub API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "action_trigger",
+      "name": "GitHub Action Workflow Dispatch",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Workflow Id",
+          "required": true,
+          "mapTo": "Workflow Id"
+        },
+        {
+          "name": "Ref",
+          "required": true,
+          "mapTo": "Ref"
+        },
+        {
+          "name": "Inputs Json",
+          "required": false,
+          "mapTo": "Inputs Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "branch_create",
+      "name": "GitHub Branch Create",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Branch Name",
+          "required": true,
+          "mapTo": "Branch Name"
+        },
+        {
+          "name": "Sha",
+          "required": true,
+          "mapTo": "Sha"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ref",
+          "path": "ref"
+        },
+        {
+          "name": "SHA",
+          "path": "sha"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_add_comment",
+      "name": "GitHub Issue Add Comment",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Issue Number",
+          "required": true,
+          "mapTo": "Issue Number"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Comment ID",
+          "path": "comment_id"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_create",
+      "name": "GitHub Issue Create",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Labels",
+          "required": false,
+          "mapTo": "Labels"
+        },
+        {
+          "name": "Assignees",
+          "required": false,
+          "mapTo": "Assignees"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue Number",
+          "path": "issue_number"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Issue URL",
+          "path": "issue_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_update",
+      "name": "GitHub Issue Update",
+      "description": "PATCH <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
+      "method": "PATCH",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Issue Number",
+          "required": true,
+          "mapTo": "Issue Number"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        },
+        {
+          "name": "Labels",
+          "required": false,
+          "mapTo": "Labels"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue Number",
+          "path": "issue_number"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pr_create",
+      "name": "GitHub Pull Request Create",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Head Branch",
+          "required": true,
+          "mapTo": "Head Branch"
+        },
+        {
+          "name": "Base Branch",
+          "required": false,
+          "mapTo": "Base Branch"
+        },
+        {
+          "name": "Draft",
+          "required": false,
+          "mapTo": "Draft"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "PR Number",
+          "path": "pr_number"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "PR URL",
+          "path": "pr_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pr_merge",
+      "name": "GitHub Pull Request Merge",
+      "description": "PUT <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
+      "method": "PUT",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Pr Number",
+          "required": true,
+          "mapTo": "Pr Number"
+        },
+        {
+          "name": "Merge Method",
+          "required": false,
+          "mapTo": "Merge Method"
+        },
+        {
+          "name": "Commit Title",
+          "required": false,
+          "mapTo": "Commit Title"
+        },
+        {
+          "name": "Commit Message",
+          "required": false,
+          "mapTo": "Commit Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SHA",
+          "path": "sha"
+        },
+        {
+          "name": "Merged",
+          "path": "merged"
+        },
+        {
+          "name": "Message",
+          "path": "message"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "release_create",
+      "name": "GitHub Release Create",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Tag Name",
+          "required": true,
+          "mapTo": "Tag Name"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Draft",
+          "required": false,
+          "mapTo": "Draft"
+        },
+        {
+          "name": "Prerelease",
+          "required": false,
+          "mapTo": "Prerelease"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Release ID",
+          "path": "release_id"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Tag",
+          "path": "tag"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "repo_create",
+      "name": "GitHub Repository Create",
+      "description": "POST <%= @info['api_url'] %>/user/repos",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/user/repos",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Private",
+          "required": false,
+          "mapTo": "Private"
+        },
+        {
+          "name": "Auto Init",
+          "required": false,
+          "mapTo": "Auto Init"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Full Name",
+          "path": "full_name"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Clone URL",
+          "path": "clone_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "webhook_create",
+      "name": "GitHub Webhook Create",
+      "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
+      "inputs": [
+        {
+          "name": "Owner",
+          "required": true,
+          "mapTo": "Owner"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Url",
+          "required": true,
+          "mapTo": "Url"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        },
+        {
+          "name": "Events",
+          "required": false,
+          "mapTo": "Events"
+        },
+        {
+          "name": "Secret",
+          "required": false,
+          "mapTo": "Secret"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Hook ID",
+          "path": "hook_id"
+        },
+        {
+          "name": "Active",
+          "path": "active"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

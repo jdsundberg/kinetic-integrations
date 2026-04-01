@@ -1,0 +1,221 @@
+{
+  "id": "databricks",
+  "service": "Databricks",
+  "version": 1,
+  "category": "Data & Analytics",
+  "description": "Databricks integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "host",
+        "required": true,
+        "description": "Databricks workspace URL (e.g. https://myworkspace.cloud.databricks.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "cluster_create",
+      "name": "Databricks Cluster Create",
+      "description": "POST <%= @info['host'] %>/api/2.1/clusters/create",
+      "method": "POST",
+      "path": "<%= @info['host'] %>/api/2.1/clusters/create",
+      "inputs": [
+        {
+          "name": "Cluster Name",
+          "required": true,
+          "mapTo": "Cluster Name"
+        },
+        {
+          "name": "Spark Version",
+          "required": true,
+          "mapTo": "Spark Version"
+        },
+        {
+          "name": "Node Type Id",
+          "required": true,
+          "mapTo": "Node Type Id"
+        },
+        {
+          "name": "Num Workers",
+          "required": true,
+          "mapTo": "Num Workers"
+        },
+        {
+          "name": "Autotermination Minutes",
+          "required": false,
+          "mapTo": "Autotermination Minutes"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Cluster ID",
+          "path": "cluster_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_run",
+      "name": "Databricks Job Run",
+      "description": "POST <%= @info['host'] %>/api/2.1/jobs/run-now",
+      "method": "POST",
+      "path": "<%= @info['host'] %>/api/2.1/jobs/run-now",
+      "inputs": [
+        {
+          "name": "Job Id",
+          "required": true,
+          "mapTo": "Job Id"
+        },
+        {
+          "name": "Notebook Params Json",
+          "required": false,
+          "mapTo": "Notebook Params Json"
+        },
+        {
+          "name": "Jar Params",
+          "required": false,
+          "mapTo": "Jar Params"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Run ID",
+          "path": "run_id"
+        },
+        {
+          "name": "Number In Job",
+          "path": "number_in_job"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "notebook_export",
+      "name": "Databricks Notebook Export",
+      "description": "GET <%= @info['host'] %>/api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
+      "method": "GET",
+      "path": "<%= @info['host'] %>/api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
+      "inputs": [
+        {
+          "name": "Notebook Path",
+          "required": true
+        },
+        {
+          "name": "Format",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Content",
+          "path": "content"
+        },
+        {
+          "name": "File Type",
+          "path": "file_type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "query_execute",
+      "name": "Databricks Query Execute",
+      "description": "POST <%= @info['host'] %>/api/2.1/sql/statements",
+      "method": "POST",
+      "path": "<%= @info['host'] %>/api/2.1/sql/statements",
+      "inputs": [
+        {
+          "name": "Warehouse Id",
+          "required": true,
+          "mapTo": "Warehouse Id"
+        },
+        {
+          "name": "Statement",
+          "required": true,
+          "mapTo": "Statement"
+        },
+        {
+          "name": "Catalog",
+          "required": false,
+          "mapTo": "Catalog"
+        },
+        {
+          "name": "Schema",
+          "required": false,
+          "mapTo": "Schema"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Statement ID",
+          "path": "statement_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Result JSON",
+          "path": "result_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

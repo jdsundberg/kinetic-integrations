@@ -1,0 +1,262 @@
+{
+  "id": "gcp-bigquery",
+  "service": "GCP BigQuery",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "GCP BigQuery integration with 4 pre-built routines.",
+  "auth": {
+    "type": "jwt",
+    "properties": [
+      {
+        "name": "service_account_email",
+        "required": true,
+        "description": "Google service account email."
+      },
+      {
+        "name": "private_key",
+        "required": true,
+        "description": "PEM private key from service account JSON.",
+        "encrypted": true
+      },
+      {
+        "name": "jwt_subject",
+        "required": false,
+        "description": "Email to impersonate (domain-wide delegation)."
+      },
+      {
+        "name": "jwt_scope",
+        "required": true,
+        "description": "OAuth2 scope for the JWT assertion."
+      },
+      {
+        "name": "project_id",
+        "required": true,
+        "description": "GCP project ID."
+      },
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "GCP OAuth2 access token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "dataset_create",
+      "name": "GCP BigQuery Dataset Create",
+      "description": "POST https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets",
+      "method": "POST",
+      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets",
+      "inputs": [
+        {
+          "name": "Dataset Id",
+          "required": true,
+          "mapTo": "Dataset Id"
+        },
+        {
+          "name": "Location",
+          "required": false,
+          "mapTo": "Location"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Default Table Expiration Ms",
+          "required": false,
+          "mapTo": "Default Table Expiration Ms"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dataset ID",
+          "path": "dataset_id"
+        },
+        {
+          "name": "Location",
+          "path": "location"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_retrieve",
+      "name": "GCP BigQuery Job Retrieve",
+      "description": "GET https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/jobs/<%= @inputs['Job Id'] %>",
+      "method": "GET",
+      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/jobs/<%= @inputs['Job Id'] %>",
+      "inputs": [
+        {
+          "name": "Job Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Error Result",
+          "path": "error_result"
+        },
+        {
+          "name": "Statistics JSON",
+          "path": "statistics_json"
+        },
+        {
+          "name": "Job JSON",
+          "path": "job_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "query",
+      "name": "GCP BigQuery Query",
+      "description": "POST https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/queries",
+      "method": "POST",
+      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/queries",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        },
+        {
+          "name": "Use Legacy Sql",
+          "required": false,
+          "mapTo": "Use Legacy Sql"
+        },
+        {
+          "name": "Max Results",
+          "required": false,
+          "mapTo": "Max Results"
+        },
+        {
+          "name": "Timeout Ms",
+          "required": false,
+          "mapTo": "Timeout Ms"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job ID",
+          "path": "job_id"
+        },
+        {
+          "name": "Total Rows",
+          "path": "total_rows"
+        },
+        {
+          "name": "Rows JSON",
+          "path": "rows_json"
+        },
+        {
+          "name": "Schema JSON",
+          "path": "schema_json"
+        },
+        {
+          "name": "Job Complete",
+          "path": "job_complete"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "table_create",
+      "name": "GCP BigQuery Table Create",
+      "description": "POST https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets/<%= @inputs['Dataset Id'] %>/tables",
+      "method": "POST",
+      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets/<%= @inputs['Dataset Id'] %>/tables",
+      "inputs": [
+        {
+          "name": "Dataset Id",
+          "required": true,
+          "mapTo": "Dataset Id"
+        },
+        {
+          "name": "Table Id",
+          "required": true,
+          "mapTo": "Table Id"
+        },
+        {
+          "name": "Schema Json",
+          "required": true,
+          "mapTo": "Schema Json"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Table ID",
+          "path": "table_id"
+        },
+        {
+          "name": "Creation Time",
+          "path": "creation_time"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

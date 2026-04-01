@@ -1,0 +1,325 @@
+{
+  "id": "eloqua",
+  "service": "Eloqua",
+  "version": 1,
+  "category": "Email & Marketing",
+  "description": "Eloqua integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Eloqua base URL (e.g. https://secure.p03.eloqua.com)."
+      },
+      {
+        "name": "company",
+        "required": true,
+        "description": "Eloqua company name."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "campaign_activate",
+      "name": "Eloqua Campaign Activate",
+      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
+      "inputs": [
+        {
+          "name": "Campaign Id",
+          "required": true,
+          "mapTo": "Campaign Id"
+        },
+        {
+          "name": "Scheduled For",
+          "required": false,
+          "mapTo": "Scheduled For"
+        },
+        {
+          "name": "Run As User Id",
+          "required": false,
+          "mapTo": "Run As User Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Campaign ID",
+          "path": "campaign_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Activated At",
+          "path": "activated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Eloqua Contact Create",
+      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/data/contact",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/REST/2.0/data/contact",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Business Phone",
+          "required": false,
+          "mapTo": "Business Phone"
+        },
+        {
+          "name": "Account Name",
+          "required": false,
+          "mapTo": "Account Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "Eloqua Contact Update",
+      "description": "PUT <%= @info['base_url'] %>/api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['base_url'] %>/api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Business Phone",
+          "required": false,
+          "mapTo": "Business Phone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "email_send",
+      "name": "Eloqua Email Send",
+      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/assets/email/deployment",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/REST/2.0/assets/email/deployment",
+      "inputs": [
+        {
+          "name": "Email Id",
+          "required": true,
+          "mapTo": "Email Id"
+        },
+        {
+          "name": "Contact Id",
+          "required": true,
+          "mapTo": "Contact Id"
+        },
+        {
+          "name": "Campaign Id",
+          "required": false,
+          "mapTo": "Campaign Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deployment ID",
+          "path": "deployment_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Sent At",
+          "path": "sent_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "form_submit",
+      "name": "Eloqua Form Submit",
+      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
+      "inputs": [
+        {
+          "name": "Form Id",
+          "required": true,
+          "mapTo": "Form Id"
+        },
+        {
+          "name": "Field Values Json",
+          "required": true,
+          "mapTo": "Field Values Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Submission ID",
+          "path": "submission_id"
+        },
+        {
+          "name": "Submitted At",
+          "path": "submitted_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

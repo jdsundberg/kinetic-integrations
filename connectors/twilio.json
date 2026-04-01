@@ -1,0 +1,377 @@
+{
+  "id": "twilio",
+  "service": "Twilio",
+  "version": 1,
+  "category": "Communication",
+  "description": "Twilio integration with 7 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "account_sid",
+        "required": true,
+        "description": "Twilio Account SID."
+      },
+      {
+        "name": "auth_token",
+        "required": true,
+        "description": "Twilio Auth Token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "call_create",
+      "name": "Twilio Call Create",
+      "description": "POST https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Calls.json",
+      "method": "POST",
+      "path": "https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Calls.json",
+      "inputs": [
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "Url",
+          "required": true,
+          "mapTo": "Url"
+        },
+        {
+          "name": "Status Callback",
+          "required": false,
+          "mapTo": "Status Callback"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Call SID",
+          "path": "call_sid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "conversation_create",
+      "name": "Twilio Conversation Create",
+      "description": "POST https://conversations.twilio.com/v1/Conversations",
+      "method": "POST",
+      "path": "https://conversations.twilio.com/v1/Conversations",
+      "inputs": [
+        {
+          "name": "Friendly Name",
+          "required": true,
+          "mapTo": "Friendly Name"
+        },
+        {
+          "name": "Unique Name",
+          "required": false,
+          "mapTo": "Unique Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Conversation SID",
+          "path": "conversation_sid"
+        },
+        {
+          "name": "Friendly Name",
+          "path": "friendly_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_retrieve",
+      "name": "Twilio Message Retrieve",
+      "description": "GET https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages/<%= @inputs['Message Sid'] %>.json",
+      "method": "GET",
+      "path": "https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages/<%= @inputs['Message Sid'] %>.json",
+      "inputs": [
+        {
+          "name": "Message Sid",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SID",
+          "path": "sid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Body",
+          "path": "body"
+        },
+        {
+          "name": "From",
+          "path": "from"
+        },
+        {
+          "name": "To",
+          "path": "to"
+        },
+        {
+          "name": "Message JSON",
+          "path": "message_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "number_lookup",
+      "name": "Twilio Number Lookup",
+      "description": "GET https://lookups.twilio.com/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
+      "method": "GET",
+      "path": "https://lookups.twilio.com/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
+      "inputs": [
+        {
+          "name": "Phone Number",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Phone Number",
+          "path": "phone_number"
+        },
+        {
+          "name": "Country Code",
+          "path": "country_code"
+        },
+        {
+          "name": "Valid",
+          "path": "valid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "sms_send",
+      "name": "Twilio SMS Send",
+      "description": "POST https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages.json",
+      "method": "POST",
+      "path": "https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages.json",
+      "inputs": [
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Status Callback",
+          "required": false,
+          "mapTo": "Status Callback"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message SID",
+          "path": "message_sid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Date Sent",
+          "path": "date_sent"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "verify_check",
+      "name": "Twilio Verify Check",
+      "description": "POST https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
+      "method": "POST",
+      "path": "https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
+      "inputs": [
+        {
+          "name": "Service Sid",
+          "required": true,
+          "mapTo": "Service Sid"
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Code",
+          "required": true,
+          "mapTo": "Code"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SID",
+          "path": "sid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Valid",
+          "path": "valid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "verify_send",
+      "name": "Twilio Verify Send",
+      "description": "POST https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
+      "method": "POST",
+      "path": "https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
+      "inputs": [
+        {
+          "name": "Service Sid",
+          "required": true,
+          "mapTo": "Service Sid"
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Channel",
+          "required": true,
+          "mapTo": "Channel"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SID",
+          "path": "sid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Channel",
+          "path": "channel"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

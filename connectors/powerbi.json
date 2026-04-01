@@ -1,0 +1,181 @@
+{
+  "id": "powerbi",
+  "service": "Power BI",
+  "version": 1,
+  "category": "Data & Analytics",
+  "description": "Power BI integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "dashboard_list",
+      "name": "Power BI Dashboard List",
+      "description": "GET https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/dashboards",
+      "method": "GET",
+      "path": "https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/dashboards",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dashboards JSON",
+          "path": "dashboards_json"
+        },
+        {
+          "name": "Dashboard Count",
+          "path": "dashboard_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "dataset_refresh",
+      "name": "Power BI Dataset Refresh",
+      "description": "POST https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/datasets/<%= @inputs['Dataset Id'] %>/refreshes",
+      "method": "POST",
+      "path": "https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/datasets/<%= @inputs['Dataset Id'] %>/refreshes",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "Dataset Id",
+          "required": true,
+          "mapTo": "Dataset Id"
+        },
+        {
+          "name": "Notify Option",
+          "required": false,
+          "mapTo": "Notify Option"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_list",
+      "name": "Power BI Group List",
+      "description": "GET https://api.powerbi.com/v1.0/myorg/groups",
+      "method": "GET",
+      "path": "https://api.powerbi.com/v1.0/myorg/groups",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Groups JSON",
+          "path": "groups_json"
+        },
+        {
+          "name": "Group Count",
+          "path": "group_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "report_export",
+      "name": "Power BI Report Export",
+      "description": "POST https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/reports/<%= @inputs['Report Id'] %>/ExportTo",
+      "method": "POST",
+      "path": "https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/reports/<%= @inputs['Report Id'] %>/ExportTo",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "Report Id",
+          "required": true,
+          "mapTo": "Report Id"
+        },
+        {
+          "name": "Format",
+          "required": true,
+          "mapTo": "Format"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Export ID",
+          "path": "export_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Percent Complete",
+          "path": "percent_complete"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

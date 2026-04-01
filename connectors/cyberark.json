@@ -1,0 +1,286 @@
+{
+  "id": "cyberark",
+  "service": "CyberArk",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "CyberArk integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "CyberArk PVWA base URL."
+      },
+      {
+        "name": "session_token",
+        "required": true,
+        "description": "CyberArk session token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_create",
+      "name": "CyberArk Account Create",
+      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Accounts",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/PasswordVault/api/Accounts",
+      "inputs": [
+        {
+          "name": "Safe Name",
+          "required": true,
+          "mapTo": "Safe Name"
+        },
+        {
+          "name": "Platform Id",
+          "required": true,
+          "mapTo": "Platform Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Address",
+          "required": true,
+          "mapTo": "Address"
+        },
+        {
+          "name": "Username",
+          "required": true,
+          "mapTo": "Username"
+        },
+        {
+          "name": "Secret",
+          "required": true,
+          "mapTo": "Secret"
+        },
+        {
+          "name": "Secret Type",
+          "required": false,
+          "mapTo": "Secret Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Account ID",
+          "path": "account_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "account_retrieve",
+      "name": "CyberArk Account Retrieve",
+      "description": "GET <%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
+      "inputs": [
+        {
+          "name": "Account Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Account ID",
+          "path": "account_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Address",
+          "path": "address"
+        },
+        {
+          "name": "Username",
+          "path": "username"
+        },
+        {
+          "name": "Platform ID",
+          "path": "platform_id"
+        },
+        {
+          "name": "Safe Name",
+          "path": "safe_name"
+        },
+        {
+          "name": "Account JSON",
+          "path": "account_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "credential_retrieve",
+      "name": "CyberArk Credential Retrieve",
+      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
+      "inputs": [
+        {
+          "name": "Account Id",
+          "required": true,
+          "mapTo": "Account Id"
+        },
+        {
+          "name": "Reason",
+          "required": false,
+          "mapTo": "Reason"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Password",
+          "path": "password"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "safe_add_member",
+      "name": "CyberArk Safe Add Member",
+      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
+      "inputs": [
+        {
+          "name": "Safe Name",
+          "required": true,
+          "mapTo": "Safe Name"
+        },
+        {
+          "name": "Member Name",
+          "required": true,
+          "mapTo": "Member Name"
+        },
+        {
+          "name": "Member Type",
+          "required": false,
+          "mapTo": "Member Type"
+        },
+        {
+          "name": "Permissions Json",
+          "required": false,
+          "mapTo": "Permissions Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Member Name",
+          "path": "member_name"
+        },
+        {
+          "name": "Member Type",
+          "path": "member_type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "session_create",
+      "name": "CyberArk Session Create",
+      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Auth/CyberArk/Logon",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/PasswordVault/api/Auth/CyberArk/Logon",
+      "inputs": [
+        {
+          "name": "Username",
+          "required": true,
+          "mapTo": "Username"
+        },
+        {
+          "name": "Password",
+          "required": true,
+          "mapTo": "Password"
+        },
+        {
+          "name": "Concurrent Session",
+          "required": false,
+          "mapTo": "Concurrent Session"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Session Token",
+          "path": "session_token"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

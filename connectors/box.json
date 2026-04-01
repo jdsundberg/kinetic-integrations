@@ -1,0 +1,327 @@
+{
+  "id": "box",
+  "service": "Box",
+  "version": 1,
+  "category": "Documents & Storage",
+  "description": "Box integration with 6 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "collaboration_add",
+      "name": "Box Collaboration Add",
+      "description": "POST https://api.box.com/2.0/collaborations",
+      "method": "POST",
+      "path": "https://api.box.com/2.0/collaborations",
+      "inputs": [
+        {
+          "name": "Folder Id",
+          "required": true,
+          "mapTo": "Folder Id"
+        },
+        {
+          "name": "Accessible By Login",
+          "required": false,
+          "mapTo": "Accessible By Login"
+        },
+        {
+          "name": "Accessible By Id",
+          "required": false,
+          "mapTo": "Accessible By Id"
+        },
+        {
+          "name": "Role",
+          "required": true,
+          "mapTo": "Role"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Collaboration ID",
+          "path": "collaboration_id"
+        },
+        {
+          "name": "Role",
+          "path": "role"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_download",
+      "name": "Box File Download",
+      "description": "GET https://api.box.com/2.0/files/<%= @inputs['File Id'] %>/content",
+      "method": "GET",
+      "path": "https://api.box.com/2.0/files/<%= @inputs['File Id'] %>/content",
+      "inputs": [
+        {
+          "name": "File Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File Content",
+          "path": "file_content"
+        },
+        {
+          "name": "Download URL",
+          "path": "download_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_upload",
+      "name": "Box File Upload",
+      "description": "POST https://upload.box.com/api/2.0/files/content",
+      "method": "POST",
+      "path": "https://upload.box.com/api/2.0/files/content",
+      "inputs": [
+        {
+          "name": "Folder Id",
+          "required": true,
+          "mapTo": "Folder Id"
+        },
+        {
+          "name": "File Name",
+          "required": true,
+          "mapTo": "File Name"
+        },
+        {
+          "name": "File Content",
+          "required": true,
+          "mapTo": "File Content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "file_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Size",
+          "path": "size"
+        },
+        {
+          "name": "SHA1",
+          "path": "sha1"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "folder_create",
+      "name": "Box Folder Create",
+      "description": "POST https://api.box.com/2.0/folders",
+      "method": "POST",
+      "path": "https://api.box.com/2.0/folders",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Parent Id",
+          "required": true,
+          "mapTo": "Parent Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Folder ID",
+          "path": "folder_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "share_create",
+      "name": "Box Shared Link Create",
+      "description": "PUT https://api.box.com/2.0/files/<%= @inputs['File Id'] %>",
+      "method": "PUT",
+      "path": "https://api.box.com/2.0/files/<%= @inputs['File Id'] %>",
+      "inputs": [
+        {
+          "name": "File Id",
+          "required": true,
+          "mapTo": "File Id"
+        },
+        {
+          "name": "Access",
+          "required": false,
+          "mapTo": "Access"
+        },
+        {
+          "name": "Password",
+          "required": false,
+          "mapTo": "Password"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Shared Link URL",
+          "path": "shared_link_url"
+        },
+        {
+          "name": "Download URL",
+          "path": "download_url"
+        },
+        {
+          "name": "Access",
+          "path": "access"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Box User Create",
+      "description": "POST https://api.box.com/2.0/users",
+      "method": "POST",
+      "path": "https://api.box.com/2.0/users",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Login",
+          "required": true,
+          "mapTo": "Login"
+        },
+        {
+          "name": "Role",
+          "required": false,
+          "mapTo": "Role"
+        },
+        {
+          "name": "Space Amount",
+          "required": false,
+          "mapTo": "Space Amount"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Login",
+          "path": "login"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

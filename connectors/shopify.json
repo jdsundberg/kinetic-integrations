@@ -1,0 +1,473 @@
+{
+  "id": "shopify",
+  "service": "Shopify",
+  "version": 1,
+  "category": "Commerce & Content",
+  "description": "Shopify integration with 8 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: X-Shopify-Access-Token"
+      },
+      {
+        "name": "store_url",
+        "required": true,
+        "description": "Shopify store URL (e.g. https://mystore.myshopify.com)."
+      },
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "Shopify Admin API access token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "customer_create",
+      "name": "Shopify Customer Create",
+      "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/customers.json",
+      "method": "POST",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/customers.json",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "customer_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "customer_retrieve",
+      "name": "Shopify Customer Retrieve",
+      "description": "GET <%= @info['store_url'] %>/admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
+      "method": "GET",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
+      "inputs": [
+        {
+          "name": "Customer Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "customer_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Orders Count",
+          "path": "orders_count"
+        },
+        {
+          "name": "Customer JSON",
+          "path": "customer_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "fulfillment_create",
+      "name": "Shopify Fulfillment Create",
+      "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
+      "method": "POST",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
+      "inputs": [
+        {
+          "name": "Order Id",
+          "required": true,
+          "mapTo": "Order Id"
+        },
+        {
+          "name": "Tracking Number",
+          "required": false,
+          "mapTo": "Tracking Number"
+        },
+        {
+          "name": "Tracking Company",
+          "required": false,
+          "mapTo": "Tracking Company"
+        },
+        {
+          "name": "Notify Customer",
+          "required": false,
+          "mapTo": "Notify Customer"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Fulfillment ID",
+          "path": "fulfillment_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "inventory_update",
+      "name": "Shopify Inventory Update",
+      "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/inventory_levels/set.json",
+      "method": "POST",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/inventory_levels/set.json",
+      "inputs": [
+        {
+          "name": "Inventory Item Id",
+          "required": true,
+          "mapTo": "Inventory Item Id"
+        },
+        {
+          "name": "Location Id",
+          "required": true,
+          "mapTo": "Location Id"
+        },
+        {
+          "name": "Available",
+          "required": true,
+          "mapTo": "Available"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Inventory Item ID",
+          "path": "inventory_item_id"
+        },
+        {
+          "name": "Available",
+          "path": "available"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "order_retrieve",
+      "name": "Shopify Order Retrieve",
+      "description": "GET <%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "method": "GET",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "inputs": [
+        {
+          "name": "Order Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Order Number",
+          "path": "order_number"
+        },
+        {
+          "name": "Total Price",
+          "path": "total_price"
+        },
+        {
+          "name": "Financial Status",
+          "path": "financial_status"
+        },
+        {
+          "name": "Fulfillment Status",
+          "path": "fulfillment_status"
+        },
+        {
+          "name": "Order JSON",
+          "path": "order_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "order_update",
+      "name": "Shopify Order Update",
+      "description": "PUT <%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "method": "PUT",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "inputs": [
+        {
+          "name": "Order Id",
+          "required": true,
+          "mapTo": "Order Id"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Order ID",
+          "path": "order_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "product_create",
+      "name": "Shopify Product Create",
+      "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/products.json",
+      "method": "POST",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/products.json",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body Html",
+          "required": false,
+          "mapTo": "Body Html"
+        },
+        {
+          "name": "Vendor",
+          "required": false,
+          "mapTo": "Vendor"
+        },
+        {
+          "name": "Product Type",
+          "required": false,
+          "mapTo": "Product Type"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Price",
+          "required": false,
+          "mapTo": "Price"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Product ID",
+          "path": "product_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Handle",
+          "path": "handle"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "product_update",
+      "name": "Shopify Product Update",
+      "description": "PUT <%= @info['store_url'] %>/admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
+      "method": "PUT",
+      "path": "<%= @info['store_url'] %>/admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
+      "inputs": [
+        {
+          "name": "Product Id",
+          "required": true,
+          "mapTo": "Product Id"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Body Html",
+          "required": false,
+          "mapTo": "Body Html"
+        },
+        {
+          "name": "Vendor",
+          "required": false,
+          "mapTo": "Vendor"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Product ID",
+          "path": "product_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "id": "pardot",
+  "service": "Pardot",
+  "version": 1,
+  "category": "Email & Marketing",
+  "description": "Pardot integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "business_unit_id",
+        "required": true,
+        "description": "Pardot Business Unit ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "campaign_assign",
+      "name": "Pardot Campaign Assign",
+      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "method": "PATCH",
+      "path": "https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "inputs": [
+        {
+          "name": "Prospect Id",
+          "required": true,
+          "mapTo": "Prospect Id"
+        },
+        {
+          "name": "Campaign Id",
+          "required": true,
+          "mapTo": "Campaign Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Prospect ID",
+          "path": "prospect_id"
+        },
+        {
+          "name": "Campaign ID",
+          "path": "campaign_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_add",
+      "name": "Pardot List Add Prospect",
+      "description": "POST https://pi.pardot.com/api/v5/objects/list-memberships",
+      "method": "POST",
+      "path": "https://pi.pardot.com/api/v5/objects/list-memberships",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Prospect Id",
+          "required": true,
+          "mapTo": "Prospect Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Membership ID",
+          "path": "membership_id"
+        },
+        {
+          "name": "List ID",
+          "path": "list_id"
+        },
+        {
+          "name": "Prospect ID",
+          "path": "prospect_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "prospect_assign",
+      "name": "Pardot Prospect Assign",
+      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "method": "PATCH",
+      "path": "https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "inputs": [
+        {
+          "name": "Prospect Id",
+          "required": true,
+          "mapTo": "Prospect Id"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Prospect ID",
+          "path": "prospect_id"
+        },
+        {
+          "name": "Assigned User",
+          "path": "assigned_user"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "prospect_create",
+      "name": "Pardot Prospect Create",
+      "description": "POST https://pi.pardot.com/api/v5/objects/prospects",
+      "method": "POST",
+      "path": "https://pi.pardot.com/api/v5/objects/prospects",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "City",
+          "required": false,
+          "mapTo": "City"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "State"
+        },
+        {
+          "name": "Country",
+          "required": false,
+          "mapTo": "Country"
+        },
+        {
+          "name": "Campaign Id",
+          "required": false,
+          "mapTo": "Campaign Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Prospect ID",
+          "path": "prospect_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "prospect_update",
+      "name": "Pardot Prospect Update",
+      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "method": "PATCH",
+      "path": "https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "inputs": [
+        {
+          "name": "Prospect Id",
+          "required": true,
+          "mapTo": "Prospect Id"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "Company"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Score",
+          "required": false,
+          "mapTo": "Score"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Prospect ID",
+          "path": "prospect_id"
+        },
+        {
+          "name": "Updated At",
+          "path": "updated_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

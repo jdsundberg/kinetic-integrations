@@ -1,0 +1,255 @@
+{
+  "id": "terraform",
+  "service": "Terraform Cloud",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Terraform Cloud integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Terraform Cloud API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "run_create",
+      "name": "Terraform Cloud Run Create",
+      "description": "POST https://app.terraform.io/api/v2/runs",
+      "method": "POST",
+      "path": "https://app.terraform.io/api/v2/runs",
+      "inputs": [
+        {
+          "name": "Workspace Id",
+          "required": true,
+          "mapTo": "Workspace Id"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        },
+        {
+          "name": "Auto Apply",
+          "required": false,
+          "mapTo": "Auto Apply"
+        },
+        {
+          "name": "Is Destroy",
+          "required": false,
+          "mapTo": "Is Destroy"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Run ID",
+          "path": "run_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "state_retrieve",
+      "name": "Terraform Cloud State Retrieve",
+      "description": "GET https://app.terraform.io/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/current-state-version",
+      "method": "GET",
+      "path": "https://app.terraform.io/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/current-state-version",
+      "inputs": [
+        {
+          "name": "Workspace Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "State Version ID",
+          "path": "state_version_id"
+        },
+        {
+          "name": "Serial",
+          "path": "serial"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Download URL",
+          "path": "download_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "variable_set",
+      "name": "Terraform Cloud Variable Set",
+      "description": "POST https://app.terraform.io/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/vars",
+      "method": "POST",
+      "path": "https://app.terraform.io/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/vars",
+      "inputs": [
+        {
+          "name": "Workspace Id",
+          "required": true,
+          "mapTo": "Workspace Id"
+        },
+        {
+          "name": "Key",
+          "required": true,
+          "mapTo": "Key"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "mapTo": "Value"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Sensitive",
+          "required": false,
+          "mapTo": "Sensitive"
+        },
+        {
+          "name": "Hcl",
+          "required": false,
+          "mapTo": "Hcl"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Variable ID",
+          "path": "variable_id"
+        },
+        {
+          "name": "Key",
+          "path": "key"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "workspace_create",
+      "name": "Terraform Cloud Workspace Create",
+      "description": "POST https://app.terraform.io/api/v2/organizations/<%= @inputs['Organization'] %>/workspaces",
+      "method": "POST",
+      "path": "https://app.terraform.io/api/v2/organizations/<%= @inputs['Organization'] %>/workspaces",
+      "inputs": [
+        {
+          "name": "Organization",
+          "required": true,
+          "mapTo": "Organization"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Auto Apply",
+          "required": false,
+          "mapTo": "Auto Apply"
+        },
+        {
+          "name": "Terraform Version",
+          "required": false,
+          "mapTo": "Terraform Version"
+        },
+        {
+          "name": "Vcs Repo Identifier",
+          "required": false,
+          "mapTo": "Vcs Repo Identifier"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Workspace ID",
+          "path": "workspace_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

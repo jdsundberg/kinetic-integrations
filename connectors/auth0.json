@@ -1,0 +1,290 @@
+{
+  "id": "auth0",
+  "service": "Auth0",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Auth0 integration with 5 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "domain",
+        "required": true,
+        "description": "Auth0 tenant domain (e.g. myco.auth0.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "role_assign",
+      "name": "Auth0 Role Assign",
+      "description": "POST https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>/roles",
+      "method": "POST",
+      "path": "https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>/roles",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Role Ids",
+          "required": true,
+          "mapTo": "Role Ids"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_block",
+      "name": "Auth0 User Block",
+      "description": "PATCH https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "method": "PATCH",
+      "path": "https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Blocked",
+          "required": true,
+          "mapTo": "Blocked"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Blocked",
+          "path": "blocked"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Auth0 User Create",
+      "description": "POST https://<%= @info['domain'] %>/api/v2/users",
+      "method": "POST",
+      "path": "https://<%= @info['domain'] %>/api/v2/users",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Password",
+          "required": true,
+          "mapTo": "Password"
+        },
+        {
+          "name": "Connection",
+          "required": true,
+          "mapTo": "Connection"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Given Name",
+          "required": false,
+          "mapTo": "Given Name"
+        },
+        {
+          "name": "Family Name",
+          "required": false,
+          "mapTo": "Family Name"
+        },
+        {
+          "name": "Email Verified",
+          "required": false,
+          "mapTo": "Email Verified"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Created At",
+          "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Auth0 User Retrieve",
+      "description": "GET https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "method": "GET",
+      "path": "https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Last Login",
+          "path": "last_login"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_update",
+      "name": "Auth0 User Update",
+      "description": "PATCH https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "method": "PATCH",
+      "path": "https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Given Name",
+          "required": false,
+          "mapTo": "Given Name"
+        },
+        {
+          "name": "Family Name",
+          "required": false,
+          "mapTo": "Family Name"
+        },
+        {
+          "name": "Password",
+          "required": false,
+          "mapTo": "Password"
+        },
+        {
+          "name": "User Metadata Json",
+          "required": false,
+          "mapTo": "User Metadata Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

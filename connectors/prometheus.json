@@ -1,0 +1,193 @@
+{
+  "id": "prometheus",
+  "service": "Prometheus",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Prometheus integration with 4 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Prometheus server URL (e.g. https://prometheus.myco.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "alert_retrieve",
+      "name": "Prometheus Alert Retrieve",
+      "description": "GET <%= @info['base_url'] %>/api/v1/alerts",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/alerts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Alerts JSON",
+          "path": "alerts_json"
+        },
+        {
+          "name": "Alert Count",
+          "path": "alert_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "query",
+      "name": "Prometheus Query",
+      "description": "GET <%= @info['base_url'] %>/api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true
+        },
+        {
+          "name": "Time",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Result Type",
+          "path": "result_type"
+        },
+        {
+          "name": "Result JSON",
+          "path": "result_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "series_list",
+      "name": "Prometheus Series List",
+      "description": "GET <%= @info['base_url'] %>/api/v1/series?match[]=<%= @inputs['Match'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/series?match[]=<%= @inputs['Match'] %>",
+      "inputs": [
+        {
+          "name": "Match",
+          "required": true
+        },
+        {
+          "name": "Start",
+          "required": false
+        },
+        {
+          "name": "End",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Series JSON",
+          "path": "series_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "target_list",
+      "name": "Prometheus Target List",
+      "description": "GET <%= @info['base_url'] %>/api/v1/targets?state=<%= @inputs['State'] %>",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/api/v1/targets?state=<%= @inputs['State'] %>",
+      "inputs": [
+        {
+          "name": "State",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Active Targets JSON",
+          "path": "active_targets_json"
+        },
+        {
+          "name": "Dropped Targets JSON",
+          "path": "dropped_targets_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

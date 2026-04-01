@@ -1,0 +1,506 @@
+{
+  "id": "azure-ad",
+  "service": "Azure AD",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Azure AD integration with 10 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope (if required)."
+      },
+      {
+        "name": "tenant_id",
+        "required": true,
+        "description": "Azure AD tenant ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "app_create",
+      "name": "Azure AD App Registration Create",
+      "description": "POST https://graph.microsoft.com/v1.0/applications",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/applications",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Sign In Audience",
+          "required": false,
+          "mapTo": "Sign In Audience"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "App ID",
+          "path": "app_id"
+        },
+        {
+          "name": "Object ID",
+          "path": "object_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_add_member",
+      "name": "Azure AD Group Add Member",
+      "description": "POST https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_create",
+      "name": "Azure AD Group Create",
+      "description": "POST https://graph.microsoft.com/v1.0/groups",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/groups",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Mail Nickname",
+          "required": true,
+          "mapTo": "Mail Nickname"
+        },
+        {
+          "name": "Security Enabled",
+          "required": false,
+          "mapTo": "Security Enabled"
+        },
+        {
+          "name": "Mail Enabled",
+          "required": false,
+          "mapTo": "Mail Enabled"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group ID",
+          "path": "group_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_list_members",
+      "name": "Azure AD Group List Members",
+      "description": "GET https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members",
+      "method": "GET",
+      "path": "https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Members JSON",
+          "path": "members_json"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_remove_member",
+      "name": "Azure AD Group Remove Member",
+      "description": "DELETE https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
+      "method": "DELETE",
+      "path": "https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true
+        },
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "license_assign",
+      "name": "Azure AD License Assign",
+      "description": "POST https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Sku Id",
+          "required": true,
+          "mapTo": "Sku Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Assigned Licenses",
+          "path": "assigned_licenses"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Azure AD User Create",
+      "description": "POST https://graph.microsoft.com/v1.0/users",
+      "method": "POST",
+      "path": "https://graph.microsoft.com/v1.0/users",
+      "inputs": [
+        {
+          "name": "Display Name",
+          "required": true,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Mail Nickname",
+          "required": true,
+          "mapTo": "Mail Nickname"
+        },
+        {
+          "name": "User Principal Name",
+          "required": true,
+          "mapTo": "User Principal Name"
+        },
+        {
+          "name": "Password",
+          "required": true,
+          "mapTo": "Password"
+        },
+        {
+          "name": "Force Change Password",
+          "required": false,
+          "mapTo": "Force Change Password"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "UPN",
+          "path": "upn"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_delete",
+      "name": "Azure AD User Delete",
+      "description": "DELETE https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "method": "DELETE",
+      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Azure AD User Retrieve",
+      "description": "GET https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "method": "GET",
+      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "UPN",
+          "path": "upn"
+        },
+        {
+          "name": "Department",
+          "path": "department"
+        },
+        {
+          "name": "Job Title",
+          "path": "job_title"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_update",
+      "name": "Azure AD User Update",
+      "description": "PATCH https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "method": "PATCH",
+      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Display Name",
+          "required": false,
+          "mapTo": "Display Name"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Mobile Phone",
+          "required": false,
+          "mapTo": "Mobile Phone"
+        },
+        {
+          "name": "Office Location",
+          "required": false,
+          "mapTo": "Office Location"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

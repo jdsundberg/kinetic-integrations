@@ -1,0 +1,425 @@
+{
+  "id": "paypal",
+  "service": "PayPal",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "PayPal integration with 6 pre-built routines.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint URL."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client secret.",
+        "encrypted": true
+      },
+      {
+        "name": "oauth_scope",
+        "required": false,
+        "description": "OAuth2 scope (if required)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "invoice_create",
+      "name": "PayPal Invoice Create",
+      "description": "POST https://api-m.paypal.com/v2/invoicing/invoices",
+      "method": "POST",
+      "path": "https://api-m.paypal.com/v2/invoicing/invoices",
+      "inputs": [
+        {
+          "name": "Recipient Email",
+          "required": true,
+          "mapTo": "Recipient Email"
+        },
+        {
+          "name": "Recipient Name",
+          "required": false,
+          "mapTo": "Recipient Name"
+        },
+        {
+          "name": "Item Name",
+          "required": true,
+          "mapTo": "Item Name"
+        },
+        {
+          "name": "Item Quantity",
+          "required": true,
+          "mapTo": "Item Quantity"
+        },
+        {
+          "name": "Item Unit Amount",
+          "required": true,
+          "mapTo": "Item Unit Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice ID",
+          "path": "invoice_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Invoice Link",
+          "path": "invoice_link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "order_create",
+      "name": "PayPal Order Create",
+      "description": "POST https://api-m.paypal.com/v2/checkout/orders",
+      "method": "POST",
+      "path": "https://api-m.paypal.com/v2/checkout/orders",
+      "inputs": [
+        {
+          "name": "Intent",
+          "required": true,
+          "mapTo": "Intent"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Return Url",
+          "required": true,
+          "mapTo": "Return Url"
+        },
+        {
+          "name": "Cancel Url",
+          "required": true,
+          "mapTo": "Cancel Url"
+        },
+        {
+          "name": "Reference Id",
+          "required": false,
+          "mapTo": "Reference Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Order ID",
+          "path": "order_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Approval URL",
+          "path": "approval_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "payment_capture",
+      "name": "PayPal Payment Capture",
+      "description": "POST https://api-m.paypal.com/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
+      "method": "POST",
+      "path": "https://api-m.paypal.com/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
+      "inputs": [
+        {
+          "name": "Authorization Id",
+          "required": true,
+          "mapTo": "Authorization Id"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Final Capture",
+          "required": false,
+          "mapTo": "Final Capture"
+        },
+        {
+          "name": "Invoice Id",
+          "required": false,
+          "mapTo": "Invoice Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Capture ID",
+          "path": "capture_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Amount",
+          "path": "amount"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "PayPal Payment Create",
+      "description": "POST https://api-m.paypal.com/v1/payments/payment",
+      "method": "POST",
+      "path": "https://api-m.paypal.com/v1/payments/payment",
+      "inputs": [
+        {
+          "name": "Intent",
+          "required": true,
+          "mapTo": "Intent"
+        },
+        {
+          "name": "Payment Method",
+          "required": false,
+          "mapTo": "Payment Method"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Return Url",
+          "required": true,
+          "mapTo": "Return Url"
+        },
+        {
+          "name": "Cancel Url",
+          "required": true,
+          "mapTo": "Cancel Url"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment ID",
+          "path": "payment_id"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Approval URL",
+          "path": "approval_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "payout_create",
+      "name": "PayPal Payout Create",
+      "description": "POST https://api-m.paypal.com/v1/payments/payouts",
+      "method": "POST",
+      "path": "https://api-m.paypal.com/v1/payments/payouts",
+      "inputs": [
+        {
+          "name": "Sender Batch Id",
+          "required": true,
+          "mapTo": "Sender Batch Id"
+        },
+        {
+          "name": "Email Subject",
+          "required": false,
+          "mapTo": "Email Subject"
+        },
+        {
+          "name": "Recipient Email",
+          "required": true,
+          "mapTo": "Recipient Email"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Note",
+          "required": false,
+          "mapTo": "Note"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payout Batch ID",
+          "path": "payout_batch_id"
+        },
+        {
+          "name": "Batch Status",
+          "path": "batch_status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "refund_create",
+      "name": "PayPal Refund Create",
+      "description": "POST https://api-m.paypal.com/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
+      "method": "POST",
+      "path": "https://api-m.paypal.com/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
+      "inputs": [
+        {
+          "name": "Capture Id",
+          "required": true,
+          "mapTo": "Capture Id"
+        },
+        {
+          "name": "Amount",
+          "required": false,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": false,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Note To Payer",
+          "required": false,
+          "mapTo": "Note To Payer"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Refund ID",
+          "path": "refund_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Amount",
+          "path": "amount"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "id": "plivo",
+  "service": "Plivo",
+  "version": 1,
+  "category": "Communication",
+  "description": "Plivo integration with 4 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "auth_id",
+        "required": true,
+        "description": "Plivo Auth ID."
+      },
+      {
+        "name": "auth_token",
+        "required": true,
+        "description": "Plivo Auth Token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "call_create",
+      "name": "Plivo Call Create",
+      "description": "POST https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Call/",
+      "method": "POST",
+      "path": "https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Call/",
+      "inputs": [
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Answer Url",
+          "required": true,
+          "mapTo": "Answer Url"
+        },
+        {
+          "name": "Answer Method",
+          "required": false,
+          "mapTo": "Answer Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request UUID",
+          "path": "request_uuid"
+        },
+        {
+          "name": "API ID",
+          "path": "api_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_retrieve",
+      "name": "Plivo Message Retrieve",
+      "description": "GET https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Message/<%= @inputs['Message Uuid'] %>/",
+      "method": "GET",
+      "path": "https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Message/<%= @inputs['Message Uuid'] %>/",
+      "inputs": [
+        {
+          "name": "Message Uuid",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message UUID",
+          "path": "message_uuid"
+        },
+        {
+          "name": "From",
+          "path": "from"
+        },
+        {
+          "name": "To",
+          "path": "to"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Message JSON",
+          "path": "message_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "number_search",
+      "name": "Plivo Number Search",
+      "description": "GET https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/PhoneNumber/?country_iso=<%= @inputs['Country Iso'] %>&type=<%= @inputs['Type'] %>&limit=<%= @inputs['Limit'] %>",
+      "method": "GET",
+      "path": "https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/PhoneNumber/?country_iso=<%= @inputs['Country Iso'] %>&type=<%= @inputs['Type'] %>&limit=<%= @inputs['Limit'] %>",
+      "inputs": [
+        {
+          "name": "Country Iso",
+          "required": true
+        },
+        {
+          "name": "Type",
+          "required": false
+        },
+        {
+          "name": "Limit",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Numbers JSON",
+          "path": "numbers_json"
+        },
+        {
+          "name": "API ID",
+          "path": "api_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "sms_send",
+      "name": "Plivo SMS Send",
+      "description": "POST https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Message/",
+      "method": "POST",
+      "path": "https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Message/",
+      "inputs": [
+        {
+          "name": "Src",
+          "required": true,
+          "mapTo": "Src"
+        },
+        {
+          "name": "Dst",
+          "required": true,
+          "mapTo": "Dst"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Url",
+          "required": false,
+          "mapTo": "Url"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message UUID",
+          "path": "message_uuid"
+        },
+        {
+          "name": "API ID",
+          "path": "api_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

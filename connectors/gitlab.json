@@ -1,0 +1,405 @@
+{
+  "id": "gitlab",
+  "service": "GitLab",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "GitLab integration with 6 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: PRIVATE-TOKEN"
+      },
+      {
+        "name": "api_url",
+        "required": false,
+        "description": "GitLab API URL."
+      },
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "GitLab personal access token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "issue_create",
+      "name": "GitLab Issue Create",
+      "description": "POST <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Labels",
+          "required": false,
+          "mapTo": "Labels"
+        },
+        {
+          "name": "Assignee Ids",
+          "required": false,
+          "mapTo": "Assignee Ids"
+        },
+        {
+          "name": "Milestone Id",
+          "required": false,
+          "mapTo": "Milestone Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue IID",
+          "path": "issue_iid"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Issue ID",
+          "path": "issue_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "issue_update",
+      "name": "GitLab Issue Update",
+      "description": "PUT <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues/<%= @inputs['Issue Iid'] %>",
+      "method": "PUT",
+      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues/<%= @inputs['Issue Iid'] %>",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Issue Iid",
+          "required": true,
+          "mapTo": "Issue Iid"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "State Event",
+          "required": false,
+          "mapTo": "State Event"
+        },
+        {
+          "name": "Labels",
+          "required": false,
+          "mapTo": "Labels"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue IID",
+          "path": "issue_iid"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "mr_create",
+      "name": "GitLab Merge Request Create",
+      "description": "POST <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Source Branch",
+          "required": true,
+          "mapTo": "Source Branch"
+        },
+        {
+          "name": "Target Branch",
+          "required": true,
+          "mapTo": "Target Branch"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        },
+        {
+          "name": "Remove Source Branch",
+          "required": false,
+          "mapTo": "Remove Source Branch"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MR IID",
+          "path": "mr_iid"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "mr_merge",
+      "name": "GitLab Merge Request Merge",
+      "description": "PUT <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests/<%= @inputs['Mr Iid'] %>/merge",
+      "method": "PUT",
+      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests/<%= @inputs['Mr Iid'] %>/merge",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Mr Iid",
+          "required": true,
+          "mapTo": "Mr Iid"
+        },
+        {
+          "name": "Squash",
+          "required": false,
+          "mapTo": "Squash"
+        },
+        {
+          "name": "Merge Commit Message",
+          "required": false,
+          "mapTo": "Merge Commit Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MR IID",
+          "path": "mr_iid"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Merged By",
+          "path": "merged_by"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pipeline_trigger",
+      "name": "GitLab Pipeline Trigger",
+      "description": "POST <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/pipeline",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/pipeline",
+      "inputs": [
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Ref",
+          "required": true,
+          "mapTo": "Ref"
+        },
+        {
+          "name": "Variables Json",
+          "required": false,
+          "mapTo": "Variables Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Pipeline ID",
+          "path": "pipeline_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "project_create",
+      "name": "GitLab Project Create",
+      "description": "POST <%= @info['api_url'] %>/projects",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/projects",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Visibility",
+          "required": false,
+          "mapTo": "Visibility"
+        },
+        {
+          "name": "Initialize With Readme",
+          "required": false,
+          "mapTo": "Initialize With Readme"
+        },
+        {
+          "name": "Namespace Id",
+          "required": false,
+          "mapTo": "Namespace Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Project ID",
+          "path": "project_id"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "SSH URL",
+          "path": "ssh_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

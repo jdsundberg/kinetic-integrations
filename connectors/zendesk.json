@@ -1,0 +1,448 @@
+{
+  "id": "zendesk",
+  "service": "Zendesk",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Zendesk integration with 8 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "subdomain_url",
+        "required": true,
+        "description": "Zendesk URL (e.g. https://myco.zendesk.com)."
+      },
+      {
+        "name": "email",
+        "required": true,
+        "description": "Zendesk agent email."
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Zendesk API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "macro_apply",
+      "name": "Zendesk Macro Apply",
+      "description": "GET <%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
+      "method": "GET",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true
+        },
+        {
+          "name": "Macro Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket JSON",
+          "path": "ticket_json"
+        },
+        {
+          "name": "Comment JSON",
+          "path": "comment_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "organization_create",
+      "name": "Zendesk Organization Create",
+      "description": "POST <%= @info['subdomain_url'] %>/api/v2/organizations",
+      "method": "POST",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/organizations",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Domain Names",
+          "required": false,
+          "mapTo": "Domain Names"
+        },
+        {
+          "name": "Details",
+          "required": false,
+          "mapTo": "Details"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Organization ID",
+          "path": "organization_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "Zendesk Search",
+      "description": "GET <%= @info['subdomain_url'] %>/api/v2/search?query=<%= @inputs['Query'] %>",
+      "method": "GET",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/search?query=<%= @inputs['Query'] %>",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true
+        },
+        {
+          "name": "Sort By",
+          "required": false
+        },
+        {
+          "name": "Sort Order",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_add_comment",
+      "name": "Zendesk Ticket Add Comment",
+      "description": "PUT <%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true,
+          "mapTo": "Ticket Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        },
+        {
+          "name": "Public",
+          "required": false,
+          "mapTo": "Public"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_create",
+      "name": "Zendesk Ticket Create",
+      "description": "POST <%= @info['subdomain_url'] %>/api/v2/tickets",
+      "method": "POST",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets",
+      "inputs": [
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Description",
+          "required": true,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Requester Email",
+          "required": false,
+          "mapTo": "Requester Email"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "ticket_update",
+      "name": "Zendesk Ticket Update",
+      "description": "PUT <%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "inputs": [
+        {
+          "name": "Ticket Id",
+          "required": true,
+          "mapTo": "Ticket Id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Assignee Id",
+          "required": false,
+          "mapTo": "Assignee Id"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Ticket ID",
+          "path": "ticket_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Zendesk User Create",
+      "description": "POST <%= @info['subdomain_url'] %>/api/v2/users",
+      "method": "POST",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/users",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Role",
+          "required": false,
+          "mapTo": "Role"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Organization Id",
+          "required": false,
+          "mapTo": "Organization Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Zendesk User Retrieve",
+      "description": "GET <%= @info['subdomain_url'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['subdomain_url'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Role",
+          "path": "role"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

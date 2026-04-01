@@ -1,0 +1,228 @@
+{
+  "id": "bigpanda",
+  "service": "BigPanda",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "BigPanda integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "BigPanda API token.",
+        "encrypted": true
+      },
+      {
+        "name": "app_key",
+        "required": true,
+        "description": "BigPanda application key."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "alert_send",
+      "name": "BigPanda Alert Send",
+      "description": "POST https://api.bigpanda.io/data/v2/alerts",
+      "method": "POST",
+      "path": "https://api.bigpanda.io/data/v2/alerts",
+      "inputs": [
+        {
+          "name": "Status",
+          "required": true,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Host",
+          "required": true,
+          "mapTo": "Host"
+        },
+        {
+          "name": "Check",
+          "required": false,
+          "mapTo": "Check"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Cluster",
+          "required": false,
+          "mapTo": "Cluster"
+        },
+        {
+          "name": "Primary Property",
+          "required": false,
+          "mapTo": "Primary Property"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response",
+          "path": "response"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "environment_create",
+      "name": "BigPanda Environment Create",
+      "description": "POST https://api.bigpanda.io/resources/v2.0/environments",
+      "method": "POST",
+      "path": "https://api.bigpanda.io/resources/v2.0/environments",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Environment ID",
+          "path": "environment_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_create",
+      "name": "BigPanda Incident Create",
+      "description": "POST https://api.bigpanda.io/data/v2/alerts",
+      "method": "POST",
+      "path": "https://api.bigpanda.io/data/v2/alerts",
+      "inputs": [
+        {
+          "name": "Alerts Json",
+          "required": true,
+          "mapTo": "Alerts Json"
+        },
+        {
+          "name": "Primary Property",
+          "required": false,
+          "mapTo": "Primary Property"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response",
+          "path": "response"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "maintenance_create",
+      "name": "BigPanda Maintenance Create",
+      "description": "POST https://api.bigpanda.io/resources/v2.0/maintenance-plans",
+      "method": "POST",
+      "path": "https://api.bigpanda.io/resources/v2.0/maintenance-plans",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Condition Json",
+          "required": true,
+          "mapTo": "Condition Json"
+        },
+        {
+          "name": "Start",
+          "required": true,
+          "mapTo": "Start"
+        },
+        {
+          "name": "End",
+          "required": true,
+          "mapTo": "End"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Plan ID",
+          "path": "plan_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

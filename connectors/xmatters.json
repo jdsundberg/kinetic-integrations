@@ -1,0 +1,253 @@
+{
+  "id": "xmatters",
+  "service": "xMatters",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "xMatters integration with 4 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "xMatters instance URL (e.g. https://myco.xmatters.com)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "event_trigger",
+      "name": "xMatters Event Trigger",
+      "description": "POST <%= @info['base_url'] %>/api/xm/1/events",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/xm/1/events",
+      "inputs": [
+        {
+          "name": "Form Id",
+          "required": true,
+          "mapTo": "Form Id"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        },
+        {
+          "name": "Recipients Json",
+          "required": true,
+          "mapTo": "Recipients Json"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        },
+        {
+          "name": "Properties Json",
+          "required": false,
+          "mapTo": "Properties Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Event ID",
+          "path": "event_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_create",
+      "name": "xMatters Group Create",
+      "description": "POST <%= @info['base_url'] %>/api/xm/1/groups",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/xm/1/groups",
+      "inputs": [
+        {
+          "name": "Target Name",
+          "required": true,
+          "mapTo": "Target Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Observed By All",
+          "required": false,
+          "mapTo": "Observed By All"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group ID",
+          "path": "group_id"
+        },
+        {
+          "name": "Target Name",
+          "path": "target_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "person_create",
+      "name": "xMatters Person Create",
+      "description": "POST <%= @info['base_url'] %>/api/xm/1/people",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/xm/1/people",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Target Name",
+          "required": true,
+          "mapTo": "Target Name"
+        },
+        {
+          "name": "Roles Json",
+          "required": false,
+          "mapTo": "Roles Json"
+        },
+        {
+          "name": "Site Id",
+          "required": false,
+          "mapTo": "Site Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Person ID",
+          "path": "person_id"
+        },
+        {
+          "name": "Target Name",
+          "path": "target_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "shift_create",
+      "name": "xMatters Shift Create",
+      "description": "POST <%= @info['base_url'] %>/api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Start Time",
+          "required": false,
+          "mapTo": "Start Time"
+        },
+        {
+          "name": "End Time",
+          "required": false,
+          "mapTo": "End Time"
+        },
+        {
+          "name": "Timezone",
+          "required": false,
+          "mapTo": "Timezone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Shift ID",
+          "path": "shift_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

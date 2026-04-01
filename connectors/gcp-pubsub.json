@@ -1,0 +1,217 @@
+{
+  "id": "gcp-pubsub",
+  "service": "GCP Pub/Sub",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "GCP Pub/Sub integration with 4 pre-built routines.",
+  "auth": {
+    "type": "jwt",
+    "properties": [
+      {
+        "name": "service_account_email",
+        "required": true,
+        "description": "Google service account email."
+      },
+      {
+        "name": "private_key",
+        "required": true,
+        "description": "PEM private key from service account JSON.",
+        "encrypted": true
+      },
+      {
+        "name": "jwt_subject",
+        "required": false,
+        "description": "Email to impersonate (domain-wide delegation)."
+      },
+      {
+        "name": "jwt_scope",
+        "required": true,
+        "description": "OAuth2 scope for the JWT assertion."
+      },
+      {
+        "name": "project_id",
+        "required": true,
+        "description": "GCP project ID."
+      },
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "GCP OAuth2 access token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "publish",
+      "name": "GCP Pub/Sub Publish",
+      "description": "POST https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/topics/<%= @inputs['Topic Id'] %>:publish",
+      "method": "POST",
+      "path": "https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/topics/<%= @inputs['Topic Id'] %>:publish",
+      "inputs": [
+        {
+          "name": "Topic Id",
+          "required": true,
+          "mapTo": "Topic Id"
+        },
+        {
+          "name": "Message Data",
+          "required": true,
+          "mapTo": "Message Data"
+        },
+        {
+          "name": "Attributes Json",
+          "required": false,
+          "mapTo": "Attributes Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message IDs",
+          "path": "message_ids"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pull",
+      "name": "GCP Pub/Sub Pull",
+      "description": "POST https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/subscriptions/<%= @inputs['Subscription Id'] %>:pull",
+      "method": "POST",
+      "path": "https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/subscriptions/<%= @inputs['Subscription Id'] %>:pull",
+      "inputs": [
+        {
+          "name": "Subscription Id",
+          "required": true,
+          "mapTo": "Subscription Id"
+        },
+        {
+          "name": "Max Messages",
+          "required": false,
+          "mapTo": "Max Messages"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Messages JSON",
+          "path": "messages_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "subscription_create",
+      "name": "GCP Pub/Sub Subscription Create",
+      "description": "PUT https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/subscriptions/<%= @inputs['Subscription Id'] %>",
+      "method": "PUT",
+      "path": "https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/subscriptions/<%= @inputs['Subscription Id'] %>",
+      "inputs": [
+        {
+          "name": "Subscription Id",
+          "required": true,
+          "mapTo": "Subscription Id"
+        },
+        {
+          "name": "Topic Id",
+          "required": true,
+          "mapTo": "Topic Id"
+        },
+        {
+          "name": "Ack Deadline Seconds",
+          "required": false,
+          "mapTo": "Ack Deadline Seconds"
+        },
+        {
+          "name": "Push Endpoint",
+          "required": false,
+          "mapTo": "Push Endpoint"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Subscription Name",
+          "path": "subscription_name"
+        },
+        {
+          "name": "Topic",
+          "path": "topic"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "topic_create",
+      "name": "GCP Pub/Sub Topic Create",
+      "description": "PUT https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/topics/<%= @inputs['Topic Id'] %>",
+      "method": "PUT",
+      "path": "https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/topics/<%= @inputs['Topic Id'] %>",
+      "inputs": [
+        {
+          "name": "Topic Id",
+          "required": true,
+          "mapTo": "Topic Id"
+        },
+        {
+          "name": "Labels Json",
+          "required": false,
+          "mapTo": "Labels Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Topic Name",
+          "path": "topic_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

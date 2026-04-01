@@ -1,0 +1,307 @@
+{
+  "id": "oracle-fusion-fin",
+  "service": "Oracle Fusion Fin",
+  "version": 1,
+  "category": "Accounting",
+  "description": "Oracle Fusion Fin integration with 8 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Oracle Fusion username."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Oracle Fusion password.",
+        "encrypted": true
+      },
+      {
+        "name": "instance_url",
+        "required": true,
+        "description": "Oracle Fusion REST API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "account_list",
+      "name": "Oracle Fusion Cloud Financials Chart of Accounts",
+      "description": "GET /fscmRestApi/resources/v1/accounts",
+      "method": "GET",
+      "path": "/fscmRestApi/resources/v1/accounts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Accounts JSON",
+          "path": "accounts"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        }
+      ]
+    },
+    {
+      "id": "bill_create",
+      "name": "Oracle Fusion Cloud Financials Bill Create",
+      "description": "POST /fscmRestApi/resources/v1/bills",
+      "method": "POST",
+      "path": "/fscmRestApi/resources/v1/bills",
+      "inputs": [
+        {
+          "name": "Vendor Id",
+          "required": true,
+          "mapTo": "Vendor Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bill Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "Oracle Fusion Cloud Financials Customer Create",
+      "description": "POST /fscmRestApi/resources/v1/customers",
+      "method": "POST",
+      "path": "/fscmRestApi/resources/v1/customers",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Address",
+          "required": false,
+          "mapTo": "Address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Oracle Fusion Cloud Financials Invoice Create",
+      "description": "POST /fscmRestApi/resources/v1/invoices",
+      "method": "POST",
+      "path": "/fscmRestApi/resources/v1/invoices",
+      "inputs": [
+        {
+          "name": "Customer Id",
+          "required": true,
+          "mapTo": "Customer Id"
+        },
+        {
+          "name": "Line Items JSON",
+          "required": true,
+          "mapTo": "Line Items JSON"
+        },
+        {
+          "name": "Due Date",
+          "required": false,
+          "mapTo": "Due Date"
+        },
+        {
+          "name": "Currency",
+          "required": false,
+          "mapTo": "Currency"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Id",
+          "path": "id"
+        },
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "invoice_retrieve",
+      "name": "Oracle Fusion Cloud Financials Invoice Retrieve",
+      "description": "GET /fscmRestApi/resources/v1/invoices/{invoice_id}",
+      "method": "GET",
+      "path": "/fscmRestApi/resources/v1/invoices/{invoice_id}",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice Number",
+          "path": "number"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Balance Due",
+          "path": "balance"
+        }
+      ]
+    },
+    {
+      "id": "journal_entry_create",
+      "name": "Oracle Fusion Cloud Financials Journal Entry Create",
+      "description": "POST /fscmRestApi/resources/v1/journal-entries",
+      "method": "POST",
+      "path": "/fscmRestApi/resources/v1/journal-entries",
+      "inputs": [
+        {
+          "name": "Date",
+          "required": true,
+          "mapTo": "Date"
+        },
+        {
+          "name": "Lines JSON",
+          "required": true,
+          "mapTo": "Lines JSON"
+        },
+        {
+          "name": "Memo",
+          "required": false,
+          "mapTo": "Memo"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Entry Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "payment_create",
+      "name": "Oracle Fusion Cloud Financials Payment Create",
+      "description": "POST /fscmRestApi/resources/v1/payments",
+      "method": "POST",
+      "path": "/fscmRestApi/resources/v1/payments",
+      "inputs": [
+        {
+          "name": "Invoice Id",
+          "required": true,
+          "mapTo": "Invoice Id"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Payment Date",
+          "required": false,
+          "mapTo": "Payment Date"
+        },
+        {
+          "name": "Payment Method",
+          "required": false,
+          "mapTo": "Payment Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Payment Id",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "vendor_create",
+      "name": "Oracle Fusion Cloud Financials Vendor Create",
+      "description": "POST /fscmRestApi/resources/v1/vendors",
+      "method": "POST",
+      "path": "/fscmRestApi/resources/v1/vendors",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vendor Id",
+          "path": "id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "id": "sumologic",
+  "service": "Sumo Logic",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Sumo Logic integration with 4 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "deployment",
+        "required": true,
+        "description": "Sumo Logic deployment (e.g. us1, us2, eu, au)."
+      },
+      {
+        "name": "access_id",
+        "required": true,
+        "description": "Sumo Logic access ID."
+      },
+      {
+        "name": "access_key",
+        "required": true,
+        "description": "Sumo Logic access key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "collector_create",
+      "name": "Sumo Logic Collector Create",
+      "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors",
+      "method": "POST",
+      "path": "https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Collector ID",
+          "path": "collector_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "log_send",
+      "name": "Sumo Logic Log Send",
+      "description": "POST <%= @inputs['Collector Url'] %>",
+      "method": "POST",
+      "path": "<%= @inputs['Collector Url'] %>",
+      "inputs": [
+        {
+          "name": "Collector Url",
+          "required": true,
+          "mapTo": "Collector Url"
+        },
+        {
+          "name": "Log Data",
+          "required": true,
+          "mapTo": "Log Data"
+        },
+        {
+          "name": "Source Category",
+          "required": false,
+          "mapTo": "Source Category"
+        },
+        {
+          "name": "Source Name",
+          "required": false,
+          "mapTo": "Source Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search_create",
+      "name": "Sumo Logic Search Create",
+      "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/search/jobs",
+      "method": "POST",
+      "path": "https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/search/jobs",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        },
+        {
+          "name": "From Time",
+          "required": true,
+          "mapTo": "From Time"
+        },
+        {
+          "name": "To Time",
+          "required": true,
+          "mapTo": "To Time"
+        },
+        {
+          "name": "Time Zone",
+          "required": false,
+          "mapTo": "Time Zone"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Search Job ID",
+          "path": "search_job_id"
+        },
+        {
+          "name": "Link",
+          "path": "link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "source_create",
+      "name": "Sumo Logic Source Create",
+      "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
+      "method": "POST",
+      "path": "https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
+      "inputs": [
+        {
+          "name": "Collector Id",
+          "required": true,
+          "mapTo": "Collector Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Source Type",
+          "required": true,
+          "mapTo": "Source Type"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Source ID",
+          "path": "source_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

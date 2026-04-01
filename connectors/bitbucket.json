@@ -1,0 +1,402 @@
+{
+  "id": "bitbucket",
+  "service": "Bitbucket",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Bitbucket integration with 6 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "app_password",
+        "required": true,
+        "description": "Bitbucket app password.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "issue_create",
+      "name": "Bitbucket Issue Create",
+      "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/issues",
+      "method": "POST",
+      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/issues",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Content",
+          "required": false,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Kind",
+          "required": false,
+          "mapTo": "Kind"
+        },
+        {
+          "name": "Priority",
+          "required": false,
+          "mapTo": "Priority"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Issue ID",
+          "path": "issue_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pipeline_trigger",
+      "name": "Bitbucket Pipeline Trigger",
+      "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pipelines/",
+      "method": "POST",
+      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pipelines/",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Branch",
+          "required": true,
+          "mapTo": "Branch"
+        },
+        {
+          "name": "Custom Pipeline",
+          "required": false,
+          "mapTo": "Custom Pipeline"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Pipeline UUID",
+          "path": "pipeline_uuid"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pr_create",
+      "name": "Bitbucket Pull Request Create",
+      "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests",
+      "method": "POST",
+      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Source Branch",
+          "required": true,
+          "mapTo": "Source Branch"
+        },
+        {
+          "name": "Destination Branch",
+          "required": false,
+          "mapTo": "Destination Branch"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Close Source Branch",
+          "required": false,
+          "mapTo": "Close Source Branch"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "PR ID",
+          "path": "pr_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Link",
+          "path": "link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pr_merge",
+      "name": "Bitbucket Pull Request Merge",
+      "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests/<%= @inputs['Pr Id'] %>/merge",
+      "method": "POST",
+      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests/<%= @inputs['Pr Id'] %>/merge",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Pr Id",
+          "required": true,
+          "mapTo": "Pr Id"
+        },
+        {
+          "name": "Merge Strategy",
+          "required": false,
+          "mapTo": "Merge Strategy"
+        },
+        {
+          "name": "Message",
+          "required": false,
+          "mapTo": "Message"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "State",
+          "path": "state"
+        },
+        {
+          "name": "Merge Commit",
+          "path": "merge_commit"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "repo_create",
+      "name": "Bitbucket Repository Create",
+      "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo Slug'] %>",
+      "method": "POST",
+      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo Slug'] %>",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Repo Slug",
+          "required": true,
+          "mapTo": "Repo Slug"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Is Private",
+          "required": false,
+          "mapTo": "Is Private"
+        },
+        {
+          "name": "Language",
+          "required": false,
+          "mapTo": "Language"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Full Name",
+          "path": "full_name"
+        },
+        {
+          "name": "Clone URL",
+          "path": "clone_url"
+        },
+        {
+          "name": "Web URL",
+          "path": "web_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "webhook_create",
+      "name": "Bitbucket Webhook Create",
+      "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/hooks",
+      "method": "POST",
+      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/hooks",
+      "inputs": [
+        {
+          "name": "Workspace",
+          "required": true,
+          "mapTo": "Workspace"
+        },
+        {
+          "name": "Repo",
+          "required": true,
+          "mapTo": "Repo"
+        },
+        {
+          "name": "Url",
+          "required": true,
+          "mapTo": "Url"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Events",
+          "required": false,
+          "mapTo": "Events"
+        },
+        {
+          "name": "Active",
+          "required": false,
+          "mapTo": "Active"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Hook UUID",
+          "path": "hook_uuid"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

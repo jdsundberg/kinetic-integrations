@@ -1,0 +1,403 @@
+{
+  "id": "okta",
+  "service": "Okta",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Okta integration with 8 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_prefix",
+        "required": false,
+        "description": "Prefix before the key value. Default: SSWS "
+      },
+      {
+        "name": "org_url",
+        "required": true,
+        "description": "Okta org URL (e.g. https://myco.okta.com)."
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Okta API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "app_assign",
+      "name": "Okta App Assign User",
+      "description": "PUT <%= @info['org_url'] %>/api/v1/apps/<%= @inputs['App Id'] %>/users/<%= @inputs['User Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['org_url'] %>/api/v1/apps/<%= @inputs['App Id'] %>/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "App Id",
+          "required": true,
+          "mapTo": "App Id"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_add_member",
+      "name": "Okta Group Add Member",
+      "description": "PUT <%= @info['org_url'] %>/api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "method": "PUT",
+      "path": "<%= @info['org_url'] %>/api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_create",
+      "name": "Okta Group Create",
+      "description": "POST <%= @info['org_url'] %>/api/v1/groups",
+      "method": "POST",
+      "path": "<%= @info['org_url'] %>/api/v1/groups",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group ID",
+          "path": "group_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_remove_member",
+      "name": "Okta Group Remove Member",
+      "description": "DELETE <%= @info['org_url'] %>/api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "method": "DELETE",
+      "path": "<%= @info['org_url'] %>/api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "Group Id",
+          "required": true
+        },
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Okta User Create",
+      "description": "POST <%= @info['org_url'] %>/api/v1/users?activate=<%= @inputs['Activate'] %>",
+      "method": "POST",
+      "path": "<%= @info['org_url'] %>/api/v1/users?activate=<%= @inputs['Activate'] %>",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Login",
+          "required": true,
+          "mapTo": "Login"
+        },
+        {
+          "name": "Password",
+          "required": false,
+          "mapTo": "Password"
+        },
+        {
+          "name": "Activate",
+          "required": false,
+          "mapTo": "Activate"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Login",
+          "path": "login"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_deactivate",
+      "name": "Okta User Deactivate",
+      "description": "POST <%= @info['org_url'] %>/api/v1/users/<%= @inputs['User Id'] %>/lifecycle/deactivate",
+      "method": "POST",
+      "path": "<%= @info['org_url'] %>/api/v1/users/<%= @inputs['User Id'] %>/lifecycle/deactivate",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Success",
+          "path": "success"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Okta User Retrieve",
+      "description": "GET <%= @info['org_url'] %>/api/v1/users/<%= @inputs['User Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['org_url'] %>/api/v1/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_update",
+      "name": "Okta User Update",
+      "description": "POST <%= @info['org_url'] %>/api/v1/users/<%= @inputs['User Id'] %>",
+      "method": "POST",
+      "path": "<%= @info['org_url'] %>/api/v1/users/<%= @inputs['User Id'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

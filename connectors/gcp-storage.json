@@ -1,0 +1,237 @@
+{
+  "id": "gcp-storage",
+  "service": "GCP Cloud Storage",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "GCP Cloud Storage integration with 4 pre-built routines.",
+  "auth": {
+    "type": "jwt",
+    "properties": [
+      {
+        "name": "service_account_email",
+        "required": true,
+        "description": "Google service account email."
+      },
+      {
+        "name": "private_key",
+        "required": true,
+        "description": "PEM private key from service account JSON.",
+        "encrypted": true
+      },
+      {
+        "name": "jwt_subject",
+        "required": false,
+        "description": "Email to impersonate (domain-wide delegation)."
+      },
+      {
+        "name": "jwt_scope",
+        "required": true,
+        "description": "OAuth2 scope for the JWT assertion."
+      },
+      {
+        "name": "project_id",
+        "required": true,
+        "description": "GCP project ID."
+      },
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "GCP OAuth2 access token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "bucket_create",
+      "name": "GCP Cloud Storage Bucket Create",
+      "description": "POST https://storage.googleapis.com/storage/v1/b?project=<%= @info['project_id'] %>",
+      "method": "POST",
+      "path": "https://storage.googleapis.com/storage/v1/b?project=<%= @info['project_id'] %>",
+      "inputs": [
+        {
+          "name": "Bucket Name",
+          "required": true,
+          "mapTo": "Bucket Name"
+        },
+        {
+          "name": "Location",
+          "required": false,
+          "mapTo": "Location"
+        },
+        {
+          "name": "Storage Class",
+          "required": false,
+          "mapTo": "Storage Class"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bucket Name",
+          "path": "bucket_name"
+        },
+        {
+          "name": "Location",
+          "path": "location"
+        },
+        {
+          "name": "Storage Class",
+          "path": "storage_class"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_download",
+      "name": "GCP Cloud Storage Object Download",
+      "description": "GET https://storage.googleapis.com/storage/v1/b/<%= @inputs['Bucket'] %>/o/<%= @inputs['Object Name'] %>?alt=media",
+      "method": "GET",
+      "path": "https://storage.googleapis.com/storage/v1/b/<%= @inputs['Bucket'] %>/o/<%= @inputs['Object Name'] %>?alt=media",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        },
+        {
+          "name": "Object Name",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Content",
+          "path": "content"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_list",
+      "name": "GCP Cloud Storage Object List",
+      "description": "GET https://storage.googleapis.com/storage/v1/b/<%= @inputs['Bucket'] %>/o?prefix=<%= @inputs['Prefix'] %>&maxResults=<%= @inputs['Max Results'] %>",
+      "method": "GET",
+      "path": "https://storage.googleapis.com/storage/v1/b/<%= @inputs['Bucket'] %>/o?prefix=<%= @inputs['Prefix'] %>&maxResults=<%= @inputs['Max Results'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true
+        },
+        {
+          "name": "Prefix",
+          "required": false
+        },
+        {
+          "name": "Max Results",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Items JSON",
+          "path": "items_json"
+        },
+        {
+          "name": "Next Page Token",
+          "path": "next_page_token"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "object_upload",
+      "name": "GCP Cloud Storage Object Upload",
+      "description": "POST https://storage.googleapis.com/upload/storage/v1/b/<%= @inputs['Bucket'] %>/o?uploadType=media&name=<%= @inputs['Object Name'] %>",
+      "method": "POST",
+      "path": "https://storage.googleapis.com/upload/storage/v1/b/<%= @inputs['Bucket'] %>/o?uploadType=media&name=<%= @inputs['Object Name'] %>",
+      "inputs": [
+        {
+          "name": "Bucket",
+          "required": true,
+          "mapTo": "Bucket"
+        },
+        {
+          "name": "Object Name",
+          "required": true,
+          "mapTo": "Object Name"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Content Type",
+          "required": false,
+          "mapTo": "Content Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Object Name",
+          "path": "object_name"
+        },
+        {
+          "name": "Bucket",
+          "path": "bucket"
+        },
+        {
+          "name": "Size",
+          "path": "size"
+        },
+        {
+          "name": "Media Link",
+          "path": "media_link"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

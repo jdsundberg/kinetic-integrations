@@ -1,0 +1,479 @@
+{
+  "id": "slack",
+  "service": "Slack",
+  "version": 1,
+  "category": "Communication",
+  "description": "Slack integration with 10 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "bot_token",
+        "required": true,
+        "description": "Slack Bot User OAuth Token (xoxb-...).",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "channel_archive",
+      "name": "Slack Channel Archive",
+      "description": "POST https://slack.com/api/conversations.archive",
+      "method": "POST",
+      "path": "https://slack.com/api/conversations.archive",
+      "inputs": [
+        {
+          "name": "Channel",
+          "required": true,
+          "mapTo": "Channel"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "channel_create",
+      "name": "Slack Channel Create",
+      "description": "POST https://slack.com/api/conversations.create",
+      "method": "POST",
+      "path": "https://slack.com/api/conversations.create",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Is Private",
+          "required": false,
+          "mapTo": "Is Private"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Channel ID",
+          "path": "channel_id"
+        },
+        {
+          "name": "Channel Name",
+          "path": "channel_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "channel_invite",
+      "name": "Slack Channel Invite",
+      "description": "POST https://slack.com/api/conversations.invite",
+      "method": "POST",
+      "path": "https://slack.com/api/conversations.invite",
+      "inputs": [
+        {
+          "name": "Channel",
+          "required": true,
+          "mapTo": "Channel"
+        },
+        {
+          "name": "Users",
+          "required": true,
+          "mapTo": "Users"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Channel ID",
+          "path": "channel_id"
+        },
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_upload",
+      "name": "Slack File Upload",
+      "description": "POST https://slack.com/api/files.upload",
+      "method": "POST",
+      "path": "https://slack.com/api/files.upload",
+      "inputs": [
+        {
+          "name": "Channels",
+          "required": true,
+          "mapTo": "Channels"
+        },
+        {
+          "name": "Content",
+          "required": true,
+          "mapTo": "Content"
+        },
+        {
+          "name": "Filename",
+          "required": true,
+          "mapTo": "Filename"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Filetype",
+          "required": false,
+          "mapTo": "Filetype"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "file_id"
+        },
+        {
+          "name": "File URL",
+          "path": "file_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_send",
+      "name": "Slack Message Send",
+      "description": "POST https://slack.com/api/chat.postMessage",
+      "method": "POST",
+      "path": "https://slack.com/api/chat.postMessage",
+      "inputs": [
+        {
+          "name": "Channel",
+          "required": true,
+          "mapTo": "Channel"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Thread Ts",
+          "required": false,
+          "mapTo": "Thread Ts"
+        },
+        {
+          "name": "Unfurl Links",
+          "required": false,
+          "mapTo": "Unfurl Links"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message TS",
+          "path": "message_ts"
+        },
+        {
+          "name": "Channel",
+          "path": "channel"
+        },
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "message_update",
+      "name": "Slack Message Update",
+      "description": "POST https://slack.com/api/chat.update",
+      "method": "POST",
+      "path": "https://slack.com/api/chat.update",
+      "inputs": [
+        {
+          "name": "Channel",
+          "required": true,
+          "mapTo": "Channel"
+        },
+        {
+          "name": "Ts",
+          "required": true,
+          "mapTo": "Ts"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message TS",
+          "path": "message_ts"
+        },
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "reaction_add",
+      "name": "Slack Reaction Add",
+      "description": "POST https://slack.com/api/reactions.add",
+      "method": "POST",
+      "path": "https://slack.com/api/reactions.add",
+      "inputs": [
+        {
+          "name": "Channel",
+          "required": true,
+          "mapTo": "Channel"
+        },
+        {
+          "name": "Timestamp",
+          "required": true,
+          "mapTo": "Timestamp"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "reminder_create",
+      "name": "Slack Reminder Create",
+      "description": "POST https://slack.com/api/reminders.add",
+      "method": "POST",
+      "path": "https://slack.com/api/reminders.add",
+      "inputs": [
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Time",
+          "required": true,
+          "mapTo": "Time"
+        },
+        {
+          "name": "User",
+          "required": false,
+          "mapTo": "User"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Reminder ID",
+          "path": "reminder_id"
+        },
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "status_set",
+      "name": "Slack Status Set",
+      "description": "POST https://slack.com/api/users.profile.set",
+      "method": "POST",
+      "path": "https://slack.com/api/users.profile.set",
+      "inputs": [
+        {
+          "name": "Status Text",
+          "required": true,
+          "mapTo": "Status Text"
+        },
+        {
+          "name": "Status Emoji",
+          "required": false,
+          "mapTo": "Status Emoji"
+        },
+        {
+          "name": "Status Expiration",
+          "required": false,
+          "mapTo": "Status Expiration"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "OK",
+          "path": "ok"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_lookup",
+      "name": "Slack User Lookup",
+      "description": "GET https://slack.com/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
+      "method": "GET",
+      "path": "https://slack.com/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Display Name",
+          "path": "display_name"
+        },
+        {
+          "name": "Real Name",
+          "path": "real_name"
+        },
+        {
+          "name": "User JSON",
+          "path": "user_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

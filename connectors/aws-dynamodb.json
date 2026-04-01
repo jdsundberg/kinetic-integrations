@@ -1,0 +1,226 @@
+{
+  "id": "aws-dynamodb",
+  "service": "AWS DynamoDB",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "AWS DynamoDB integration with 4 pre-built routines.",
+  "auth": {
+    "type": "aws",
+    "properties": [
+      {
+        "name": "aws_access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "aws_secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      },
+      {
+        "name": "aws_region",
+        "required": true,
+        "description": "AWS region (e.g. us-east-1)."
+      },
+      {
+        "name": "aws_service",
+        "required": false,
+        "description": "AWS service name for signing."
+      },
+      {
+        "name": "region",
+        "required": true,
+        "description": "AWS region."
+      },
+      {
+        "name": "access_key_id",
+        "required": true,
+        "description": "AWS access key ID."
+      },
+      {
+        "name": "secret_access_key",
+        "required": true,
+        "description": "AWS secret access key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "item_delete",
+      "name": "AWS DynamoDB Item Delete",
+      "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "method": "POST",
+      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "inputs": [
+        {
+          "name": "Table Name",
+          "required": true,
+          "mapTo": "Table Name"
+        },
+        {
+          "name": "Key Json",
+          "required": true,
+          "mapTo": "Key Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Consumed Capacity",
+          "path": "consumed_capacity"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "item_get",
+      "name": "AWS DynamoDB Item Get",
+      "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "method": "POST",
+      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "inputs": [
+        {
+          "name": "Table Name",
+          "required": true,
+          "mapTo": "Table Name"
+        },
+        {
+          "name": "Key Json",
+          "required": true,
+          "mapTo": "Key Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Item JSON",
+          "path": "item_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "item_put",
+      "name": "AWS DynamoDB Item Put",
+      "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "method": "POST",
+      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "inputs": [
+        {
+          "name": "Table Name",
+          "required": true,
+          "mapTo": "Table Name"
+        },
+        {
+          "name": "Item Json",
+          "required": true,
+          "mapTo": "Item Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Consumed Capacity",
+          "path": "consumed_capacity"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "item_query",
+      "name": "AWS DynamoDB Item Query",
+      "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "method": "POST",
+      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "inputs": [
+        {
+          "name": "Table Name",
+          "required": true,
+          "mapTo": "Table Name"
+        },
+        {
+          "name": "Key Condition",
+          "required": true,
+          "mapTo": "Key Condition"
+        },
+        {
+          "name": "Expression Values Json",
+          "required": true,
+          "mapTo": "Expression Values Json"
+        },
+        {
+          "name": "Filter Expression",
+          "required": false,
+          "mapTo": "Filter Expression"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "Limit"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Items JSON",
+          "path": "items_json"
+        },
+        {
+          "name": "Count",
+          "path": "count"
+        },
+        {
+          "name": "Scanned Count",
+          "path": "scanned_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

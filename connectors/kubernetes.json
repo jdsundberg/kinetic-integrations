@@ -1,0 +1,244 @@
+{
+  "id": "kubernetes",
+  "service": "Kubernetes",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Kubernetes integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_server",
+        "required": true,
+        "description": "Kubernetes API server URL."
+      },
+      {
+        "name": "service_token",
+        "required": true,
+        "description": "Kubernetes service account token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "deployment_create",
+      "name": "Kubernetes Deployment Create",
+      "description": "POST <%= @info['api_server'] %>/apis/apps/v1/namespaces/<%= @inputs['Namespace'] %>/deployments",
+      "method": "POST",
+      "path": "<%= @info['api_server'] %>/apis/apps/v1/namespaces/<%= @inputs['Namespace'] %>/deployments",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true,
+          "mapTo": "Namespace"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Image",
+          "required": true,
+          "mapTo": "Image"
+        },
+        {
+          "name": "Replicas",
+          "required": false,
+          "mapTo": "Replicas"
+        },
+        {
+          "name": "Port",
+          "required": false,
+          "mapTo": "Port"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deployment Name",
+          "path": "deployment_name"
+        },
+        {
+          "name": "UID",
+          "path": "uid"
+        },
+        {
+          "name": "Namespace",
+          "path": "namespace"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "namespace_create",
+      "name": "Kubernetes Namespace Create",
+      "description": "POST <%= @info['api_server'] %>/api/v1/namespaces",
+      "method": "POST",
+      "path": "<%= @info['api_server'] %>/api/v1/namespaces",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Labels Json",
+          "required": false,
+          "mapTo": "Labels Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Namespace Name",
+          "path": "namespace_name"
+        },
+        {
+          "name": "UID",
+          "path": "uid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "pod_list",
+      "name": "Kubernetes Pod List",
+      "description": "GET <%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/pods?labelSelector=<%= @inputs['Label Selector'] %>",
+      "method": "GET",
+      "path": "<%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/pods?labelSelector=<%= @inputs['Label Selector'] %>",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true
+        },
+        {
+          "name": "Label Selector",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Pods JSON",
+          "path": "pods_json"
+        },
+        {
+          "name": "Pod Count",
+          "path": "pod_count"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "service_create",
+      "name": "Kubernetes Service Create",
+      "description": "POST <%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/services",
+      "method": "POST",
+      "path": "<%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/services",
+      "inputs": [
+        {
+          "name": "Namespace",
+          "required": true,
+          "mapTo": "Namespace"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Selector Json",
+          "required": true,
+          "mapTo": "Selector Json"
+        },
+        {
+          "name": "Port",
+          "required": true,
+          "mapTo": "Port"
+        },
+        {
+          "name": "Target Port",
+          "required": true,
+          "mapTo": "Target Port"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Service Name",
+          "path": "service_name"
+        },
+        {
+          "name": "Cluster IP",
+          "path": "cluster_ip"
+        },
+        {
+          "name": "UID",
+          "path": "uid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

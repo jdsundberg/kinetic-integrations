@@ -1,0 +1,479 @@
+{
+  "id": "pagerduty",
+  "service": "PagerDuty",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "PagerDuty integration with 8 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "PagerDuty REST API key.",
+        "encrypted": true
+      },
+      {
+        "name": "routing_key",
+        "required": true,
+        "description": "PagerDuty Events API routing/integration key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "escalation_create",
+      "name": "PagerDuty Escalation Policy Create",
+      "description": "POST https://api.pagerduty.com/escalation_policies",
+      "method": "POST",
+      "path": "https://api.pagerduty.com/escalation_policies",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Num Loops",
+          "required": false,
+          "mapTo": "Num Loops"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Policy ID",
+          "path": "policy_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "event_trigger",
+      "name": "PagerDuty Event Trigger",
+      "description": "POST https://events.pagerduty.com/v2/enqueue",
+      "method": "POST",
+      "path": "https://events.pagerduty.com/v2/enqueue",
+      "inputs": [
+        {
+          "name": "Summary",
+          "required": true,
+          "mapTo": "Summary"
+        },
+        {
+          "name": "Severity",
+          "required": true,
+          "mapTo": "Severity"
+        },
+        {
+          "name": "Source",
+          "required": true,
+          "mapTo": "Source"
+        },
+        {
+          "name": "Component",
+          "required": false,
+          "mapTo": "Component"
+        },
+        {
+          "name": "Group",
+          "required": false,
+          "mapTo": "Group"
+        },
+        {
+          "name": "Class",
+          "required": false,
+          "mapTo": "Class"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dedup Key",
+          "path": "dedup_key"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Message",
+          "path": "message"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_create",
+      "name": "PagerDuty Incident Create",
+      "description": "POST https://api.pagerduty.com/incidents",
+      "method": "POST",
+      "path": "https://api.pagerduty.com/incidents",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Service Id",
+          "required": true,
+          "mapTo": "Service Id"
+        },
+        {
+          "name": "Urgency",
+          "required": false,
+          "mapTo": "Urgency"
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "Body"
+        },
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident ID",
+          "path": "incident_id"
+        },
+        {
+          "name": "Incident Number",
+          "path": "incident_number"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_resolve",
+      "name": "PagerDuty Incident Resolve",
+      "description": "PUT https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "method": "PUT",
+      "path": "https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "inputs": [
+        {
+          "name": "Incident Id",
+          "required": true,
+          "mapTo": "Incident Id"
+        },
+        {
+          "name": "Resolution",
+          "required": false,
+          "mapTo": "Resolution"
+        },
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident ID",
+          "path": "incident_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "incident_update",
+      "name": "PagerDuty Incident Update",
+      "description": "PUT https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "method": "PUT",
+      "path": "https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "inputs": [
+        {
+          "name": "Incident Id",
+          "required": true,
+          "mapTo": "Incident Id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Urgency",
+          "required": false,
+          "mapTo": "Urgency"
+        },
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Incident ID",
+          "path": "incident_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "schedule_create",
+      "name": "PagerDuty Schedule Create",
+      "description": "POST https://api.pagerduty.com/schedules",
+      "method": "POST",
+      "path": "https://api.pagerduty.com/schedules",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Time Zone",
+          "required": false,
+          "mapTo": "Time Zone"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Schedule ID",
+          "path": "schedule_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "service_create",
+      "name": "PagerDuty Service Create",
+      "description": "POST https://api.pagerduty.com/services",
+      "method": "POST",
+      "path": "https://api.pagerduty.com/services",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Escalation Policy Id",
+          "required": true,
+          "mapTo": "Escalation Policy Id"
+        },
+        {
+          "name": "Alert Creation",
+          "required": false,
+          "mapTo": "Alert Creation"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Service ID",
+          "path": "service_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "PagerDuty User Create",
+      "description": "POST https://api.pagerduty.com/users",
+      "method": "POST",
+      "path": "https://api.pagerduty.com/users",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Role",
+          "required": false,
+          "mapTo": "Role"
+        },
+        {
+          "name": "Time Zone",
+          "required": false,
+          "mapTo": "Time Zone"
+        },
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "HTML URL",
+          "path": "html_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

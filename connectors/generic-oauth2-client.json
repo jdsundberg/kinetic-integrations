@@ -1,0 +1,44 @@
+{
+  "id": "generic-oauth2-client",
+  "service": "Generic REST (OAuth2 Client Credentials)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any REST API using OAuth2 client credentials flow (machine-to-machine).",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "encrypted": true,
+        "description": "OAuth2 client secret."
+      },
+      {
+        "name": "scope",
+        "required": false,
+        "description": "OAuth2 scope (space-delimited)."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

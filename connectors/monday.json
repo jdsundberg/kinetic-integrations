@@ -1,0 +1,386 @@
+{
+  "id": "monday",
+  "service": "Monday.com",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Monday.com integration with 8 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Monday.com API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "board_create",
+      "name": "Monday.com Board Create",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Board Name",
+          "required": true,
+          "mapTo": "Board Name"
+        },
+        {
+          "name": "Board Kind",
+          "required": false,
+          "mapTo": "Board Kind"
+        },
+        {
+          "name": "Workspace Id",
+          "required": false,
+          "mapTo": "Workspace Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Board ID",
+          "path": "board_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "column_create",
+      "name": "Monday.com Column Create",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Column Type",
+          "required": true,
+          "mapTo": "Column Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Column ID",
+          "path": "column_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "file_upload",
+      "name": "Monday.com File Upload",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Item Id",
+          "required": true,
+          "mapTo": "Item Id"
+        },
+        {
+          "name": "Column Id",
+          "required": true,
+          "mapTo": "Column Id"
+        },
+        {
+          "name": "File Url",
+          "required": true,
+          "mapTo": "File Url"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "file_id"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "group_create",
+      "name": "Monday.com Group Create",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Group Name",
+          "required": true,
+          "mapTo": "Group Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group ID",
+          "path": "group_id"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "item_create",
+      "name": "Monday.com Item Create",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Item Name",
+          "required": true,
+          "mapTo": "Item Name"
+        },
+        {
+          "name": "Group Id",
+          "required": false,
+          "mapTo": "Group Id"
+        },
+        {
+          "name": "Column Values Json",
+          "required": false,
+          "mapTo": "Column Values Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Item ID",
+          "path": "item_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "item_update",
+      "name": "Monday.com Item Update",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Board Id",
+          "required": true,
+          "mapTo": "Board Id"
+        },
+        {
+          "name": "Item Id",
+          "required": true,
+          "mapTo": "Item Id"
+        },
+        {
+          "name": "Column Values Json",
+          "required": true,
+          "mapTo": "Column Values Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Item ID",
+          "path": "item_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "notification_send",
+      "name": "Monday.com Notification Send",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Target Id",
+          "required": true,
+          "mapTo": "Target Id"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Target Type",
+          "required": false,
+          "mapTo": "Target Type"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Text",
+          "path": "text"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "update_create",
+      "name": "Monday.com Update Create",
+      "description": "POST https://api.monday.com/v2",
+      "method": "POST",
+      "path": "https://api.monday.com/v2",
+      "inputs": [
+        {
+          "name": "Item Id",
+          "required": true,
+          "mapTo": "Item Id"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "mapTo": "Body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Update ID",
+          "path": "update_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

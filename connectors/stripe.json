@@ -1,0 +1,462 @@
+{
+  "id": "stripe",
+  "service": "Stripe",
+  "version": 1,
+  "category": "Finance & Payments",
+  "description": "Stripe integration with 8 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "secret_key",
+        "required": true,
+        "description": "Stripe secret API key (sk_...).",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "charge_create",
+      "name": "Stripe Charge Create",
+      "description": "POST https://api.stripe.com/v1/charges",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/charges",
+      "inputs": [
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Source",
+          "required": true,
+          "mapTo": "Source"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Customer",
+          "required": false,
+          "mapTo": "Customer"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Charge ID",
+          "path": "charge_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Amount",
+          "path": "amount"
+        },
+        {
+          "name": "Receipt URL",
+          "path": "receipt_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "customer_create",
+      "name": "Stripe Customer Create",
+      "description": "POST https://api.stripe.com/v1/customers",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/customers",
+      "inputs": [
+        {
+          "name": "Email",
+          "required": true,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Source",
+          "required": false,
+          "mapTo": "Source"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "customer_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "customer_retrieve",
+      "name": "Stripe Customer Retrieve",
+      "description": "GET https://api.stripe.com/v1/customers/<%= @inputs['Customer Id'] %>",
+      "method": "GET",
+      "path": "https://api.stripe.com/v1/customers/<%= @inputs['Customer Id'] %>",
+      "inputs": [
+        {
+          "name": "Customer Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Customer ID",
+          "path": "customer_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Balance",
+          "path": "balance"
+        },
+        {
+          "name": "Customer JSON",
+          "path": "customer_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "invoice_create",
+      "name": "Stripe Invoice Create",
+      "description": "POST https://api.stripe.com/v1/invoices",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/invoices",
+      "inputs": [
+        {
+          "name": "Customer",
+          "required": true,
+          "mapTo": "Customer"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Auto Advance",
+          "required": false,
+          "mapTo": "Auto Advance"
+        },
+        {
+          "name": "Collection Method",
+          "required": false,
+          "mapTo": "Collection Method"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Invoice ID",
+          "path": "invoice_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Amount Due",
+          "path": "amount_due"
+        },
+        {
+          "name": "Hosted URL",
+          "path": "hosted_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "payment_intent_create",
+      "name": "Stripe Payment Intent Create",
+      "description": "POST https://api.stripe.com/v1/payment_intents",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/payment_intents",
+      "inputs": [
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Currency",
+          "required": true,
+          "mapTo": "Currency"
+        },
+        {
+          "name": "Customer",
+          "required": false,
+          "mapTo": "Customer"
+        },
+        {
+          "name": "Payment Method Types",
+          "required": false,
+          "mapTo": "Payment Method Types"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Intent ID",
+          "path": "intent_id"
+        },
+        {
+          "name": "Client Secret",
+          "path": "client_secret"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "product_create",
+      "name": "Stripe Product Create",
+      "description": "POST https://api.stripe.com/v1/products",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/products",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "Description"
+        },
+        {
+          "name": "Active",
+          "required": false,
+          "mapTo": "Active"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Product ID",
+          "path": "product_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "refund_create",
+      "name": "Stripe Refund Create",
+      "description": "POST https://api.stripe.com/v1/refunds",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/refunds",
+      "inputs": [
+        {
+          "name": "Charge",
+          "required": false,
+          "mapTo": "Charge"
+        },
+        {
+          "name": "Payment Intent",
+          "required": false,
+          "mapTo": "Payment Intent"
+        },
+        {
+          "name": "Amount",
+          "required": false,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Reason",
+          "required": false,
+          "mapTo": "Reason"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Refund ID",
+          "path": "refund_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Amount",
+          "path": "amount"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "subscription_create",
+      "name": "Stripe Subscription Create",
+      "description": "POST https://api.stripe.com/v1/subscriptions",
+      "method": "POST",
+      "path": "https://api.stripe.com/v1/subscriptions",
+      "inputs": [
+        {
+          "name": "Customer",
+          "required": true,
+          "mapTo": "Customer"
+        },
+        {
+          "name": "Price Id",
+          "required": true,
+          "mapTo": "Price Id"
+        },
+        {
+          "name": "Trial Days",
+          "required": false,
+          "mapTo": "Trial Days"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Subscription ID",
+          "path": "subscription_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Current Period End",
+          "path": "current_period_end"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

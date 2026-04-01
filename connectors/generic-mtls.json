@@ -1,0 +1,41 @@
+{
+  "id": "generic-mtls",
+  "service": "Generic REST (Mutual TLS)",
+  "version": 1,
+  "category": "Generic",
+  "generic": true,
+  "description": "Connect to any REST API requiring mutual TLS (client certificate authentication).",
+  "auth": {
+    "type": "mtls",
+    "properties": [
+      {
+        "name": "client_cert_pem",
+        "required": true,
+        "encrypted": true,
+        "description": "Client certificate in PEM format."
+      },
+      {
+        "name": "client_key_pem",
+        "required": true,
+        "encrypted": true,
+        "description": "Client private key in PEM format."
+      },
+      {
+        "name": "ca_cert_pem",
+        "required": false,
+        "encrypted": false,
+        "description": "CA certificate bundle (if not in system trust store)."
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "API base URL."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": []
+}

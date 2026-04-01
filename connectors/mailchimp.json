@@ -1,0 +1,405 @@
+{
+  "id": "mailchimp",
+  "service": "Mailchimp",
+  "version": 1,
+  "category": "Email & Marketing",
+  "description": "Mailchimp integration with 6 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Mailchimp API key.",
+        "encrypted": true
+      },
+      {
+        "name": "dc",
+        "required": true,
+        "description": "Mailchimp data center (e.g. us21). Found in your API key after the dash."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "campaign_create",
+      "name": "Mailchimp Campaign Create",
+      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns",
+      "method": "POST",
+      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns",
+      "inputs": [
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Subject Line",
+          "required": true,
+          "mapTo": "Subject Line"
+        },
+        {
+          "name": "From Name",
+          "required": true,
+          "mapTo": "From Name"
+        },
+        {
+          "name": "Reply To",
+          "required": true,
+          "mapTo": "Reply To"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Campaign ID",
+          "path": "campaign_id"
+        },
+        {
+          "name": "Web ID",
+          "path": "web_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Archive URL",
+          "path": "archive_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "campaign_send",
+      "name": "Mailchimp Campaign Send",
+      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
+      "method": "POST",
+      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
+      "inputs": [
+        {
+          "name": "Campaign Id",
+          "required": true,
+          "mapTo": "Campaign Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Complete",
+          "path": "complete"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "list_create",
+      "name": "Mailchimp List Create",
+      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists",
+      "method": "POST",
+      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Contact Company",
+          "required": true,
+          "mapTo": "Contact Company"
+        },
+        {
+          "name": "Contact Address1",
+          "required": true,
+          "mapTo": "Contact Address1"
+        },
+        {
+          "name": "Contact City",
+          "required": true,
+          "mapTo": "Contact City"
+        },
+        {
+          "name": "Contact State",
+          "required": true,
+          "mapTo": "Contact State"
+        },
+        {
+          "name": "Contact Zip",
+          "required": true,
+          "mapTo": "Contact Zip"
+        },
+        {
+          "name": "Contact Country",
+          "required": true,
+          "mapTo": "Contact Country"
+        },
+        {
+          "name": "Permission Reminder",
+          "required": true,
+          "mapTo": "Permission Reminder"
+        },
+        {
+          "name": "From Name",
+          "required": true,
+          "mapTo": "From Name"
+        },
+        {
+          "name": "From Email",
+          "required": true,
+          "mapTo": "From Email"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "Subject"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "List ID",
+          "path": "list_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Web ID",
+          "path": "web_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "subscriber_add",
+      "name": "Mailchimp Subscriber Add",
+      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members",
+      "method": "POST",
+      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Email Address",
+          "required": true,
+          "mapTo": "Email Address"
+        },
+        {
+          "name": "Status",
+          "required": true,
+          "mapTo": "Status"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Member ID",
+          "path": "member_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Web ID",
+          "path": "web_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "subscriber_update",
+      "name": "Mailchimp Subscriber Update",
+      "description": "PATCH https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
+      "method": "PATCH",
+      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
+      "inputs": [
+        {
+          "name": "List Id",
+          "required": true,
+          "mapTo": "List Id"
+        },
+        {
+          "name": "Subscriber Hash",
+          "required": true,
+          "mapTo": "Subscriber Hash"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Member ID",
+          "path": "member_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "template_create",
+      "name": "Mailchimp Template Create",
+      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/templates",
+      "method": "POST",
+      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/templates",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Html",
+          "required": true,
+          "mapTo": "Html"
+        },
+        {
+          "name": "Folder Id",
+          "required": false,
+          "mapTo": "Folder Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Template ID",
+          "path": "template_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Type",
+          "path": "type"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

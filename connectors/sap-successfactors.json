@@ -1,0 +1,337 @@
+{
+  "id": "sap-successfactors",
+  "service": "SAP SuccessFactors",
+  "version": 1,
+  "category": "HR & People",
+  "description": "SAP SuccessFactors integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_url",
+        "required": true,
+        "description": "SuccessFactors API URL (e.g. https://apisalesdemo2.successfactors.eu)."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "employee_retrieve",
+      "name": "SAP SuccessFactors Employee Retrieve",
+      "description": "GET <%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "method": "GET",
+      "path": "<%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Department",
+          "path": "department"
+        },
+        {
+          "name": "Division",
+          "path": "division"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Employee JSON",
+          "path": "employee_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "employee_update",
+      "name": "SAP SuccessFactors Employee Update",
+      "description": "PATCH <%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "method": "PATCH",
+      "path": "<%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Division",
+          "required": false,
+          "mapTo": "Division"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "Phone"
+        },
+        {
+          "name": "Custom String1",
+          "required": false,
+          "mapTo": "Custom String1"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Updated",
+          "path": "updated"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "goal_create",
+      "name": "SAP SuccessFactors Goal Create",
+      "description": "POST <%= @info['api_url'] %>/odata/v2/Goal_1",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/odata/v2/Goal_1",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Metric",
+          "required": false,
+          "mapTo": "Metric"
+        },
+        {
+          "name": "Start",
+          "required": true,
+          "mapTo": "Start"
+        },
+        {
+          "name": "Due",
+          "required": true,
+          "mapTo": "Due"
+        },
+        {
+          "name": "Category",
+          "required": false,
+          "mapTo": "Category"
+        },
+        {
+          "name": "Weight",
+          "required": false,
+          "mapTo": "Weight"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Goal ID",
+          "path": "goal_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_info_retrieve",
+      "name": "SAP SuccessFactors Job Information Retrieve",
+      "description": "GET <%= @info['api_url'] %>/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
+      "method": "GET",
+      "path": "<%= @info['api_url'] %>/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true
+        },
+        {
+          "name": "Top",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Job Info JSON",
+          "path": "job_info_json"
+        },
+        {
+          "name": "Job Title",
+          "path": "job_title"
+        },
+        {
+          "name": "Position",
+          "path": "position"
+        },
+        {
+          "name": "Department",
+          "path": "department"
+        },
+        {
+          "name": "Start Date",
+          "path": "start_date"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "time_off_request",
+      "name": "SAP SuccessFactors Time Off Request",
+      "description": "POST <%= @info['api_url'] %>/odata/v2/EmployeeTime",
+      "method": "POST",
+      "path": "<%= @info['api_url'] %>/odata/v2/EmployeeTime",
+      "inputs": [
+        {
+          "name": "User Id",
+          "required": true,
+          "mapTo": "User Id"
+        },
+        {
+          "name": "Time Type",
+          "required": true,
+          "mapTo": "Time Type"
+        },
+        {
+          "name": "Start Date",
+          "required": true,
+          "mapTo": "Start Date"
+        },
+        {
+          "name": "End Date",
+          "required": true,
+          "mapTo": "End Date"
+        },
+        {
+          "name": "Approval Status",
+          "required": false,
+          "mapTo": "Approval Status"
+        },
+        {
+          "name": "Comment",
+          "required": false,
+          "mapTo": "Comment"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Time ID",
+          "path": "time_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

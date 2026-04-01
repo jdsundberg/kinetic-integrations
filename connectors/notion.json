@@ -1,0 +1,319 @@
+{
+  "id": "notion",
+  "service": "Notion",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Notion integration with 6 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Notion integration API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "block_append",
+      "name": "Notion Block Append",
+      "description": "PATCH https://api.notion.com/v1/blocks/<%= @inputs['Block Id'] %>/children",
+      "method": "PATCH",
+      "path": "https://api.notion.com/v1/blocks/<%= @inputs['Block Id'] %>/children",
+      "inputs": [
+        {
+          "name": "Block Id",
+          "required": true,
+          "mapTo": "Block Id"
+        },
+        {
+          "name": "Children Json",
+          "required": true,
+          "mapTo": "Children Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "database_create",
+      "name": "Notion Database Create",
+      "description": "POST https://api.notion.com/v1/databases",
+      "method": "POST",
+      "path": "https://api.notion.com/v1/databases",
+      "inputs": [
+        {
+          "name": "Parent Page Id",
+          "required": true,
+          "mapTo": "Parent Page Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Properties Json",
+          "required": false,
+          "mapTo": "Properties Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Database ID",
+          "path": "database_id"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "database_query",
+      "name": "Notion Database Query",
+      "description": "POST https://api.notion.com/v1/databases/<%= @inputs['Database Id'] %>/query",
+      "method": "POST",
+      "path": "https://api.notion.com/v1/databases/<%= @inputs['Database Id'] %>/query",
+      "inputs": [
+        {
+          "name": "Database Id",
+          "required": true,
+          "mapTo": "Database Id"
+        },
+        {
+          "name": "Filter Json",
+          "required": false,
+          "mapTo": "Filter Json"
+        },
+        {
+          "name": "Sorts Json",
+          "required": false,
+          "mapTo": "Sorts Json"
+        },
+        {
+          "name": "Page Size",
+          "required": false,
+          "mapTo": "Page Size"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Has More",
+          "path": "has_more"
+        },
+        {
+          "name": "Next Cursor",
+          "path": "next_cursor"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "page_create",
+      "name": "Notion Page Create",
+      "description": "POST https://api.notion.com/v1/pages",
+      "method": "POST",
+      "path": "https://api.notion.com/v1/pages",
+      "inputs": [
+        {
+          "name": "Parent Page Id",
+          "required": false,
+          "mapTo": "Parent Page Id"
+        },
+        {
+          "name": "Parent Database Id",
+          "required": false,
+          "mapTo": "Parent Database Id"
+        },
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Content",
+          "required": false,
+          "mapTo": "Content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Page ID",
+          "path": "page_id"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "page_update",
+      "name": "Notion Page Update",
+      "description": "PATCH https://api.notion.com/v1/pages/<%= @inputs['Page Id'] %>",
+      "method": "PATCH",
+      "path": "https://api.notion.com/v1/pages/<%= @inputs['Page Id'] %>",
+      "inputs": [
+        {
+          "name": "Page Id",
+          "required": true,
+          "mapTo": "Page Id"
+        },
+        {
+          "name": "Properties Json",
+          "required": true,
+          "mapTo": "Properties Json"
+        },
+        {
+          "name": "Archived",
+          "required": false,
+          "mapTo": "Archived"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Page ID",
+          "path": "page_id"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Last Edited",
+          "path": "last_edited"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "Notion Search",
+      "description": "POST https://api.notion.com/v1/search",
+      "method": "POST",
+      "path": "https://api.notion.com/v1/search",
+      "inputs": [
+        {
+          "name": "Query",
+          "required": true,
+          "mapTo": "Query"
+        },
+        {
+          "name": "Filter Type",
+          "required": false,
+          "mapTo": "Filter Type"
+        },
+        {
+          "name": "Page Size",
+          "required": false,
+          "mapTo": "Page Size"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Has More",
+          "path": "has_more"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "id": "vonage",
+  "service": "Vonage",
+  "version": 1,
+  "category": "Communication",
+  "description": "Vonage integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: none"
+      },
+      {
+        "name": "api_secret",
+        "required": true,
+        "description": "Vonage API secret.",
+        "encrypted": true
+      },
+      {
+        "name": "jwt_token",
+        "required": true,
+        "description": "Vonage JWT token for Voice API.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "sms_send",
+      "name": "Vonage SMS Send",
+      "description": "POST https://api.nexmo.com/sms/json",
+      "method": "POST",
+      "path": "https://api.nexmo.com/sms/json",
+      "inputs": [
+        {
+          "name": "From",
+          "required": true,
+          "mapTo": "From"
+        },
+        {
+          "name": "To",
+          "required": true,
+          "mapTo": "To"
+        },
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Message ID",
+          "path": "message_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Remaining Balance",
+          "path": "remaining_balance"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "verify_check",
+      "name": "Vonage Verify Check",
+      "description": "POST https://api.nexmo.com/verify/check/json",
+      "method": "POST",
+      "path": "https://api.nexmo.com/verify/check/json",
+      "inputs": [
+        {
+          "name": "Request Id",
+          "required": true,
+          "mapTo": "Request Id"
+        },
+        {
+          "name": "Code",
+          "required": true,
+          "mapTo": "Code"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Event ID",
+          "path": "event_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "verify_request",
+      "name": "Vonage Verify Request",
+      "description": "POST https://api.nexmo.com/verify/json",
+      "method": "POST",
+      "path": "https://api.nexmo.com/verify/json",
+      "inputs": [
+        {
+          "name": "Number",
+          "required": true,
+          "mapTo": "Number"
+        },
+        {
+          "name": "Brand",
+          "required": true,
+          "mapTo": "Brand"
+        },
+        {
+          "name": "Code Length",
+          "required": false,
+          "mapTo": "Code Length"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "voice_call",
+      "name": "Vonage Voice Call",
+      "description": "POST https://api.nexmo.com/v1/calls",
+      "method": "POST",
+      "path": "https://api.nexmo.com/v1/calls",
+      "inputs": [
+        {
+          "name": "To Number",
+          "required": true,
+          "mapTo": "To Number"
+        },
+        {
+          "name": "From Number",
+          "required": true,
+          "mapTo": "From Number"
+        },
+        {
+          "name": "Answer Url",
+          "required": true,
+          "mapTo": "Answer Url"
+        },
+        {
+          "name": "Event Url",
+          "required": false,
+          "mapTo": "Event Url"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Call UUID",
+          "path": "call_uuid"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Conversation UUID",
+          "path": "conversation_uuid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

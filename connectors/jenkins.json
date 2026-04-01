@@ -1,0 +1,221 @@
+{
+  "id": "jenkins",
+  "service": "Jenkins",
+  "version": 1,
+  "category": "DevOps & Collaboration",
+  "description": "Jenkins integration with 4 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Jenkins base URL (e.g. https://jenkins.myco.com)."
+      },
+      {
+        "name": "api_token",
+        "required": true,
+        "description": "Jenkins API token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "build_info",
+      "name": "Jenkins Build Info",
+      "description": "GET <%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
+      "inputs": [
+        {
+          "name": "Job Name",
+          "required": true
+        },
+        {
+          "name": "Build Number",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Build Number",
+          "path": "build_number"
+        },
+        {
+          "name": "Result",
+          "path": "result"
+        },
+        {
+          "name": "Duration",
+          "path": "duration"
+        },
+        {
+          "name": "Timestamp",
+          "path": "timestamp"
+        },
+        {
+          "name": "Building",
+          "path": "building"
+        },
+        {
+          "name": "Build JSON",
+          "path": "build_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_retrieve",
+      "name": "Jenkins Job Retrieve",
+      "description": "GET <%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/api/json",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/api/json",
+      "inputs": [
+        {
+          "name": "Job Name",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Color",
+          "path": "color"
+        },
+        {
+          "name": "Last Build Number",
+          "path": "last_build_number"
+        },
+        {
+          "name": "Last Build URL",
+          "path": "last_build_url"
+        },
+        {
+          "name": "Job JSON",
+          "path": "job_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "job_trigger",
+      "name": "Jenkins Job Trigger",
+      "description": "POST <%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/buildWithParameters",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/buildWithParameters",
+      "inputs": [
+        {
+          "name": "Job Name",
+          "required": true,
+          "mapTo": "Job Name"
+        },
+        {
+          "name": "Parameters Json",
+          "required": false,
+          "mapTo": "Parameters Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Queue URL",
+          "path": "queue_url"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "node_list",
+      "name": "Jenkins Node List",
+      "description": "GET <%= @info['base_url'] %>/computer/api/json",
+      "method": "GET",
+      "path": "<%= @info['base_url'] %>/computer/api/json",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Computers JSON",
+          "path": "computers_json"
+        },
+        {
+          "name": "Total Executors",
+          "path": "total_executors"
+        },
+        {
+          "name": "Busy Executors",
+          "path": "busy_executors"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

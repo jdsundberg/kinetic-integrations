@@ -1,0 +1,243 @@
+{
+  "id": "tableau",
+  "service": "Tableau",
+  "version": 1,
+  "category": "Data & Analytics",
+  "description": "Tableau integration with 4 pre-built routines.",
+  "auth": {
+    "type": "bearer",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "server_url",
+        "required": true,
+        "description": "Tableau Server URL (e.g. https://tableau.myco.com)."
+      },
+      {
+        "name": "auth_token",
+        "required": true,
+        "description": "Tableau authentication token.",
+        "encrypted": true
+      },
+      {
+        "name": "site_id",
+        "required": true,
+        "description": "Tableau site ID."
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "datasource_publish",
+      "name": "Tableau Datasource Publish",
+      "description": "POST <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/datasources?overwrite=<%= @inputs['Overwrite'] %>",
+      "method": "POST",
+      "path": "<%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/datasources?overwrite=<%= @inputs['Overwrite'] %>",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Overwrite",
+          "required": false,
+          "mapTo": "Overwrite"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Datasource ID",
+          "path": "datasource_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "user_create",
+      "name": "Tableau User Create",
+      "description": "POST <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/users",
+      "method": "POST",
+      "path": "<%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/users",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Site Role",
+          "required": true,
+          "mapTo": "Site Role"
+        },
+        {
+          "name": "Auth Setting",
+          "required": false,
+          "mapTo": "Auth Setting"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "User ID",
+          "path": "user_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Site Role",
+          "path": "site_role"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "view_retrieve",
+      "name": "Tableau View Retrieve",
+      "description": "GET <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/views/<%= @inputs['View Id'] %>",
+      "method": "GET",
+      "path": "<%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/views/<%= @inputs['View Id'] %>",
+      "inputs": [
+        {
+          "name": "View Id",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "View ID",
+          "path": "view_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Content URL",
+          "path": "content_url"
+        },
+        {
+          "name": "Workbook ID",
+          "path": "workbook_id"
+        },
+        {
+          "name": "View JSON",
+          "path": "view_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "workbook_publish",
+      "name": "Tableau Workbook Publish",
+      "description": "POST <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/workbooks?overwrite=<%= @inputs['Overwrite'] %>",
+      "method": "POST",
+      "path": "<%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/workbooks?overwrite=<%= @inputs['Overwrite'] %>",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Project Id",
+          "required": true,
+          "mapTo": "Project Id"
+        },
+        {
+          "name": "Overwrite",
+          "required": false,
+          "mapTo": "Overwrite"
+        },
+        {
+          "name": "Connection Username",
+          "required": false,
+          "mapTo": "Connection Username"
+        },
+        {
+          "name": "Connection Password",
+          "required": false,
+          "mapTo": "Connection Password"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Workbook ID",
+          "path": "workbook_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Content URL",
+          "path": "content_url"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

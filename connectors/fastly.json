@@ -1,0 +1,236 @@
+{
+  "id": "fastly",
+  "service": "Fastly",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Fastly integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "API key.",
+        "encrypted": true
+      },
+      {
+        "name": "api_key_header",
+        "required": false,
+        "description": "Header name for the API key. Default: Fastly-Key"
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "backend_add",
+      "name": "Fastly Backend Add",
+      "description": "POST https://api.fastly.com/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/backend",
+      "method": "POST",
+      "path": "https://api.fastly.com/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/backend",
+      "inputs": [
+        {
+          "name": "Service Id",
+          "required": true,
+          "mapTo": "Service Id"
+        },
+        {
+          "name": "Version",
+          "required": true,
+          "mapTo": "Version"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Address",
+          "required": true,
+          "mapTo": "Address"
+        },
+        {
+          "name": "Port",
+          "required": false,
+          "mapTo": "Port"
+        },
+        {
+          "name": "Use Ssl",
+          "required": false,
+          "mapTo": "Use Ssl"
+        },
+        {
+          "name": "Ssl Cert Hostname",
+          "required": false,
+          "mapTo": "Ssl Cert Hostname"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Address",
+          "path": "address"
+        },
+        {
+          "name": "Port",
+          "path": "port"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "domain_add",
+      "name": "Fastly Domain Add",
+      "description": "POST https://api.fastly.com/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/domain",
+      "method": "POST",
+      "path": "https://api.fastly.com/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/domain",
+      "inputs": [
+        {
+          "name": "Service Id",
+          "required": true,
+          "mapTo": "Service Id"
+        },
+        {
+          "name": "Version",
+          "required": true,
+          "mapTo": "Version"
+        },
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Comment",
+          "required": false,
+          "mapTo": "Comment"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Service ID",
+          "path": "service_id"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "purge_all",
+      "name": "Fastly Purge All",
+      "description": "POST https://api.fastly.com/service/<%= @inputs['Service Id'] %>/purge_all",
+      "method": "POST",
+      "path": "https://api.fastly.com/service/<%= @inputs['Service Id'] %>/purge_all",
+      "inputs": [
+        {
+          "name": "Service Id",
+          "required": true,
+          "mapTo": "Service Id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "service_create",
+      "name": "Fastly Service Create",
+      "description": "POST https://api.fastly.com/service",
+      "method": "POST",
+      "path": "https://api.fastly.com/service",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": false,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Comment",
+          "required": false,
+          "mapTo": "Comment"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Service ID",
+          "path": "service_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Version",
+          "path": "version"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

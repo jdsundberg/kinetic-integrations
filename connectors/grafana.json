@@ -1,0 +1,281 @@
+{
+  "id": "grafana",
+  "service": "Grafana",
+  "version": 1,
+  "category": "Observability & Analytics",
+  "description": "Grafana integration with 4 pre-built routines.",
+  "auth": {
+    "type": "apikey",
+    "properties": [
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "API access token or bearer token.",
+        "encrypted": true
+      },
+      {
+        "name": "base_url",
+        "required": true,
+        "description": "Grafana base URL (e.g. https://grafana.myco.com)."
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Grafana API key or service account token.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "alert_create",
+      "name": "Grafana Alert Create",
+      "description": "POST <%= @info['base_url'] %>/api/v1/provisioning/alert-rules",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/v1/provisioning/alert-rules",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Condition",
+          "required": true,
+          "mapTo": "Condition"
+        },
+        {
+          "name": "Folder Uid",
+          "required": true,
+          "mapTo": "Folder Uid"
+        },
+        {
+          "name": "Rule Group",
+          "required": true,
+          "mapTo": "Rule Group"
+        },
+        {
+          "name": "For Duration",
+          "required": false,
+          "mapTo": "For Duration"
+        },
+        {
+          "name": "Annotations Json",
+          "required": false,
+          "mapTo": "Annotations Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Rule UID",
+          "path": "rule_uid"
+        },
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "annotation_create",
+      "name": "Grafana Annotation Create",
+      "description": "POST <%= @info['base_url'] %>/api/annotations",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/annotations",
+      "inputs": [
+        {
+          "name": "Text",
+          "required": true,
+          "mapTo": "Text"
+        },
+        {
+          "name": "Dashboard Id",
+          "required": false,
+          "mapTo": "Dashboard Id"
+        },
+        {
+          "name": "Panel Id",
+          "required": false,
+          "mapTo": "Panel Id"
+        },
+        {
+          "name": "Tags",
+          "required": false,
+          "mapTo": "Tags"
+        },
+        {
+          "name": "Time",
+          "required": false,
+          "mapTo": "Time"
+        },
+        {
+          "name": "Time End",
+          "required": false,
+          "mapTo": "Time End"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Annotation ID",
+          "path": "annotation_id"
+        },
+        {
+          "name": "Message",
+          "path": "message"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "dashboard_create",
+      "name": "Grafana Dashboard Create",
+      "description": "POST <%= @info['base_url'] %>/api/dashboards/db",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/dashboards/db",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": true,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Panels Json",
+          "required": false,
+          "mapTo": "Panels Json"
+        },
+        {
+          "name": "Folder Id",
+          "required": false,
+          "mapTo": "Folder Id"
+        },
+        {
+          "name": "Overwrite",
+          "required": false,
+          "mapTo": "Overwrite"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Dashboard ID",
+          "path": "dashboard_id"
+        },
+        {
+          "name": "UID",
+          "path": "uid"
+        },
+        {
+          "name": "URL",
+          "path": "url"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "datasource_create",
+      "name": "Grafana Datasource Create",
+      "description": "POST <%= @info['base_url'] %>/api/datasources",
+      "method": "POST",
+      "path": "<%= @info['base_url'] %>/api/datasources",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "Name"
+        },
+        {
+          "name": "Type",
+          "required": true,
+          "mapTo": "Type"
+        },
+        {
+          "name": "Url",
+          "required": true,
+          "mapTo": "Url"
+        },
+        {
+          "name": "Access",
+          "required": false,
+          "mapTo": "Access"
+        },
+        {
+          "name": "Database",
+          "required": false,
+          "mapTo": "Database"
+        },
+        {
+          "name": "Basic Auth",
+          "required": false,
+          "mapTo": "Basic Auth"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Datasource ID",
+          "path": "datasource_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "UID",
+          "path": "uid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}

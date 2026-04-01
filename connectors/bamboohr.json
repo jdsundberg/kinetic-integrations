@@ -1,0 +1,354 @@
+{
+  "id": "bamboohr",
+  "service": "BambooHR",
+  "version": 1,
+  "category": "HR & People",
+  "description": "BambooHR integration with 5 pre-built routines.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Username or email for authentication."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password or API token.",
+        "encrypted": true
+      },
+      {
+        "name": "subdomain",
+        "required": true,
+        "description": "BambooHR company subdomain."
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "BambooHR API key.",
+        "encrypted": true
+      }
+    ]
+  },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "routines": [
+    {
+      "id": "employee_create",
+      "name": "BambooHR Employee Create",
+      "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/",
+      "method": "POST",
+      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/",
+      "inputs": [
+        {
+          "name": "First Name",
+          "required": true,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": true,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Location",
+          "required": false,
+          "mapTo": "Location"
+        },
+        {
+          "name": "Division",
+          "required": false,
+          "mapTo": "Division"
+        },
+        {
+          "name": "Hire Date",
+          "required": false,
+          "mapTo": "Hire Date"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Employee ID",
+          "path": "employee_id"
+        },
+        {
+          "name": "Created",
+          "path": "created"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "employee_retrieve",
+      "name": "BambooHR Employee Retrieve",
+      "description": "GET https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
+      "method": "GET",
+      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
+      "inputs": [
+        {
+          "name": "Employee Id",
+          "required": true
+        },
+        {
+          "name": "Fields",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Employee ID",
+          "path": "employee_id"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "Department",
+          "path": "department"
+        },
+        {
+          "name": "Job Title",
+          "path": "job_title"
+        },
+        {
+          "name": "Employee JSON",
+          "path": "employee_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "employee_update",
+      "name": "BambooHR Employee Update",
+      "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>",
+      "method": "POST",
+      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>",
+      "inputs": [
+        {
+          "name": "Employee Id",
+          "required": true,
+          "mapTo": "Employee Id"
+        },
+        {
+          "name": "First Name",
+          "required": false,
+          "mapTo": "First Name"
+        },
+        {
+          "name": "Last Name",
+          "required": false,
+          "mapTo": "Last Name"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "Email"
+        },
+        {
+          "name": "Department",
+          "required": false,
+          "mapTo": "Department"
+        },
+        {
+          "name": "Job Title",
+          "required": false,
+          "mapTo": "Job Title"
+        },
+        {
+          "name": "Location",
+          "required": false,
+          "mapTo": "Location"
+        },
+        {
+          "name": "Division",
+          "required": false,
+          "mapTo": "Division"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Updated",
+          "path": "updated"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "report_retrieve",
+      "name": "BambooHR Report Retrieve",
+      "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/reports/custom?format=JSON",
+      "method": "POST",
+      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/reports/custom?format=JSON",
+      "inputs": [
+        {
+          "name": "Title",
+          "required": false,
+          "mapTo": "Title"
+        },
+        {
+          "name": "Fields",
+          "required": true,
+          "mapTo": "Fields"
+        },
+        {
+          "name": "Filters Json",
+          "required": false,
+          "mapTo": "Filters Json"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Employees JSON",
+          "path": "employees_json"
+        },
+        {
+          "name": "Field Names",
+          "path": "field_names"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "time_off_request",
+      "name": "BambooHR Time Off Request",
+      "description": "PUT https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
+      "method": "PUT",
+      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
+      "inputs": [
+        {
+          "name": "Employee Id",
+          "required": true,
+          "mapTo": "Employee Id"
+        },
+        {
+          "name": "Start",
+          "required": true,
+          "mapTo": "Start"
+        },
+        {
+          "name": "End",
+          "required": true,
+          "mapTo": "End"
+        },
+        {
+          "name": "Time Off Type Id",
+          "required": true,
+          "mapTo": "Time Off Type Id"
+        },
+        {
+          "name": "Amount",
+          "required": true,
+          "mapTo": "Amount"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "Status"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "Notes"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Request ID",
+          "path": "request_id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    }
+  ]
+}
