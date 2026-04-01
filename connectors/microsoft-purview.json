@@ -1,0 +1,25 @@
+{
+  "id": "microsoft-purview",
+  "service": "Microsoft Purview",
+  "version": 1,
+  "category": "Security & Identity",
+  "description": "Microsoft Purview — data governance, compliance, audit logs, sensitivity labels, and data classification.",
+  "docsUrl": "https://learn.microsoft.com/en-us/purview/",
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0078D4\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">P</text></svg>",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      { "name": "token_url", "required": true, "description": "Azure AD token endpoint." },
+      { "name": "client_id", "required": true },
+      { "name": "client_secret", "required": true, "encrypted": true },
+      { "name": "instance_url", "required": false, "description": "Purview account endpoint (e.g. https://{account}.purview.azure.com)." }
+    ]
+  },
+  "defaultHeaders": { "Accept": "application/json" },
+  "routines": [
+    { "id": "audit_log_search", "name": "Purview Audit Log Search", "description": "Searches the unified audit log.", "method": "POST", "path": "/api/v1.0/activity/feed/subscriptions/content?contentType=Audit.General", "inputs": [{ "name": "Start Time", "required": true }, { "name": "End Time", "required": true }], "outputs": [{ "name": "Events JSON", "path": "events" }] },
+    { "id": "sensitivity_label_list", "name": "Purview Sensitivity Label List", "description": "Lists sensitivity labels.", "method": "GET", "path": "/api/atlas/v2/types/typedefs", "inputs": [], "outputs": [{ "name": "Labels JSON", "path": "value" }] },
+    { "id": "data_source_list", "name": "Purview Data Source List", "description": "Lists registered data sources.", "method": "GET", "path": "/scan/datasources?api-version=2023-09-01", "inputs": [], "outputs": [{ "name": "Sources JSON", "path": "value" }] },
+    { "id": "test", "name": "Microsoft Purview Connection Test", "description": "Validates authentication.", "method": "GET", "path": "/scan/datasources?api-version=2023-09-01&$top=1", "inputs": [], "outputs": [] }
+  ]
+}

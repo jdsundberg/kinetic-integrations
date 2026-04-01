@@ -1,0 +1,25 @@
+{
+  "id": "power-automate",
+  "service": "Power Automate",
+  "version": 1,
+  "category": "Cloud & Infrastructure",
+  "description": "Microsoft Power Automate — trigger flows, manage connections, and monitor runs.",
+  "docsUrl": "https://learn.microsoft.com/en-us/power-automate/web-api",
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0066FF\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">A</text></svg>",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      { "name": "token_url", "required": true, "description": "Azure AD token endpoint." },
+      { "name": "client_id", "required": true },
+      { "name": "client_secret", "required": true, "encrypted": true },
+      { "name": "instance_url", "required": true, "description": "Environment URL (e.g. https://org.crm.dynamics.com)." }
+    ]
+  },
+  "defaultHeaders": { "Accept": "application/json" },
+  "routines": [
+    { "id": "flow_list", "name": "Power Automate Flow List", "description": "Lists cloud flows.", "method": "GET", "path": "/api/data/v9.2/workflows?$filter=category eq 5&$select=name,statecode,createdon", "inputs": [], "outputs": [{ "name": "Flows JSON", "path": "value" }] },
+    { "id": "flow_trigger", "name": "Power Automate Flow Trigger", "description": "Triggers a flow via HTTP request trigger.", "method": "POST", "path": "/triggers/manual/run", "inputs": [{ "name": "Flow URL", "required": true, "description": "HTTP trigger URL from the flow." }, { "name": "Body JSON", "required": false }], "outputs": [{ "name": "Status", "path": "status" }] },
+    { "id": "flow_run_list", "name": "Power Automate Flow Run List", "description": "Lists runs for a flow.", "method": "GET", "path": "/api/data/v9.2/flowsessions?$filter=_regardingobjectid_value eq '{flow_id}'&$top=25", "inputs": [{ "name": "Flow ID", "required": true }], "outputs": [{ "name": "Runs JSON", "path": "value" }] },
+    { "id": "test", "name": "Power Automate Connection Test", "description": "Validates authentication.", "method": "GET", "path": "/api/data/v9.2/workflows?$top=1", "inputs": [], "outputs": [] }
+  ]
+}

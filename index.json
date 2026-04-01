@@ -1091,6 +1091,30 @@
       "description": "Meraki integration with 3 pre-built routines."
     },
     {
+      "id": "microsoft-defender",
+      "service": "Microsoft Defender for Endpoint",
+      "category": "Security & Identity",
+      "auth": "oauth2",
+      "routines": 7,
+      "description": "Microsoft Defender for Endpoint \u2014 threat detection, investigation, alerts, and device management."
+    },
+    {
+      "id": "microsoft-graph",
+      "service": "Microsoft Graph",
+      "category": "Cloud & Infrastructure",
+      "auth": "oauth2",
+      "routines": 12,
+      "description": "Microsoft Graph API \u2014 unified endpoint for Microsoft 365 services including Outlook mail, calendar, contacts, users, groups, and files."
+    },
+    {
+      "id": "microsoft-purview",
+      "service": "Microsoft Purview",
+      "category": "Security & Identity",
+      "auth": "oauth2",
+      "routines": 4,
+      "description": "Microsoft Purview \u2014 data governance, compliance, audit logs, sensitivity labels, and data classification."
+    },
+    {
       "id": "mixpanel",
       "service": "Mixpanel",
       "category": "Observability & Analytics",
@@ -1355,6 +1379,14 @@
       "description": "Plivo integration with 5 pre-built routines."
     },
     {
+      "id": "power-automate",
+      "service": "Power Automate",
+      "category": "Cloud & Infrastructure",
+      "auth": "oauth2",
+      "routines": 4,
+      "description": "Microsoft Power Automate \u2014 trigger flows, manage connections, and monitor runs."
+    },
+    {
       "id": "powerbi",
       "service": "Powerbi",
       "category": "Other",
@@ -1537,6 +1569,14 @@
       "auth": "basic",
       "routines": 11,
       "description": "Servicenow integration with 11 pre-built routines."
+    },
+    {
+      "id": "sharepoint",
+      "service": "SharePoint Online",
+      "category": "Documents & Storage",
+      "auth": "oauth2",
+      "routines": 7,
+      "description": "SharePoint Online via Microsoft Graph \u2014 sites, lists, document libraries, and pages."
     },
     {
       "id": "shopify",
