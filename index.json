@@ -979,6 +979,38 @@
       "description": "Kashoo integration with 9 pre-built routines."
     },
     {
+      "id": "kinetic-agent",
+      "service": "Kinetic Agent",
+      "category": "Cloud & Infrastructure",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Kinetic Agent \u2014 execute handlers on edge agents for on-premise system access. Bridges cloud workflows to systems behind firewalls."
+    },
+    {
+      "id": "kinetic-core-api",
+      "service": "Kinetic Core API",
+      "category": "Cloud & Infrastructure",
+      "auth": "basic",
+      "routines": 29,
+      "description": "Kinetic Platform Core API \u2014 manage submissions, forms, kapps, users, teams, and space configuration. Pre-installed on every Kinetic instance."
+    },
+    {
+      "id": "kinetic-task-api-v1",
+      "service": "Kinetic Task API v1",
+      "category": "Cloud & Infrastructure",
+      "auth": "basic",
+      "routines": 2,
+      "description": "Kinetic Task Engine API v1 \u2014 manage trees, runs, triggers, handlers, and sources. Supports both Basic auth and API access keys."
+    },
+    {
+      "id": "kinetic-task-api-v2",
+      "service": "Kinetic Task API v2",
+      "category": "Cloud & Infrastructure",
+      "auth": "basic",
+      "routines": 10,
+      "description": "Kinetic Task Engine API v2 \u2014 manage trees, runs, triggers, errors, handlers, and engine status."
+    },
+    {
       "id": "kubernetes",
       "service": "Kubernetes",
       "category": "Cloud & Infrastructure",
