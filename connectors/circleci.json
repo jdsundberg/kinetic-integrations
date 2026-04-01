@@ -38,7 +38,7 @@
       "name": "CircleCI Artifact Retrieve",
       "description": "GET https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/<%= @inputs['Job Number'] %>/artifacts",
       "method": "GET",
-      "path": "https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/<%= @inputs['Job Number'] %>/artifacts",
+      "path": "/api/v2/project/<%= @inputs['Project Slug'] %>/<%= @inputs['Job Number'] %>/artifacts",
       "inputs": [
         {
           "name": "Project Slug",
@@ -77,7 +77,7 @@
       "name": "CircleCI Job Cancel",
       "description": "POST https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/job/<%= @inputs['Job Number'] %>/cancel",
       "method": "POST",
-      "path": "https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/job/<%= @inputs['Job Number'] %>/cancel",
+      "path": "/api/v2/project/<%= @inputs['Project Slug'] %>/job/<%= @inputs['Job Number'] %>/cancel",
       "inputs": [
         {
           "name": "Project Slug",
@@ -114,7 +114,7 @@
       "name": "CircleCI Pipeline Trigger",
       "description": "POST https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/pipeline",
       "method": "POST",
-      "path": "https://circleci.com/api/v2/project/<%= @inputs['Project Slug'] %>/pipeline",
+      "path": "/api/v2/project/<%= @inputs['Project Slug'] %>/pipeline",
       "inputs": [
         {
           "name": "Project Slug",
@@ -191,7 +191,7 @@
       "name": "CircleCI Workflow Approve",
       "description": "POST https://circleci.com/api/v2/workflow/<%= @inputs['Workflow Id'] %>/approve/<%= @inputs['Approval Request Id'] %>",
       "method": "POST",
-      "path": "https://circleci.com/api/v2/workflow/<%= @inputs['Workflow Id'] %>/approve/<%= @inputs['Approval Request Id'] %>",
+      "path": "/api/v2/workflow/<%= @inputs['Workflow Id'] %>/approve/<%= @inputs['Approval Request Id'] %>",
       "inputs": [
         {
           "name": "Workflow Id",

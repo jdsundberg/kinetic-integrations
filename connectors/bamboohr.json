@@ -43,7 +43,7 @@
       "name": "BambooHR Employee Create",
       "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/",
       "method": "POST",
-      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/",
+      "path": "/api/gateway.php/v1/employees/",
       "inputs": [
         {
           "name": "First Name",
@@ -119,7 +119,7 @@
       "name": "BambooHR Employee Retrieve",
       "description": "GET https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
       "method": "GET",
-      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
+      "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
       "inputs": [
         {
           "name": "Employee Id",
@@ -178,7 +178,7 @@
       "name": "BambooHR Employee Update",
       "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>",
       "method": "POST",
-      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>",
+      "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>",
       "inputs": [
         {
           "name": "Employee Id",
@@ -245,7 +245,7 @@
       "name": "BambooHR Report Retrieve",
       "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/reports/custom?format=JSON",
       "method": "POST",
-      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/reports/custom?format=JSON",
+      "path": "/api/gateway.php/v1/reports/custom?format=JSON",
       "inputs": [
         {
           "name": "Title",
@@ -309,7 +309,7 @@
       "name": "BambooHR Time Off Request",
       "description": "PUT https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
       "method": "PUT",
-      "path": "https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
+      "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
       "inputs": [
         {
           "name": "Employee Id",

@@ -38,7 +38,7 @@
       "name": "Kubernetes Deployment Create",
       "description": "POST <%= @info['api_server'] %>/apis/apps/v1/namespaces/<%= @inputs['Namespace'] %>/deployments",
       "method": "POST",
-      "path": "<%= @info['api_server'] %>/apis/apps/v1/namespaces/<%= @inputs['Namespace'] %>/deployments",
+      "path": "/apis/apps/v1/namespaces/<%= @inputs['Namespace'] %>/deployments",
       "inputs": [
         {
           "name": "Namespace",
@@ -98,7 +98,7 @@
       "name": "Kubernetes Namespace Create",
       "description": "POST <%= @info['api_server'] %>/api/v1/namespaces",
       "method": "POST",
-      "path": "<%= @info['api_server'] %>/api/v1/namespaces",
+      "path": "/api/v1/namespaces",
       "inputs": [
         {
           "name": "Name",
@@ -143,7 +143,7 @@
       "name": "Kubernetes Pod List",
       "description": "GET <%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/pods?labelSelector=<%= @inputs['Label Selector'] %>",
       "method": "GET",
-      "path": "<%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/pods?labelSelector=<%= @inputs['Label Selector'] %>",
+      "path": "/api/v1/namespaces/<%= @inputs['Namespace'] %>/pods?labelSelector=<%= @inputs['Label Selector'] %>",
       "inputs": [
         {
           "name": "Namespace",
@@ -182,7 +182,7 @@
       "name": "Kubernetes Service Create",
       "description": "POST <%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/services",
       "method": "POST",
-      "path": "<%= @info['api_server'] %>/api/v1/namespaces/<%= @inputs['Namespace'] %>/services",
+      "path": "/api/v1/namespaces/<%= @inputs['Namespace'] %>/services",
       "inputs": [
         {
           "name": "Namespace",

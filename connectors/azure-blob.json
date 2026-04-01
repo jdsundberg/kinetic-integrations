@@ -42,7 +42,7 @@
       "name": "Azure Blob Blob Download",
       "description": "GET https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
       "method": "GET",
-      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "path": "/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
       "inputs": [
         {
           "name": "Container",
@@ -85,7 +85,7 @@
       "name": "Azure Blob Blob List",
       "description": "GET https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
       "method": "GET",
-      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
+      "path": "/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
       "inputs": [
         {
           "name": "Container",
@@ -124,7 +124,7 @@
       "name": "Azure Blob Blob Upload",
       "description": "PUT https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
       "method": "PUT",
-      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "path": "/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
       "inputs": [
         {
           "name": "Container",
@@ -175,7 +175,7 @@
       "name": "Azure Blob Container Create",
       "description": "PUT https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container",
       "method": "PUT",
-      "path": "https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container",
+      "path": "/<%= @inputs['Container'] %>?restype=container",
       "inputs": [
         {
           "name": "Container",

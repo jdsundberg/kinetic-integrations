@@ -27,7 +27,7 @@
       "name": "Asana Project Add Member",
       "description": "POST https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
       "method": "POST",
-      "path": "https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
+      "path": "/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
       "inputs": [
         {
           "name": "Project Gid",
@@ -64,7 +64,7 @@
       "name": "Asana Project Create",
       "description": "POST https://app.asana.com/api/1.0/projects",
       "method": "POST",
-      "path": "https://app.asana.com/api/1.0/projects",
+      "path": "/api/1.0/projects",
       "inputs": [
         {
           "name": "Workspace",
@@ -124,7 +124,7 @@
       "name": "Asana Section Create",
       "description": "POST https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
       "method": "POST",
-      "path": "https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
+      "path": "/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
       "inputs": [
         {
           "name": "Project Gid",
@@ -165,7 +165,7 @@
       "name": "Asana Tag Create",
       "description": "POST https://app.asana.com/api/1.0/tags",
       "method": "POST",
-      "path": "https://app.asana.com/api/1.0/tags",
+      "path": "/api/1.0/tags",
       "inputs": [
         {
           "name": "Workspace",
@@ -211,7 +211,7 @@
       "name": "Asana Task Add Comment",
       "description": "POST https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
       "method": "POST",
-      "path": "https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
+      "path": "/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
       "inputs": [
         {
           "name": "Task Gid",
@@ -252,7 +252,7 @@
       "name": "Asana Task Create",
       "description": "POST https://app.asana.com/api/1.0/tasks",
       "method": "POST",
-      "path": "https://app.asana.com/api/1.0/tasks",
+      "path": "/api/1.0/tasks",
       "inputs": [
         {
           "name": "Workspace",
@@ -317,7 +317,7 @@
       "name": "Asana Task Update",
       "description": "PUT https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
       "method": "PUT",
-      "path": "https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
+      "path": "/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
       "inputs": [
         {
           "name": "Task Gid",
@@ -396,7 +396,7 @@
       "name": "Asana Workspace List",
       "description": "GET https://app.asana.com/api/1.0/workspaces",
       "method": "GET",
-      "path": "https://app.asana.com/api/1.0/workspaces",
+      "path": "/api/1.0/workspaces",
       "inputs": [],
       "outputs": [
         {

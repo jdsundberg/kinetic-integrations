@@ -27,7 +27,7 @@
       "name": "Square Catalog Object Create",
       "description": "POST https://connect.squareup.com/v2/catalog/object",
       "method": "POST",
-      "path": "https://connect.squareup.com/v2/catalog/object",
+      "path": "/v2/catalog/object",
       "inputs": [
         {
           "name": "Idempotency Key",
@@ -92,7 +92,7 @@
       "name": "Square Customer Create",
       "description": "POST https://connect.squareup.com/v2/customers",
       "method": "POST",
-      "path": "https://connect.squareup.com/v2/customers",
+      "path": "/v2/customers",
       "inputs": [
         {
           "name": "Given Name",
@@ -162,7 +162,7 @@
       "name": "Square Inventory Update",
       "description": "POST https://connect.squareup.com/v2/inventory/changes/batch-create",
       "method": "POST",
-      "path": "https://connect.squareup.com/v2/inventory/changes/batch-create",
+      "path": "/v2/inventory/changes/batch-create",
       "inputs": [
         {
           "name": "Idempotency Key",
@@ -219,7 +219,7 @@
       "name": "Square Invoice Create",
       "description": "POST https://connect.squareup.com/v2/invoices",
       "method": "POST",
-      "path": "https://connect.squareup.com/v2/invoices",
+      "path": "/v2/invoices",
       "inputs": [
         {
           "name": "Location Id",
@@ -289,7 +289,7 @@
       "name": "Square Order Create",
       "description": "POST https://connect.squareup.com/v2/orders",
       "method": "POST",
-      "path": "https://connect.squareup.com/v2/orders",
+      "path": "/v2/orders",
       "inputs": [
         {
           "name": "Location Id",
@@ -359,7 +359,7 @@
       "name": "Square Payment Create",
       "description": "POST https://connect.squareup.com/v2/payments",
       "method": "POST",
-      "path": "https://connect.squareup.com/v2/payments",
+      "path": "/v2/payments",
       "inputs": [
         {
           "name": "Source Id",

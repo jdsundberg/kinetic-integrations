@@ -33,7 +33,7 @@
       "name": "Trello Board Create",
       "description": "POST https://api.trello.com/1/boards",
       "method": "POST",
-      "path": "https://api.trello.com/1/boards",
+      "path": "/1/boards",
       "inputs": [
         {
           "name": "Name",
@@ -88,7 +88,7 @@
       "name": "Trello Card Create",
       "description": "POST https://api.trello.com/1/cards",
       "method": "POST",
-      "path": "https://api.trello.com/1/cards",
+      "path": "/1/cards",
       "inputs": [
         {
           "name": "List Id",
@@ -148,7 +148,7 @@
       "name": "Trello Card Move",
       "description": "PUT https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
       "method": "PUT",
-      "path": "https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "path": "/1/cards/<%= @inputs['Card Id'] %>",
       "inputs": [
         {
           "name": "Card Id",
@@ -194,7 +194,7 @@
       "name": "Trello Card Update",
       "description": "PUT https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
       "method": "PUT",
-      "path": "https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "path": "/1/cards/<%= @inputs['Card Id'] %>",
       "inputs": [
         {
           "name": "Card Id",
@@ -255,7 +255,7 @@
       "name": "Trello List Create",
       "description": "POST https://api.trello.com/1/lists",
       "method": "POST",
-      "path": "https://api.trello.com/1/lists",
+      "path": "/1/lists",
       "inputs": [
         {
           "name": "Board Id",
@@ -301,7 +301,7 @@
       "name": "Trello Member Add",
       "description": "PUT https://api.trello.com/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
       "method": "PUT",
-      "path": "https://api.trello.com/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
+      "path": "/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
       "inputs": [
         {
           "name": "Board Id",

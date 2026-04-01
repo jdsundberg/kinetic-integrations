@@ -27,7 +27,7 @@
       "name": "Constant Contact Campaign Create",
       "description": "POST https://api.cc.email/v3/emails",
       "method": "POST",
-      "path": "https://api.cc.email/v3/emails",
+      "path": "/v3/emails",
       "inputs": [
         {
           "name": "Name",
@@ -102,7 +102,7 @@
       "name": "Constant Contact Campaign Send",
       "description": "POST https://api.cc.email/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
       "method": "POST",
-      "path": "https://api.cc.email/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
+      "path": "/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
       "inputs": [
         {
           "name": "Campaign Activity Id",
@@ -143,7 +143,7 @@
       "name": "Constant Contact Contact Create",
       "description": "POST https://api.cc.email/v3/contacts",
       "method": "POST",
-      "path": "https://api.cc.email/v3/contacts",
+      "path": "/v3/contacts",
       "inputs": [
         {
           "name": "Email",
@@ -218,7 +218,7 @@
       "name": "Constant Contact Contact Update",
       "description": "PUT https://api.cc.email/v3/contacts/<%= @inputs['Contact Id'] %>",
       "method": "PUT",
-      "path": "https://api.cc.email/v3/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/v3/contacts/<%= @inputs['Contact Id'] %>",
       "inputs": [
         {
           "name": "Contact Id",
@@ -284,7 +284,7 @@
       "name": "Constant Contact List Add Contact",
       "description": "POST https://api.cc.email/v3/activities/add_list_memberships",
       "method": "POST",
-      "path": "https://api.cc.email/v3/activities/add_list_memberships",
+      "path": "/v3/activities/add_list_memberships",
       "inputs": [
         {
           "name": "List Id",

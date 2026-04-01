@@ -32,7 +32,7 @@
       "name": "Monday.com Board Create",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Board Name",
@@ -78,7 +78,7 @@
       "name": "Monday.com Column Create",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Board Id",
@@ -124,7 +124,7 @@
       "name": "Monday.com File Upload",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Item Id",
@@ -170,7 +170,7 @@
       "name": "Monday.com Group Create",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Board Id",
@@ -211,7 +211,7 @@
       "name": "Monday.com Item Create",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Board Id",
@@ -262,7 +262,7 @@
       "name": "Monday.com Item Update",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Board Id",
@@ -304,7 +304,7 @@
       "name": "Monday.com Notification Send",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "User Id",
@@ -369,7 +369,7 @@
       "name": "Monday.com Update Create",
       "description": "POST https://api.monday.com/v2",
       "method": "POST",
-      "path": "https://api.monday.com/v2",
+      "path": "/v2",
       "inputs": [
         {
           "name": "Item Id",

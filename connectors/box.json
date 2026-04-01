@@ -27,7 +27,7 @@
       "name": "Box Collaboration Add",
       "description": "POST https://api.box.com/2.0/collaborations",
       "method": "POST",
-      "path": "https://api.box.com/2.0/collaborations",
+      "path": "/2.0/collaborations",
       "inputs": [
         {
           "name": "Folder Id",
@@ -82,7 +82,7 @@
       "name": "Box File Download",
       "description": "GET https://api.box.com/2.0/files/<%= @inputs['File Id'] %>/content",
       "method": "GET",
-      "path": "https://api.box.com/2.0/files/<%= @inputs['File Id'] %>/content",
+      "path": "/2.0/files/<%= @inputs['File Id'] %>/content",
       "inputs": [
         {
           "name": "File Id",
@@ -117,7 +117,7 @@
       "name": "Box File Upload",
       "description": "POST https://upload.box.com/api/2.0/files/content",
       "method": "POST",
-      "path": "https://upload.box.com/api/2.0/files/content",
+      "path": "/api/2.0/files/content",
       "inputs": [
         {
           "name": "Folder Id",
@@ -171,7 +171,7 @@
       "name": "Box Folder Create",
       "description": "POST https://api.box.com/2.0/folders",
       "method": "POST",
-      "path": "https://api.box.com/2.0/folders",
+      "path": "/2.0/folders",
       "inputs": [
         {
           "name": "Name",
@@ -216,7 +216,7 @@
       "name": "Box Shared Link Create",
       "description": "PUT https://api.box.com/2.0/files/<%= @inputs['File Id'] %>",
       "method": "PUT",
-      "path": "https://api.box.com/2.0/files/<%= @inputs['File Id'] %>",
+      "path": "/2.0/files/<%= @inputs['File Id'] %>",
       "inputs": [
         {
           "name": "File Id",
@@ -284,7 +284,7 @@
       "name": "Box User Create",
       "description": "POST https://api.box.com/2.0/users",
       "method": "POST",
-      "path": "https://api.box.com/2.0/users",
+      "path": "/2.0/users",
       "inputs": [
         {
           "name": "Name",

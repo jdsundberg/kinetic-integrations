@@ -57,7 +57,7 @@
       "name": "AWS SNS Publish",
       "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
       "method": "POST",
-      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "path": "/",
       "inputs": [
         {
           "name": "Topic Arn",
@@ -104,7 +104,7 @@
       "name": "AWS SNS Subscribe",
       "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
       "method": "POST",
-      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "path": "/",
       "inputs": [
         {
           "name": "Topic Arn",
@@ -164,7 +164,7 @@
       "name": "AWS SNS Topic Create",
       "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
       "method": "POST",
-      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "path": "/",
       "inputs": [
         {
           "name": "Name",
@@ -206,7 +206,7 @@
       "name": "AWS SNS Unsubscribe",
       "description": "POST https://sns.<%= @info['region'] %>.amazonaws.com/",
       "method": "POST",
-      "path": "https://sns.<%= @info['region'] %>.amazonaws.com/",
+      "path": "/",
       "inputs": [
         {
           "name": "Subscription Arn",

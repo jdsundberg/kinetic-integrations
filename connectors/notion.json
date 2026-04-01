@@ -33,7 +33,7 @@
       "name": "Notion Block Append",
       "description": "PATCH https://api.notion.com/v1/blocks/<%= @inputs['Block Id'] %>/children",
       "method": "PATCH",
-      "path": "https://api.notion.com/v1/blocks/<%= @inputs['Block Id'] %>/children",
+      "path": "/v1/blocks/<%= @inputs['Block Id'] %>/children",
       "inputs": [
         {
           "name": "Block Id",
@@ -70,7 +70,7 @@
       "name": "Notion Database Create",
       "description": "POST https://api.notion.com/v1/databases",
       "method": "POST",
-      "path": "https://api.notion.com/v1/databases",
+      "path": "/v1/databases",
       "inputs": [
         {
           "name": "Parent Page Id",
@@ -116,7 +116,7 @@
       "name": "Notion Database Query",
       "description": "POST https://api.notion.com/v1/databases/<%= @inputs['Database Id'] %>/query",
       "method": "POST",
-      "path": "https://api.notion.com/v1/databases/<%= @inputs['Database Id'] %>/query",
+      "path": "/v1/databases/<%= @inputs['Database Id'] %>/query",
       "inputs": [
         {
           "name": "Database Id",
@@ -171,7 +171,7 @@
       "name": "Notion Page Create",
       "description": "POST https://api.notion.com/v1/pages",
       "method": "POST",
-      "path": "https://api.notion.com/v1/pages",
+      "path": "/v1/pages",
       "inputs": [
         {
           "name": "Parent Page Id",
@@ -226,7 +226,7 @@
       "name": "Notion Page Update",
       "description": "PATCH https://api.notion.com/v1/pages/<%= @inputs['Page Id'] %>",
       "method": "PATCH",
-      "path": "https://api.notion.com/v1/pages/<%= @inputs['Page Id'] %>",
+      "path": "/v1/pages/<%= @inputs['Page Id'] %>",
       "inputs": [
         {
           "name": "Page Id",
@@ -276,7 +276,7 @@
       "name": "Notion Search",
       "description": "POST https://api.notion.com/v1/search",
       "method": "POST",
-      "path": "https://api.notion.com/v1/search",
+      "path": "/v1/search",
       "inputs": [
         {
           "name": "Query",

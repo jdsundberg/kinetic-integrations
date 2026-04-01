@@ -27,7 +27,7 @@
       "name": "Zoom Meeting Create",
       "description": "POST https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/meetings",
       "method": "POST",
-      "path": "https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/meetings",
+      "path": "/v2/users/<%= @inputs['User Id'] %>/meetings",
       "inputs": [
         {
           "name": "User Id",
@@ -110,7 +110,7 @@
       "name": "Zoom Meeting Delete",
       "description": "DELETE https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
       "method": "DELETE",
-      "path": "https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "path": "/v2/meetings/<%= @inputs['Meeting Id'] %>",
       "inputs": [
         {
           "name": "Meeting Id",
@@ -149,7 +149,7 @@
       "name": "Zoom Meeting Update",
       "description": "PATCH https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
       "method": "PATCH",
-      "path": "https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "path": "/v2/meetings/<%= @inputs['Meeting Id'] %>",
       "inputs": [
         {
           "name": "Meeting Id",
@@ -211,7 +211,7 @@
       "name": "Zoom Recording List",
       "description": "GET https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/recordings",
       "method": "GET",
-      "path": "https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/recordings",
+      "path": "/v2/users/<%= @inputs['User Id'] %>/recordings",
       "inputs": [
         {
           "name": "User Id",
@@ -280,7 +280,7 @@
       "name": "Zoom User Create",
       "description": "POST https://api.zoom.us/v2/users",
       "method": "POST",
-      "path": "https://api.zoom.us/v2/users",
+      "path": "/v2/users",
       "inputs": [
         {
           "name": "Email",
@@ -344,7 +344,7 @@
       "name": "Zoom Webinar Create",
       "description": "POST https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/webinars",
       "method": "POST",
-      "path": "https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/webinars",
+      "path": "/v2/users/<%= @inputs['User Id'] %>/webinars",
       "inputs": [
         {
           "name": "User Id",

@@ -37,7 +37,7 @@
       "name": "BigPanda Alert Send",
       "description": "POST https://api.bigpanda.io/data/v2/alerts",
       "method": "POST",
-      "path": "https://api.bigpanda.io/data/v2/alerts",
+      "path": "/data/v2/alerts",
       "inputs": [
         {
           "name": "Status",
@@ -98,7 +98,7 @@
       "name": "BigPanda Environment Create",
       "description": "POST https://api.bigpanda.io/resources/v2.0/environments",
       "method": "POST",
-      "path": "https://api.bigpanda.io/resources/v2.0/environments",
+      "path": "/resources/v2.0/environments",
       "inputs": [
         {
           "name": "Name",
@@ -134,7 +134,7 @@
       "name": "BigPanda Incident Create",
       "description": "POST https://api.bigpanda.io/data/v2/alerts",
       "method": "POST",
-      "path": "https://api.bigpanda.io/data/v2/alerts",
+      "path": "/data/v2/alerts",
       "inputs": [
         {
           "name": "Alerts Json",
@@ -175,7 +175,7 @@
       "name": "BigPanda Maintenance Create",
       "description": "POST https://api.bigpanda.io/resources/v2.0/maintenance-plans",
       "method": "POST",
-      "path": "https://api.bigpanda.io/resources/v2.0/maintenance-plans",
+      "path": "/resources/v2.0/maintenance-plans",
       "inputs": [
         {
           "name": "Name",

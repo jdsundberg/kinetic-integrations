@@ -27,7 +27,7 @@
       "name": "HubSpot Company Create",
       "description": "POST https://api.hubapi.com/crm/v3/objects/companies",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/companies",
+      "path": "/crm/v3/objects/companies",
       "inputs": [
         {
           "name": "Name",
@@ -93,7 +93,7 @@
       "name": "HubSpot Contact Create",
       "description": "POST https://api.hubapi.com/crm/v3/objects/contacts",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/contacts",
+      "path": "/crm/v3/objects/contacts",
       "inputs": [
         {
           "name": "Email",
@@ -163,7 +163,7 @@
       "name": "HubSpot Contact Retrieve",
       "description": "POST https://api.hubapi.com/crm/v3/objects/contacts/search",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/contacts/search",
+      "path": "/crm/v3/objects/contacts/search",
       "inputs": [
         {
           "name": "Email",
@@ -215,7 +215,7 @@
       "name": "HubSpot Contact Update",
       "description": "PATCH https://api.hubapi.com/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
       "method": "PATCH",
-      "path": "https://api.hubapi.com/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
       "inputs": [
         {
           "name": "Contact Id",
@@ -281,7 +281,7 @@
       "name": "HubSpot Deal Create",
       "description": "POST https://api.hubapi.com/crm/v3/objects/deals",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/deals",
+      "path": "/crm/v3/objects/deals",
       "inputs": [
         {
           "name": "Deal Name",
@@ -346,7 +346,7 @@
       "name": "HubSpot Deal Update",
       "description": "PATCH https://api.hubapi.com/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
       "method": "PATCH",
-      "path": "https://api.hubapi.com/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
+      "path": "/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
       "inputs": [
         {
           "name": "Deal Id",
@@ -402,7 +402,7 @@
       "name": "HubSpot Engagement Create",
       "description": "POST https://api.hubapi.com/crm/v3/objects/notes",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/notes",
+      "path": "/crm/v3/objects/notes",
       "inputs": [
         {
           "name": "Body",
@@ -443,7 +443,7 @@
       "name": "HubSpot List Add Contact",
       "description": "PUT https://api.hubapi.com/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
       "method": "PUT",
-      "path": "https://api.hubapi.com/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
+      "path": "/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
       "inputs": [
         {
           "name": "List Id",
@@ -484,7 +484,7 @@
       "name": "HubSpot Note Create",
       "description": "POST https://api.hubapi.com/crm/v3/objects/notes",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/notes",
+      "path": "/crm/v3/objects/notes",
       "inputs": [
         {
           "name": "Note Body",
@@ -539,7 +539,7 @@
       "name": "HubSpot Ticket Create",
       "description": "POST https://api.hubapi.com/crm/v3/objects/tickets",
       "method": "POST",
-      "path": "https://api.hubapi.com/crm/v3/objects/tickets",
+      "path": "/crm/v3/objects/tickets",
       "inputs": [
         {
           "name": "Subject",

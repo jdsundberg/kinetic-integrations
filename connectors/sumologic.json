@@ -47,7 +47,7 @@
       "name": "Sumo Logic Collector Create",
       "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors",
       "method": "POST",
-      "path": "https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors",
+      "path": "/api/v1/collectors",
       "inputs": [
         {
           "name": "Name",
@@ -93,7 +93,7 @@
       "name": "Sumo Logic Log Send",
       "description": "POST <%= @inputs['Collector Url'] %>",
       "method": "POST",
-      "path": "<%= @inputs['Collector Url'] %>",
+      "path": "/<%= @inputs['Collector Url'] %>",
       "inputs": [
         {
           "name": "Collector Url",
@@ -140,7 +140,7 @@
       "name": "Sumo Logic Search Create",
       "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/search/jobs",
       "method": "POST",
-      "path": "https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/search/jobs",
+      "path": "/api/v1/search/jobs",
       "inputs": [
         {
           "name": "Query",
@@ -191,7 +191,7 @@
       "name": "Sumo Logic Source Create",
       "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
       "method": "POST",
-      "path": "https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
+      "path": "/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
       "inputs": [
         {
           "name": "Collector Id",

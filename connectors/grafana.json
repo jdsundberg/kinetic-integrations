@@ -38,7 +38,7 @@
       "name": "Grafana Alert Create",
       "description": "POST <%= @info['base_url'] %>/api/v1/provisioning/alert-rules",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/v1/provisioning/alert-rules",
+      "path": "/api/v1/provisioning/alert-rules",
       "inputs": [
         {
           "name": "Title",
@@ -99,7 +99,7 @@
       "name": "Grafana Annotation Create",
       "description": "POST <%= @info['base_url'] %>/api/annotations",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/annotations",
+      "path": "/api/annotations",
       "inputs": [
         {
           "name": "Text",
@@ -160,7 +160,7 @@
       "name": "Grafana Dashboard Create",
       "description": "POST <%= @info['base_url'] %>/api/dashboards/db",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/dashboards/db",
+      "path": "/api/dashboards/db",
       "inputs": [
         {
           "name": "Title",
@@ -219,7 +219,7 @@
       "name": "Grafana Datasource Create",
       "description": "POST <%= @info['base_url'] %>/api/datasources",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/datasources",
+      "path": "/api/datasources",
       "inputs": [
         {
           "name": "Name",

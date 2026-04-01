@@ -42,7 +42,7 @@
       "name": "New Relic Alert Create",
       "description": "POST https://api.newrelic.com/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
       "method": "POST",
-      "path": "https://api.newrelic.com/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
+      "path": "/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
       "inputs": [
         {
           "name": "Policy Id",
@@ -98,7 +98,7 @@
       "name": "New Relic Dashboard Create",
       "description": "POST https://api.newrelic.com/graphql",
       "method": "POST",
-      "path": "https://api.newrelic.com/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Title",
@@ -144,7 +144,7 @@
       "name": "New Relic Deployment Create",
       "description": "POST https://api.newrelic.com/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
       "method": "POST",
-      "path": "https://api.newrelic.com/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
+      "path": "/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
       "inputs": [
         {
           "name": "App Id",
@@ -200,7 +200,7 @@
       "name": "New Relic Event Send",
       "description": "POST https://insights-collector.newrelic.com/v1/accounts/<%= @info['account_id'] %>/events",
       "method": "POST",
-      "path": "https://insights-collector.newrelic.com/v1/accounts/<%= @info['account_id'] %>/events",
+      "path": "/v1/accounts/events",
       "inputs": [
         {
           "name": "Event Type",
@@ -241,7 +241,7 @@
       "name": "New Relic Metric Submit",
       "description": "POST https://metric-api.newrelic.com/metric/v1",
       "method": "POST",
-      "path": "https://metric-api.newrelic.com/metric/v1",
+      "path": "/metric/v1",
       "inputs": [
         {
           "name": "Metric Name",

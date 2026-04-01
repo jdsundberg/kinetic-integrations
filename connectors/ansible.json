@@ -36,7 +36,7 @@
       "name": "Ansible Tower Credential Create",
       "description": "POST <%= @info['base_url'] %>/api/v2/credentials/",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/v2/credentials/",
+      "path": "/api/v2/credentials/",
       "inputs": [
         {
           "name": "Name",
@@ -92,7 +92,7 @@
       "name": "Ansible Tower Inventory Create",
       "description": "POST <%= @info['base_url'] %>/api/v2/inventories/",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/v2/inventories/",
+      "path": "/api/v2/inventories/",
       "inputs": [
         {
           "name": "Name",
@@ -143,7 +143,7 @@
       "name": "Ansible Tower Job Launch",
       "description": "POST <%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
+      "path": "/api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
       "inputs": [
         {
           "name": "Template Id",
@@ -203,7 +203,7 @@
       "name": "Ansible Tower Template Retrieve",
       "description": "GET <%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/api/v2/job_templates/<%= @inputs['Template Id'] %>/",
+      "path": "/api/v2/job_templates/<%= @inputs['Template Id'] %>/",
       "inputs": [
         {
           "name": "Template Id",

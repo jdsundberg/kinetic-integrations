@@ -32,7 +32,7 @@
       "name": "GitHub Action Workflow Dispatch",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
       "inputs": [
         {
           "name": "Owner",
@@ -84,7 +84,7 @@
       "name": "GitHub Branch Create",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
       "inputs": [
         {
           "name": "Owner",
@@ -135,7 +135,7 @@
       "name": "GitHub Issue Add Comment",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
       "inputs": [
         {
           "name": "Owner",
@@ -186,7 +186,7 @@
       "name": "GitHub Issue Create",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
       "inputs": [
         {
           "name": "Owner",
@@ -251,7 +251,7 @@
       "name": "GitHub Issue Update",
       "description": "PATCH <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
       "method": "PATCH",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
       "inputs": [
         {
           "name": "Owner",
@@ -317,7 +317,7 @@
       "name": "GitHub Pull Request Create",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
       "inputs": [
         {
           "name": "Owner",
@@ -387,7 +387,7 @@
       "name": "GitHub Pull Request Merge",
       "description": "PUT <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
       "method": "PUT",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
       "inputs": [
         {
           "name": "Owner",
@@ -452,7 +452,7 @@
       "name": "GitHub Release Create",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
       "inputs": [
         {
           "name": "Owner",
@@ -522,7 +522,7 @@
       "name": "GitHub Repository Create",
       "description": "POST <%= @info['api_url'] %>/user/repos",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/user/repos",
+      "path": "/user/repos",
       "inputs": [
         {
           "name": "Name",
@@ -595,7 +595,7 @@
       "name": "GitHub Webhook Create",
       "description": "POST <%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
+      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
       "inputs": [
         {
           "name": "Owner",

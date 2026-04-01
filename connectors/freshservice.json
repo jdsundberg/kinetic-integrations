@@ -43,7 +43,7 @@
       "name": "Freshservice Asset Create",
       "description": "POST <%= @info['domain_url'] %>/api/v2/assets",
       "method": "POST",
-      "path": "<%= @info['domain_url'] %>/api/v2/assets",
+      "path": "/api/v2/assets",
       "inputs": [
         {
           "name": "Name",
@@ -98,7 +98,7 @@
       "name": "Freshservice Asset Update",
       "description": "PUT <%= @info['domain_url'] %>/api/v2/assets/<%= @inputs['Asset Id'] %>",
       "method": "PUT",
-      "path": "<%= @info['domain_url'] %>/api/v2/assets/<%= @inputs['Asset Id'] %>",
+      "path": "/api/v2/assets/<%= @inputs['Asset Id'] %>",
       "inputs": [
         {
           "name": "Asset Id",
@@ -150,7 +150,7 @@
       "name": "Freshservice Requester Create",
       "description": "POST <%= @info['domain_url'] %>/api/v2/requesters",
       "method": "POST",
-      "path": "<%= @info['domain_url'] %>/api/v2/requesters",
+      "path": "/api/v2/requesters",
       "inputs": [
         {
           "name": "First Name",
@@ -224,7 +224,7 @@
       "name": "Freshservice Ticket Create",
       "description": "POST <%= @info['domain_url'] %>/api/v2/tickets",
       "method": "POST",
-      "path": "<%= @info['domain_url'] %>/api/v2/tickets",
+      "path": "/api/v2/tickets",
       "inputs": [
         {
           "name": "Subject",
@@ -290,7 +290,7 @@
       "name": "Freshservice Ticket Add Note",
       "description": "POST <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
       "method": "POST",
-      "path": "<%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
+      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -336,7 +336,7 @@
       "name": "Freshservice Ticket Update",
       "description": "PUT <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "method": "PUT",
-      "path": "<%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "inputs": [
         {
           "name": "Ticket Id",

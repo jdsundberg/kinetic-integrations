@@ -33,7 +33,7 @@
       "name": "Cloudflare DNS Create",
       "description": "POST https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
       "method": "POST",
-      "path": "https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
+      "path": "/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
       "inputs": [
         {
           "name": "Zone Id",
@@ -102,7 +102,7 @@
       "name": "Cloudflare DNS Delete",
       "description": "DELETE https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
       "method": "DELETE",
-      "path": "https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "path": "/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
       "inputs": [
         {
           "name": "Zone Id",
@@ -137,7 +137,7 @@
       "name": "Cloudflare DNS Update",
       "description": "PUT https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
       "method": "PUT",
-      "path": "https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "path": "/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
       "inputs": [
         {
           "name": "Zone Id",
@@ -225,7 +225,7 @@
       "name": "Cloudflare Zone List",
       "description": "GET https://api.cloudflare.com/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
       "method": "GET",
-      "path": "https://api.cloudflare.com/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
+      "path": "/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
       "inputs": [
         {
           "name": "Name",

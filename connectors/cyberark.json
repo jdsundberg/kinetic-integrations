@@ -37,7 +37,7 @@
       "name": "CyberArk Account Create",
       "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Accounts",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/PasswordVault/api/Accounts",
+      "path": "/PasswordVault/api/Accounts",
       "inputs": [
         {
           "name": "Safe Name",
@@ -103,7 +103,7 @@
       "name": "CyberArk Account Retrieve",
       "description": "GET <%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
+      "path": "/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
       "inputs": [
         {
           "name": "Account Id",
@@ -158,7 +158,7 @@
       "name": "CyberArk Credential Retrieve",
       "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
+      "path": "/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
       "inputs": [
         {
           "name": "Account Id",
@@ -195,7 +195,7 @@
       "name": "CyberArk Safe Add Member",
       "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
+      "path": "/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
       "inputs": [
         {
           "name": "Safe Name",
@@ -246,7 +246,7 @@
       "name": "CyberArk Session Create",
       "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Auth/CyberArk/Logon",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/PasswordVault/api/Auth/CyberArk/Logon",
+      "path": "/PasswordVault/api/Auth/CyberArk/Logon",
       "inputs": [
         {
           "name": "Username",

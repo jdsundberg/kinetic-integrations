@@ -43,7 +43,7 @@
       "name": "Vonage SMS Send",
       "description": "POST https://api.nexmo.com/sms/json",
       "method": "POST",
-      "path": "https://api.nexmo.com/sms/json",
+      "path": "/sms/json",
       "inputs": [
         {
           "name": "From",
@@ -111,7 +111,7 @@
       "name": "Vonage Verify Check",
       "description": "POST https://api.nexmo.com/verify/check/json",
       "method": "POST",
-      "path": "https://api.nexmo.com/verify/check/json",
+      "path": "/verify/check/json",
       "inputs": [
         {
           "name": "Request Id",
@@ -156,7 +156,7 @@
       "name": "Vonage Verify Request",
       "description": "POST https://api.nexmo.com/verify/json",
       "method": "POST",
-      "path": "https://api.nexmo.com/verify/json",
+      "path": "/verify/json",
       "inputs": [
         {
           "name": "Number",
@@ -202,7 +202,7 @@
       "name": "Vonage Voice Call",
       "description": "POST https://api.nexmo.com/v1/calls",
       "method": "POST",
-      "path": "https://api.nexmo.com/v1/calls",
+      "path": "/v1/calls",
       "inputs": [
         {
           "name": "To Number",

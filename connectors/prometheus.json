@@ -37,7 +37,7 @@
       "name": "Prometheus Alert Retrieve",
       "description": "GET <%= @info['base_url'] %>/api/v1/alerts",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/api/v1/alerts",
+      "path": "/api/v1/alerts",
       "inputs": [],
       "outputs": [
         {
@@ -71,7 +71,7 @@
       "name": "Prometheus Query",
       "description": "GET <%= @info['base_url'] %>/api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
+      "path": "/api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
       "inputs": [
         {
           "name": "Query",
@@ -114,7 +114,7 @@
       "name": "Prometheus Series List",
       "description": "GET <%= @info['base_url'] %>/api/v1/series?match[]=<%= @inputs['Match'] %>",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/api/v1/series?match[]=<%= @inputs['Match'] %>",
+      "path": "/api/v1/series?match[]=<%= @inputs['Match'] %>",
       "inputs": [
         {
           "name": "Match",
@@ -157,7 +157,7 @@
       "name": "Prometheus Target List",
       "description": "GET <%= @info['base_url'] %>/api/v1/targets?state=<%= @inputs['State'] %>",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/api/v1/targets?state=<%= @inputs['State'] %>",
+      "path": "/api/v1/targets?state=<%= @inputs['State'] %>",
       "inputs": [
         {
           "name": "State",

@@ -26,7 +26,7 @@
       "name": "Opsgenie Alert Acknowledge",
       "description": "POST https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
       "method": "POST",
-      "path": "https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
+      "path": "/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
       "inputs": [
         {
           "name": "Alert Id",
@@ -72,7 +72,7 @@
       "name": "Opsgenie Alert Close",
       "description": "POST https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/close",
       "method": "POST",
-      "path": "https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/close",
+      "path": "/v2/alerts/<%= @inputs['Alert Id'] %>/close",
       "inputs": [
         {
           "name": "Alert Id",
@@ -118,7 +118,7 @@
       "name": "Opsgenie Alert Create",
       "description": "POST https://api.opsgenie.com/v2/alerts",
       "method": "POST",
-      "path": "https://api.opsgenie.com/v2/alerts",
+      "path": "/v2/alerts",
       "inputs": [
         {
           "name": "Message",
@@ -183,7 +183,7 @@
       "name": "Opsgenie Schedule Create",
       "description": "POST https://api.opsgenie.com/v2/schedules",
       "method": "POST",
-      "path": "https://api.opsgenie.com/v2/schedules",
+      "path": "/v2/schedules",
       "inputs": [
         {
           "name": "Name",

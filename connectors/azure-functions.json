@@ -42,7 +42,7 @@
       "name": "Azure Functions Function Create",
       "description": "PUT https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>",
       "method": "PUT",
-      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>",
+      "path": "/admin/functions/<%= @inputs['Function Name'] %>",
       "inputs": [
         {
           "name": "Function Name",
@@ -88,7 +88,7 @@
       "name": "Azure Functions Function List",
       "description": "GET https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions",
       "method": "GET",
-      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions",
+      "path": "/admin/functions",
       "inputs": [],
       "outputs": [
         {
@@ -114,7 +114,7 @@
       "name": "Azure Functions Invoke",
       "description": "POST https://<%= @info['app_name'] %>.azurewebsites.net/api/<%= @inputs['Function Name'] %>",
       "method": "POST",
-      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/api/<%= @inputs['Function Name'] %>",
+      "path": "/api/<%= @inputs['Function Name'] %>",
       "inputs": [
         {
           "name": "Function Name",
@@ -155,7 +155,7 @@
       "name": "Azure Functions Key Retrieve",
       "description": "GET https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>/keys",
       "method": "GET",
-      "path": "https://<%= @info['app_name'] %>.azurewebsites.net/admin/functions/<%= @inputs['Function Name'] %>/keys",
+      "path": "/admin/functions/<%= @inputs['Function Name'] %>/keys",
       "inputs": [
         {
           "name": "Function Name",

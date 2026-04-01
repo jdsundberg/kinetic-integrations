@@ -26,7 +26,7 @@
       "name": "Webex Meeting Create",
       "description": "POST https://webexapis.com/v1/meetings",
       "method": "POST",
-      "path": "https://webexapis.com/v1/meetings",
+      "path": "/v1/meetings",
       "inputs": [
         {
           "name": "Title",
@@ -104,7 +104,7 @@
       "name": "Webex Membership Add",
       "description": "POST https://webexapis.com/v1/memberships",
       "method": "POST",
-      "path": "https://webexapis.com/v1/memberships",
+      "path": "/v1/memberships",
       "inputs": [
         {
           "name": "Room Id",
@@ -163,7 +163,7 @@
       "name": "Webex Message Send",
       "description": "POST https://webexapis.com/v1/messages",
       "method": "POST",
-      "path": "https://webexapis.com/v1/messages",
+      "path": "/v1/messages",
       "inputs": [
         {
           "name": "Room Id",
@@ -228,7 +228,7 @@
       "name": "Webex Person Retrieve",
       "description": "GET https://webexapis.com/v1/people/<%= @inputs['Person Id'] %>",
       "method": "GET",
-      "path": "https://webexapis.com/v1/people/<%= @inputs['Person Id'] %>",
+      "path": "/v1/people/<%= @inputs['Person Id'] %>",
       "inputs": [
         {
           "name": "Person Id",
@@ -275,7 +275,7 @@
       "name": "Webex Recording List",
       "description": "GET https://webexapis.com/v1/recordings",
       "method": "GET",
-      "path": "https://webexapis.com/v1/recordings",
+      "path": "/v1/recordings",
       "inputs": [
         {
           "name": "From",
@@ -322,7 +322,7 @@
       "name": "Webex Room Create",
       "description": "POST https://webexapis.com/v1/rooms",
       "method": "POST",
-      "path": "https://webexapis.com/v1/rooms",
+      "path": "/v1/rooms",
       "inputs": [
         {
           "name": "Title",

@@ -48,7 +48,7 @@
       "name": "Confluence Comment Add",
       "description": "POST <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
+      "path": "/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
       "inputs": [
         {
           "name": "Page Id",
@@ -89,7 +89,7 @@
       "name": "Confluence Page Create",
       "description": "POST <%= @info['site_url'] %>/api/v2/pages",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/api/v2/pages",
+      "path": "/api/v2/pages",
       "inputs": [
         {
           "name": "Space Id",
@@ -149,7 +149,7 @@
       "name": "Confluence Page Retrieve",
       "description": "GET <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
       "method": "GET",
-      "path": "<%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
+      "path": "/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
       "inputs": [
         {
           "name": "Page Id",
@@ -196,7 +196,7 @@
       "name": "Confluence Page Update",
       "description": "PUT <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>",
       "method": "PUT",
-      "path": "<%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>",
+      "path": "/api/v2/pages/<%= @inputs['Page Id'] %>",
       "inputs": [
         {
           "name": "Page Id",
@@ -247,7 +247,7 @@
       "name": "Confluence Search",
       "description": "GET <%= @info['site_url'] %>/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
       "method": "GET",
-      "path": "<%= @info['site_url'] %>/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
+      "path": "/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
       "inputs": [
         {
           "name": "Cql",
@@ -286,7 +286,7 @@
       "name": "Confluence Space Create",
       "description": "POST <%= @info['site_url'] %>/api/v2/spaces",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/api/v2/spaces",
+      "path": "/api/v2/spaces",
       "inputs": [
         {
           "name": "Key",

@@ -27,7 +27,7 @@
       "name": "Intercom Contact Create",
       "description": "POST https://api.intercom.io/contacts",
       "method": "POST",
-      "path": "https://api.intercom.io/contacts",
+      "path": "/contacts",
       "inputs": [
         {
           "name": "Role",
@@ -92,7 +92,7 @@
       "name": "Intercom Contact Update",
       "description": "PUT https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>",
       "method": "PUT",
-      "path": "https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/contacts/<%= @inputs['Contact Id'] %>",
       "inputs": [
         {
           "name": "Contact Id",
@@ -148,7 +148,7 @@
       "name": "Intercom Conversation Create",
       "description": "POST https://api.intercom.io/conversations",
       "method": "POST",
-      "path": "https://api.intercom.io/conversations",
+      "path": "/conversations",
       "inputs": [
         {
           "name": "From Id",
@@ -185,7 +185,7 @@
       "name": "Intercom Message Send",
       "description": "POST https://api.intercom.io/messages",
       "method": "POST",
-      "path": "https://api.intercom.io/messages",
+      "path": "/messages",
       "inputs": [
         {
           "name": "Message Type",
@@ -246,7 +246,7 @@
       "name": "Intercom Note Create",
       "description": "POST https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>/notes",
       "method": "POST",
-      "path": "https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>/notes",
+      "path": "/contacts/<%= @inputs['Contact Id'] %>/notes",
       "inputs": [
         {
           "name": "Contact Id",
@@ -292,7 +292,7 @@
       "name": "Intercom Tag Create",
       "description": "POST https://api.intercom.io/tags",
       "method": "POST",
-      "path": "https://api.intercom.io/tags",
+      "path": "/tags",
       "inputs": [
         {
           "name": "Name",

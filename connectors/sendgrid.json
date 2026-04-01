@@ -33,7 +33,7 @@
       "name": "SendGrid Contact Create",
       "description": "PUT https://api.sendgrid.com/v3/marketing/contacts",
       "method": "PUT",
-      "path": "https://api.sendgrid.com/v3/marketing/contacts",
+      "path": "/v3/marketing/contacts",
       "inputs": [
         {
           "name": "Email",
@@ -85,7 +85,7 @@
       "name": "SendGrid Contact Update",
       "description": "PUT https://api.sendgrid.com/v3/marketing/contacts",
       "method": "PUT",
-      "path": "https://api.sendgrid.com/v3/marketing/contacts",
+      "path": "/v3/marketing/contacts",
       "inputs": [
         {
           "name": "Email",
@@ -132,7 +132,7 @@
       "name": "SendGrid Email Send",
       "description": "POST https://api.sendgrid.com/v3/mail/send",
       "method": "POST",
-      "path": "https://api.sendgrid.com/v3/mail/send",
+      "path": "/v3/mail/send",
       "inputs": [
         {
           "name": "To",
@@ -194,7 +194,7 @@
       "name": "SendGrid List Add Contact",
       "description": "PUT https://api.sendgrid.com/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
       "method": "PUT",
-      "path": "https://api.sendgrid.com/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
+      "path": "/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
       "inputs": [
         {
           "name": "List Id",
@@ -231,7 +231,7 @@
       "name": "SendGrid List Create",
       "description": "POST https://api.sendgrid.com/v3/marketing/lists",
       "method": "POST",
-      "path": "https://api.sendgrid.com/v3/marketing/lists",
+      "path": "/v3/marketing/lists",
       "inputs": [
         {
           "name": "Name",
@@ -271,7 +271,7 @@
       "name": "SendGrid Stats Retrieve",
       "description": "GET https://api.sendgrid.com/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
       "method": "GET",
-      "path": "https://api.sendgrid.com/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
+      "path": "/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
       "inputs": [
         {
           "name": "Start Date",
@@ -306,7 +306,7 @@
       "name": "SendGrid Suppression Add",
       "description": "POST https://api.sendgrid.com/v3/asm/suppressions/global",
       "method": "POST",
-      "path": "https://api.sendgrid.com/v3/asm/suppressions/global",
+      "path": "/v3/asm/suppressions/global",
       "inputs": [
         {
           "name": "Email",
@@ -338,7 +338,7 @@
       "name": "SendGrid Template Retrieve",
       "description": "GET https://api.sendgrid.com/v3/templates/<%= @inputs['Template Id'] %>",
       "method": "GET",
-      "path": "https://api.sendgrid.com/v3/templates/<%= @inputs['Template Id'] %>",
+      "path": "/v3/templates/<%= @inputs['Template Id'] %>",
       "inputs": [
         {
           "name": "Template Id",

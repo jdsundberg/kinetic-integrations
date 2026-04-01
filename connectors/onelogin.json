@@ -31,7 +31,7 @@
       "name": "OneLogin App Assign",
       "description": "POST https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/apps",
       "method": "POST",
-      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/apps",
+      "path": "/api/2/users/<%= @inputs['User Id'] %>/apps",
       "inputs": [
         {
           "name": "User Id",
@@ -95,7 +95,7 @@
       "name": "OneLogin User Create",
       "description": "POST https://api.<%= @info['region'] %>.onelogin.com/api/2/users",
       "method": "POST",
-      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users",
+      "path": "/api/2/users",
       "inputs": [
         {
           "name": "Email",
@@ -165,7 +165,7 @@
       "name": "OneLogin User Deactivate",
       "description": "PUT https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/set_state",
       "method": "PUT",
-      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/set_state",
+      "path": "/api/2/users/<%= @inputs['User Id'] %>/set_state",
       "inputs": [
         {
           "name": "User Id",
@@ -206,7 +206,7 @@
       "name": "OneLogin User Retrieve",
       "description": "GET https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
       "method": "GET",
-      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "path": "/api/2/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",
@@ -257,7 +257,7 @@
       "name": "OneLogin User Update",
       "description": "PUT https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
       "method": "PUT",
-      "path": "https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "path": "/api/2/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",

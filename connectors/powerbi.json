@@ -26,7 +26,7 @@
       "name": "Power BI Dashboard List",
       "description": "GET https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/dashboards",
       "method": "GET",
-      "path": "https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/dashboards",
+      "path": "/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/dashboards",
       "inputs": [
         {
           "name": "Group Id",
@@ -61,7 +61,7 @@
       "name": "Power BI Dataset Refresh",
       "description": "POST https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/datasets/<%= @inputs['Dataset Id'] %>/refreshes",
       "method": "POST",
-      "path": "https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/datasets/<%= @inputs['Dataset Id'] %>/refreshes",
+      "path": "/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/datasets/<%= @inputs['Dataset Id'] %>/refreshes",
       "inputs": [
         {
           "name": "Group Id",
@@ -103,7 +103,7 @@
       "name": "Power BI Group List",
       "description": "GET https://api.powerbi.com/v1.0/myorg/groups",
       "method": "GET",
-      "path": "https://api.powerbi.com/v1.0/myorg/groups",
+      "path": "/v1.0/myorg/groups",
       "inputs": [],
       "outputs": [
         {
@@ -133,7 +133,7 @@
       "name": "Power BI Report Export",
       "description": "POST https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/reports/<%= @inputs['Report Id'] %>/ExportTo",
       "method": "POST",
-      "path": "https://api.powerbi.com/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/reports/<%= @inputs['Report Id'] %>/ExportTo",
+      "path": "/v1.0/myorg/groups/<%= @inputs['Group Id'] %>/reports/<%= @inputs['Report Id'] %>/ExportTo",
       "inputs": [
         {
           "name": "Group Id",

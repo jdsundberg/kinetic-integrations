@@ -51,7 +51,7 @@
       "name": "Google Drive Create Document",
       "description": "POST https://www.googleapis.com/drive/v3/files",
       "method": "POST",
-      "path": "https://www.googleapis.com/drive/v3/files",
+      "path": "/drive/v3/files",
       "inputs": [
         {
           "name": "Document Name",
@@ -96,7 +96,7 @@
       "name": "Google Drive Create Folder",
       "description": "POST https://www.googleapis.com/drive/v3/files",
       "method": "POST",
-      "path": "https://www.googleapis.com/drive/v3/files",
+      "path": "/drive/v3/files",
       "inputs": [
         {
           "name": "Folder Name",
@@ -141,7 +141,7 @@
       "name": "Google Drive Share",
       "description": "POST https://www.googleapis.com/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
       "method": "POST",
-      "path": "https://www.googleapis.com/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
+      "path": "/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
       "inputs": [
         {
           "name": "File Id",
@@ -197,7 +197,7 @@
       "name": "Google Group Add Member",
       "description": "POST https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
       "method": "POST",
-      "path": "https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
+      "path": "/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
       "inputs": [
         {
           "name": "Group Key",
@@ -247,7 +247,7 @@
       "name": "Google Group Remove Member",
       "description": "DELETE https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
       "method": "DELETE",
-      "path": "https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
+      "path": "/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
       "inputs": [
         {
           "name": "Group Key",
@@ -282,7 +282,7 @@
       "name": "Google Gmail Send",
       "description": "POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
       "method": "POST",
-      "path": "https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
+      "path": "/gmail/v1/users/me/messages/send",
       "inputs": [
         {
           "name": "To",
@@ -366,7 +366,7 @@
       "name": "Google User Create",
       "description": "POST https://admin.googleapis.com/admin/directory/v1/users",
       "method": "POST",
-      "path": "https://admin.googleapis.com/admin/directory/v1/users",
+      "path": "/admin/directory/v1/users",
       "inputs": [
         {
           "name": "Primary Email",
@@ -427,7 +427,7 @@
       "name": "Google User Retrieve",
       "description": "GET https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
       "method": "GET",
-      "path": "https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "path": "/admin/directory/v1/users/<%= @inputs['User Key'] %>",
       "inputs": [
         {
           "name": "User Key",
@@ -474,7 +474,7 @@
       "name": "Google User Suspend",
       "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
       "method": "PUT",
-      "path": "https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "path": "/admin/directory/v1/users/<%= @inputs['User Key'] %>",
       "inputs": [
         {
           "name": "User Key",
@@ -514,7 +514,7 @@
       "name": "Google User Update",
       "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
       "method": "PUT",
-      "path": "https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "path": "/admin/directory/v1/users/<%= @inputs['User Key'] %>",
       "inputs": [
         {
           "name": "User Key",

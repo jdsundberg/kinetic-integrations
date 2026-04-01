@@ -33,7 +33,7 @@
       "name": "Discord Channel Create",
       "description": "POST https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/channels",
       "method": "POST",
-      "path": "https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/channels",
+      "path": "/api/v10/guilds/<%= @inputs['Guild Id'] %>/channels",
       "inputs": [
         {
           "name": "Guild Id",
@@ -93,7 +93,7 @@
       "name": "Discord Member Add Role",
       "description": "PUT https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/members/<%= @inputs['User Id'] %>/roles/<%= @inputs['Role Id'] %>",
       "method": "PUT",
-      "path": "https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/members/<%= @inputs['User Id'] %>/roles/<%= @inputs['Role Id'] %>",
+      "path": "/api/v10/guilds/<%= @inputs['Guild Id'] %>/members/<%= @inputs['User Id'] %>/roles/<%= @inputs['Role Id'] %>",
       "inputs": [
         {
           "name": "Guild Id",
@@ -135,7 +135,7 @@
       "name": "Discord Message Send",
       "description": "POST https://discord.com/api/v10/channels/<%= @inputs['Channel Id'] %>/messages",
       "method": "POST",
-      "path": "https://discord.com/api/v10/channels/<%= @inputs['Channel Id'] %>/messages",
+      "path": "/api/v10/channels/<%= @inputs['Channel Id'] %>/messages",
       "inputs": [
         {
           "name": "Channel Id",
@@ -190,7 +190,7 @@
       "name": "Discord Role Create",
       "description": "POST https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/roles",
       "method": "POST",
-      "path": "https://discord.com/api/v10/guilds/<%= @inputs['Guild Id'] %>/roles",
+      "path": "/api/v10/guilds/<%= @inputs['Guild Id'] %>/roles",
       "inputs": [
         {
           "name": "Guild Id",

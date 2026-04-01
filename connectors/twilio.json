@@ -43,7 +43,7 @@
       "name": "Twilio Call Create",
       "description": "POST https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Calls.json",
       "method": "POST",
-      "path": "https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Calls.json",
+      "path": "/2010-04-01/Accounts/Calls.json",
       "inputs": [
         {
           "name": "To",
@@ -94,7 +94,7 @@
       "name": "Twilio Conversation Create",
       "description": "POST https://conversations.twilio.com/v1/Conversations",
       "method": "POST",
-      "path": "https://conversations.twilio.com/v1/Conversations",
+      "path": "/v1/Conversations",
       "inputs": [
         {
           "name": "Friendly Name",
@@ -135,7 +135,7 @@
       "name": "Twilio Message Retrieve",
       "description": "GET https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages/<%= @inputs['Message Sid'] %>.json",
       "method": "GET",
-      "path": "https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages/<%= @inputs['Message Sid'] %>.json",
+      "path": "/2010-04-01/Accounts/Messages/<%= @inputs['Message Sid'] %>.json",
       "inputs": [
         {
           "name": "Message Sid",
@@ -186,7 +186,7 @@
       "name": "Twilio Number Lookup",
       "description": "GET https://lookups.twilio.com/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
       "method": "GET",
-      "path": "https://lookups.twilio.com/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
+      "path": "/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
       "inputs": [
         {
           "name": "Phone Number",
@@ -225,7 +225,7 @@
       "name": "Twilio SMS Send",
       "description": "POST https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages.json",
       "method": "POST",
-      "path": "https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages.json",
+      "path": "/2010-04-01/Accounts/Messages.json",
       "inputs": [
         {
           "name": "To",
@@ -298,7 +298,7 @@
       "name": "Twilio Verify Check",
       "description": "POST https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
       "method": "POST",
-      "path": "https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
+      "path": "/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
       "inputs": [
         {
           "name": "Service Sid",
@@ -348,7 +348,7 @@
       "name": "Twilio Verify Send",
       "description": "POST https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
       "method": "POST",
-      "path": "https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
+      "path": "/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
       "inputs": [
         {
           "name": "Service Sid",

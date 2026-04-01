@@ -33,7 +33,7 @@
       "name": "Stripe Charge Create",
       "description": "POST https://api.stripe.com/v1/charges",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/charges",
+      "path": "/v1/charges",
       "inputs": [
         {
           "name": "Amount",
@@ -97,7 +97,7 @@
       "name": "Stripe Customer Create",
       "description": "POST https://api.stripe.com/v1/customers",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/customers",
+      "path": "/v1/customers",
       "inputs": [
         {
           "name": "Email",
@@ -153,7 +153,7 @@
       "name": "Stripe Customer Retrieve",
       "description": "GET https://api.stripe.com/v1/customers/<%= @inputs['Customer Id'] %>",
       "method": "GET",
-      "path": "https://api.stripe.com/v1/customers/<%= @inputs['Customer Id'] %>",
+      "path": "/v1/customers/<%= @inputs['Customer Id'] %>",
       "inputs": [
         {
           "name": "Customer Id",
@@ -200,7 +200,7 @@
       "name": "Stripe Invoice Create",
       "description": "POST https://api.stripe.com/v1/invoices",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/invoices",
+      "path": "/v1/invoices",
       "inputs": [
         {
           "name": "Customer",
@@ -259,7 +259,7 @@
       "name": "Stripe Payment Intent Create",
       "description": "POST https://api.stripe.com/v1/payment_intents",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/payment_intents",
+      "path": "/v1/payment_intents",
       "inputs": [
         {
           "name": "Amount",
@@ -314,7 +314,7 @@
       "name": "Stripe Product Create",
       "description": "POST https://api.stripe.com/v1/products",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/products",
+      "path": "/v1/products",
       "inputs": [
         {
           "name": "Name",
@@ -360,7 +360,7 @@
       "name": "Stripe Refund Create",
       "description": "POST https://api.stripe.com/v1/refunds",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/refunds",
+      "path": "/v1/refunds",
       "inputs": [
         {
           "name": "Charge",
@@ -415,7 +415,7 @@
       "name": "Stripe Subscription Create",
       "description": "POST https://api.stripe.com/v1/subscriptions",
       "method": "POST",
-      "path": "https://api.stripe.com/v1/subscriptions",
+      "path": "/v1/subscriptions",
       "inputs": [
         {
           "name": "Customer",

@@ -43,7 +43,7 @@
       "name": "GitLab Issue Create",
       "description": "POST <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues",
+      "path": "/projects/<%= @inputs['Project Id'] %>/issues",
       "inputs": [
         {
           "name": "Project Id",
@@ -108,7 +108,7 @@
       "name": "GitLab Issue Update",
       "description": "PUT <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues/<%= @inputs['Issue Iid'] %>",
       "method": "PUT",
-      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/issues/<%= @inputs['Issue Iid'] %>",
+      "path": "/projects/<%= @inputs['Project Id'] %>/issues/<%= @inputs['Issue Iid'] %>",
       "inputs": [
         {
           "name": "Project Id",
@@ -173,7 +173,7 @@
       "name": "GitLab Merge Request Create",
       "description": "POST <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests",
+      "path": "/projects/<%= @inputs['Project Id'] %>/merge_requests",
       "inputs": [
         {
           "name": "Project Id",
@@ -243,7 +243,7 @@
       "name": "GitLab Merge Request Merge",
       "description": "PUT <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests/<%= @inputs['Mr Iid'] %>/merge",
       "method": "PUT",
-      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/merge_requests/<%= @inputs['Mr Iid'] %>/merge",
+      "path": "/projects/<%= @inputs['Project Id'] %>/merge_requests/<%= @inputs['Mr Iid'] %>/merge",
       "inputs": [
         {
           "name": "Project Id",
@@ -298,7 +298,7 @@
       "name": "GitLab Pipeline Trigger",
       "description": "POST <%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/pipeline",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/projects/<%= @inputs['Project Id'] %>/pipeline",
+      "path": "/projects/<%= @inputs['Project Id'] %>/pipeline",
       "inputs": [
         {
           "name": "Project Id",
@@ -348,7 +348,7 @@
       "name": "GitLab Project Create",
       "description": "POST <%= @info['api_url'] %>/projects",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/projects",
+      "path": "/projects",
       "inputs": [
         {
           "name": "Name",

@@ -26,7 +26,7 @@
       "name": "Wrike Comment Add",
       "description": "POST https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>/comments",
       "method": "POST",
-      "path": "https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>/comments",
+      "path": "/api/v4/tasks/<%= @inputs['Task Id'] %>/comments",
       "inputs": [
         {
           "name": "Task Id",
@@ -71,7 +71,7 @@
       "name": "Wrike Folder Create",
       "description": "POST https://www.wrike.com/api/v4/folders/<%= @inputs['Parent Id'] %>/folders",
       "method": "POST",
-      "path": "https://www.wrike.com/api/v4/folders/<%= @inputs['Parent Id'] %>/folders",
+      "path": "/api/v4/folders/<%= @inputs['Parent Id'] %>/folders",
       "inputs": [
         {
           "name": "Parent Id",
@@ -122,7 +122,7 @@
       "name": "Wrike Task Create",
       "description": "POST https://www.wrike.com/api/v4/folders/<%= @inputs['Folder Id'] %>/tasks",
       "method": "POST",
-      "path": "https://www.wrike.com/api/v4/folders/<%= @inputs['Folder Id'] %>/tasks",
+      "path": "/api/v4/folders/<%= @inputs['Folder Id'] %>/tasks",
       "inputs": [
         {
           "name": "Folder Id",
@@ -192,7 +192,7 @@
       "name": "Wrike Task Update",
       "description": "PUT https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>",
       "method": "PUT",
-      "path": "https://www.wrike.com/api/v4/tasks/<%= @inputs['Task Id'] %>",
+      "path": "/api/v4/tasks/<%= @inputs['Task Id'] %>",
       "inputs": [
         {
           "name": "Task Id",

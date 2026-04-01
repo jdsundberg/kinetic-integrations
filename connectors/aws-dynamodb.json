@@ -57,7 +57,7 @@
       "name": "AWS DynamoDB Item Delete",
       "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
       "method": "POST",
-      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "path": "/",
       "inputs": [
         {
           "name": "Table Name",
@@ -94,7 +94,7 @@
       "name": "AWS DynamoDB Item Get",
       "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
       "method": "POST",
-      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "path": "/",
       "inputs": [
         {
           "name": "Table Name",
@@ -131,7 +131,7 @@
       "name": "AWS DynamoDB Item Put",
       "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
       "method": "POST",
-      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "path": "/",
       "inputs": [
         {
           "name": "Table Name",
@@ -168,7 +168,7 @@
       "name": "AWS DynamoDB Item Query",
       "description": "POST https://dynamodb.<%= @info['region'] %>.amazonaws.com",
       "method": "POST",
-      "path": "https://dynamodb.<%= @info['region'] %>.amazonaws.com",
+      "path": "/",
       "inputs": [
         {
           "name": "Table Name",

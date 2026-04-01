@@ -32,7 +32,7 @@
       "name": "Airtable Record Create",
       "description": "POST https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
       "method": "POST",
-      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
+      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
       "inputs": [
         {
           "name": "Base Id",
@@ -82,7 +82,7 @@
       "name": "Airtable Record List",
       "description": "GET https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
       "method": "GET",
-      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
+      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
       "inputs": [
         {
           "name": "Base Id",
@@ -133,7 +133,7 @@
       "name": "Airtable Record Retrieve",
       "description": "GET https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
       "method": "GET",
-      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
       "inputs": [
         {
           "name": "Base Id",
@@ -184,7 +184,7 @@
       "name": "Airtable Record Update",
       "description": "PATCH https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
       "method": "PATCH",
-      "path": "https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
       "inputs": [
         {
           "name": "Base Id",

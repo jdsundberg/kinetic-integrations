@@ -47,7 +47,7 @@
       "name": "Azure AD App Registration Create",
       "description": "POST https://graph.microsoft.com/v1.0/applications",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/applications",
+      "path": "/v1.0/applications",
       "inputs": [
         {
           "name": "Display Name",
@@ -92,7 +92,7 @@
       "name": "Azure AD Group Add Member",
       "description": "POST https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
+      "path": "/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
       "inputs": [
         {
           "name": "Group Id",
@@ -129,7 +129,7 @@
       "name": "Azure AD Group Create",
       "description": "POST https://graph.microsoft.com/v1.0/groups",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/groups",
+      "path": "/v1.0/groups",
       "inputs": [
         {
           "name": "Display Name",
@@ -185,7 +185,7 @@
       "name": "Azure AD Group List Members",
       "description": "GET https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members",
       "method": "GET",
-      "path": "https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members",
+      "path": "/v1.0/groups/<%= @inputs['Group Id'] %>/members",
       "inputs": [
         {
           "name": "Group Id",
@@ -220,7 +220,7 @@
       "name": "Azure AD Group Remove Member",
       "description": "DELETE https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
       "method": "DELETE",
-      "path": "https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
+      "path": "/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
       "inputs": [
         {
           "name": "Group Id",
@@ -255,7 +255,7 @@
       "name": "Azure AD License Assign",
       "description": "POST https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
+      "path": "/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
       "inputs": [
         {
           "name": "User Id",
@@ -314,7 +314,7 @@
       "name": "Azure AD User Create",
       "description": "POST https://graph.microsoft.com/v1.0/users",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/users",
+      "path": "/v1.0/users",
       "inputs": [
         {
           "name": "Display Name",
@@ -384,7 +384,7 @@
       "name": "Azure AD User Delete",
       "description": "DELETE https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
       "method": "DELETE",
-      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "path": "/v1.0/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",
@@ -415,7 +415,7 @@
       "name": "Azure AD User Retrieve",
       "description": "GET https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
       "method": "GET",
-      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "path": "/v1.0/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",
@@ -470,7 +470,7 @@
       "name": "Azure AD User Update",
       "description": "PATCH https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
       "method": "PATCH",
-      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "path": "/v1.0/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",

@@ -42,7 +42,7 @@
       "name": "PayPal Invoice Create",
       "description": "POST https://api-m.paypal.com/v2/invoicing/invoices",
       "method": "POST",
-      "path": "https://api-m.paypal.com/v2/invoicing/invoices",
+      "path": "/v2/invoicing/invoices",
       "inputs": [
         {
           "name": "Recipient Email",
@@ -112,7 +112,7 @@
       "name": "PayPal Order Create",
       "description": "POST https://api-m.paypal.com/v2/checkout/orders",
       "method": "POST",
-      "path": "https://api-m.paypal.com/v2/checkout/orders",
+      "path": "/v2/checkout/orders",
       "inputs": [
         {
           "name": "Intent",
@@ -182,7 +182,7 @@
       "name": "PayPal Payment Capture",
       "description": "POST https://api-m.paypal.com/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
       "method": "POST",
-      "path": "https://api-m.paypal.com/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
+      "path": "/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
       "inputs": [
         {
           "name": "Authorization Id",
@@ -242,7 +242,7 @@
       "name": "PayPal Payment Create",
       "description": "POST https://api-m.paypal.com/v1/payments/payment",
       "method": "POST",
-      "path": "https://api-m.paypal.com/v1/payments/payment",
+      "path": "/v1/payments/payment",
       "inputs": [
         {
           "name": "Intent",
@@ -312,7 +312,7 @@
       "name": "PayPal Payout Create",
       "description": "POST https://api-m.paypal.com/v1/payments/payouts",
       "method": "POST",
-      "path": "https://api-m.paypal.com/v1/payments/payouts",
+      "path": "/v1/payments/payouts",
       "inputs": [
         {
           "name": "Sender Batch Id",
@@ -373,7 +373,7 @@
       "name": "PayPal Refund Create",
       "description": "POST https://api-m.paypal.com/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
       "method": "POST",
-      "path": "https://api-m.paypal.com/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
+      "path": "/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
       "inputs": [
         {
           "name": "Capture Id",

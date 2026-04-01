@@ -57,7 +57,7 @@
       "name": "AWS SES Email Send",
       "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/outbound-emails",
       "method": "POST",
-      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/outbound-emails",
+      "path": "/v2/email/outbound-emails",
       "inputs": [
         {
           "name": "From Email",
@@ -114,7 +114,7 @@
       "name": "AWS SES Identity Verify",
       "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/identities",
       "method": "POST",
-      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/identities",
+      "path": "/v2/email/identities",
       "inputs": [
         {
           "name": "Email Identity",
@@ -150,7 +150,7 @@
       "name": "AWS SES Suppression Add",
       "description": "PUT https://email.<%= @info['region'] %>.amazonaws.com/v2/email/suppression/addresses",
       "method": "PUT",
-      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/suppression/addresses",
+      "path": "/v2/email/suppression/addresses",
       "inputs": [
         {
           "name": "Email Address",
@@ -187,7 +187,7 @@
       "name": "AWS SES Template Create",
       "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/templates",
       "method": "POST",
-      "path": "https://email.<%= @info['region'] %>.amazonaws.com/v2/email/templates",
+      "path": "/v2/email/templates",
       "inputs": [
         {
           "name": "Template Name",

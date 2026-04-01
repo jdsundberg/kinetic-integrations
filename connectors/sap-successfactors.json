@@ -36,7 +36,7 @@
       "name": "SAP SuccessFactors Employee Retrieve",
       "description": "GET <%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
       "method": "GET",
-      "path": "<%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "path": "/odata/v2/User('<%= @inputs['User Id'] %>')",
       "inputs": [
         {
           "name": "User Id",
@@ -95,7 +95,7 @@
       "name": "SAP SuccessFactors Employee Update",
       "description": "PATCH <%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
       "method": "PATCH",
-      "path": "<%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "path": "/odata/v2/User('<%= @inputs['User Id'] %>')",
       "inputs": [
         {
           "name": "User Id",
@@ -157,7 +157,7 @@
       "name": "SAP SuccessFactors Goal Create",
       "description": "POST <%= @info['api_url'] %>/odata/v2/Goal_1",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/odata/v2/Goal_1",
+      "path": "/odata/v2/Goal_1",
       "inputs": [
         {
           "name": "User Id",
@@ -227,7 +227,7 @@
       "name": "SAP SuccessFactors Job Information Retrieve",
       "description": "GET <%= @info['api_url'] %>/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
       "method": "GET",
-      "path": "<%= @info['api_url'] %>/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
+      "path": "/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
       "inputs": [
         {
           "name": "User Id",
@@ -296,7 +296,7 @@
       "name": "SAP SuccessFactors Time Off Request",
       "description": "POST <%= @info['api_url'] %>/odata/v2/EmployeeTime",
       "method": "POST",
-      "path": "<%= @info['api_url'] %>/odata/v2/EmployeeTime",
+      "path": "/odata/v2/EmployeeTime",
       "inputs": [
         {
           "name": "User Id",

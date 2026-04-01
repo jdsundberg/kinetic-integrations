@@ -37,7 +37,7 @@
       "name": "QuickBooks Bill Create",
       "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/bill",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/bill",
+      "path": "/v3/company/bill",
       "inputs": [
         {
           "name": "Vendor Ref Value",
@@ -102,7 +102,7 @@
       "name": "QuickBooks Customer Create",
       "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/customer",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/customer",
+      "path": "/v3/company/customer",
       "inputs": [
         {
           "name": "Display Name",
@@ -187,7 +187,7 @@
       "name": "QuickBooks Invoice Create",
       "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/invoice",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/invoice",
+      "path": "/v3/company/invoice",
       "inputs": [
         {
           "name": "Customer Ref Value",
@@ -261,7 +261,7 @@
       "name": "QuickBooks Item Create",
       "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/item",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/item",
+      "path": "/v3/company/item",
       "inputs": [
         {
           "name": "Name",
@@ -331,7 +331,7 @@
       "name": "QuickBooks Payment Create",
       "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/payment",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/payment",
+      "path": "/v3/company/payment",
       "inputs": [
         {
           "name": "Customer Ref Value",
@@ -400,7 +400,7 @@
       "name": "QuickBooks Vendor Create",
       "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/vendor",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/vendor",
+      "path": "/v3/company/vendor",
       "inputs": [
         {
           "name": "Display Name",

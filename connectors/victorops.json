@@ -36,7 +36,7 @@
       "name": "VictorOps Incident Create",
       "description": "POST https://api.victorops.com/api-public/v1/incidents",
       "method": "POST",
-      "path": "https://api.victorops.com/api-public/v1/incidents",
+      "path": "/api-public/v1/incidents",
       "inputs": [
         {
           "name": "Summary",
@@ -87,7 +87,7 @@
       "name": "VictorOps Incident Resolve",
       "description": "PATCH https://api.victorops.com/api-public/v1/incidents/resolve",
       "method": "PATCH",
-      "path": "https://api.victorops.com/api-public/v1/incidents/resolve",
+      "path": "/api-public/v1/incidents/resolve",
       "inputs": [
         {
           "name": "Incident Names",
@@ -129,7 +129,7 @@
       "name": "VictorOps Policy Create",
       "description": "POST https://api.victorops.com/api-public/v1/policies",
       "method": "POST",
-      "path": "https://api.victorops.com/api-public/v1/policies",
+      "path": "/api-public/v1/policies",
       "inputs": [
         {
           "name": "Name",
@@ -175,7 +175,7 @@
       "name": "VictorOps Team Create",
       "description": "POST https://api.victorops.com/api-public/v1/team",
       "method": "POST",
-      "path": "https://api.victorops.com/api-public/v1/team",
+      "path": "/api-public/v1/team",
       "inputs": [
         {
           "name": "Name",

@@ -31,7 +31,7 @@
       "name": "Ping Identity Group Add Member",
       "description": "POST https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/memberOfGroups",
       "method": "POST",
-      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/memberOfGroups",
+      "path": "/v1/environments/users/<%= @inputs['User Id'] %>/memberOfGroups",
       "inputs": [
         {
           "name": "User Id",
@@ -72,7 +72,7 @@
       "name": "Ping Identity Password Set",
       "description": "PUT https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/password",
       "method": "PUT",
-      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/password",
+      "path": "/v1/environments/users/<%= @inputs['User Id'] %>/password",
       "inputs": [
         {
           "name": "User Id",
@@ -132,7 +132,7 @@
       "name": "Ping Identity User Create",
       "description": "POST https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users",
       "method": "POST",
-      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users",
+      "path": "/v1/environments/users",
       "inputs": [
         {
           "name": "Username",
@@ -197,7 +197,7 @@
       "name": "Ping Identity User Retrieve",
       "description": "GET https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
       "method": "GET",
-      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "path": "/v1/environments/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",
@@ -244,7 +244,7 @@
       "name": "Ping Identity User Update",
       "description": "PATCH https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
       "method": "PATCH",
-      "path": "https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "path": "/v1/environments/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",

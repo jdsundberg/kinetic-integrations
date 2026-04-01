@@ -48,7 +48,7 @@
       "name": "Zendesk Macro Apply",
       "description": "GET <%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
       "method": "GET",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
+      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -87,7 +87,7 @@
       "name": "Zendesk Organization Create",
       "description": "POST <%= @info['subdomain_url'] %>/api/v2/organizations",
       "method": "POST",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/organizations",
+      "path": "/api/v2/organizations",
       "inputs": [
         {
           "name": "Name",
@@ -133,7 +133,7 @@
       "name": "Zendesk Search",
       "description": "GET <%= @info['subdomain_url'] %>/api/v2/search?query=<%= @inputs['Query'] %>",
       "method": "GET",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/search?query=<%= @inputs['Query'] %>",
+      "path": "/api/v2/search?query=<%= @inputs['Query'] %>",
       "inputs": [
         {
           "name": "Query",
@@ -194,7 +194,7 @@
       "name": "Zendesk Ticket Add Comment",
       "description": "PUT <%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "method": "PUT",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -236,7 +236,7 @@
       "name": "Zendesk Ticket Create",
       "description": "POST <%= @info['subdomain_url'] %>/api/v2/tickets",
       "method": "POST",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets",
+      "path": "/api/v2/tickets",
       "inputs": [
         {
           "name": "Subject",
@@ -306,7 +306,7 @@
       "name": "Zendesk Ticket Update",
       "description": "PUT <%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "method": "PUT",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -362,7 +362,7 @@
       "name": "Zendesk User Create",
       "description": "POST <%= @info['subdomain_url'] %>/api/v2/users",
       "method": "POST",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/users",
+      "path": "/api/v2/users",
       "inputs": [
         {
           "name": "Name",
@@ -422,7 +422,7 @@
       "name": "Zendesk User Retrieve",
       "description": "GET <%= @info['subdomain_url'] %>/api/v2/users/<%= @inputs['User Id'] %>",
       "method": "GET",
-      "path": "<%= @info['subdomain_url'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v2/users/<%= @inputs['User Id'] %>",
       "inputs": [
         {
           "name": "User Id",

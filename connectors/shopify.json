@@ -43,7 +43,7 @@
       "name": "Shopify Customer Create",
       "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/customers.json",
       "method": "POST",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/customers.json",
+      "path": "/admin/api/2024-01/customers.json",
       "inputs": [
         {
           "name": "First Name",
@@ -104,7 +104,7 @@
       "name": "Shopify Customer Retrieve",
       "description": "GET <%= @info['store_url'] %>/admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
       "method": "GET",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
+      "path": "/admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
       "inputs": [
         {
           "name": "Customer Id",
@@ -155,7 +155,7 @@
       "name": "Shopify Fulfillment Create",
       "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
       "method": "POST",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
+      "path": "/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
       "inputs": [
         {
           "name": "Order Id",
@@ -206,7 +206,7 @@
       "name": "Shopify Inventory Update",
       "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/inventory_levels/set.json",
       "method": "POST",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/inventory_levels/set.json",
+      "path": "/admin/api/2024-01/inventory_levels/set.json",
       "inputs": [
         {
           "name": "Inventory Item Id",
@@ -252,7 +252,7 @@
       "name": "Shopify Order Retrieve",
       "description": "GET <%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
       "method": "GET",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "path": "/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
       "inputs": [
         {
           "name": "Order Id",
@@ -299,7 +299,7 @@
       "name": "Shopify Order Update",
       "description": "PUT <%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
       "method": "PUT",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "path": "/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
       "inputs": [
         {
           "name": "Order Id",
@@ -350,7 +350,7 @@
       "name": "Shopify Product Create",
       "description": "POST <%= @info['store_url'] %>/admin/api/2024-01/products.json",
       "method": "POST",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/products.json",
+      "path": "/admin/api/2024-01/products.json",
       "inputs": [
         {
           "name": "Title",
@@ -415,7 +415,7 @@
       "name": "Shopify Product Update",
       "description": "PUT <%= @info['store_url'] %>/admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
       "method": "PUT",
-      "path": "<%= @info['store_url'] %>/admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
+      "path": "/admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
       "inputs": [
         {
           "name": "Product Id",

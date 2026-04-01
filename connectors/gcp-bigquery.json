@@ -52,7 +52,7 @@
       "name": "GCP BigQuery Dataset Create",
       "description": "POST https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets",
       "method": "POST",
-      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets",
+      "path": "/bigquery/v2/projects/datasets",
       "inputs": [
         {
           "name": "Dataset Id",
@@ -103,7 +103,7 @@
       "name": "GCP BigQuery Job Retrieve",
       "description": "GET https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/jobs/<%= @inputs['Job Id'] %>",
       "method": "GET",
-      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/jobs/<%= @inputs['Job Id'] %>",
+      "path": "/bigquery/v2/projects/jobs/<%= @inputs['Job Id'] %>",
       "inputs": [
         {
           "name": "Job Id",
@@ -150,7 +150,7 @@
       "name": "GCP BigQuery Query",
       "description": "POST https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/queries",
       "method": "POST",
-      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/queries",
+      "path": "/bigquery/v2/projects/queries",
       "inputs": [
         {
           "name": "Query",
@@ -213,7 +213,7 @@
       "name": "GCP BigQuery Table Create",
       "description": "POST https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets/<%= @inputs['Dataset Id'] %>/tables",
       "method": "POST",
-      "path": "https://bigquery.googleapis.com/bigquery/v2/projects/<%= @info['project_id'] %>/datasets/<%= @inputs['Dataset Id'] %>/tables",
+      "path": "/bigquery/v2/projects/datasets/<%= @inputs['Dataset Id'] %>/tables",
       "inputs": [
         {
           "name": "Dataset Id",

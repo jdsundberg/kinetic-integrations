@@ -39,7 +39,7 @@
       "name": "PagerDuty Escalation Policy Create",
       "description": "POST https://api.pagerduty.com/escalation_policies",
       "method": "POST",
-      "path": "https://api.pagerduty.com/escalation_policies",
+      "path": "/escalation_policies",
       "inputs": [
         {
           "name": "Name",
@@ -90,7 +90,7 @@
       "name": "PagerDuty Event Trigger",
       "description": "POST https://events.pagerduty.com/v2/enqueue",
       "method": "POST",
-      "path": "https://events.pagerduty.com/v2/enqueue",
+      "path": "/v2/enqueue",
       "inputs": [
         {
           "name": "Summary",
@@ -155,7 +155,7 @@
       "name": "PagerDuty Incident Create",
       "description": "POST https://api.pagerduty.com/incidents",
       "method": "POST",
-      "path": "https://api.pagerduty.com/incidents",
+      "path": "/incidents",
       "inputs": [
         {
           "name": "Title",
@@ -219,7 +219,7 @@
       "name": "PagerDuty Incident Resolve",
       "description": "PUT https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
       "method": "PUT",
-      "path": "https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "path": "/incidents/<%= @inputs['Incident Id'] %>",
       "inputs": [
         {
           "name": "Incident Id",
@@ -265,7 +265,7 @@
       "name": "PagerDuty Incident Update",
       "description": "PUT https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
       "method": "PUT",
-      "path": "https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "path": "/incidents/<%= @inputs['Incident Id'] %>",
       "inputs": [
         {
           "name": "Incident Id",
@@ -321,7 +321,7 @@
       "name": "PagerDuty Schedule Create",
       "description": "POST https://api.pagerduty.com/schedules",
       "method": "POST",
-      "path": "https://api.pagerduty.com/schedules",
+      "path": "/schedules",
       "inputs": [
         {
           "name": "Name",
@@ -367,7 +367,7 @@
       "name": "PagerDuty Service Create",
       "description": "POST https://api.pagerduty.com/services",
       "method": "POST",
-      "path": "https://api.pagerduty.com/services",
+      "path": "/services",
       "inputs": [
         {
           "name": "Name",
@@ -440,7 +440,7 @@
       "name": "PagerDuty User Create",
       "description": "POST https://api.pagerduty.com/users",
       "method": "POST",
-      "path": "https://api.pagerduty.com/users",
+      "path": "/users",
       "inputs": [
         {
           "name": "Name",

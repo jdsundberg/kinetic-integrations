@@ -36,7 +36,7 @@
       "name": "MongoDB Atlas Collection Create",
       "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/aggregate",
       "method": "POST",
-      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/aggregate",
+      "path": "/app/endpoint/data/v1/action/aggregate",
       "inputs": [
         {
           "name": "Data Source",
@@ -78,7 +78,7 @@
       "name": "MongoDB Atlas Document Delete",
       "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/deleteOne",
       "method": "POST",
-      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/deleteOne",
+      "path": "/app/endpoint/data/v1/action/deleteOne",
       "inputs": [
         {
           "name": "Data Source",
@@ -125,7 +125,7 @@
       "name": "MongoDB Atlas Document Find",
       "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/find",
       "method": "POST",
-      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/find",
+      "path": "/app/endpoint/data/v1/action/find",
       "inputs": [
         {
           "name": "Data Source",
@@ -186,7 +186,7 @@
       "name": "MongoDB Atlas Document Insert",
       "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/insertOne",
       "method": "POST",
-      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/insertOne",
+      "path": "/app/endpoint/data/v1/action/insertOne",
       "inputs": [
         {
           "name": "Data Source",
@@ -233,7 +233,7 @@
       "name": "MongoDB Atlas Document Update",
       "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/updateOne",
       "method": "POST",
-      "path": "https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/updateOne",
+      "path": "/app/endpoint/data/v1/action/updateOne",
       "inputs": [
         {
           "name": "Data Source",

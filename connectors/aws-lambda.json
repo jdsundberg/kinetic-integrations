@@ -57,7 +57,7 @@
       "name": "AWS Lambda Function Create",
       "description": "POST https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions",
       "method": "POST",
-      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions",
+      "path": "/2015-03-31/functions",
       "inputs": [
         {
           "name": "Function Name",
@@ -127,7 +127,7 @@
       "name": "AWS Lambda Function List",
       "description": "GET https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions?MaxItems=<%= @inputs['Max Items'] %>",
       "method": "GET",
-      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions?MaxItems=<%= @inputs['Max Items'] %>",
+      "path": "/2015-03-31/functions?MaxItems=<%= @inputs['Max Items'] %>",
       "inputs": [
         {
           "name": "Max Items",
@@ -162,7 +162,7 @@
       "name": "AWS Lambda Function Update",
       "description": "PUT https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/configuration",
       "method": "PUT",
-      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/configuration",
+      "path": "/2015-03-31/functions/<%= @inputs['Function Name'] %>/configuration",
       "inputs": [
         {
           "name": "Function Name",
@@ -232,7 +232,7 @@
       "name": "AWS Lambda Invoke",
       "description": "POST https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/invocations",
       "method": "POST",
-      "path": "https://lambda.<%= @info['region'] %>.amazonaws.com/2015-03-31/functions/<%= @inputs['Function Name'] %>/invocations",
+      "path": "/2015-03-31/functions/<%= @inputs['Function Name'] %>/invocations",
       "inputs": [
         {
           "name": "Function Name",

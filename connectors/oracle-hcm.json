@@ -36,7 +36,7 @@
       "name": "Oracle HCM Absence Create",
       "description": "POST <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/absences",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/absences",
+      "path": "/hcmRestApi/resources/11.13.18.05/absences",
       "inputs": [
         {
           "name": "Person Id",
@@ -101,7 +101,7 @@
       "name": "Oracle HCM Assignment Update",
       "description": "PATCH <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
       "method": "PATCH",
-      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
+      "path": "/hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
       "inputs": [
         {
           "name": "Person Id",
@@ -172,7 +172,7 @@
       "name": "Oracle HCM Job Retrieve",
       "description": "GET <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
+      "path": "/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
       "inputs": [
         {
           "name": "Job Code",
@@ -237,7 +237,7 @@
       "name": "Oracle HCM Worker Create",
       "description": "POST <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers",
+      "path": "/hcmRestApi/resources/11.13.18.05/workers",
       "inputs": [
         {
           "name": "First Name",
@@ -312,7 +312,7 @@
       "name": "Oracle HCM Worker Retrieve",
       "description": "GET <%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
       "method": "GET",
-      "path": "<%= @info['base_url'] %>/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
+      "path": "/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
       "inputs": [
         {
           "name": "Person Number",

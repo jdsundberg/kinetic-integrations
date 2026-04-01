@@ -46,7 +46,7 @@
       "name": "Microsoft Teams Channel Create",
       "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
       "inputs": [
         {
           "name": "Team Id",
@@ -97,7 +97,7 @@
       "name": "Microsoft Teams Channel List",
       "description": "GET https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
       "method": "GET",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/channels",
       "inputs": [
         {
           "name": "Team Id",
@@ -132,7 +132,7 @@
       "name": "Microsoft Teams Chat Create",
       "description": "POST https://graph.microsoft.com/v1.0/chats",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/chats",
+      "path": "/v1.0/chats",
       "inputs": [
         {
           "name": "Chat Type",
@@ -178,7 +178,7 @@
       "name": "Microsoft Teams Meeting Create",
       "description": "POST https://graph.microsoft.com/v1.0/users/<%= @inputs['Organizer Id'] %>/onlineMeetings",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/users/<%= @inputs['Organizer Id'] %>/onlineMeetings",
+      "path": "/v1.0/users/<%= @inputs['Organizer Id'] %>/onlineMeetings",
       "inputs": [
         {
           "name": "Organizer Id",
@@ -233,7 +233,7 @@
       "name": "Microsoft Teams Member Add",
       "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/members",
       "inputs": [
         {
           "name": "Team Id",
@@ -279,7 +279,7 @@
       "name": "Microsoft Teams Member Remove",
       "description": "DELETE https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members/<%= @inputs['Membership Id'] %>",
       "method": "DELETE",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/members/<%= @inputs['Membership Id'] %>",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/members/<%= @inputs['Membership Id'] %>",
       "inputs": [
         {
           "name": "Team Id",
@@ -314,7 +314,7 @@
       "name": "Microsoft Teams Message Reply",
       "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages/<%= @inputs['Message Id'] %>/replies",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages/<%= @inputs['Message Id'] %>/replies",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages/<%= @inputs['Message Id'] %>/replies",
       "inputs": [
         {
           "name": "Team Id",
@@ -365,7 +365,7 @@
       "name": "Microsoft Teams Message Send",
       "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/messages",
       "inputs": [
         {
           "name": "Team Id",
@@ -416,7 +416,7 @@
       "name": "Microsoft Teams Tab Add",
       "description": "POST https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/tabs",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/tabs",
+      "path": "/v1.0/teams/<%= @inputs['Team Id'] %>/channels/<%= @inputs['Channel Id'] %>/tabs",
       "inputs": [
         {
           "name": "Team Id",
@@ -468,7 +468,7 @@
       "name": "Microsoft Teams Team Create",
       "description": "POST https://graph.microsoft.com/v1.0/teams",
       "method": "POST",
-      "path": "https://graph.microsoft.com/v1.0/teams",
+      "path": "/v1.0/teams",
       "inputs": [
         {
           "name": "Display Name",

@@ -43,7 +43,7 @@
       "name": "Mailchimp Campaign Create",
       "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns",
       "method": "POST",
-      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns",
+      "path": "/3.0/campaigns",
       "inputs": [
         {
           "name": "Type",
@@ -107,7 +107,7 @@
       "name": "Mailchimp Campaign Send",
       "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
       "method": "POST",
-      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
+      "path": "/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
       "inputs": [
         {
           "name": "Campaign Id",
@@ -139,7 +139,7 @@
       "name": "Mailchimp List Create",
       "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists",
       "method": "POST",
-      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists",
+      "path": "/3.0/lists",
       "inputs": [
         {
           "name": "Name",
@@ -229,7 +229,7 @@
       "name": "Mailchimp Subscriber Add",
       "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members",
       "method": "POST",
-      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members",
+      "path": "/3.0/lists/<%= @inputs['List Id'] %>/members",
       "inputs": [
         {
           "name": "List Id",
@@ -298,7 +298,7 @@
       "name": "Mailchimp Subscriber Update",
       "description": "PATCH https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
       "method": "PATCH",
-      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
+      "path": "/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
       "inputs": [
         {
           "name": "List Id",
@@ -358,7 +358,7 @@
       "name": "Mailchimp Template Create",
       "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/templates",
       "method": "POST",
-      "path": "https://<%= @info['dc'] %>.api.mailchimp.com/3.0/templates",
+      "path": "/3.0/templates",
       "inputs": [
         {
           "name": "Name",

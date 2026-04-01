@@ -33,7 +33,7 @@
       "name": "Linear Comment Create",
       "description": "POST https://api.linear.app/graphql",
       "method": "POST",
-      "path": "https://api.linear.app/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Issue Id",
@@ -74,7 +74,7 @@
       "name": "Linear Cycle Create",
       "description": "POST https://api.linear.app/graphql",
       "method": "POST",
-      "path": "https://api.linear.app/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Team Id",
@@ -129,7 +129,7 @@
       "name": "Linear Issue Create",
       "description": "POST https://api.linear.app/graphql",
       "method": "POST",
-      "path": "https://api.linear.app/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Team Id",
@@ -194,7 +194,7 @@
       "name": "Linear Issue Update",
       "description": "POST https://api.linear.app/graphql",
       "method": "POST",
-      "path": "https://api.linear.app/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Issue Id",
@@ -259,7 +259,7 @@
       "name": "Linear Project Create",
       "description": "POST https://api.linear.app/graphql",
       "method": "POST",
-      "path": "https://api.linear.app/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Name",
@@ -314,7 +314,7 @@
       "name": "Linear Team Retrieve",
       "description": "POST https://api.linear.app/graphql",
       "method": "POST",
-      "path": "https://api.linear.app/graphql",
+      "path": "/graphql",
       "inputs": [
         {
           "name": "Team Id",

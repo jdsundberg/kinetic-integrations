@@ -33,7 +33,7 @@
       "name": "Slack Channel Archive",
       "description": "POST https://slack.com/api/conversations.archive",
       "method": "POST",
-      "path": "https://slack.com/api/conversations.archive",
+      "path": "/api/conversations.archive",
       "inputs": [
         {
           "name": "Channel",
@@ -65,7 +65,7 @@
       "name": "Slack Channel Create",
       "description": "POST https://slack.com/api/conversations.create",
       "method": "POST",
-      "path": "https://slack.com/api/conversations.create",
+      "path": "/api/conversations.create",
       "inputs": [
         {
           "name": "Name",
@@ -111,7 +111,7 @@
       "name": "Slack Channel Invite",
       "description": "POST https://slack.com/api/conversations.invite",
       "method": "POST",
-      "path": "https://slack.com/api/conversations.invite",
+      "path": "/api/conversations.invite",
       "inputs": [
         {
           "name": "Channel",
@@ -152,7 +152,7 @@
       "name": "Slack File Upload",
       "description": "POST https://slack.com/api/files.upload",
       "method": "POST",
-      "path": "https://slack.com/api/files.upload",
+      "path": "/api/files.upload",
       "inputs": [
         {
           "name": "Channels",
@@ -208,7 +208,7 @@
       "name": "Slack Message Send",
       "description": "POST https://slack.com/api/chat.postMessage",
       "method": "POST",
-      "path": "https://slack.com/api/chat.postMessage",
+      "path": "/api/chat.postMessage",
       "inputs": [
         {
           "name": "Channel",
@@ -263,7 +263,7 @@
       "name": "Slack Message Update",
       "description": "POST https://slack.com/api/chat.update",
       "method": "POST",
-      "path": "https://slack.com/api/chat.update",
+      "path": "/api/chat.update",
       "inputs": [
         {
           "name": "Channel",
@@ -309,7 +309,7 @@
       "name": "Slack Reaction Add",
       "description": "POST https://slack.com/api/reactions.add",
       "method": "POST",
-      "path": "https://slack.com/api/reactions.add",
+      "path": "/api/reactions.add",
       "inputs": [
         {
           "name": "Channel",
@@ -351,7 +351,7 @@
       "name": "Slack Reminder Create",
       "description": "POST https://slack.com/api/reminders.add",
       "method": "POST",
-      "path": "https://slack.com/api/reminders.add",
+      "path": "/api/reminders.add",
       "inputs": [
         {
           "name": "Text",
@@ -397,7 +397,7 @@
       "name": "Slack Status Set",
       "description": "POST https://slack.com/api/users.profile.set",
       "method": "POST",
-      "path": "https://slack.com/api/users.profile.set",
+      "path": "/api/users.profile.set",
       "inputs": [
         {
           "name": "Status Text",
@@ -457,7 +457,7 @@
       "name": "Slack User Lookup",
       "description": "GET https://slack.com/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
       "method": "GET",
-      "path": "https://slack.com/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
+      "path": "/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
       "inputs": [
         {
           "name": "Email",

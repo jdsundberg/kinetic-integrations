@@ -38,7 +38,7 @@
       "name": "Bitbucket Issue Create",
       "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/issues",
       "method": "POST",
-      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/issues",
+      "path": "/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/issues",
       "inputs": [
         {
           "name": "Workspace",
@@ -103,7 +103,7 @@
       "name": "Bitbucket Pipeline Trigger",
       "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pipelines/",
       "method": "POST",
-      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pipelines/",
+      "path": "/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pipelines/",
       "inputs": [
         {
           "name": "Workspace",
@@ -154,7 +154,7 @@
       "name": "Bitbucket Pull Request Create",
       "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests",
       "method": "POST",
-      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests",
+      "path": "/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests",
       "inputs": [
         {
           "name": "Workspace",
@@ -228,7 +228,7 @@
       "name": "Bitbucket Pull Request Merge",
       "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests/<%= @inputs['Pr Id'] %>/merge",
       "method": "POST",
-      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests/<%= @inputs['Pr Id'] %>/merge",
+      "path": "/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/pullrequests/<%= @inputs['Pr Id'] %>/merge",
       "inputs": [
         {
           "name": "Workspace",
@@ -284,7 +284,7 @@
       "name": "Bitbucket Repository Create",
       "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo Slug'] %>",
       "method": "POST",
-      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo Slug'] %>",
+      "path": "/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo Slug'] %>",
       "inputs": [
         {
           "name": "Workspace",
@@ -362,7 +362,7 @@
       "name": "Bitbucket Webhook Create",
       "description": "POST https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/hooks",
       "method": "POST",
-      "path": "https://api.bitbucket.org/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/hooks",
+      "path": "/2.0/repositories/<%= @inputs['Workspace'] %>/<%= @inputs['Repo'] %>/hooks",
       "inputs": [
         {
           "name": "Workspace",

@@ -32,7 +32,7 @@
       "name": "Marketo Campaign Trigger",
       "description": "POST <%= @info['base_url'] %>/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
+      "path": "/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
       "inputs": [
         {
           "name": "Campaign Id",
@@ -78,7 +78,7 @@
       "name": "Marketo Lead Create",
       "description": "POST <%= @info['base_url'] %>/rest/v1/leads.json",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/rest/v1/leads.json",
+      "path": "/rest/v1/leads.json",
       "inputs": [
         {
           "name": "Email",
@@ -153,7 +153,7 @@
       "name": "Marketo Lead Merge",
       "description": "POST <%= @info['base_url'] %>/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
+      "path": "/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
       "inputs": [
         {
           "name": "Winning Lead Id",
@@ -199,7 +199,7 @@
       "name": "Marketo Lead Update",
       "description": "POST <%= @info['base_url'] %>/rest/v1/leads.json",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/rest/v1/leads.json",
+      "path": "/rest/v1/leads.json",
       "inputs": [
         {
           "name": "Lead Id",
@@ -274,7 +274,7 @@
       "name": "Marketo List Add Lead",
       "description": "POST <%= @info['base_url'] %>/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
       "method": "POST",
-      "path": "<%= @info['base_url'] %>/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
+      "path": "/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
       "inputs": [
         {
           "name": "List Id",

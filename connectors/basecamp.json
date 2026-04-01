@@ -31,7 +31,7 @@
       "name": "Basecamp Comment Add",
       "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
       "method": "POST",
-      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
+      "path": "/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
       "inputs": [
         {
           "name": "Project Id",
@@ -81,7 +81,7 @@
       "name": "Basecamp Message Create",
       "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
       "method": "POST",
-      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
+      "path": "/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
       "inputs": [
         {
           "name": "Project Id",
@@ -141,7 +141,7 @@
       "name": "Basecamp Project Create",
       "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/projects.json",
       "method": "POST",
-      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/projects.json",
+      "path": "/projects.json",
       "inputs": [
         {
           "name": "Name",
@@ -204,7 +204,7 @@
       "name": "Basecamp Todo Create",
       "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
       "method": "POST",
-      "path": "https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
+      "path": "/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
       "inputs": [
         {
           "name": "Project Id",

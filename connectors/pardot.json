@@ -32,7 +32,7 @@
       "name": "Pardot Campaign Assign",
       "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
       "method": "PATCH",
-      "path": "https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "path": "/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
       "inputs": [
         {
           "name": "Prospect Id",
@@ -73,7 +73,7 @@
       "name": "Pardot List Add Prospect",
       "description": "POST https://pi.pardot.com/api/v5/objects/list-memberships",
       "method": "POST",
-      "path": "https://pi.pardot.com/api/v5/objects/list-memberships",
+      "path": "/api/v5/objects/list-memberships",
       "inputs": [
         {
           "name": "List Id",
@@ -118,7 +118,7 @@
       "name": "Pardot Prospect Assign",
       "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
       "method": "PATCH",
-      "path": "https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "path": "/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
       "inputs": [
         {
           "name": "Prospect Id",
@@ -164,7 +164,7 @@
       "name": "Pardot Prospect Create",
       "description": "POST https://pi.pardot.com/api/v5/objects/prospects",
       "method": "POST",
-      "path": "https://pi.pardot.com/api/v5/objects/prospects",
+      "path": "/api/v5/objects/prospects",
       "inputs": [
         {
           "name": "Email",
@@ -249,7 +249,7 @@
       "name": "Pardot Prospect Update",
       "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
       "method": "PATCH",
-      "path": "https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "path": "/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
       "inputs": [
         {
           "name": "Prospect Id",

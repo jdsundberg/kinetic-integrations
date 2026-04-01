@@ -48,7 +48,7 @@
       "name": "Jira Board Retrieve",
       "description": "GET <%= @info['site_url'] %>/rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
       "method": "GET",
-      "path": "<%= @info['site_url'] %>/rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
+      "path": "/rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
       "inputs": [
         {
           "name": "Board Id",
@@ -91,7 +91,7 @@
       "name": "Jira Issue Add Comment",
       "description": "POST <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
+      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
       "inputs": [
         {
           "name": "Issue Key",
@@ -132,7 +132,7 @@
       "name": "Jira Issue Create",
       "description": "POST <%= @info['site_url'] %>/rest/api/3/issue",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/rest/api/3/issue",
+      "path": "/rest/api/3/issue",
       "inputs": [
         {
           "name": "Project Key",
@@ -202,7 +202,7 @@
       "name": "Jira Issue Retrieve",
       "description": "GET <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
       "method": "GET",
-      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
       "inputs": [
         {
           "name": "Issue Key",
@@ -261,7 +261,7 @@
       "name": "Jira Issue Search",
       "description": "POST <%= @info['site_url'] %>/rest/api/3/search",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/rest/api/3/search",
+      "path": "/rest/api/3/search",
       "inputs": [
         {
           "name": "Jql",
@@ -311,7 +311,7 @@
       "name": "Jira Issue Transition",
       "description": "POST <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
+      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
       "inputs": [
         {
           "name": "Issue Key",
@@ -348,7 +348,7 @@
       "name": "Jira Issue Update",
       "description": "PUT <%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
       "method": "PUT",
-      "path": "<%= @info['site_url'] %>/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
       "inputs": [
         {
           "name": "Issue Key",
@@ -405,7 +405,7 @@
       "name": "Jira Project Retrieve",
       "description": "GET <%= @info['site_url'] %>/rest/api/3/project/<%= @inputs['Project Key'] %>",
       "method": "GET",
-      "path": "<%= @info['site_url'] %>/rest/api/3/project/<%= @inputs['Project Key'] %>",
+      "path": "/rest/api/3/project/<%= @inputs['Project Key'] %>",
       "inputs": [
         {
           "name": "Project Key",
@@ -448,7 +448,7 @@
       "name": "Jira Sprint Create",
       "description": "POST <%= @info['site_url'] %>/rest/agile/1.0/sprint",
       "method": "POST",
-      "path": "<%= @info['site_url'] %>/rest/agile/1.0/sprint",
+      "path": "/rest/agile/1.0/sprint",
       "inputs": [
         {
           "name": "Board Id",
@@ -508,7 +508,7 @@
       "name": "Jira Sprint Update",
       "description": "PUT <%= @info['site_url'] %>/rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
       "method": "PUT",
-      "path": "<%= @info['site_url'] %>/rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
+      "path": "/rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
       "inputs": [
         {
           "name": "Sprint Id",
