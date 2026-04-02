@@ -5,7 +5,7 @@
   "category": "Cloud & Infrastructure",
   "description": "Kinetic Agent — execute handlers on edge agents for on-premise system access. Bridges cloud workflows to systems behind firewalls.",
   "docsUrl": "https://docs.kineticdata.com/docs/kinetic-agent",
-  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#F36C24\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">A</text></svg>",
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#F36C24\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">K</text></svg>",
   "auth": {
     "type": "basic",
     "properties": [
