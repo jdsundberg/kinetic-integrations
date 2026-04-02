@@ -41,7 +41,7 @@
     {
       "id": "call_create",
       "name": "Twilio Call Create",
-      "description": "POST https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Calls.json",
+      "description": "Twilio Call Create.",
       "method": "POST",
       "path": "/2010-04-01/Accounts/Calls.json",
       "inputs": [
@@ -133,7 +133,7 @@
     {
       "id": "message_retrieve",
       "name": "Twilio Message Retrieve",
-      "description": "GET https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages/<%= @inputs['Message Sid'] %>.json",
+      "description": "Twilio Message Retrieve.",
       "method": "GET",
       "path": "/2010-04-01/Accounts/Messages/<%= @inputs['Message Sid'] %>.json",
       "inputs": [
@@ -223,7 +223,7 @@
     {
       "id": "sms_send",
       "name": "Twilio SMS Send",
-      "description": "POST https://api.twilio.com/2010-04-01/Accounts/<%= @info['account_sid'] %>/Messages.json",
+      "description": "Twilio SMS Send.",
       "method": "POST",
       "path": "/2010-04-01/Accounts/Messages.json",
       "inputs": [

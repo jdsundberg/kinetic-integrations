@@ -39,7 +39,7 @@
     {
       "id": "campaign_activate",
       "name": "Eloqua Campaign Activate",
-      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
+      "description": "POST /api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
       "method": "POST",
       "path": "/api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
       "inputs": [
@@ -93,7 +93,7 @@
     {
       "id": "contact_create",
       "name": "Eloqua Contact Create",
-      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/data/contact",
+      "description": "POST /api/REST/2.0/data/contact",
       "method": "POST",
       "path": "/api/REST/2.0/data/contact",
       "inputs": [
@@ -163,7 +163,7 @@
     {
       "id": "contact_update",
       "name": "Eloqua Contact Update",
-      "description": "PUT <%= @info['base_url'] %>/api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
+      "description": "PUT /api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
       "method": "PUT",
       "path": "/api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
       "inputs": [
@@ -229,7 +229,7 @@
     {
       "id": "email_send",
       "name": "Eloqua Email Send",
-      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/assets/email/deployment",
+      "description": "POST /api/REST/2.0/assets/email/deployment",
       "method": "POST",
       "path": "/api/REST/2.0/assets/email/deployment",
       "inputs": [
@@ -284,7 +284,7 @@
     {
       "id": "form_submit",
       "name": "Eloqua Form Submit",
-      "description": "POST <%= @info['base_url'] %>/api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
+      "description": "POST /api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
       "method": "POST",
       "path": "/api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
       "inputs": [

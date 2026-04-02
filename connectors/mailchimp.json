@@ -41,7 +41,7 @@
     {
       "id": "campaign_create",
       "name": "Mailchimp Campaign Create",
-      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns",
+      "description": "Mailchimp Campaign Create.",
       "method": "POST",
       "path": "/3.0/campaigns",
       "inputs": [
@@ -105,7 +105,7 @@
     {
       "id": "campaign_send",
       "name": "Mailchimp Campaign Send",
-      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
+      "description": "Mailchimp Campaign Send.",
       "method": "POST",
       "path": "/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
       "inputs": [
@@ -137,7 +137,7 @@
     {
       "id": "list_create",
       "name": "Mailchimp List Create",
-      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists",
+      "description": "Mailchimp List Create.",
       "method": "POST",
       "path": "/3.0/lists",
       "inputs": [
@@ -227,7 +227,7 @@
     {
       "id": "subscriber_add",
       "name": "Mailchimp Subscriber Add",
-      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members",
+      "description": "Mailchimp Subscriber Add.",
       "method": "POST",
       "path": "/3.0/lists/<%= @inputs['List Id'] %>/members",
       "inputs": [
@@ -296,7 +296,7 @@
     {
       "id": "subscriber_update",
       "name": "Mailchimp Subscriber Update",
-      "description": "PATCH https://<%= @info['dc'] %>.api.mailchimp.com/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
+      "description": "Mailchimp Subscriber Update.",
       "method": "PATCH",
       "path": "/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
       "inputs": [
@@ -356,7 +356,7 @@
     {
       "id": "template_create",
       "name": "Mailchimp Template Create",
-      "description": "POST https://<%= @info['dc'] %>.api.mailchimp.com/3.0/templates",
+      "description": "Mailchimp Template Create.",
       "method": "POST",
       "path": "/3.0/templates",
       "inputs": [

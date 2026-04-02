@@ -40,7 +40,7 @@
     {
       "id": "dashboard_create",
       "name": "SignalFx Dashboard Create",
-      "description": "POST https://api.<%= @info['realm'] %>.signalfx.com/v2/dashboard",
+      "description": "SignalFx Dashboard Create.",
       "method": "POST",
       "path": "/v2/dashboard",
       "inputs": [
@@ -91,7 +91,7 @@
     {
       "id": "detector_create",
       "name": "SignalFx Detector Create",
-      "description": "POST https://api.<%= @info['realm'] %>.signalfx.com/v2/detector",
+      "description": "SignalFx Detector Create.",
       "method": "POST",
       "path": "/v2/detector",
       "inputs": [
@@ -142,7 +142,7 @@
     {
       "id": "event_send",
       "name": "SignalFx Event Send",
-      "description": "POST https://api.<%= @info['realm'] %>.signalfx.com/v2/event",
+      "description": "SignalFx Event Send.",
       "method": "POST",
       "path": "/v2/event",
       "inputs": [
@@ -189,7 +189,7 @@
     {
       "id": "metric_send",
       "name": "SignalFx Metric Send",
-      "description": "POST https://api.<%= @info['realm'] %>.signalfx.com/v2/datapoint",
+      "description": "SignalFx Metric Send.",
       "method": "POST",
       "path": "/v2/datapoint",
       "inputs": [

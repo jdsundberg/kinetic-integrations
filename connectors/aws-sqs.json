@@ -55,7 +55,7 @@
     {
       "id": "message_delete",
       "name": "AWS SQS Message Delete",
-      "description": "POST https://sqs.<%= @info['region'] %>.amazonaws.com/",
+      "description": "AWS SQS Message Delete.",
       "method": "POST",
       "path": "/",
       "inputs": [
@@ -92,7 +92,7 @@
     {
       "id": "message_receive",
       "name": "AWS SQS Message Receive",
-      "description": "POST https://sqs.<%= @info['region'] %>.amazonaws.com/",
+      "description": "AWS SQS Message Receive.",
       "method": "POST",
       "path": "/",
       "inputs": [
@@ -139,7 +139,7 @@
     {
       "id": "message_send",
       "name": "AWS SQS Message Send",
-      "description": "POST https://sqs.<%= @info['region'] %>.amazonaws.com/",
+      "description": "AWS SQS Message Send.",
       "method": "POST",
       "path": "/",
       "inputs": [
@@ -190,7 +190,7 @@
     {
       "id": "queue_create",
       "name": "AWS SQS Queue Create",
-      "description": "POST https://sqs.<%= @info['region'] %>.amazonaws.com/",
+      "description": "AWS SQS Queue Create.",
       "method": "POST",
       "path": "/",
       "inputs": [

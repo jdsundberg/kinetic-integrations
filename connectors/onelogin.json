@@ -29,7 +29,7 @@
     {
       "id": "app_assign",
       "name": "OneLogin App Assign",
-      "description": "POST https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/apps",
+      "description": "OneLogin App Assign.",
       "method": "POST",
       "path": "/api/2/users/<%= @inputs['User Id'] %>/apps",
       "inputs": [
@@ -93,7 +93,7 @@
     {
       "id": "user_create",
       "name": "OneLogin User Create",
-      "description": "POST https://api.<%= @info['region'] %>.onelogin.com/api/2/users",
+      "description": "OneLogin User Create.",
       "method": "POST",
       "path": "/api/2/users",
       "inputs": [
@@ -163,7 +163,7 @@
     {
       "id": "user_deactivate",
       "name": "OneLogin User Deactivate",
-      "description": "PUT https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>/set_state",
+      "description": "OneLogin User Deactivate.",
       "method": "PUT",
       "path": "/api/2/users/<%= @inputs['User Id'] %>/set_state",
       "inputs": [
@@ -204,7 +204,7 @@
     {
       "id": "user_retrieve",
       "name": "OneLogin User Retrieve",
-      "description": "GET https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "description": "OneLogin User Retrieve.",
       "method": "GET",
       "path": "/api/2/users/<%= @inputs['User Id'] %>",
       "inputs": [
@@ -255,7 +255,7 @@
     {
       "id": "user_update",
       "name": "OneLogin User Update",
-      "description": "PUT https://api.<%= @info['region'] %>.onelogin.com/api/2/users/<%= @inputs['User Id'] %>",
+      "description": "OneLogin User Update.",
       "method": "PUT",
       "path": "/api/2/users/<%= @inputs['User Id'] %>",
       "inputs": [

@@ -56,7 +56,7 @@
     {
       "id": "bucket_create",
       "name": "AWS S3 Bucket Create",
-      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "description": "PUT / @inputs['Bucket'] %>.s3..amazonaws.com/",
       "method": "PUT",
       "path": "/",
       "inputs": [
@@ -88,7 +88,7 @@
     {
       "id": "bucket_delete",
       "name": "AWS S3 Bucket Delete",
-      "description": "DELETE https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "description": "DELETE / @inputs['Bucket'] %>.s3..amazonaws.com/",
       "method": "DELETE",
       "path": "/",
       "inputs": [
@@ -119,7 +119,7 @@
     {
       "id": "bucket_list",
       "name": "AWS S3 Bucket List",
-      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/",
+      "description": "GET / @inputs['Bucket'] %>.s3..amazonaws.com/",
       "method": "GET",
       "path": "/",
       "inputs": [],
@@ -149,7 +149,7 @@
     {
       "id": "object_copy",
       "name": "AWS S3 Object Copy",
-      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Destination Key'] %>",
+      "description": "PUT /<%= @inputs['Destination Key'] %> @inputs['Bucket'] %>.s3..amazonaws.com/<%= @inputs['Destination Key'] %>",
       "method": "PUT",
       "path": "/<%= @inputs['Destination Key'] %>",
       "inputs": [
@@ -200,7 +200,7 @@
     {
       "id": "object_delete",
       "name": "AWS S3 Object Delete",
-      "description": "DELETE https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "description": "DELETE /<%= @inputs['Key'] %> @inputs['Bucket'] %>.s3..amazonaws.com/<%= @inputs['Key'] %>",
       "method": "DELETE",
       "path": "/<%= @inputs['Key'] %>",
       "inputs": [
@@ -239,7 +239,7 @@
     {
       "id": "object_get",
       "name": "AWS S3 Object Get",
-      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "description": "GET /<%= @inputs['Key'] %> @inputs['Bucket'] %>.s3..amazonaws.com/<%= @inputs['Key'] %>",
       "method": "GET",
       "path": "/<%= @inputs['Key'] %>",
       "inputs": [
@@ -286,7 +286,7 @@
     {
       "id": "object_list",
       "name": "AWS S3 Object List",
-      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/?list-type=2&prefix=<%= @inputs['Prefix'] %>&max-keys=<%= @inputs['Max Keys'] %>",
+      "description": "GET /?list-type=2&prefix=<%= @inputs['Prefix'] %>&max-keys=<%= @inputs['Max Keys'] %> @inputs['Bucket'] %>.s3..amazonaws.com/?list-type=2&prefix=<%= @inputs['Prefix'] %>&max-keys=<%= @inputs['Max Keys'] %>",
       "method": "GET",
       "path": "/?list-type=2&prefix=<%= @inputs['Prefix'] %>&max-keys=<%= @inputs['Max Keys'] %>",
       "inputs": [
@@ -333,7 +333,7 @@
     {
       "id": "object_put",
       "name": "AWS S3 Object Put",
-      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>",
+      "description": "PUT /<%= @inputs['Key'] %> @inputs['Bucket'] %>.s3..amazonaws.com/<%= @inputs['Key'] %>",
       "method": "PUT",
       "path": "/<%= @inputs['Key'] %>",
       "inputs": [
@@ -384,7 +384,7 @@
     {
       "id": "object_tag",
       "name": "AWS S3 Object Tag",
-      "description": "PUT https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/<%= @inputs['Key'] %>?tagging",
+      "description": "PUT /<%= @inputs['Key'] %>?tagging @inputs['Bucket'] %>.s3..amazonaws.com/<%= @inputs['Key'] %>?tagging",
       "method": "PUT",
       "path": "/<%= @inputs['Key'] %>?tagging",
       "inputs": [
@@ -426,7 +426,7 @@
     {
       "id": "presigned_url",
       "name": "AWS S3 Presigned URL",
-      "description": "GET https://<%= @inputs['Bucket'] %>.s3.<%= @info['region'] %>.amazonaws.com/?presign&key=<%= @inputs['Key'] %>&expires=<%= @inputs['Expires'] %>",
+      "description": "GET /?presign&key=<%= @inputs['Key'] %>&expires=<%= @inputs['Expires'] %> @inputs['Bucket'] %>.s3..amazonaws.com/?presign&key=<%= @inputs['Key'] %>&expires=<%= @inputs['Expires'] %>",
       "method": "GET",
       "path": "/?presign&key=<%= @inputs['Key'] %>&expires=<%= @inputs['Expires'] %>",
       "inputs": [

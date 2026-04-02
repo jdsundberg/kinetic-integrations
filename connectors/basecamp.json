@@ -29,7 +29,7 @@
     {
       "id": "comment_add",
       "name": "Basecamp Comment Add",
-      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
+      "description": "Basecamp Comment Add.",
       "method": "POST",
       "path": "/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
       "inputs": [
@@ -79,7 +79,7 @@
     {
       "id": "message_create",
       "name": "Basecamp Message Create",
-      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
+      "description": "Basecamp Message Create.",
       "method": "POST",
       "path": "/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
       "inputs": [
@@ -139,7 +139,7 @@
     {
       "id": "project_create",
       "name": "Basecamp Project Create",
-      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/projects.json",
+      "description": "Basecamp Project Create.",
       "method": "POST",
       "path": "/projects.json",
       "inputs": [
@@ -202,7 +202,7 @@
     {
       "id": "todo_create",
       "name": "Basecamp Todo Create",
-      "description": "POST https://3.basecampapi.com/<%= @info['account_id'] %>/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
+      "description": "Basecamp Todo Create.",
       "method": "POST",
       "path": "/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
       "inputs": [

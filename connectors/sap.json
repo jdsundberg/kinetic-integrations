@@ -34,7 +34,7 @@
     {
       "id": "bapi_call",
       "name": "SAP BAPI Call",
-      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "description": "POST /sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
       "method": "POST",
       "path": "/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
       "inputs": [
@@ -80,7 +80,7 @@
     {
       "id": "idoc_send",
       "name": "SAP IDoc Send",
-      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "description": "POST /sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
       "method": "POST",
       "path": "/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
       "inputs": [
@@ -135,7 +135,7 @@
     {
       "id": "material_retrieve",
       "name": "SAP Material Retrieve",
-      "description": "GET <%= @info['base_url'] %>/sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
+      "description": "GET /sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
       "method": "GET",
       "path": "/sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
       "inputs": [
@@ -186,7 +186,7 @@
     {
       "id": "purchase_order_create",
       "name": "SAP Purchase Order Create",
-      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV/A_PurchaseOrder",
+      "description": "POST /sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV/A_PurchaseOrder",
       "method": "POST",
       "path": "/sap/opu/odata/sap/API_PURCHASEORDER_PROCESS_SRV/A_PurchaseOrder",
       "inputs": [
@@ -270,7 +270,7 @@
     {
       "id": "rfc_call",
       "name": "SAP RFC Call",
-      "description": "POST <%= @info['base_url'] %>/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
+      "description": "POST /sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
       "method": "POST",
       "path": "/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
       "inputs": [

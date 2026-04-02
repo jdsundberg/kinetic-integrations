@@ -40,7 +40,7 @@
     {
       "id": "call_create",
       "name": "Plivo Call Create",
-      "description": "POST https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Call/",
+      "description": "Plivo Call Create.",
       "method": "POST",
       "path": "/v1/Account/Call/",
       "inputs": [
@@ -91,7 +91,7 @@
     {
       "id": "message_retrieve",
       "name": "Plivo Message Retrieve",
-      "description": "GET https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Message/<%= @inputs['Message Uuid'] %>/",
+      "description": "Plivo Message Retrieve.",
       "method": "GET",
       "path": "/v1/Account/Message/<%= @inputs['Message Uuid'] %>/",
       "inputs": [
@@ -138,7 +138,7 @@
     {
       "id": "number_search",
       "name": "Plivo Number Search",
-      "description": "GET https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/PhoneNumber/?country_iso=<%= @inputs['Country Iso'] %>&type=<%= @inputs['Type'] %>&limit=<%= @inputs['Limit'] %>",
+      "description": "Plivo Number Search.",
       "method": "GET",
       "path": "/v1/Account/PhoneNumber/?country_iso=<%= @inputs['Country Iso'] %>&type=<%= @inputs['Type'] %>&limit=<%= @inputs['Limit'] %>",
       "inputs": [
@@ -181,7 +181,7 @@
     {
       "id": "sms_send",
       "name": "Plivo SMS Send",
-      "description": "POST https://api.plivo.com/v1/Account/<%= @info['auth_id'] %>/Message/",
+      "description": "Plivo SMS Send.",
       "method": "POST",
       "path": "/v1/Account/Message/",
       "inputs": [

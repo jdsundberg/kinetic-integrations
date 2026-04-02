@@ -35,7 +35,7 @@
     {
       "id": "account_create",
       "name": "CyberArk Account Create",
-      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Accounts",
+      "description": "POST /PasswordVault/api/Accounts",
       "method": "POST",
       "path": "/PasswordVault/api/Accounts",
       "inputs": [
@@ -101,7 +101,7 @@
     {
       "id": "account_retrieve",
       "name": "CyberArk Account Retrieve",
-      "description": "GET <%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
+      "description": "GET /PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
       "method": "GET",
       "path": "/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>",
       "inputs": [
@@ -156,7 +156,7 @@
     {
       "id": "credential_retrieve",
       "name": "CyberArk Credential Retrieve",
-      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
+      "description": "POST /PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
       "method": "POST",
       "path": "/PasswordVault/api/Accounts/<%= @inputs['Account Id'] %>/Password/Retrieve",
       "inputs": [
@@ -193,7 +193,7 @@
     {
       "id": "safe_add_member",
       "name": "CyberArk Safe Add Member",
-      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
+      "description": "POST /PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
       "method": "POST",
       "path": "/PasswordVault/api/Safes/<%= @inputs['Safe Name'] %>/Members",
       "inputs": [
@@ -244,7 +244,7 @@
     {
       "id": "session_create",
       "name": "CyberArk Session Create",
-      "description": "POST <%= @info['base_url'] %>/PasswordVault/api/Auth/CyberArk/Logon",
+      "description": "POST /PasswordVault/api/Auth/CyberArk/Logon",
       "method": "POST",
       "path": "/PasswordVault/api/Auth/CyberArk/Logon",
       "inputs": [

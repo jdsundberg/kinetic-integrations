@@ -30,7 +30,7 @@
     {
       "id": "record_create",
       "name": "NetSuite Record Create",
-      "description": "POST <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>",
+      "description": "POST /services/rest/record/v1/<%= @inputs['Record Type'] %>",
       "method": "POST",
       "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>",
       "inputs": [
@@ -71,7 +71,7 @@
     {
       "id": "record_retrieve",
       "name": "NetSuite Record Retrieve",
-      "description": "GET <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "description": "GET /services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
       "method": "GET",
       "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
       "inputs": [
@@ -114,7 +114,7 @@
     {
       "id": "record_update",
       "name": "NetSuite Record Update",
-      "description": "PATCH <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "description": "PATCH /services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
       "method": "PATCH",
       "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
       "inputs": [
@@ -156,7 +156,7 @@
     {
       "id": "saved_search",
       "name": "NetSuite Saved Search Run",
-      "description": "GET <%= @info['account_url'] %>/services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
+      "description": "GET /services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
       "method": "GET",
       "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
       "inputs": [
@@ -199,7 +199,7 @@
     {
       "id": "search",
       "name": "NetSuite SuiteQL Search",
-      "description": "POST <%= @info['account_url'] %>/services/rest/query/v1/suiteql",
+      "description": "POST /services/rest/query/v1/suiteql",
       "method": "POST",
       "path": "/services/rest/query/v1/suiteql",
       "inputs": [

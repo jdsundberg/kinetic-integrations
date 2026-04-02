@@ -41,7 +41,7 @@
     {
       "id": "agent_retrieve",
       "name": "Freshdesk Agent Retrieve",
-      "description": "GET <%= @info['domain_url'] %>/api/v2/agents/<%= @inputs['Agent Id'] %>",
+      "description": "GET /api/v2/agents/<%= @inputs['Agent Id'] %>",
       "method": "GET",
       "path": "/api/v2/agents/<%= @inputs['Agent Id'] %>",
       "inputs": [
@@ -88,7 +88,7 @@
     {
       "id": "contact_create",
       "name": "Freshdesk Contact Create",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/contacts",
+      "description": "POST /api/v2/contacts",
       "method": "POST",
       "path": "/api/v2/contacts",
       "inputs": [
@@ -148,7 +148,7 @@
     {
       "id": "contact_update",
       "name": "Freshdesk Contact Update",
-      "description": "PUT <%= @info['domain_url'] %>/api/v2/contacts/<%= @inputs['Contact Id'] %>",
+      "description": "PUT /api/v2/contacts/<%= @inputs['Contact Id'] %>",
       "method": "PUT",
       "path": "/api/v2/contacts/<%= @inputs['Contact Id'] %>",
       "inputs": [
@@ -218,7 +218,7 @@
     {
       "id": "ticket_create",
       "name": "Freshdesk Ticket Create",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets",
+      "description": "POST /api/v2/tickets",
       "method": "POST",
       "path": "/api/v2/tickets",
       "inputs": [
@@ -293,7 +293,7 @@
     {
       "id": "ticket_reply",
       "name": "Freshdesk Ticket Reply",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
+      "description": "POST /api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
       "method": "POST",
       "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
       "inputs": [
@@ -334,7 +334,7 @@
     {
       "id": "ticket_update",
       "name": "Freshdesk Ticket Update",
-      "description": "PUT <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "description": "PUT /api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "method": "PUT",
       "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "inputs": [

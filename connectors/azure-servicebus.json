@@ -35,7 +35,7 @@
     {
       "id": "message_receive",
       "name": "Azure Service Bus Message Receive",
-      "description": "POST https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>/messages/head?timeout=<%= @inputs['Timeout'] %>",
+      "description": "Azure Service Bus Message Receive.",
       "method": "POST",
       "path": "/<%= @inputs['Queue Name'] %>/messages/head?timeout=<%= @inputs['Timeout'] %>",
       "inputs": [
@@ -80,7 +80,7 @@
     {
       "id": "message_send",
       "name": "Azure Service Bus Message Send",
-      "description": "POST https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>/messages",
+      "description": "Azure Service Bus Message Send.",
       "method": "POST",
       "path": "/<%= @inputs['Queue Name'] %>/messages",
       "inputs": [
@@ -132,7 +132,7 @@
     {
       "id": "queue_create",
       "name": "Azure Service Bus Queue Create",
-      "description": "PUT https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Queue Name'] %>",
+      "description": "Azure Service Bus Queue Create.",
       "method": "PUT",
       "path": "/<%= @inputs['Queue Name'] %>",
       "inputs": [
@@ -201,7 +201,7 @@
     {
       "id": "topic_create",
       "name": "Azure Service Bus Topic Create",
-      "description": "PUT https://<%= @info['namespace'] %>.servicebus.windows.net/<%= @inputs['Topic Name'] %>",
+      "description": "Azure Service Bus Topic Create.",
       "method": "PUT",
       "path": "/<%= @inputs['Topic Name'] %>",
       "inputs": [

@@ -29,7 +29,7 @@
     {
       "id": "group_add",
       "name": "Ping Identity Group Add Member",
-      "description": "POST https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/memberOfGroups",
+      "description": "Ping Identity Group Add Member.",
       "method": "POST",
       "path": "/v1/environments/users/<%= @inputs['User Id'] %>/memberOfGroups",
       "inputs": [
@@ -70,7 +70,7 @@
     {
       "id": "password_set",
       "name": "Ping Identity Password Set",
-      "description": "PUT https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>/password",
+      "description": "Ping Identity Password Set.",
       "method": "PUT",
       "path": "/v1/environments/users/<%= @inputs['User Id'] %>/password",
       "inputs": [
@@ -130,7 +130,7 @@
     {
       "id": "user_create",
       "name": "Ping Identity User Create",
-      "description": "POST https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users",
+      "description": "Ping Identity User Create.",
       "method": "POST",
       "path": "/v1/environments/users",
       "inputs": [
@@ -195,7 +195,7 @@
     {
       "id": "user_retrieve",
       "name": "Ping Identity User Retrieve",
-      "description": "GET https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "description": "Ping Identity User Retrieve.",
       "method": "GET",
       "path": "/v1/environments/users/<%= @inputs['User Id'] %>",
       "inputs": [
@@ -242,7 +242,7 @@
     {
       "id": "user_update",
       "name": "Ping Identity User Update",
-      "description": "PATCH https://api.pingone.com/v1/environments/<%= @info['env_id'] %>/users/<%= @inputs['User Id'] %>",
+      "description": "Ping Identity User Update.",
       "method": "PATCH",
       "path": "/v1/environments/users/<%= @inputs['User Id'] %>",
       "inputs": [

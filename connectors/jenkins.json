@@ -41,7 +41,7 @@
     {
       "id": "build_info",
       "name": "Jenkins Build Info",
-      "description": "GET <%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
+      "description": "GET /job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
       "method": "GET",
       "path": "/job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
       "inputs": [
@@ -96,7 +96,7 @@
     {
       "id": "job_retrieve",
       "name": "Jenkins Job Retrieve",
-      "description": "GET <%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/api/json",
+      "description": "GET /job/<%= @inputs['Job Name'] %>/api/json",
       "method": "GET",
       "path": "/job/<%= @inputs['Job Name'] %>/api/json",
       "inputs": [
@@ -147,7 +147,7 @@
     {
       "id": "job_trigger",
       "name": "Jenkins Job Trigger",
-      "description": "POST <%= @info['base_url'] %>/job/<%= @inputs['Job Name'] %>/buildWithParameters",
+      "description": "POST /job/<%= @inputs['Job Name'] %>/buildWithParameters",
       "method": "POST",
       "path": "/job/<%= @inputs['Job Name'] %>/buildWithParameters",
       "inputs": [
@@ -188,7 +188,7 @@
     {
       "id": "node_list",
       "name": "Jenkins Node List",
-      "description": "GET <%= @info['base_url'] %>/computer/api/json",
+      "description": "GET /computer/api/json",
       "method": "GET",
       "path": "/computer/api/json",
       "inputs": [],

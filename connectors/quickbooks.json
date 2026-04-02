@@ -35,7 +35,7 @@
     {
       "id": "bill_create",
       "name": "QuickBooks Bill Create",
-      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/bill",
+      "description": "POST /v3/company//bill",
       "method": "POST",
       "path": "/v3/company/bill",
       "inputs": [
@@ -100,7 +100,7 @@
     {
       "id": "customer_create",
       "name": "QuickBooks Customer Create",
-      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/customer",
+      "description": "POST /v3/company//customer",
       "method": "POST",
       "path": "/v3/company/customer",
       "inputs": [
@@ -185,7 +185,7 @@
     {
       "id": "invoice_create",
       "name": "QuickBooks Invoice Create",
-      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/invoice",
+      "description": "POST /v3/company//invoice",
       "method": "POST",
       "path": "/v3/company/invoice",
       "inputs": [
@@ -259,7 +259,7 @@
     {
       "id": "item_create",
       "name": "QuickBooks Item Create",
-      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/item",
+      "description": "POST /v3/company//item",
       "method": "POST",
       "path": "/v3/company/item",
       "inputs": [
@@ -329,7 +329,7 @@
     {
       "id": "payment_create",
       "name": "QuickBooks Payment Create",
-      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/payment",
+      "description": "POST /v3/company//payment",
       "method": "POST",
       "path": "/v3/company/payment",
       "inputs": [
@@ -398,7 +398,7 @@
     {
       "id": "vendor_create",
       "name": "QuickBooks Vendor Create",
-      "description": "POST <%= @info['base_url'] %>/v3/company/<%= @info['realm_id'] %>/vendor",
+      "description": "POST /v3/company//vendor",
       "method": "POST",
       "path": "/v3/company/vendor",
       "inputs": [

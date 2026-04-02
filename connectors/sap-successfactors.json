@@ -34,7 +34,7 @@
     {
       "id": "employee_retrieve",
       "name": "SAP SuccessFactors Employee Retrieve",
-      "description": "GET <%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "description": "GET /odata/v2/User('<%= @inputs['User Id'] %>')",
       "method": "GET",
       "path": "/odata/v2/User('<%= @inputs['User Id'] %>')",
       "inputs": [
@@ -93,7 +93,7 @@
     {
       "id": "employee_update",
       "name": "SAP SuccessFactors Employee Update",
-      "description": "PATCH <%= @info['api_url'] %>/odata/v2/User('<%= @inputs['User Id'] %>')",
+      "description": "PATCH /odata/v2/User('<%= @inputs['User Id'] %>')",
       "method": "PATCH",
       "path": "/odata/v2/User('<%= @inputs['User Id'] %>')",
       "inputs": [
@@ -155,7 +155,7 @@
     {
       "id": "goal_create",
       "name": "SAP SuccessFactors Goal Create",
-      "description": "POST <%= @info['api_url'] %>/odata/v2/Goal_1",
+      "description": "POST /odata/v2/Goal_1",
       "method": "POST",
       "path": "/odata/v2/Goal_1",
       "inputs": [
@@ -225,7 +225,7 @@
     {
       "id": "job_info_retrieve",
       "name": "SAP SuccessFactors Job Information Retrieve",
-      "description": "GET <%= @info['api_url'] %>/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
+      "description": "GET /odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
       "method": "GET",
       "path": "/odata/v2/EmpJob?$filter=userId eq '<%= @inputs['User Id'] %>'&$orderby=startDate desc&$top=<%= @inputs['Top'] %>",
       "inputs": [
@@ -294,7 +294,7 @@
     {
       "id": "time_off_request",
       "name": "SAP SuccessFactors Time Off Request",
-      "description": "POST <%= @info['api_url'] %>/odata/v2/EmployeeTime",
+      "description": "POST /odata/v2/EmployeeTime",
       "method": "POST",
       "path": "/odata/v2/EmployeeTime",
       "inputs": [

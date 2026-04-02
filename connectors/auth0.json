@@ -30,7 +30,7 @@
     {
       "id": "role_assign",
       "name": "Auth0 Role Assign",
-      "description": "POST https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>/roles",
+      "description": "Auth0 Role Assign.",
       "method": "POST",
       "path": "/v2/users/<%= @inputs['User Id'] %>/roles",
       "inputs": [
@@ -85,7 +85,7 @@
     {
       "id": "user_block",
       "name": "Auth0 User Block",
-      "description": "PATCH https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "description": "Auth0 User Block.",
       "method": "PATCH",
       "path": "/v2/users/<%= @inputs['User Id'] %>",
       "inputs": [
@@ -126,7 +126,7 @@
     {
       "id": "user_create",
       "name": "Auth0 User Create",
-      "description": "POST https://<%= @info['domain'] %>/api/v2/users",
+      "description": "Auth0 User Create.",
       "method": "POST",
       "path": "/v2/users",
       "inputs": [
@@ -196,7 +196,7 @@
     {
       "id": "user_retrieve",
       "name": "Auth0 User Retrieve",
-      "description": "GET https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "description": "Auth0 User Retrieve.",
       "method": "GET",
       "path": "/v2/users/<%= @inputs['User Id'] %>",
       "inputs": [
@@ -243,7 +243,7 @@
     {
       "id": "user_update",
       "name": "Auth0 User Update",
-      "description": "PATCH https://<%= @info['domain'] %>/api/v2/users/<%= @inputs['User Id'] %>",
+      "description": "Auth0 User Update.",
       "method": "PATCH",
       "path": "/v2/users/<%= @inputs['User Id'] %>",
       "inputs": [

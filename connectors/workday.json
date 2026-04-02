@@ -30,7 +30,7 @@
     {
       "id": "job_change",
       "name": "Workday Job Change",
-      "description": "POST <%= @info['base_url'] %>/api/v1/staffing/jobChanges",
+      "description": "POST /api/v1/staffing/jobChanges",
       "method": "POST",
       "path": "/api/v1/staffing/jobChanges",
       "inputs": [
@@ -100,7 +100,7 @@
     {
       "id": "org_retrieve",
       "name": "Workday Organization Retrieve",
-      "description": "GET <%= @info['base_url'] %>/api/v1/organizations/<%= @inputs['Org Id'] %>",
+      "description": "GET /api/v1/organizations/<%= @inputs['Org Id'] %>",
       "method": "GET",
       "path": "/api/v1/organizations/<%= @inputs['Org Id'] %>",
       "inputs": [
@@ -147,7 +147,7 @@
     {
       "id": "position_create",
       "name": "Workday Position Create",
-      "description": "POST <%= @info['base_url'] %>/api/v1/staffing/positions",
+      "description": "POST /api/v1/staffing/positions",
       "method": "POST",
       "path": "/api/v1/staffing/positions",
       "inputs": [
@@ -226,7 +226,7 @@
     {
       "id": "time_off_request",
       "name": "Workday Time Off Request",
-      "description": "POST <%= @info['base_url'] %>/api/v1/timeOff/requests",
+      "description": "POST /api/v1/timeOff/requests",
       "method": "POST",
       "path": "/api/v1/timeOff/requests",
       "inputs": [
@@ -291,7 +291,7 @@
     {
       "id": "worker_retrieve",
       "name": "Workday Worker Retrieve",
-      "description": "GET <%= @info['base_url'] %>/api/v1/workers/<%= @inputs['Worker Id'] %>",
+      "description": "GET /api/v1/workers/<%= @inputs['Worker Id'] %>",
       "method": "GET",
       "path": "/api/v1/workers/<%= @inputs['Worker Id'] %>",
       "inputs": [

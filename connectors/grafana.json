@@ -36,7 +36,7 @@
     {
       "id": "alert_create",
       "name": "Grafana Alert Create",
-      "description": "POST <%= @info['base_url'] %>/api/v1/provisioning/alert-rules",
+      "description": "POST /api/v1/provisioning/alert-rules",
       "method": "POST",
       "path": "/api/v1/provisioning/alert-rules",
       "inputs": [
@@ -97,7 +97,7 @@
     {
       "id": "annotation_create",
       "name": "Grafana Annotation Create",
-      "description": "POST <%= @info['base_url'] %>/api/annotations",
+      "description": "POST /api/annotations",
       "method": "POST",
       "path": "/api/annotations",
       "inputs": [
@@ -158,7 +158,7 @@
     {
       "id": "dashboard_create",
       "name": "Grafana Dashboard Create",
-      "description": "POST <%= @info['base_url'] %>/api/dashboards/db",
+      "description": "POST /api/dashboards/db",
       "method": "POST",
       "path": "/api/dashboards/db",
       "inputs": [
@@ -217,7 +217,7 @@
     {
       "id": "datasource_create",
       "name": "Grafana Datasource Create",
-      "description": "POST <%= @info['base_url'] %>/api/datasources",
+      "description": "POST /api/datasources",
       "method": "POST",
       "path": "/api/datasources",
       "inputs": [

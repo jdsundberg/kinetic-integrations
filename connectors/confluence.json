@@ -46,7 +46,7 @@
     {
       "id": "comment_add",
       "name": "Confluence Comment Add",
-      "description": "POST <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
+      "description": "POST /api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
       "method": "POST",
       "path": "/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
       "inputs": [
@@ -87,7 +87,7 @@
     {
       "id": "page_create",
       "name": "Confluence Page Create",
-      "description": "POST <%= @info['site_url'] %>/api/v2/pages",
+      "description": "POST /api/v2/pages",
       "method": "POST",
       "path": "/api/v2/pages",
       "inputs": [
@@ -147,7 +147,7 @@
     {
       "id": "page_retrieve",
       "name": "Confluence Page Retrieve",
-      "description": "GET <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
+      "description": "GET /api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
       "method": "GET",
       "path": "/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
       "inputs": [
@@ -194,7 +194,7 @@
     {
       "id": "page_update",
       "name": "Confluence Page Update",
-      "description": "PUT <%= @info['site_url'] %>/api/v2/pages/<%= @inputs['Page Id'] %>",
+      "description": "PUT /api/v2/pages/<%= @inputs['Page Id'] %>",
       "method": "PUT",
       "path": "/api/v2/pages/<%= @inputs['Page Id'] %>",
       "inputs": [
@@ -245,7 +245,7 @@
     {
       "id": "search",
       "name": "Confluence Search",
-      "description": "GET <%= @info['site_url'] %>/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
+      "description": "GET /api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
       "method": "GET",
       "path": "/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
       "inputs": [
@@ -284,7 +284,7 @@
     {
       "id": "space_create",
       "name": "Confluence Space Create",
-      "description": "POST <%= @info['site_url'] %>/api/v2/spaces",
+      "description": "POST /api/v2/spaces",
       "method": "POST",
       "path": "/api/v2/spaces",
       "inputs": [

@@ -55,7 +55,7 @@
     {
       "id": "email_send",
       "name": "AWS SES Email Send",
-      "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/outbound-emails",
+      "description": "AWS SES Email Send.",
       "method": "POST",
       "path": "/v2/email/outbound-emails",
       "inputs": [
@@ -112,7 +112,7 @@
     {
       "id": "identity_verify",
       "name": "AWS SES Identity Verify",
-      "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/identities",
+      "description": "AWS SES Identity Verify.",
       "method": "POST",
       "path": "/v2/email/identities",
       "inputs": [
@@ -148,7 +148,7 @@
     {
       "id": "suppression_add",
       "name": "AWS SES Suppression Add",
-      "description": "PUT https://email.<%= @info['region'] %>.amazonaws.com/v2/email/suppression/addresses",
+      "description": "AWS SES Suppression Add.",
       "method": "PUT",
       "path": "/v2/email/suppression/addresses",
       "inputs": [
@@ -185,7 +185,7 @@
     {
       "id": "template_create",
       "name": "AWS SES Template Create",
-      "description": "POST https://email.<%= @info['region'] %>.amazonaws.com/v2/email/templates",
+      "description": "AWS SES Template Create.",
       "method": "POST",
       "path": "/v2/email/templates",
       "inputs": [

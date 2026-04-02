@@ -41,7 +41,7 @@
     {
       "id": "datasource_publish",
       "name": "Tableau Datasource Publish",
-      "description": "POST <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/datasources?overwrite=<%= @inputs['Overwrite'] %>",
+      "description": "POST /api/3.21/sites//datasources?overwrite=<%= @inputs['Overwrite'] %>",
       "method": "POST",
       "path": "/api/3.21/sites/datasources?overwrite=<%= @inputs['Overwrite'] %>",
       "inputs": [
@@ -105,7 +105,7 @@
     {
       "id": "user_create",
       "name": "Tableau User Create",
-      "description": "POST <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/users",
+      "description": "POST /api/3.21/sites//users",
       "method": "POST",
       "path": "/api/3.21/sites/users",
       "inputs": [
@@ -155,7 +155,7 @@
     {
       "id": "view_retrieve",
       "name": "Tableau View Retrieve",
-      "description": "GET <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/views/<%= @inputs['View Id'] %>",
+      "description": "GET /api/3.21/sites//views/<%= @inputs['View Id'] %>",
       "method": "GET",
       "path": "/api/3.21/sites/views/<%= @inputs['View Id'] %>",
       "inputs": [
@@ -202,7 +202,7 @@
     {
       "id": "workbook_publish",
       "name": "Tableau Workbook Publish",
-      "description": "POST <%= @info['server_url'] %>/api/3.21/sites/<%= @info['site_id'] %>/workbooks?overwrite=<%= @inputs['Overwrite'] %>",
+      "description": "POST /api/3.21/sites//workbooks?overwrite=<%= @inputs['Overwrite'] %>",
       "method": "POST",
       "path": "/api/3.21/sites/workbooks?overwrite=<%= @inputs['Overwrite'] %>",
       "inputs": [

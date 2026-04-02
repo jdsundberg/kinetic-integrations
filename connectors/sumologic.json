@@ -45,7 +45,7 @@
     {
       "id": "collector_create",
       "name": "Sumo Logic Collector Create",
-      "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors",
+      "description": "Sumo Logic Collector Create.",
       "method": "POST",
       "path": "/api/v1/collectors",
       "inputs": [
@@ -138,7 +138,7 @@
     {
       "id": "search_create",
       "name": "Sumo Logic Search Create",
-      "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/search/jobs",
+      "description": "Sumo Logic Search Create.",
       "method": "POST",
       "path": "/api/v1/search/jobs",
       "inputs": [
@@ -189,7 +189,7 @@
     {
       "id": "source_create",
       "name": "Sumo Logic Source Create",
-      "description": "POST https://api.<%= @info['deployment'] %>.sumologic.com/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
+      "description": "Sumo Logic Source Create.",
       "method": "POST",
       "path": "/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
       "inputs": [

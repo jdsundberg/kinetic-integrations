@@ -29,7 +29,7 @@
     {
       "id": "command_send",
       "name": "Jamf Pro Command Send",
-      "description": "POST <%= @info['base_url'] %>/api/v1/mdm/commands",
+      "description": "POST /api/v1/mdm/commands",
       "method": "POST",
       "path": "/api/v1/mdm/commands",
       "inputs": [
@@ -114,7 +114,7 @@
     {
       "id": "device_retrieve",
       "name": "Jamf Pro Device Retrieve",
-      "description": "GET <%= @info['base_url'] %>/api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
+      "description": "GET /api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
       "method": "GET",
       "path": "/api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
       "inputs": [
@@ -165,7 +165,7 @@
     {
       "id": "group_create",
       "name": "Jamf Pro Group Create",
-      "description": "POST <%= @info['base_url'] %>/api/v1/computer-groups",
+      "description": "POST /api/v1/computer-groups",
       "method": "POST",
       "path": "/api/v1/computer-groups",
       "inputs": [
@@ -211,7 +211,7 @@
     {
       "id": "policy_create",
       "name": "Jamf Pro Policy Create",
-      "description": "POST <%= @info['base_url'] %>/api/v1/policies",
+      "description": "POST /api/v1/policies",
       "method": "POST",
       "path": "/api/v1/policies",
       "inputs": [

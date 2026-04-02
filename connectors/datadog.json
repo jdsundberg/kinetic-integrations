@@ -41,7 +41,7 @@
     {
       "id": "dashboard_create",
       "name": "Datadog Dashboard Create",
-      "description": "POST https://api.<%= @info['site'] %>/api/v1/dashboard",
+      "description": "Datadog Dashboard Create.",
       "method": "POST",
       "path": "/v1/dashboard",
       "inputs": [
@@ -91,7 +91,7 @@
     {
       "id": "downtime_create",
       "name": "Datadog Downtime Create",
-      "description": "POST https://api.<%= @info['site'] %>/api/v1/downtime",
+      "description": "Datadog Downtime Create.",
       "method": "POST",
       "path": "/v1/downtime",
       "inputs": [
@@ -147,7 +147,7 @@
     {
       "id": "event_create",
       "name": "Datadog Event Create",
-      "description": "POST https://api.<%= @info['site'] %>/api/v1/events",
+      "description": "Datadog Event Create.",
       "method": "POST",
       "path": "/v1/events",
       "inputs": [
@@ -203,7 +203,7 @@
     {
       "id": "incident_create",
       "name": "Datadog Incident Create",
-      "description": "POST https://api.<%= @info['site'] %>/api/v2/incidents",
+      "description": "Datadog Incident Create.",
       "method": "POST",
       "path": "/v2/incidents",
       "inputs": [
@@ -254,7 +254,7 @@
     {
       "id": "log_send",
       "name": "Datadog Log Send",
-      "description": "POST https://api.<%= @info['site'] %>/api/v2/logs",
+      "description": "Datadog Log Send.",
       "method": "POST",
       "path": "/v2/logs",
       "inputs": [
@@ -311,7 +311,7 @@
     {
       "id": "metric_submit",
       "name": "Datadog Metric Submit",
-      "description": "POST https://api.<%= @info['site'] %>/api/v2/series",
+      "description": "Datadog Metric Submit.",
       "method": "POST",
       "path": "/v2/series",
       "inputs": [
@@ -363,7 +363,7 @@
     {
       "id": "monitor_create",
       "name": "Datadog Monitor Create",
-      "description": "POST https://api.<%= @info['site'] %>/api/v1/monitor",
+      "description": "Datadog Monitor Create.",
       "method": "POST",
       "path": "/v1/monitor",
       "inputs": [
@@ -423,7 +423,7 @@
     {
       "id": "monitor_update",
       "name": "Datadog Monitor Update",
-      "description": "PUT https://api.<%= @info['site'] %>/api/v1/monitor/<%= @inputs['Monitor Id'] %>",
+      "description": "Datadog Monitor Update.",
       "method": "PUT",
       "path": "/v1/monitor/<%= @inputs['Monitor Id'] %>",
       "inputs": [

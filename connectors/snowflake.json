@@ -36,7 +36,7 @@
     {
       "id": "pipe_create",
       "name": "Snowflake Pipe Create",
-      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "description": "POST /api/v2/statements",
       "method": "POST",
       "path": "/api/v2/statements",
       "inputs": [
@@ -97,7 +97,7 @@
     {
       "id": "query_execute",
       "name": "Snowflake Query Execute",
-      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "description": "POST /api/v2/statements",
       "method": "POST",
       "path": "/api/v2/statements",
       "inputs": [
@@ -161,7 +161,7 @@
     {
       "id": "stage_upload",
       "name": "Snowflake Stage Upload",
-      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "description": "POST /api/v2/statements",
       "method": "POST",
       "path": "/api/v2/statements",
       "inputs": [
@@ -217,7 +217,7 @@
     {
       "id": "task_create",
       "name": "Snowflake Task Create",
-      "description": "POST <%= @info['account_url'] %>/api/v2/statements",
+      "description": "POST /api/v2/statements",
       "method": "POST",
       "path": "/api/v2/statements",
       "inputs": [

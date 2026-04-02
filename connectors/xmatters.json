@@ -34,7 +34,7 @@
     {
       "id": "event_trigger",
       "name": "xMatters Event Trigger",
-      "description": "POST <%= @info['base_url'] %>/api/xm/1/events",
+      "description": "POST /api/xm/1/events",
       "method": "POST",
       "path": "/api/xm/1/events",
       "inputs": [
@@ -90,7 +90,7 @@
     {
       "id": "group_create",
       "name": "xMatters Group Create",
-      "description": "POST <%= @info['base_url'] %>/api/xm/1/groups",
+      "description": "POST /api/xm/1/groups",
       "method": "POST",
       "path": "/api/xm/1/groups",
       "inputs": [
@@ -141,7 +141,7 @@
     {
       "id": "person_create",
       "name": "xMatters Person Create",
-      "description": "POST <%= @info['base_url'] %>/api/xm/1/people",
+      "description": "POST /api/xm/1/people",
       "method": "POST",
       "path": "/api/xm/1/people",
       "inputs": [
@@ -197,7 +197,7 @@
     {
       "id": "shift_create",
       "name": "xMatters Shift Create",
-      "description": "POST <%= @info['base_url'] %>/api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
+      "description": "POST /api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
       "method": "POST",
       "path": "/api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
       "inputs": [

@@ -50,7 +50,7 @@
     {
       "id": "bucket_create",
       "name": "GCP Cloud Storage Bucket Create",
-      "description": "POST https://storage.googleapis.com/storage/v1/b?project=<%= @info['project_id'] %>",
+      "description": "GCP Cloud Storage Bucket Create.",
       "method": "POST",
       "path": "/storage/v1/b?project=",
       "inputs": [

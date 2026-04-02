@@ -34,7 +34,7 @@
     {
       "id": "collection_create",
       "name": "MongoDB Atlas Collection Create",
-      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/aggregate",
+      "description": "MongoDB Atlas Collection Create.",
       "method": "POST",
       "path": "/app/endpoint/data/v1/action/aggregate",
       "inputs": [
@@ -76,7 +76,7 @@
     {
       "id": "document_delete",
       "name": "MongoDB Atlas Document Delete",
-      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/deleteOne",
+      "description": "MongoDB Atlas Document Delete.",
       "method": "POST",
       "path": "/app/endpoint/data/v1/action/deleteOne",
       "inputs": [
@@ -123,7 +123,7 @@
     {
       "id": "document_find",
       "name": "MongoDB Atlas Document Find",
-      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/find",
+      "description": "MongoDB Atlas Document Find.",
       "method": "POST",
       "path": "/app/endpoint/data/v1/action/find",
       "inputs": [
@@ -184,7 +184,7 @@
     {
       "id": "document_insert",
       "name": "MongoDB Atlas Document Insert",
-      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/insertOne",
+      "description": "MongoDB Atlas Document Insert.",
       "method": "POST",
       "path": "/app/endpoint/data/v1/action/insertOne",
       "inputs": [
@@ -231,7 +231,7 @@
     {
       "id": "document_update",
       "name": "MongoDB Atlas Document Update",
-      "description": "POST https://data.mongodb-api.com/app/<%= @info['app_id'] %>/endpoint/data/v1/action/updateOne",
+      "description": "MongoDB Atlas Document Update.",
       "method": "POST",
       "path": "/app/endpoint/data/v1/action/updateOne",
       "inputs": [

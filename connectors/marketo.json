@@ -30,7 +30,7 @@
     {
       "id": "campaign_trigger",
       "name": "Marketo Campaign Trigger",
-      "description": "POST <%= @info['base_url'] %>/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
+      "description": "POST /rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
       "method": "POST",
       "path": "/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
       "inputs": [
@@ -76,7 +76,7 @@
     {
       "id": "lead_create",
       "name": "Marketo Lead Create",
-      "description": "POST <%= @info['base_url'] %>/rest/v1/leads.json",
+      "description": "POST /rest/v1/leads.json",
       "method": "POST",
       "path": "/rest/v1/leads.json",
       "inputs": [
@@ -151,7 +151,7 @@
     {
       "id": "lead_merge",
       "name": "Marketo Lead Merge",
-      "description": "POST <%= @info['base_url'] %>/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
+      "description": "POST /rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
       "method": "POST",
       "path": "/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
       "inputs": [
@@ -197,7 +197,7 @@
     {
       "id": "lead_update",
       "name": "Marketo Lead Update",
-      "description": "POST <%= @info['base_url'] %>/rest/v1/leads.json",
+      "description": "POST /rest/v1/leads.json",
       "method": "POST",
       "path": "/rest/v1/leads.json",
       "inputs": [
@@ -272,7 +272,7 @@
     {
       "id": "list_add_lead",
       "name": "Marketo List Add Lead",
-      "description": "POST <%= @info['base_url'] %>/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
+      "description": "POST /rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
       "method": "POST",
       "path": "/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
       "inputs": [

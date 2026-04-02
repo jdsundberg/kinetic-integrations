@@ -41,7 +41,7 @@
     {
       "id": "employee_create",
       "name": "BambooHR Employee Create",
-      "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/",
+      "description": "BambooHR Employee Create.",
       "method": "POST",
       "path": "/api/gateway.php/v1/employees/",
       "inputs": [
@@ -117,7 +117,7 @@
     {
       "id": "employee_retrieve",
       "name": "BambooHR Employee Retrieve",
-      "description": "GET https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
+      "description": "BambooHR Employee Retrieve.",
       "method": "GET",
       "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
       "inputs": [
@@ -176,7 +176,7 @@
     {
       "id": "employee_update",
       "name": "BambooHR Employee Update",
-      "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>",
+      "description": "BambooHR Employee Update.",
       "method": "POST",
       "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>",
       "inputs": [
@@ -243,7 +243,7 @@
     {
       "id": "report_retrieve",
       "name": "BambooHR Report Retrieve",
-      "description": "POST https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/reports/custom?format=JSON",
+      "description": "BambooHR Report Retrieve.",
       "method": "POST",
       "path": "/api/gateway.php/v1/reports/custom?format=JSON",
       "inputs": [
@@ -307,7 +307,7 @@
     {
       "id": "time_off_request",
       "name": "BambooHR Time Off Request",
-      "description": "PUT https://api.bamboohr.com/api/gateway.php/<%= @info['subdomain'] %>/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
+      "description": "BambooHR Time Off Request.",
       "method": "PUT",
       "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
       "inputs": [

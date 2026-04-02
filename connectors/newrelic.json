@@ -198,7 +198,7 @@
     {
       "id": "event_send",
       "name": "New Relic Event Send",
-      "description": "POST https://insights-collector.newrelic.com/v1/accounts/<%= @info['account_id'] %>/events",
+      "description": "New Relic Event Send.",
       "method": "POST",
       "path": "/v1/accounts/events",
       "inputs": [

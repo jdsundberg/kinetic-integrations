@@ -41,7 +41,7 @@
     {
       "id": "asset_create",
       "name": "Freshservice Asset Create",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/assets",
+      "description": "POST /api/v2/assets",
       "method": "POST",
       "path": "/api/v2/assets",
       "inputs": [
@@ -96,7 +96,7 @@
     {
       "id": "asset_update",
       "name": "Freshservice Asset Update",
-      "description": "PUT <%= @info['domain_url'] %>/api/v2/assets/<%= @inputs['Asset Id'] %>",
+      "description": "PUT /api/v2/assets/<%= @inputs['Asset Id'] %>",
       "method": "PUT",
       "path": "/api/v2/assets/<%= @inputs['Asset Id'] %>",
       "inputs": [
@@ -148,7 +148,7 @@
     {
       "id": "requester_create",
       "name": "Freshservice Requester Create",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/requesters",
+      "description": "POST /api/v2/requesters",
       "method": "POST",
       "path": "/api/v2/requesters",
       "inputs": [
@@ -222,7 +222,7 @@
     {
       "id": "ticket_create",
       "name": "Freshservice Ticket Create",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets",
+      "description": "POST /api/v2/tickets",
       "method": "POST",
       "path": "/api/v2/tickets",
       "inputs": [
@@ -288,7 +288,7 @@
     {
       "id": "ticket_note",
       "name": "Freshservice Ticket Add Note",
-      "description": "POST <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
+      "description": "POST /api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
       "method": "POST",
       "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
       "inputs": [
@@ -334,7 +334,7 @@
     {
       "id": "ticket_update",
       "name": "Freshservice Ticket Update",
-      "description": "PUT <%= @info['domain_url'] %>/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "description": "PUT /api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "method": "PUT",
       "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
       "inputs": [

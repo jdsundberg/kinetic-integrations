@@ -29,7 +29,7 @@
     {
       "id": "employee_create",
       "name": "Namely Employee Create",
-      "description": "POST https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles",
+      "description": "Namely Employee Create.",
       "method": "POST",
       "path": "/api/v1/profiles",
       "inputs": [
@@ -109,7 +109,7 @@
     {
       "id": "employee_retrieve",
       "name": "Namely Employee Retrieve",
-      "description": "GET https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "description": "Namely Employee Retrieve.",
       "method": "GET",
       "path": "/api/v1/profiles/<%= @inputs['Profile Id'] %>",
       "inputs": [
@@ -164,7 +164,7 @@
     {
       "id": "employee_update",
       "name": "Namely Employee Update",
-      "description": "PUT https://<%= @info['subdomain'] %>.namely.com/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "description": "Namely Employee Update.",
       "method": "PUT",
       "path": "/api/v1/profiles/<%= @inputs['Profile Id'] %>",
       "inputs": [
@@ -225,7 +225,7 @@
     {
       "id": "report_retrieve",
       "name": "Namely Report Retrieve",
-      "description": "GET https://<%= @info['subdomain'] %>.namely.com/api/v1/reports/<%= @inputs['Report Id'] %>",
+      "description": "Namely Report Retrieve.",
       "method": "GET",
       "path": "/api/v1/reports/<%= @inputs['Report Id'] %>",
       "inputs": [
@@ -286,7 +286,7 @@
     {
       "id": "time_off_create",
       "name": "Namely Time Off Create",
-      "description": "POST https://<%= @info['subdomain'] %>.namely.com/api/v1/time_off/requests",
+      "description": "Namely Time Off Create.",
       "method": "POST",
       "path": "/api/v1/time_off/requests",
       "inputs": [

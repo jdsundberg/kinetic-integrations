@@ -40,7 +40,7 @@
     {
       "id": "blob_download",
       "name": "Azure Blob Blob Download",
-      "description": "GET https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "description": "Azure Blob Blob Download.",
       "method": "GET",
       "path": "/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
       "inputs": [
@@ -83,7 +83,7 @@
     {
       "id": "blob_list",
       "name": "Azure Blob Blob List",
-      "description": "GET https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
+      "description": "Azure Blob Blob List.",
       "method": "GET",
       "path": "/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
       "inputs": [
@@ -122,7 +122,7 @@
     {
       "id": "blob_upload",
       "name": "Azure Blob Blob Upload",
-      "description": "PUT https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "description": "Azure Blob Blob Upload.",
       "method": "PUT",
       "path": "/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
       "inputs": [
@@ -173,7 +173,7 @@
     {
       "id": "container_create",
       "name": "Azure Blob Container Create",
-      "description": "PUT https://<%= @info['account_name'] %>.blob.core.windows.net/<%= @inputs['Container'] %>?restype=container",
+      "description": "Azure Blob Container Create.",
       "method": "PUT",
       "path": "/<%= @inputs['Container'] %>?restype=container",
       "inputs": [

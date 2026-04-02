@@ -50,7 +50,7 @@
     {
       "id": "publish",
       "name": "GCP Pub/Sub Publish",
-      "description": "POST https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/topics/<%= @inputs['Topic Id'] %>:publish",
+      "description": "GCP Pub/Sub Publish.",
       "method": "POST",
       "path": "/v1/projects/topics/<%= @inputs['Topic Id'] %>:publish",
       "inputs": [
@@ -92,7 +92,7 @@
     {
       "id": "pull",
       "name": "GCP Pub/Sub Pull",
-      "description": "POST https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/subscriptions/<%= @inputs['Subscription Id'] %>:pull",
+      "description": "GCP Pub/Sub Pull.",
       "method": "POST",
       "path": "/v1/projects/subscriptions/<%= @inputs['Subscription Id'] %>:pull",
       "inputs": [
@@ -129,7 +129,7 @@
     {
       "id": "subscription_create",
       "name": "GCP Pub/Sub Subscription Create",
-      "description": "PUT https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/subscriptions/<%= @inputs['Subscription Id'] %>",
+      "description": "GCP Pub/Sub Subscription Create.",
       "method": "PUT",
       "path": "/v1/projects/subscriptions/<%= @inputs['Subscription Id'] %>",
       "inputs": [
@@ -198,7 +198,7 @@
     {
       "id": "topic_create",
       "name": "GCP Pub/Sub Topic Create",
-      "description": "PUT https://pubsub.googleapis.com/v1/projects/<%= @info['project_id'] %>/topics/<%= @inputs['Topic Id'] %>",
+      "description": "GCP Pub/Sub Topic Create.",
       "method": "PUT",
       "path": "/v1/projects/topics/<%= @inputs['Topic Id'] %>",
       "inputs": [

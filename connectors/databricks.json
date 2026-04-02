@@ -30,7 +30,7 @@
     {
       "id": "cluster_create",
       "name": "Databricks Cluster Create",
-      "description": "POST <%= @info['host'] %>/api/2.1/clusters/create",
+      "description": "POST /api/2.1/clusters/create",
       "method": "POST",
       "path": "/api/2.1/clusters/create",
       "inputs": [
@@ -82,7 +82,7 @@
     {
       "id": "job_run",
       "name": "Databricks Job Run",
-      "description": "POST <%= @info['host'] %>/api/2.1/jobs/run-now",
+      "description": "POST /api/2.1/jobs/run-now",
       "method": "POST",
       "path": "/api/2.1/jobs/run-now",
       "inputs": [
@@ -128,7 +128,7 @@
     {
       "id": "notebook_export",
       "name": "Databricks Notebook Export",
-      "description": "GET <%= @info['host'] %>/api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
+      "description": "GET /api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
       "method": "GET",
       "path": "/api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
       "inputs": [
@@ -167,7 +167,7 @@
     {
       "id": "query_execute",
       "name": "Databricks Query Execute",
-      "description": "POST <%= @info['host'] %>/api/2.1/sql/statements",
+      "description": "POST /api/2.1/sql/statements",
       "method": "POST",
       "path": "/api/2.1/sql/statements",
       "inputs": [
