@@ -46,7 +46,7 @@
       "name": "Google Analytics 4 Report Run",
       "description": "POST /v1beta/properties/{property_id}:runReport",
       "method": "POST",
-      "path": "/v1beta/properties/{property_id}:runReport",
+      "path": "/v1beta/properties/{{inputs.Property ID}}:runReport",
       "inputs": [
         {
           "name": "Property ID",

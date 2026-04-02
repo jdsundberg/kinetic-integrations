@@ -26,7 +26,7 @@
       "name": "YouTube Channel Retrieve",
       "description": "GET /youtube/v3/channels?part=snippet,statistics&id={channel_id}",
       "method": "GET",
-      "path": "/youtube/v3/channels?part=snippet,statistics&id={channel_id}",
+      "path": "/youtube/v3/channels?part=snippet,statistics&id={{inputs.Channel ID}}",
       "inputs": [
         {
           "name": "Channel ID",

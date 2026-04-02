@@ -175,7 +175,7 @@
       "name": "SAP Business One Invoice Retrieve",
       "description": "GET /b1s/v1/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/b1s/v1/invoices/{invoice_id}",
+      "path": "/b1s/v1/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

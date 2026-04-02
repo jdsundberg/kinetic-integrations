@@ -175,7 +175,7 @@
       "name": "SAP S/4HANA Cloud Invoice Retrieve",
       "description": "GET /sap/opu/odata4/sap/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/sap/opu/odata4/sap/invoices/{invoice_id}",
+      "path": "/sap/opu/odata4/sap/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

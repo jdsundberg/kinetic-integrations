@@ -46,7 +46,7 @@
       "name": "UKG Pro Employee Retrieve",
       "description": "GET /personnel/v1/employee-details/{employee_id}",
       "method": "GET",
-      "path": "/personnel/v1/employee-details/{employee_id}",
+      "path": "/personnel/v1/employee-details/{{inputs.Employee ID}}",
       "inputs": [
         {
           "name": "Employee ID",

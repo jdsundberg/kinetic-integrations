@@ -26,7 +26,7 @@
       "name": "Instagram Media List",
       "description": "GET /v19.0/{user_id}/media",
       "method": "GET",
-      "path": "/v19.0/{user_id}/media",
+      "path": "/v19.0/{{inputs.User ID}}/media",
       "inputs": [
         {
           "name": "User ID",

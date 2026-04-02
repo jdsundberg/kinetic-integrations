@@ -31,7 +31,7 @@
       "name": "Netskope Alert List",
       "description": "GET /api/v2/events/data/alert?timeperiod={timeperiod}",
       "method": "GET",
-      "path": "/api/v2/events/data/alert?timeperiod={timeperiod}",
+      "path": "/api/v2/events/data/alert?timeperiod={{inputs.Timeperiod}}",
       "inputs": [
         {
           "name": "Time Period",

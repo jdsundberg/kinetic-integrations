@@ -41,7 +41,7 @@
       "name": "Braintree Customer Create",
       "description": "POST /merchants/{merchant_id}/customers",
       "method": "POST",
-      "path": "/merchants/{merchant_id}/customers",
+      "path": "/merchants/{{inputs.Merchant Id}}/customers",
       "inputs": [
         {
           "name": "First Name",
@@ -89,7 +89,7 @@
       "name": "Braintree Transaction Refund",
       "description": "POST /merchants/{merchant_id}/transactions/{id}/refund",
       "method": "POST",
-      "path": "/merchants/{merchant_id}/transactions/{id}/refund",
+      "path": "/merchants/{{inputs.Merchant Id}}/transactions/{{inputs.Id}}/refund",
       "inputs": [
         {
           "name": "Transaction ID",
@@ -118,7 +118,7 @@
       "name": "Braintree Transaction Sale",
       "description": "POST /merchants/{merchant_id}/transactions",
       "method": "POST",
-      "path": "/merchants/{merchant_id}/transactions",
+      "path": "/merchants/{{inputs.Merchant Id}}/transactions",
       "inputs": [
         {
           "name": "Amount",

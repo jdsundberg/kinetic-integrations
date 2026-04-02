@@ -165,7 +165,7 @@
       "name": "Wave Invoice Retrieve",
       "description": "GET /graphql/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/graphql/invoices/{invoice_id}",
+      "path": "/graphql/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

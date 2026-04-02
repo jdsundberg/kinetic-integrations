@@ -37,7 +37,7 @@
       "name": "Contentful Entry Create",
       "description": "POST /spaces/{space_id}/environments/{environment_id}/entries",
       "method": "POST",
-      "path": "/spaces/{space_id}/environments/{environment_id}/entries",
+      "path": "/spaces/{{inputs.Space ID}}/environments/{{inputs.Environment ID}}/entries",
       "inputs": [
         {
           "name": "Space ID",
@@ -67,7 +67,7 @@
       "name": "Contentful Entry List",
       "description": "GET /spaces/{space_id}/environments/{environment_id}/entries",
       "method": "GET",
-      "path": "/spaces/{space_id}/environments/{environment_id}/entries",
+      "path": "/spaces/{{inputs.Space ID}}/environments/{{inputs.Environment ID}}/entries",
       "inputs": [
         {
           "name": "Space ID",

@@ -175,7 +175,7 @@
       "name": "Sage 50 Invoice Retrieve",
       "description": "GET /api/v1/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/api/v1/invoices/{invoice_id}",
+      "path": "/api/v1/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

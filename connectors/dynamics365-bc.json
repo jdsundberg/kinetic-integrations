@@ -51,7 +51,7 @@
       "name": "Dynamics 365 Business Central Chart of Accounts",
       "description": "GET /api/v2.0/companies/{company_id}/accounts",
       "method": "GET",
-      "path": "/api/v2.0/companies/{company_id}/accounts",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/accounts",
       "inputs": [],
       "outputs": [
         {
@@ -69,7 +69,7 @@
       "name": "Dynamics 365 Business Central Bill Create",
       "description": "POST /api/v2.0/companies/{company_id}/bills",
       "method": "POST",
-      "path": "/api/v2.0/companies/{company_id}/bills",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/bills",
       "inputs": [
         {
           "name": "Vendor Id",
@@ -103,7 +103,7 @@
       "name": "Dynamics 365 Business Central Customer Create",
       "description": "POST /api/v2.0/companies/{company_id}/customers",
       "method": "POST",
-      "path": "/api/v2.0/companies/{company_id}/customers",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/customers",
       "inputs": [
         {
           "name": "Name",
@@ -142,7 +142,7 @@
       "name": "Dynamics 365 Business Central Invoice Create",
       "description": "POST /api/v2.0/companies/{company_id}/invoices",
       "method": "POST",
-      "path": "/api/v2.0/companies/{company_id}/invoices",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/invoices",
       "inputs": [
         {
           "name": "Customer Id",
@@ -185,7 +185,7 @@
       "name": "Dynamics 365 Business Central Invoice Retrieve",
       "description": "GET /api/v2.0/companies/{company_id}/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/api/v2.0/companies/{company_id}/invoices/{invoice_id}",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",
@@ -217,7 +217,7 @@
       "name": "Dynamics 365 Business Central Journal Entry Create",
       "description": "POST /api/v2.0/companies/{company_id}/journal-entries",
       "method": "POST",
-      "path": "/api/v2.0/companies/{company_id}/journal-entries",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/journal-entries",
       "inputs": [
         {
           "name": "Date",
@@ -251,7 +251,7 @@
       "name": "Dynamics 365 Business Central Payment Create",
       "description": "POST /api/v2.0/companies/{company_id}/payments",
       "method": "POST",
-      "path": "/api/v2.0/companies/{company_id}/payments",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/payments",
       "inputs": [
         {
           "name": "Invoice Id",
@@ -308,7 +308,7 @@
       "name": "Dynamics 365 Business Central Vendor Create",
       "description": "POST /api/v2.0/companies/{company_id}/vendors",
       "method": "POST",
-      "path": "/api/v2.0/companies/{company_id}/vendors",
+      "path": "/api/v2.0/companies/{{inputs.Company Id}}/vendors",
       "inputs": [
         {
           "name": "Name",

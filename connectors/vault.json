@@ -31,7 +31,7 @@
       "name": "Vault Secret Read",
       "description": "GET /v1/{mount}/data/{path}",
       "method": "GET",
-      "path": "/v1/{mount}/data/{path}",
+      "path": "/v1/{{inputs.Mount}}/data/{{inputs.Path}}",
       "inputs": [
         {
           "name": "Mount",
@@ -60,7 +60,7 @@
       "name": "Vault Secret Write",
       "description": "POST /v1/{mount}/data/{path}",
       "method": "POST",
-      "path": "/v1/{mount}/data/{path}",
+      "path": "/v1/{{inputs.Mount}}/data/{{inputs.Path}}",
       "inputs": [
         {
           "name": "Mount",

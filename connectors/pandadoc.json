@@ -65,7 +65,7 @@
       "name": "PandaDoc Document Send",
       "description": "POST /public/v1/documents/{id}/send",
       "method": "POST",
-      "path": "/public/v1/documents/{id}/send",
+      "path": "/public/v1/documents/{{inputs.Id}}/send",
       "inputs": [
         {
           "name": "Document ID",
@@ -90,7 +90,7 @@
       "name": "PandaDoc Document Status",
       "description": "GET /public/v1/documents/{id}",
       "method": "GET",
-      "path": "/public/v1/documents/{id}",
+      "path": "/public/v1/documents/{{inputs.Id}}",
       "inputs": [
         {
           "name": "Document ID",

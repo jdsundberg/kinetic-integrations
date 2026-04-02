@@ -160,7 +160,7 @@
       "name": "Kashoo Invoice Retrieve",
       "description": "GET /api/v2/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/api/v2/invoices/{invoice_id}",
+      "path": "/api/v2/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

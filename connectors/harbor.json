@@ -50,7 +50,7 @@
       "name": "Harbor Repository List",
       "description": "GET /api/v2.0/projects/{project_name}/repositories",
       "method": "GET",
-      "path": "/api/v2.0/projects/{project_name}/repositories",
+      "path": "/api/v2.0/projects/{{inputs.Project Name}}/repositories",
       "inputs": [
         {
           "name": "Project Name",

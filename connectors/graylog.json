@@ -36,7 +36,7 @@
       "name": "Graylog Search",
       "description": "GET /api/search/universal/relative?query={query}&range={range}",
       "method": "GET",
-      "path": "/api/search/universal/relative?query={query}&range={range}",
+      "path": "/api/search/universal/relative?query={{inputs.Query}}&range={{inputs.Range}}",
       "inputs": [
         {
           "name": "Query",

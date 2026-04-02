@@ -41,7 +41,7 @@
       "name": "Redis Delete",
       "description": "DELETE /del/{key}",
       "method": "DELETE",
-      "path": "/del/{key}",
+      "path": "/del/{{inputs.Key}}",
       "inputs": [
         {
           "name": "Key",
@@ -61,7 +61,7 @@
       "name": "Redis Get",
       "description": "GET /get/{key}",
       "method": "GET",
-      "path": "/get/{key}",
+      "path": "/get/{{inputs.Key}}",
       "inputs": [
         {
           "name": "Key",

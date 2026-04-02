@@ -31,7 +31,7 @@
       "name": "Adobe Sign Agreement Cancel",
       "description": "PUT /api/rest/v6/agreements/{agreement_id}/state",
       "method": "PUT",
-      "path": "/api/rest/v6/agreements/{agreement_id}/state",
+      "path": "/api/rest/v6/agreements/{{inputs.Agreement ID}}/state",
       "inputs": [
         {
           "name": "Agreement ID",
@@ -81,7 +81,7 @@
       "name": "Adobe Sign Agreement Retrieve",
       "description": "GET /api/rest/v6/agreements/{agreement_id}",
       "method": "GET",
-      "path": "/api/rest/v6/agreements/{agreement_id}",
+      "path": "/api/rest/v6/agreements/{{inputs.Agreement ID}}",
       "inputs": [
         {
           "name": "Agreement ID",
@@ -105,7 +105,7 @@
       "name": "Adobe Sign Agreement Status",
       "description": "GET /api/rest/v6/agreements/{agreement_id}/signingUrls",
       "method": "GET",
-      "path": "/api/rest/v6/agreements/{agreement_id}/signingUrls",
+      "path": "/api/rest/v6/agreements/{{inputs.Agreement ID}}/signingUrls",
       "inputs": [
         {
           "name": "Agreement ID",

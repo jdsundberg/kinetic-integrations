@@ -42,7 +42,7 @@
       "name": "QuickBooks Enterprise Chart of Accounts",
       "description": "GET /v3/company/{realm_id}/accounts",
       "method": "GET",
-      "path": "/v3/company/{realm_id}/accounts",
+      "path": "/v3/company/{{inputs.Realm Id}}/accounts",
       "inputs": [],
       "outputs": [
         {
@@ -60,7 +60,7 @@
       "name": "QuickBooks Enterprise Bill Create",
       "description": "POST /v3/company/{realm_id}/bills",
       "method": "POST",
-      "path": "/v3/company/{realm_id}/bills",
+      "path": "/v3/company/{{inputs.Realm Id}}/bills",
       "inputs": [
         {
           "name": "Vendor Id",
@@ -94,7 +94,7 @@
       "name": "QuickBooks Enterprise Customer Create",
       "description": "POST /v3/company/{realm_id}/customers",
       "method": "POST",
-      "path": "/v3/company/{realm_id}/customers",
+      "path": "/v3/company/{{inputs.Realm Id}}/customers",
       "inputs": [
         {
           "name": "Name",
@@ -133,7 +133,7 @@
       "name": "QuickBooks Enterprise Invoice Create",
       "description": "POST /v3/company/{realm_id}/invoices",
       "method": "POST",
-      "path": "/v3/company/{realm_id}/invoices",
+      "path": "/v3/company/{{inputs.Realm Id}}/invoices",
       "inputs": [
         {
           "name": "Customer Id",
@@ -176,7 +176,7 @@
       "name": "QuickBooks Enterprise Invoice Retrieve",
       "description": "GET /v3/company/{realm_id}/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/v3/company/{realm_id}/invoices/{invoice_id}",
+      "path": "/v3/company/{{inputs.Realm Id}}/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",
@@ -208,7 +208,7 @@
       "name": "QuickBooks Enterprise Journal Entry Create",
       "description": "POST /v3/company/{realm_id}/journal-entries",
       "method": "POST",
-      "path": "/v3/company/{realm_id}/journal-entries",
+      "path": "/v3/company/{{inputs.Realm Id}}/journal-entries",
       "inputs": [
         {
           "name": "Date",
@@ -242,7 +242,7 @@
       "name": "QuickBooks Enterprise Payment Create",
       "description": "POST /v3/company/{realm_id}/payments",
       "method": "POST",
-      "path": "/v3/company/{realm_id}/payments",
+      "path": "/v3/company/{{inputs.Realm Id}}/payments",
       "inputs": [
         {
           "name": "Invoice Id",
@@ -299,7 +299,7 @@
       "name": "QuickBooks Enterprise Vendor Create",
       "description": "POST /v3/company/{realm_id}/vendors",
       "method": "POST",
-      "path": "/v3/company/{realm_id}/vendors",
+      "path": "/v3/company/{{inputs.Realm Id}}/vendors",
       "inputs": [
         {
           "name": "Name",

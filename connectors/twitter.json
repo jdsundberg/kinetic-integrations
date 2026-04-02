@@ -64,7 +64,7 @@
       "name": "X User Lookup",
       "description": "GET /2/users/by/username/{username}",
       "method": "GET",
-      "path": "/2/users/by/username/{username}",
+      "path": "/2/users/by/username/{{inputs.Username}}",
       "inputs": [
         {
           "name": "Username",

@@ -3,33 +3,81 @@
   "service": "Microsoft Graph",
   "version": 1,
   "category": "Cloud & Infrastructure",
-  "description": "Microsoft Graph API — unified endpoint for Microsoft 365 services including Outlook mail, calendar, contacts, users, groups, and files.",
+  "description": "Microsoft Graph API \u2014 unified endpoint for Microsoft 365 services including Outlook mail, calendar, contacts, users, groups, and files.",
   "docsUrl": "https://learn.microsoft.com/en-us/graph/api/overview",
   "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0078D4\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">G</text></svg>",
   "auth": {
     "type": "oauth2",
     "properties": [
-      { "name": "token_url", "required": true, "description": "Azure AD token endpoint (e.g. https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token)." },
-      { "name": "client_id", "required": true, "description": "Azure AD app registration client ID." },
-      { "name": "client_secret", "required": true, "encrypted": true, "description": "Azure AD app registration client secret." },
-      { "name": "scope", "required": false, "description": "OAuth2 scope (default: https://graph.microsoft.com/.default)." },
-      { "name": "instance_url", "required": false, "description": "Graph API base URL (default: https://graph.microsoft.com)." }
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "Azure AD token endpoint (e.g. https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token)."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "Azure AD app registration client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "encrypted": true,
+        "description": "Azure AD app registration client secret."
+      },
+      {
+        "name": "scope",
+        "required": false,
+        "description": "OAuth2 scope (default: https://graph.microsoft.com/.default)."
+      },
+      {
+        "name": "instance_url",
+        "required": false,
+        "description": "Graph API base URL (default: https://graph.microsoft.com)."
+      }
     ]
   },
-  "defaultHeaders": { "Accept": "application/json", "Content-Type": "application/json" },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
   "routines": [
     {
       "id": "mail_send",
       "name": "Microsoft Graph Mail Send",
       "description": "Sends an email via Outlook/Exchange Online.",
       "method": "POST",
-      "path": "/v1.0/users/{user_id}/sendMail",
+      "path": "/v1.0/users/{{inputs.User ID}}/sendMail",
       "inputs": [
-        { "name": "User ID", "required": true, "description": "Sender user ID or UPN (e.g. user@contoso.com).", "pathParam": true },
-        { "name": "To", "required": true, "description": "Recipient email address.", "mapTo": "message.toRecipients[0].emailAddress.address" },
-        { "name": "Subject", "required": true, "description": "Email subject.", "mapTo": "message.subject" },
-        { "name": "Body", "required": true, "description": "Email body (HTML).", "mapTo": "message.body.content" },
-        { "name": "CC", "required": false, "description": "CC recipient email." }
+        {
+          "name": "User ID",
+          "required": true,
+          "description": "Sender user ID or UPN (e.g. user@contoso.com).",
+          "pathParam": true
+        },
+        {
+          "name": "To",
+          "required": true,
+          "description": "Recipient email address.",
+          "mapTo": "message.toRecipients[0].emailAddress.address"
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "description": "Email subject.",
+          "mapTo": "message.subject"
+        },
+        {
+          "name": "Body",
+          "required": true,
+          "description": "Email body (HTML).",
+          "mapTo": "message.body.content"
+        },
+        {
+          "name": "CC",
+          "required": false,
+          "description": "CC recipient email."
+        }
       ],
       "outputs": []
     },
@@ -38,12 +86,20 @@
       "name": "Microsoft Graph Mail List",
       "description": "Lists messages in a user's mailbox.",
       "method": "GET",
-      "path": "/v1.0/users/{user_id}/messages?$top=25&$orderby=receivedDateTime desc",
+      "path": "/v1.0/users/{{inputs.User ID}}/messages?$top=25&$orderby=receivedDateTime desc",
       "inputs": [
-        { "name": "User ID", "required": true, "description": "User ID or UPN.", "pathParam": true }
+        {
+          "name": "User ID",
+          "required": true,
+          "description": "User ID or UPN.",
+          "pathParam": true
+        }
       ],
       "outputs": [
-        { "name": "Messages JSON", "path": "value" }
+        {
+          "name": "Messages JSON",
+          "path": "value"
+        }
       ]
     },
     {
@@ -51,16 +107,36 @@
       "name": "Microsoft Graph Mail Retrieve",
       "description": "Retrieves a specific email message.",
       "method": "GET",
-      "path": "/v1.0/users/{user_id}/messages/{message_id}",
+      "path": "/v1.0/users/{{inputs.User ID}}/messages/{{inputs.Message ID}}",
       "inputs": [
-        { "name": "User ID", "required": true, "pathParam": true },
-        { "name": "Message ID", "required": true, "pathParam": true }
+        {
+          "name": "User ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Message ID",
+          "required": true,
+          "pathParam": true
+        }
       ],
       "outputs": [
-        { "name": "Subject", "path": "subject" },
-        { "name": "From", "path": "from.emailAddress.address" },
-        { "name": "Body", "path": "body.content" },
-        { "name": "Received", "path": "receivedDateTime" }
+        {
+          "name": "Subject",
+          "path": "subject"
+        },
+        {
+          "name": "From",
+          "path": "from.emailAddress.address"
+        },
+        {
+          "name": "Body",
+          "path": "body.content"
+        },
+        {
+          "name": "Received",
+          "path": "receivedDateTime"
+        }
       ]
     },
     {
@@ -68,20 +144,60 @@
       "name": "Microsoft Graph Calendar Event Create",
       "description": "Creates a calendar event.",
       "method": "POST",
-      "path": "/v1.0/users/{user_id}/events",
+      "path": "/v1.0/users/{{inputs.User ID}}/events",
       "inputs": [
-        { "name": "User ID", "required": true, "pathParam": true },
-        { "name": "Subject", "required": true, "mapTo": "subject" },
-        { "name": "Start DateTime", "required": true, "description": "ISO 8601 (e.g. 2026-04-01T10:00:00).", "mapTo": "start.dateTime" },
-        { "name": "End DateTime", "required": true, "mapTo": "end.dateTime" },
-        { "name": "Time Zone", "required": false, "description": "e.g. America/Chicago.", "mapTo": "start.timeZone" },
-        { "name": "Attendee Email", "required": false, "description": "Attendee email address." },
-        { "name": "Body", "required": false, "mapTo": "body.content" },
-        { "name": "Location", "required": false, "mapTo": "location.displayName" }
+        {
+          "name": "User ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Subject",
+          "required": true,
+          "mapTo": "subject"
+        },
+        {
+          "name": "Start DateTime",
+          "required": true,
+          "description": "ISO 8601 (e.g. 2026-04-01T10:00:00).",
+          "mapTo": "start.dateTime"
+        },
+        {
+          "name": "End DateTime",
+          "required": true,
+          "mapTo": "end.dateTime"
+        },
+        {
+          "name": "Time Zone",
+          "required": false,
+          "description": "e.g. America/Chicago.",
+          "mapTo": "start.timeZone"
+        },
+        {
+          "name": "Attendee Email",
+          "required": false,
+          "description": "Attendee email address."
+        },
+        {
+          "name": "Body",
+          "required": false,
+          "mapTo": "body.content"
+        },
+        {
+          "name": "Location",
+          "required": false,
+          "mapTo": "location.displayName"
+        }
       ],
       "outputs": [
-        { "name": "Event ID", "path": "id" },
-        { "name": "Web Link", "path": "webLink" }
+        {
+          "name": "Event ID",
+          "path": "id"
+        },
+        {
+          "name": "Web Link",
+          "path": "webLink"
+        }
       ]
     },
     {
@@ -89,12 +205,19 @@
       "name": "Microsoft Graph Calendar Event List",
       "description": "Lists calendar events for a user.",
       "method": "GET",
-      "path": "/v1.0/users/{user_id}/events?$top=25&$orderby=start/dateTime",
+      "path": "/v1.0/users/{{inputs.User ID}}/events?$top=25&$orderby=start/dateTime",
       "inputs": [
-        { "name": "User ID", "required": true, "pathParam": true }
+        {
+          "name": "User ID",
+          "required": true,
+          "pathParam": true
+        }
       ],
       "outputs": [
-        { "name": "Events JSON", "path": "value" }
+        {
+          "name": "Events JSON",
+          "path": "value"
+        }
       ]
     },
     {
@@ -102,17 +225,44 @@
       "name": "Microsoft Graph Contact Create",
       "description": "Creates a contact in a user's address book.",
       "method": "POST",
-      "path": "/v1.0/users/{user_id}/contacts",
+      "path": "/v1.0/users/{{inputs.User ID}}/contacts",
       "inputs": [
-        { "name": "User ID", "required": true, "pathParam": true },
-        { "name": "Given Name", "required": true, "mapTo": "givenName" },
-        { "name": "Surname", "required": true, "mapTo": "surname" },
-        { "name": "Email", "required": false, "mapTo": "emailAddresses[0].address" },
-        { "name": "Phone", "required": false, "mapTo": "businessPhones[0]" },
-        { "name": "Company", "required": false, "mapTo": "companyName" }
+        {
+          "name": "User ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Given Name",
+          "required": true,
+          "mapTo": "givenName"
+        },
+        {
+          "name": "Surname",
+          "required": true,
+          "mapTo": "surname"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "emailAddresses[0].address"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "businessPhones[0]"
+        },
+        {
+          "name": "Company",
+          "required": false,
+          "mapTo": "companyName"
+        }
       ],
       "outputs": [
-        { "name": "Contact ID", "path": "id" }
+        {
+          "name": "Contact ID",
+          "path": "id"
+        }
       ]
     },
     {
@@ -120,15 +270,32 @@
       "name": "Microsoft Graph User Retrieve",
       "description": "Retrieves a user's profile.",
       "method": "GET",
-      "path": "/v1.0/users/{user_id}?$select=displayName,mail,jobTitle,department,officeLocation",
+      "path": "/v1.0/users/{{inputs.User ID}}?$select=displayName,mail,jobTitle,department,officeLocation",
       "inputs": [
-        { "name": "User ID", "required": true, "description": "User ID or UPN.", "pathParam": true }
+        {
+          "name": "User ID",
+          "required": true,
+          "description": "User ID or UPN.",
+          "pathParam": true
+        }
       ],
       "outputs": [
-        { "name": "Display Name", "path": "displayName" },
-        { "name": "Email", "path": "mail" },
-        { "name": "Job Title", "path": "jobTitle" },
-        { "name": "Department", "path": "department" }
+        {
+          "name": "Display Name",
+          "path": "displayName"
+        },
+        {
+          "name": "Email",
+          "path": "mail"
+        },
+        {
+          "name": "Job Title",
+          "path": "jobTitle"
+        },
+        {
+          "name": "Department",
+          "path": "department"
+        }
       ]
     },
     {
@@ -139,7 +306,10 @@
       "path": "/v1.0/users?$top=25&$select=displayName,mail,userPrincipalName",
       "inputs": [],
       "outputs": [
-        { "name": "Users JSON", "path": "value" }
+        {
+          "name": "Users JSON",
+          "path": "value"
+        }
       ]
     },
     {
@@ -150,7 +320,10 @@
       "path": "/v1.0/groups?$top=25",
       "inputs": [],
       "outputs": [
-        { "name": "Groups JSON", "path": "value" }
+        {
+          "name": "Groups JSON",
+          "path": "value"
+        }
       ]
     },
     {
@@ -158,12 +331,19 @@
       "name": "Microsoft Graph Group Members",
       "description": "Lists members of a group.",
       "method": "GET",
-      "path": "/v1.0/groups/{group_id}/members",
+      "path": "/v1.0/groups/{{inputs.Group ID}}/members",
       "inputs": [
-        { "name": "Group ID", "required": true, "pathParam": true }
+        {
+          "name": "Group ID",
+          "required": true,
+          "pathParam": true
+        }
       ],
       "outputs": [
-        { "name": "Members JSON", "path": "value" }
+        {
+          "name": "Members JSON",
+          "path": "value"
+        }
       ]
     },
     {
@@ -171,12 +351,19 @@
       "name": "Microsoft Graph Drive Files List",
       "description": "Lists files in a user's OneDrive root.",
       "method": "GET",
-      "path": "/v1.0/users/{user_id}/drive/root/children",
+      "path": "/v1.0/users/{{inputs.User ID}}/drive/root/children",
       "inputs": [
-        { "name": "User ID", "required": true, "pathParam": true }
+        {
+          "name": "User ID",
+          "required": true,
+          "pathParam": true
+        }
       ],
       "outputs": [
-        { "name": "Files JSON", "path": "value" }
+        {
+          "name": "Files JSON",
+          "path": "value"
+        }
       ]
     },
     {
@@ -187,7 +374,10 @@
       "path": "/v1.0/organization",
       "inputs": [],
       "outputs": [
-        { "name": "Org Name", "path": "value[0].displayName" }
+        {
+          "name": "Org Name",
+          "path": "value[0].displayName"
+        }
       ]
     }
   ]

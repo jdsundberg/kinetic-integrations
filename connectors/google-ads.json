@@ -51,7 +51,7 @@
       "name": "Google Ads Search",
       "description": "POST /v17/customers/{customer_id}/googleAds:search",
       "method": "POST",
-      "path": "/v17/customers/{customer_id}/googleAds:search",
+      "path": "/v17/customers/{{inputs.Customer ID}}/googleAds:search",
       "inputs": [
         {
           "name": "Customer ID",

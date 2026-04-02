@@ -26,7 +26,7 @@
       "name": "Honeycomb Event Send",
       "description": "POST /1/events/{dataset}",
       "method": "POST",
-      "path": "/1/events/{dataset}",
+      "path": "/1/events/{{inputs.Dataset}}",
       "inputs": [
         {
           "name": "Dataset",
@@ -46,7 +46,7 @@
       "name": "Honeycomb Query Create",
       "description": "POST /1/queries/{dataset}",
       "method": "POST",
-      "path": "/1/queries/{dataset}",
+      "path": "/1/queries/{{inputs.Dataset}}",
       "inputs": [
         {
           "name": "Dataset",

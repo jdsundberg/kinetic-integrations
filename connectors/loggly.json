@@ -31,7 +31,7 @@
       "name": "Loggly Events Retrieve",
       "description": "GET /apiv2/events?rsid={rsid}",
       "method": "GET",
-      "path": "/apiv2/events?rsid={rsid}",
+      "path": "/apiv2/events?rsid={{inputs.RSID}}",
       "inputs": [
         {
           "name": "RSID",
@@ -51,7 +51,7 @@
       "name": "Loggly Search",
       "description": "GET /apiv2/search?q={query}",
       "method": "GET",
-      "path": "/apiv2/search?q={query}",
+      "path": "/apiv2/search?q={{inputs.Query}}",
       "inputs": [
         {
           "name": "Query",

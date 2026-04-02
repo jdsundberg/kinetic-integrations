@@ -31,7 +31,7 @@
       "name": "Fivetran Connector List",
       "description": "GET /v1/groups/{group_id}/connectors",
       "method": "GET",
-      "path": "/v1/groups/{group_id}/connectors",
+      "path": "/v1/groups/{{inputs.Group ID}}/connectors",
       "inputs": [
         {
           "name": "Group ID",
@@ -51,7 +51,7 @@
       "name": "Fivetran Connector Sync",
       "description": "POST /v1/connectors/{connector_id}/force",
       "method": "POST",
-      "path": "/v1/connectors/{connector_id}/force",
+      "path": "/v1/connectors/{{inputs.Connector ID}}/force",
       "inputs": [
         {
           "name": "Connector ID",

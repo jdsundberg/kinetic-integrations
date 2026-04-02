@@ -73,7 +73,7 @@
       "name": "Amplitude User Search",
       "description": "GET /1/usersearch?user={user_id}",
       "method": "GET",
-      "path": "/1/usersearch?user={user_id}",
+      "path": "/1/usersearch?user={{inputs.User ID}}",
       "inputs": [
         {
           "name": "User ID",

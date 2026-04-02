@@ -171,7 +171,7 @@
       "name": "FreeAgent Invoice Retrieve",
       "description": "GET /v2/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/v2/invoices/{invoice_id}",
+      "path": "/v2/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

@@ -36,7 +36,7 @@
       "name": "Adyen Payment Capture",
       "description": "POST /v71/payments/{paymentPspReference}/captures",
       "method": "POST",
-      "path": "/v71/payments/{paymentPspReference}/captures",
+      "path": "/v71/payments/{{inputs.Paymentpspreference}}/captures",
       "inputs": [
         {
           "name": "PSP Reference",
@@ -109,7 +109,7 @@
       "name": "Adyen Refund Create",
       "description": "POST /v71/payments/{paymentPspReference}/refunds",
       "method": "POST",
-      "path": "/v71/payments/{paymentPspReference}/refunds",
+      "path": "/v71/payments/{{inputs.Paymentpspreference}}/refunds",
       "inputs": [
         {
           "name": "PSP Reference",

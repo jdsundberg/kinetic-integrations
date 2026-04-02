@@ -176,7 +176,7 @@
       "name": "Zoho Books Invoice Retrieve",
       "description": "GET /api/v3/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/api/v3/invoices/{invoice_id}",
+      "path": "/api/v3/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

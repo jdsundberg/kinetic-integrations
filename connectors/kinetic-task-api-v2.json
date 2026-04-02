@@ -60,7 +60,7 @@
       "name": "Tree Retrieve",
       "description": "Retrieves a tree by title.",
       "method": "GET",
-      "path": "/app/components/task/app/api/v2/trees/{title}?include=treeJson,details",
+      "path": "/app/components/task/app/api/v2/trees/{{inputs.Title}}?include=treeJson,details",
       "inputs": [
         {
           "name": "Title",
@@ -115,7 +115,7 @@
       "name": "Run Triggers",
       "description": "Lists triggers (node activations) for a run.",
       "method": "GET",
-      "path": "/app/components/task/app/api/v2/triggers?runId={run_id}&include=details",
+      "path": "/app/components/task/app/api/v2/triggers?runId={{inputs.Run Id}}&include=details",
       "inputs": [
         {
           "name": "Run ID",

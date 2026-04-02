@@ -26,7 +26,7 @@
       "name": "Papertrail Search",
       "description": "GET /api/v1/events/search.json?q={query}",
       "method": "GET",
-      "path": "/api/v1/events/search.json?q={query}",
+      "path": "/api/v1/events/search.json?q={{inputs.Query}}",
       "inputs": [
         {
           "name": "Query",

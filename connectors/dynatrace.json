@@ -31,7 +31,7 @@
       "name": "Dynatrace Entity List",
       "description": "GET /api/v2/entities?entitySelector={selector}",
       "method": "GET",
-      "path": "/api/v2/entities?entitySelector={selector}",
+      "path": "/api/v2/entities?entitySelector={{inputs.Selector}}",
       "inputs": [
         {
           "name": "Entity Selector",
@@ -50,7 +50,7 @@
       "name": "Dynatrace Metric Query",
       "description": "GET /api/v2/metrics/query?metricSelector={selector}",
       "method": "GET",
-      "path": "/api/v2/metrics/query?metricSelector={selector}",
+      "path": "/api/v2/metrics/query?metricSelector={{inputs.Selector}}",
       "inputs": [
         {
           "name": "Metric Selector",

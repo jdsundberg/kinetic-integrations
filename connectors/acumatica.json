@@ -175,7 +175,7 @@
       "name": "Acumatica Cloud ERP Invoice Retrieve",
       "description": "GET /entity/Default/24.200.001/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/entity/Default/24.200.001/invoices/{invoice_id}",
+      "path": "/entity/Default/24.200.001/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

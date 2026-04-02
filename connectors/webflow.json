@@ -27,7 +27,7 @@
       "name": "Webflow Collection Item Create",
       "description": "POST /v2/collections/{collection_id}/items",
       "method": "POST",
-      "path": "/v2/collections/{collection_id}/items",
+      "path": "/v2/collections/{{inputs.Collection ID}}/items",
       "inputs": [
         {
           "name": "Collection ID",
@@ -52,7 +52,7 @@
       "name": "Webflow Collection Item List",
       "description": "GET /v2/collections/{collection_id}/items",
       "method": "GET",
-      "path": "/v2/collections/{collection_id}/items",
+      "path": "/v2/collections/{{inputs.Collection ID}}/items",
       "inputs": [
         {
           "name": "Collection ID",

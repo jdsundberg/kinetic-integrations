@@ -51,7 +51,7 @@
       "name": "Bullhorn Candidate Create",
       "description": "PUT /rest-services/{corpToken}/entity/Candidate",
       "method": "PUT",
-      "path": "/rest-services/{corpToken}/entity/Candidate",
+      "path": "/rest-services/{{inputs.Corptoken}}/entity/Candidate",
       "inputs": [
         {
           "name": "First Name",
@@ -81,7 +81,7 @@
       "name": "Bullhorn Search",
       "description": "GET /rest-services/{corpToken}/search/Candidate?query={query}",
       "method": "GET",
-      "path": "/rest-services/{corpToken}/search/Candidate?query={query}",
+      "path": "/rest-services/{{inputs.Corptoken}}/search/Candidate?query={{inputs.Query}}",
       "inputs": [
         {
           "name": "Query",

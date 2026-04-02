@@ -3,19 +3,39 @@
   "service": "SharePoint Online",
   "version": 1,
   "category": "Documents & Storage",
-  "description": "SharePoint Online via Microsoft Graph — sites, lists, document libraries, and pages.",
+  "description": "SharePoint Online via Microsoft Graph \u2014 sites, lists, document libraries, and pages.",
   "docsUrl": "https://learn.microsoft.com/en-us/graph/api/resources/sharepoint",
   "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#038387\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">S</text></svg>",
   "auth": {
     "type": "oauth2",
     "properties": [
-      { "name": "token_url", "required": true, "description": "Azure AD token endpoint." },
-      { "name": "client_id", "required": true, "description": "Azure AD app client ID." },
-      { "name": "client_secret", "required": true, "encrypted": true, "description": "Azure AD app client secret." },
-      { "name": "instance_url", "required": false, "description": "Graph API base (default: https://graph.microsoft.com)." }
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "Azure AD token endpoint."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "Azure AD app client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "encrypted": true,
+        "description": "Azure AD app client secret."
+      },
+      {
+        "name": "instance_url",
+        "required": false,
+        "description": "Graph API base (default: https://graph.microsoft.com)."
+      }
     ]
   },
-  "defaultHeaders": { "Accept": "application/json", "Content-Type": "application/json" },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
   "routines": [
     {
       "id": "site_list",
@@ -24,63 +44,148 @@
       "method": "GET",
       "path": "/v1.0/sites?search=*",
       "inputs": [],
-      "outputs": [{ "name": "Sites JSON", "path": "value" }]
+      "outputs": [
+        {
+          "name": "Sites JSON",
+          "path": "value"
+        }
+      ]
     },
     {
       "id": "site_retrieve",
       "name": "SharePoint Site Retrieve",
       "description": "Retrieves a SharePoint site by hostname and path.",
       "method": "GET",
-      "path": "/v1.0/sites/{site_id}",
-      "inputs": [{ "name": "Site ID", "required": true, "description": "Site ID or hostname:path (e.g. contoso.sharepoint.com:/sites/teamsite).", "pathParam": true }],
-      "outputs": [{ "name": "Site Name", "path": "displayName" }, { "name": "Web URL", "path": "webUrl" }]
+      "path": "/v1.0/sites/{{inputs.Site ID}}",
+      "inputs": [
+        {
+          "name": "Site ID",
+          "required": true,
+          "description": "Site ID or hostname:path (e.g. contoso.sharepoint.com:/sites/teamsite).",
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Site Name",
+          "path": "displayName"
+        },
+        {
+          "name": "Web URL",
+          "path": "webUrl"
+        }
+      ]
     },
     {
       "id": "list_items",
       "name": "SharePoint List Items",
       "description": "Retrieves items from a SharePoint list.",
       "method": "GET",
-      "path": "/v1.0/sites/{site_id}/lists/{list_id}/items?expand=fields",
+      "path": "/v1.0/sites/{{inputs.Site ID}}/lists/{{inputs.List ID}}/items?expand=fields",
       "inputs": [
-        { "name": "Site ID", "required": true, "pathParam": true },
-        { "name": "List ID", "required": true, "pathParam": true }
+        {
+          "name": "Site ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "List ID",
+          "required": true,
+          "pathParam": true
+        }
       ],
-      "outputs": [{ "name": "Items JSON", "path": "value" }]
+      "outputs": [
+        {
+          "name": "Items JSON",
+          "path": "value"
+        }
+      ]
     },
     {
       "id": "list_item_create",
       "name": "SharePoint List Item Create",
       "description": "Creates an item in a SharePoint list.",
       "method": "POST",
-      "path": "/v1.0/sites/{site_id}/lists/{list_id}/items",
+      "path": "/v1.0/sites/{{inputs.Site ID}}/lists/{{inputs.List ID}}/items",
       "inputs": [
-        { "name": "Site ID", "required": true, "pathParam": true },
-        { "name": "List ID", "required": true, "pathParam": true },
-        { "name": "Fields JSON", "required": true, "description": "JSON object of field name-value pairs.", "mapTo": "fields" }
+        {
+          "name": "Site ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "List ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Fields JSON",
+          "required": true,
+          "description": "JSON object of field name-value pairs.",
+          "mapTo": "fields"
+        }
       ],
-      "outputs": [{ "name": "Item ID", "path": "id" }]
+      "outputs": [
+        {
+          "name": "Item ID",
+          "path": "id"
+        }
+      ]
     },
     {
       "id": "drive_list",
       "name": "SharePoint Document Libraries",
       "description": "Lists document libraries in a site.",
       "method": "GET",
-      "path": "/v1.0/sites/{site_id}/drives",
-      "inputs": [{ "name": "Site ID", "required": true, "pathParam": true }],
-      "outputs": [{ "name": "Drives JSON", "path": "value" }]
+      "path": "/v1.0/sites/{{inputs.Site ID}}/drives",
+      "inputs": [
+        {
+          "name": "Site ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Drives JSON",
+          "path": "value"
+        }
+      ]
     },
     {
       "id": "file_upload",
       "name": "SharePoint File Upload",
       "description": "Uploads a small file (< 4MB) to a document library.",
       "method": "PUT",
-      "path": "/v1.0/sites/{site_id}/drives/{drive_id}/root:/{file_name}:/content",
+      "path": "/v1.0/sites/{{inputs.Site ID}}/drives/{{inputs.Drive ID}}/root:/{{inputs.File Name}}:/content",
       "inputs": [
-        { "name": "Site ID", "required": true, "pathParam": true },
-        { "name": "Drive ID", "required": true, "pathParam": true },
-        { "name": "File Name", "required": true, "description": "Target filename including path.", "pathParam": true }
+        {
+          "name": "Site ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Drive ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "File Name",
+          "required": true,
+          "description": "Target filename including path.",
+          "pathParam": true
+        }
       ],
-      "outputs": [{ "name": "File ID", "path": "id" }, { "name": "Web URL", "path": "webUrl" }]
+      "outputs": [
+        {
+          "name": "File ID",
+          "path": "id"
+        },
+        {
+          "name": "Web URL",
+          "path": "webUrl"
+        }
+      ]
     },
     {
       "id": "test",
@@ -89,7 +194,12 @@
       "method": "GET",
       "path": "/v1.0/sites/root",
       "inputs": [],
-      "outputs": [{ "name": "Root Site", "path": "displayName" }]
+      "outputs": [
+        {
+          "name": "Root Site",
+          "path": "displayName"
+        }
+      ]
     }
   ]
 }

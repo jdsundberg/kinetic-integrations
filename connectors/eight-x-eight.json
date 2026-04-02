@@ -31,7 +31,7 @@
       "name": "8x8 SMS Send",
       "description": "POST /api/v1/subaccounts/{subaccountId}/messages",
       "method": "POST",
-      "path": "/api/v1/subaccounts/{subaccountId}/messages",
+      "path": "/api/v1/subaccounts/{{inputs.Subaccountid}}/messages",
       "inputs": [
         {
           "name": "From",

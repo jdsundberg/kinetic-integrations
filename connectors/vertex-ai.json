@@ -51,7 +51,7 @@
       "name": "Google Vertex AI Predict",
       "description": "POST /v1/projects/{project_id}/locations/{location}/publishers/google/models/{model_id}:predict",
       "method": "POST",
-      "path": "/v1/projects/{project_id}/locations/{location}/publishers/google/models/{model_id}:predict",
+      "path": "/v1/projects/{{inputs.Project ID}}/locations/{{inputs.Location}}/publishers/google/models/{{inputs.Model ID}}:predict",
       "inputs": [
         {
           "name": "Project ID",

@@ -42,7 +42,7 @@
       "name": "Submission Create",
       "description": "Creates a submission on a form.",
       "method": "POST",
-      "path": "/app/api/v1/kapps/{kapp_slug}/forms/{form_slug}/submissions",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/forms/{{inputs.Form Slug}}/submissions",
       "inputs": [
         {
           "name": "Kapp Slug",
@@ -83,7 +83,7 @@
       "name": "Submission Retrieve",
       "description": "Retrieves a submission by ID.",
       "method": "GET",
-      "path": "/app/api/v1/submissions/{submission_id}?include=values,details",
+      "path": "/app/api/v1/submissions/{{inputs.Submission ID}}?include=values,details",
       "inputs": [
         {
           "name": "Submission ID",
@@ -111,7 +111,7 @@
       "name": "Submission Update",
       "description": "Updates a submission's values and/or state.",
       "method": "PUT",
-      "path": "/app/api/v1/submissions/{submission_id}",
+      "path": "/app/api/v1/submissions/{{inputs.Submission ID}}",
       "inputs": [
         {
           "name": "Submission ID",
@@ -141,7 +141,7 @@
       "name": "Submission Delete",
       "description": "Deletes a submission.",
       "method": "DELETE",
-      "path": "/app/api/v1/submissions/{submission_id}",
+      "path": "/app/api/v1/submissions/{{inputs.Submission ID}}",
       "inputs": [
         {
           "name": "Submission ID",
@@ -156,7 +156,7 @@
       "name": "Submissions Search",
       "description": "Searches submissions with KQL.",
       "method": "GET",
-      "path": "/app/api/v1/kapps/{kapp_slug}/forms/{form_slug}/submissions?include=values&limit=25&q={query}",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/forms/{{inputs.Form Slug}}/submissions?include=values&limit=25&q={{inputs.Query}}",
       "inputs": [
         {
           "name": "Kapp Slug",
@@ -190,7 +190,7 @@
       "name": "Submission Update Status",
       "description": "Updates a submission's core state (Draft/Submitted/Closed).",
       "method": "PUT",
-      "path": "/app/api/v1/submissions/{submission_id}",
+      "path": "/app/api/v1/submissions/{{inputs.Submission ID}}",
       "inputs": [
         {
           "name": "Submission ID",
@@ -256,7 +256,7 @@
       "name": "User Retrieve",
       "description": "Retrieves a user by username.",
       "method": "GET",
-      "path": "/app/api/v1/users/{username}?include=details",
+      "path": "/app/api/v1/users/{{inputs.Username}}?include=details",
       "inputs": [
         {
           "name": "Username",
@@ -288,7 +288,7 @@
       "name": "User Update",
       "description": "Updates a user's properties.",
       "method": "PUT",
-      "path": "/app/api/v1/users/{username}",
+      "path": "/app/api/v1/users/{{inputs.Username}}",
       "inputs": [
         {
           "name": "Username",
@@ -323,7 +323,7 @@
       "name": "User Delete",
       "description": "Deletes a platform user.",
       "method": "DELETE",
-      "path": "/app/api/v1/users/{username}",
+      "path": "/app/api/v1/users/{{inputs.Username}}",
       "inputs": [
         {
           "name": "Username",
@@ -382,7 +382,7 @@
       "name": "Team Retrieve",
       "description": "Retrieves a team.",
       "method": "GET",
-      "path": "/app/api/v1/teams/{slug}?include=memberships",
+      "path": "/app/api/v1/teams/{{inputs.Slug}}?include=memberships",
       "inputs": [
         {
           "name": "Slug",
@@ -406,7 +406,7 @@
       "name": "Team Membership Create",
       "description": "Adds a user to a team.",
       "method": "POST",
-      "path": "/app/api/v1/teams/{slug}/memberships",
+      "path": "/app/api/v1/teams/{{inputs.Slug}}/memberships",
       "inputs": [
         {
           "name": "Team Slug",
@@ -426,7 +426,7 @@
       "name": "Team Membership Delete",
       "description": "Removes a user from a team.",
       "method": "DELETE",
-      "path": "/app/api/v1/teams/{slug}/memberships/{username}",
+      "path": "/app/api/v1/teams/{{inputs.Slug}}/memberships/{{inputs.Username}}",
       "inputs": [
         {
           "name": "Team Slug",
@@ -485,7 +485,7 @@
       "name": "Kapp Retrieve",
       "description": "Retrieves a kapp.",
       "method": "GET",
-      "path": "/app/api/v1/kapps/{slug}",
+      "path": "/app/api/v1/kapps/{{inputs.Slug}}",
       "inputs": [
         {
           "name": "Slug",
@@ -523,7 +523,7 @@
       "name": "Form Create",
       "description": "Creates a form in a kapp.",
       "method": "POST",
-      "path": "/app/api/v1/kapps/{kapp_slug}/forms",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/forms",
       "inputs": [
         {
           "name": "Kapp Slug",
@@ -558,7 +558,7 @@
       "name": "Form Retrieve",
       "description": "Retrieves a form.",
       "method": "GET",
-      "path": "/app/api/v1/kapps/{kapp_slug}/forms/{form_slug}?include=details",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/forms/{{inputs.Form Slug}}?include=details",
       "inputs": [
         {
           "name": "Kapp Slug",
@@ -587,7 +587,7 @@
       "name": "Forms List",
       "description": "Lists forms in a kapp.",
       "method": "GET",
-      "path": "/app/api/v1/kapps/{kapp_slug}/forms?include=details",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/forms?include=details",
       "inputs": [
         {
           "name": "Kapp Slug",
@@ -621,7 +621,7 @@
       "name": "Datastore Submission Create",
       "description": "Creates a datastore submission.",
       "method": "POST",
-      "path": "/app/api/v1/datastore/forms/{form_slug}/submissions",
+      "path": "/app/api/v1/datastore/forms/{{inputs.Form Slug}}/submissions",
       "inputs": [
         {
           "name": "Form Slug",
@@ -646,7 +646,7 @@
       "name": "Datastore Submission Retrieve",
       "description": "Retrieves a datastore submission.",
       "method": "GET",
-      "path": "/app/api/v1/datastore/submissions/{submission_id}?include=values",
+      "path": "/app/api/v1/datastore/submissions/{{inputs.Submission ID}}?include=values",
       "inputs": [
         {
           "name": "Submission ID",
@@ -666,7 +666,7 @@
       "name": "Datastore Submission Search",
       "description": "Searches datastore submissions with KQL.",
       "method": "GET",
-      "path": "/app/api/v1/datastore/forms/{form_slug}/submissions?include=values&limit=25&q={query}",
+      "path": "/app/api/v1/datastore/forms/{{inputs.Form Slug}}/submissions?include=values&limit=25&q={{inputs.Query}}",
       "inputs": [
         {
           "name": "Form Slug",
@@ -690,7 +690,7 @@
       "name": "Workflow Create",
       "description": "Creates a workflow on a kapp.",
       "method": "POST",
-      "path": "/app/api/v1/kapps/{kapp_slug}/workflows",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/workflows",
       "inputs": [
         {
           "name": "Kapp Slug",
@@ -726,7 +726,7 @@
       "name": "Workflow List",
       "description": "Lists workflows on a kapp.",
       "method": "GET",
-      "path": "/app/api/v1/kapps/{kapp_slug}/workflows",
+      "path": "/app/api/v1/kapps/{{inputs.Kapp Slug}}/workflows",
       "inputs": [
         {
           "name": "Kapp Slug",

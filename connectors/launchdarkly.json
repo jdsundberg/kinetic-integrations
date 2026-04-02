@@ -27,7 +27,7 @@
       "name": "LaunchDarkly Flag List",
       "description": "GET /api/v2/flags/{projectKey}",
       "method": "GET",
-      "path": "/api/v2/flags/{projectKey}",
+      "path": "/api/v2/flags/{{inputs.Projectkey}}",
       "inputs": [
         {
           "name": "Project Key",
@@ -46,7 +46,7 @@
       "name": "LaunchDarkly Flag Toggle",
       "description": "PATCH /api/v2/flags/{projectKey}/{flagKey}",
       "method": "PATCH",
-      "path": "/api/v2/flags/{projectKey}/{flagKey}",
+      "path": "/api/v2/flags/{{inputs.Projectkey}}/{{inputs.Flagkey}}",
       "inputs": [
         {
           "name": "Project Key",

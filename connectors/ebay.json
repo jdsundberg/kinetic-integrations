@@ -41,7 +41,7 @@
       "name": "eBay Item Search",
       "description": "GET /buy/browse/v1/item_summary/search?q={query}",
       "method": "GET",
-      "path": "/buy/browse/v1/item_summary/search?q={query}",
+      "path": "/buy/browse/v1/item_summary/search?q={{inputs.Query}}",
       "inputs": [
         {
           "name": "Query",

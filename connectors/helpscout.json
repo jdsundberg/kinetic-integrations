@@ -61,7 +61,7 @@
       "name": "Help Scout Conversation List",
       "description": "GET /v2/conversations?mailbox={mailbox_id}",
       "method": "GET",
-      "path": "/v2/conversations?mailbox={mailbox_id}",
+      "path": "/v2/conversations?mailbox={{inputs.Mailbox ID}}",
       "inputs": [
         {
           "name": "Mailbox ID",

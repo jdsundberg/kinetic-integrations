@@ -36,7 +36,7 @@
       "name": "Bandwidth Message Send",
       "description": "POST /api/v2/users/{account_id}/messages",
       "method": "POST",
-      "path": "/api/v2/users/{account_id}/messages",
+      "path": "/api/v2/users/{{inputs.Account Id}}/messages",
       "inputs": [
         {
           "name": "From",

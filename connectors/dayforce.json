@@ -51,7 +51,7 @@
       "name": "Dayforce Employee Retrieve",
       "description": "GET /Api/{clientNamespace}/V1/Employees/{xRefCode}",
       "method": "GET",
-      "path": "/Api/{clientNamespace}/V1/Employees/{xRefCode}",
+      "path": "/Api/{{inputs.Clientnamespace}}/V1/Employees/{{inputs.Xrefcode}}",
       "inputs": [
         {
           "name": "Client Namespace",

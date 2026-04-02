@@ -61,7 +61,7 @@
       "name": "Microsoft Sentinel Incident Create",
       "description": "PUT /subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents/{incident_id}?api-version=2024-03-01",
       "method": "PUT",
-      "path": "/subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents/{incident_id}?api-version=2024-03-01",
+      "path": "/subscriptions/{{inputs.Subscription ID}}/resourceGroups/{{inputs.Rg}}/providers/Microsoft.SecurityInsights/incidents/{{inputs.Incident ID}}?api-version=2024-03-01",
       "inputs": [
         {
           "name": "Subscription ID",
@@ -101,7 +101,7 @@
       "name": "Microsoft Sentinel Incident List",
       "description": "GET /subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01",
       "method": "GET",
-      "path": "/subscriptions/{subscription_id}/resourceGroups/{rg}/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01",
+      "path": "/subscriptions/{{inputs.Subscription ID}}/resourceGroups/{{inputs.Rg}}/providers/Microsoft.SecurityInsights/incidents?api-version=2024-03-01",
       "inputs": [
         {
           "name": "Subscription ID",

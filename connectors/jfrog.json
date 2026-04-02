@@ -31,7 +31,7 @@
       "name": "JFrog Artifact Deploy",
       "description": "PUT /{repo_key}/{artifact_path}",
       "method": "PUT",
-      "path": "/{repo_key}/{artifact_path}",
+      "path": "/{{inputs.Repo Key}}/{{inputs.Artifact Path}}",
       "inputs": [
         {
           "name": "Repo Key",
@@ -56,7 +56,7 @@
       "name": "JFrog Artifact Search",
       "description": "GET /api/search/artifact?name={name}",
       "method": "GET",
-      "path": "/api/search/artifact?name={name}",
+      "path": "/api/search/artifact?name={{inputs.Name}}",
       "inputs": [
         {
           "name": "Name",

@@ -44,7 +44,7 @@
       "name": "Facebook Page Post Create",
       "description": "POST /v19.0/{page_id}/feed",
       "method": "POST",
-      "path": "/v19.0/{page_id}/feed",
+      "path": "/v19.0/{{inputs.Page ID}}/feed",
       "inputs": [
         {
           "name": "Page ID",

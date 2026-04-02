@@ -170,7 +170,7 @@
       "name": "Oracle Fusion Cloud Financials Invoice Retrieve",
       "description": "GET /fscmRestApi/resources/v1/invoices/{invoice_id}",
       "method": "GET",
-      "path": "/fscmRestApi/resources/v1/invoices/{invoice_id}",
+      "path": "/fscmRestApi/resources/v1/invoices/{{inputs.Invoice Id}}",
       "inputs": [
         {
           "name": "Invoice Id",

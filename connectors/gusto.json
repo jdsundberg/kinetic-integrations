@@ -26,7 +26,7 @@
       "name": "Gusto Employee Create",
       "description": "POST /v1/companies/{company_id}/employees",
       "method": "POST",
-      "path": "/v1/companies/{company_id}/employees",
+      "path": "/v1/companies/{{inputs.Company Id}}/employees",
       "inputs": [
         {
           "name": "First Name",
@@ -56,7 +56,7 @@
       "name": "Gusto Employee Retrieve",
       "description": "GET /v1/employees/{employee_id}",
       "method": "GET",
-      "path": "/v1/employees/{employee_id}",
+      "path": "/v1/employees/{{inputs.Employee ID}}",
       "inputs": [
         {
           "name": "Employee ID",
@@ -84,7 +84,7 @@
       "name": "Gusto Employee Update",
       "description": "PUT /v1/employees/{employee_id}",
       "method": "PUT",
-      "path": "/v1/employees/{employee_id}",
+      "path": "/v1/employees/{{inputs.Employee ID}}",
       "inputs": [
         {
           "name": "Employee ID",
@@ -114,7 +114,7 @@
       "name": "Gusto Payroll List",
       "description": "GET /v1/companies/{company_id}/payrolls",
       "method": "GET",
-      "path": "/v1/companies/{company_id}/payrolls",
+      "path": "/v1/companies/{{inputs.Company ID}}/payrolls",
       "inputs": [
         {
           "name": "Company ID",
@@ -152,7 +152,7 @@
       "name": "Gusto Time Off Request",
       "description": "POST /v1/employees/{employee_id}/time_off_requests",
       "method": "POST",
-      "path": "/v1/employees/{employee_id}/time_off_requests",
+      "path": "/v1/employees/{{inputs.Employee ID}}/time_off_requests",
       "inputs": [
         {
           "name": "Employee ID",

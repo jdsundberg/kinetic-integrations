@@ -26,7 +26,7 @@
       "name": "Cisco Meraki Network List",
       "description": "GET /api/v1/organizations/{organizationId}/networks",
       "method": "GET",
-      "path": "/api/v1/organizations/{organizationId}/networks",
+      "path": "/api/v1/organizations/{{inputs.Organizationid}}/networks",
       "inputs": [
         {
           "name": "Organization ID",

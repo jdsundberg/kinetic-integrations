@@ -51,7 +51,7 @@
       "name": "Drift Message Send",
       "description": "POST /conversations/{conversation_id}/messages",
       "method": "POST",
-      "path": "/conversations/{conversation_id}/messages",
+      "path": "/conversations/{{inputs.Conversation ID}}/messages",
       "inputs": [
         {
           "name": "Conversation ID",

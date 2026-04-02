@@ -80,7 +80,7 @@
       "name": "CrowdStrike Host Search",
       "description": "GET /devices/queries/devices/v1?filter={filter}",
       "method": "GET",
-      "path": "/devices/queries/devices/v1?filter={filter}",
+      "path": "/devices/queries/devices/v1?filter={{inputs.Filter}}",
       "inputs": [
         {
           "name": "Filter",

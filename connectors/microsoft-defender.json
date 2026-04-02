@@ -3,26 +3,182 @@
   "service": "Microsoft Defender for Endpoint",
   "version": 1,
   "category": "Security & Identity",
-  "description": "Microsoft Defender for Endpoint — threat detection, investigation, alerts, and device management.",
+  "description": "Microsoft Defender for Endpoint \u2014 threat detection, investigation, alerts, and device management.",
   "docsUrl": "https://learn.microsoft.com/en-us/defender-endpoint/api/apis-intro",
   "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0078D4\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">D</text></svg>",
   "auth": {
     "type": "oauth2",
     "properties": [
-      { "name": "token_url", "required": true, "description": "Azure AD token endpoint." },
-      { "name": "client_id", "required": true, "description": "Azure AD app client ID." },
-      { "name": "client_secret", "required": true, "encrypted": true, "description": "Azure AD app client secret." },
-      { "name": "instance_url", "required": false, "description": "API base URL (default: https://api.securitycenter.microsoft.com)." }
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "Azure AD token endpoint."
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "Azure AD app client ID."
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "encrypted": true,
+        "description": "Azure AD app client secret."
+      },
+      {
+        "name": "instance_url",
+        "required": false,
+        "description": "API base URL (default: https://api.securitycenter.microsoft.com)."
+      }
     ]
   },
-  "defaultHeaders": { "Accept": "application/json" },
+  "defaultHeaders": {
+    "Accept": "application/json"
+  },
   "routines": [
-    { "id": "alert_list", "name": "Defender Alert List", "description": "Lists recent security alerts.", "method": "GET", "path": "/api/alerts?$top=25", "inputs": [], "outputs": [{ "name": "Alerts JSON", "path": "value" }] },
-    { "id": "alert_retrieve", "name": "Defender Alert Retrieve", "description": "Retrieves a specific alert.", "method": "GET", "path": "/api/alerts/{alert_id}", "inputs": [{ "name": "Alert ID", "required": true, "pathParam": true }], "outputs": [{ "name": "Title", "path": "title" }, { "name": "Severity", "path": "severity" }, { "name": "Status", "path": "status" }] },
-    { "id": "alert_update", "name": "Defender Alert Update", "description": "Updates alert status or assignment.", "method": "PATCH", "path": "/api/alerts/{alert_id}", "inputs": [{ "name": "Alert ID", "required": true, "pathParam": true }, { "name": "Status", "required": false, "mapTo": "status" }, { "name": "Assigned To", "required": false, "mapTo": "assignedTo" }], "outputs": [{ "name": "Status", "path": "status" }] },
-    { "id": "machine_list", "name": "Defender Machine List", "description": "Lists managed machines.", "method": "GET", "path": "/api/machines?$top=25", "inputs": [], "outputs": [{ "name": "Machines JSON", "path": "value" }] },
-    { "id": "machine_isolate", "name": "Defender Machine Isolate", "description": "Isolates a machine from the network.", "method": "POST", "path": "/api/machines/{machine_id}/isolate", "inputs": [{ "name": "Machine ID", "required": true, "pathParam": true }, { "name": "Comment", "required": true, "mapTo": "Comment" }, { "name": "Isolation Type", "required": true, "description": "Full or Selective.", "mapTo": "IsolationType" }], "outputs": [{ "name": "Action ID", "path": "id" }, { "name": "Status", "path": "status" }] },
-    { "id": "vulnerability_list", "name": "Defender Vulnerability List", "description": "Lists known vulnerabilities.", "method": "GET", "path": "/api/vulnerabilities?$top=25", "inputs": [], "outputs": [{ "name": "Vulnerabilities JSON", "path": "value" }] },
-    { "id": "test", "name": "Microsoft Defender Connection Test", "description": "Validates authentication.", "method": "GET", "path": "/api/alerts?$top=1", "inputs": [], "outputs": [] }
+    {
+      "id": "alert_list",
+      "name": "Defender Alert List",
+      "description": "Lists recent security alerts.",
+      "method": "GET",
+      "path": "/api/alerts?$top=25",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Alerts JSON",
+          "path": "value"
+        }
+      ]
+    },
+    {
+      "id": "alert_retrieve",
+      "name": "Defender Alert Retrieve",
+      "description": "Retrieves a specific alert.",
+      "method": "GET",
+      "path": "/api/alerts/{{inputs.Alert ID}}",
+      "inputs": [
+        {
+          "name": "Alert ID",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Title",
+          "path": "title"
+        },
+        {
+          "name": "Severity",
+          "path": "severity"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "alert_update",
+      "name": "Defender Alert Update",
+      "description": "Updates alert status or assignment.",
+      "method": "PATCH",
+      "path": "/api/alerts/{{inputs.Alert ID}}",
+      "inputs": [
+        {
+          "name": "Alert ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "status"
+        },
+        {
+          "name": "Assigned To",
+          "required": false,
+          "mapTo": "assignedTo"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "machine_list",
+      "name": "Defender Machine List",
+      "description": "Lists managed machines.",
+      "method": "GET",
+      "path": "/api/machines?$top=25",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Machines JSON",
+          "path": "value"
+        }
+      ]
+    },
+    {
+      "id": "machine_isolate",
+      "name": "Defender Machine Isolate",
+      "description": "Isolates a machine from the network.",
+      "method": "POST",
+      "path": "/api/machines/{{inputs.Machine ID}}/isolate",
+      "inputs": [
+        {
+          "name": "Machine ID",
+          "required": true,
+          "pathParam": true
+        },
+        {
+          "name": "Comment",
+          "required": true,
+          "mapTo": "Comment"
+        },
+        {
+          "name": "Isolation Type",
+          "required": true,
+          "description": "Full or Selective.",
+          "mapTo": "IsolationType"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Action ID",
+          "path": "id"
+        },
+        {
+          "name": "Status",
+          "path": "status"
+        }
+      ]
+    },
+    {
+      "id": "vulnerability_list",
+      "name": "Defender Vulnerability List",
+      "description": "Lists known vulnerabilities.",
+      "method": "GET",
+      "path": "/api/vulnerabilities?$top=25",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Vulnerabilities JSON",
+          "path": "value"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "name": "Microsoft Defender Connection Test",
+      "description": "Validates authentication.",
+      "method": "GET",
+      "path": "/api/alerts?$top=1",
+      "inputs": [],
+      "outputs": []
+    }
   ]
 }

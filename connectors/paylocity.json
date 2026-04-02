@@ -46,7 +46,7 @@
       "name": "Paylocity Employee Retrieve",
       "description": "GET /api/v2/companies/{companyId}/employees/{employeeId}",
       "method": "GET",
-      "path": "/api/v2/companies/{companyId}/employees/{employeeId}",
+      "path": "/api/v2/companies/{{inputs.Companyid}}/employees/{{inputs.Employeeid}}",
       "inputs": [
         {
           "name": "Company ID",

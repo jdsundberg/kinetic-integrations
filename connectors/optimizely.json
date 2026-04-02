@@ -26,7 +26,7 @@
       "name": "Optimizely Experiment List",
       "description": "GET /v2/experiments?project_id={project_id}",
       "method": "GET",
-      "path": "/v2/experiments?project_id={project_id}",
+      "path": "/v2/experiments?project_id={{inputs.Project ID}}",
       "inputs": [
         {
           "name": "Project ID",
@@ -46,7 +46,7 @@
       "name": "Optimizely Experiment Results",
       "description": "GET /v2/experiments/{experiment_id}/results",
       "method": "GET",
-      "path": "/v2/experiments/{experiment_id}/results",
+      "path": "/v2/experiments/{{inputs.Experiment ID}}/results",
       "inputs": [
         {
           "name": "Experiment ID",

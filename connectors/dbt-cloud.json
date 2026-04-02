@@ -31,7 +31,7 @@
       "name": "dbt Cloud Job Run",
       "description": "POST /api/v2/accounts/{account_id}/jobs/{job_id}/run/",
       "method": "POST",
-      "path": "/api/v2/accounts/{account_id}/jobs/{job_id}/run/",
+      "path": "/api/v2/accounts/{{inputs.Account ID}}/jobs/{{inputs.Job ID}}/run/",
       "inputs": [
         {
           "name": "Account ID",

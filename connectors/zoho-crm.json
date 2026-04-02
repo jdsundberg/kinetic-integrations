@@ -46,7 +46,7 @@
       "name": "Zoho CRM Record Create",
       "description": "POST /crm/v6/{module}",
       "method": "POST",
-      "path": "/crm/v6/{module}",
+      "path": "/crm/v6/{{inputs.Module}}",
       "inputs": [
         {
           "name": "Module",
@@ -71,7 +71,7 @@
       "name": "Zoho CRM Record List",
       "description": "GET /crm/v6/{module}",
       "method": "GET",
-      "path": "/crm/v6/{module}",
+      "path": "/crm/v6/{{inputs.Module}}",
       "inputs": [
         {
           "name": "Module",

@@ -100,7 +100,7 @@
       "name": "Jackson Hewitt Online Return Retrieve",
       "description": "GET /api/v1/returns/{return_id}",
       "method": "GET",
-      "path": "/api/v1/returns/{return_id}",
+      "path": "/api/v1/returns/{{inputs.Return Id}}",
       "inputs": [
         {
           "name": "Return Id",
@@ -132,7 +132,7 @@
       "name": "Jackson Hewitt Online Return Status",
       "description": "GET /api/v1/returns/{return_id}/status",
       "method": "GET",
-      "path": "/api/v1/returns/{return_id}/status",
+      "path": "/api/v1/returns/{{inputs.Return Id}}/status",
       "inputs": [
         {
           "name": "Return Id",
@@ -160,7 +160,7 @@
       "name": "Jackson Hewitt Online Return E-File",
       "description": "POST /api/v1/returns/{return_id}/efile",
       "method": "POST",
-      "path": "/api/v1/returns/{return_id}/efile",
+      "path": "/api/v1/returns/{{inputs.Return Id}}/efile",
       "inputs": [
         {
           "name": "Return Id",

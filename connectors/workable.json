@@ -31,7 +31,7 @@
       "name": "Workable Candidate Create",
       "description": "POST /spi/v3/accounts/{subdomain}/jobs/{shortcode}/candidates",
       "method": "POST",
-      "path": "/spi/v3/accounts/{subdomain}/jobs/{shortcode}/candidates",
+      "path": "/spi/v3/accounts/{{inputs.Subdomain}}/jobs/{{inputs.Shortcode}}/candidates",
       "inputs": [
         {
           "name": "Subdomain",

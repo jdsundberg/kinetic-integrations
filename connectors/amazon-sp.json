@@ -36,7 +36,7 @@
       "name": "Amazon Seller Order List",
       "description": "GET /orders/v0/orders?CreatedAfter={created_after}",
       "method": "GET",
-      "path": "/orders/v0/orders?CreatedAfter={created_after}",
+      "path": "/orders/v0/orders?CreatedAfter={{inputs.Created After}}",
       "inputs": [
         {
           "name": "Created After",

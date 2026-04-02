@@ -32,7 +32,7 @@
       "name": "FreshBooks Client Create",
       "description": "POST /accounting/account/{account_id}/users/clients",
       "method": "POST",
-      "path": "/accounting/account/{account_id}/users/clients",
+      "path": "/accounting/account/{{inputs.Account Id}}/users/clients",
       "inputs": [
         {
           "name": "First Name",
@@ -62,7 +62,7 @@
       "name": "FreshBooks Expense Create",
       "description": "POST /accounting/account/{account_id}/expenses/expenses",
       "method": "POST",
-      "path": "/accounting/account/{account_id}/expenses/expenses",
+      "path": "/accounting/account/{{inputs.Account Id}}/expenses/expenses",
       "inputs": [
         {
           "name": "Amount",
@@ -92,7 +92,7 @@
       "name": "FreshBooks Invoice Create",
       "description": "POST /accounting/account/{account_id}/invoices/invoices",
       "method": "POST",
-      "path": "/accounting/account/{account_id}/invoices/invoices",
+      "path": "/accounting/account/{{inputs.Account Id}}/invoices/invoices",
       "inputs": [
         {
           "name": "Customer ID",
@@ -117,7 +117,7 @@
       "name": "FreshBooks Payment Create",
       "description": "POST /accounting/account/{account_id}/payments/payments",
       "method": "POST",
-      "path": "/accounting/account/{account_id}/payments/payments",
+      "path": "/accounting/account/{{inputs.Account Id}}/payments/payments",
       "inputs": [
         {
           "name": "Invoice ID",

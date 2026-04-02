@@ -275,7 +275,7 @@
       "name": "Terraform Cloud Workspace List",
       "description": "GET /api/v2/organizations/{organization}/workspaces",
       "method": "GET",
-      "path": "/api/v2/organizations/{organization}/workspaces",
+      "path": "/api/v2/organizations/{{inputs.Organization}}/workspaces",
       "inputs": [
         {
           "name": "Organization",

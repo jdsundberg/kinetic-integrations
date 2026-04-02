@@ -31,7 +31,7 @@
       "name": "Tines Story Run",
       "description": "POST /api/v1/stories/{story_id}/trigger",
       "method": "POST",
-      "path": "/api/v1/stories/{story_id}/trigger",
+      "path": "/api/v1/stories/{{inputs.Story ID}}/trigger",
       "inputs": [
         {
           "name": "Story ID",

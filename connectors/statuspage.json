@@ -26,7 +26,7 @@
       "name": "Statuspage Incident Create",
       "description": "POST /v1/pages/{page_id}/incidents",
       "method": "POST",
-      "path": "/v1/pages/{page_id}/incidents",
+      "path": "/v1/pages/{{inputs.Page ID}}/incidents",
       "inputs": [
         {
           "name": "Page ID",
@@ -61,7 +61,7 @@
       "name": "Statuspage Incident List",
       "description": "GET /v1/pages/{page_id}/incidents",
       "method": "GET",
-      "path": "/v1/pages/{page_id}/incidents",
+      "path": "/v1/pages/{{inputs.Page ID}}/incidents",
       "inputs": [
         {
           "name": "Page ID",

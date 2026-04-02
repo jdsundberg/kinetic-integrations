@@ -40,7 +40,7 @@
       "name": "Front Message Send",
       "description": "POST /channels/{channel_id}/messages",
       "method": "POST",
-      "path": "/channels/{channel_id}/messages",
+      "path": "/channels/{{inputs.Channel ID}}/messages",
       "inputs": [
         {
           "name": "Channel ID",

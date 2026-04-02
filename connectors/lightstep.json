@@ -36,7 +36,7 @@
       "name": "Lightstep Stream List",
       "description": "GET /public/v0.2/{organization}/projects/{project}/streams",
       "method": "GET",
-      "path": "/public/v0.2/{organization}/projects/{project}/streams",
+      "path": "/public/v0.2/{{inputs.Organization}}/projects/{{inputs.Project}}/streams",
       "inputs": [
         {
           "name": "Organization",

@@ -26,7 +26,7 @@
       "name": "HelloSign Signature Request Cancel",
       "description": "POST /v3/signature_request/cancel/{signature_request_id}",
       "method": "POST",
-      "path": "/v3/signature_request/cancel/{signature_request_id}",
+      "path": "/v3/signature_request/cancel/{{inputs.Signature Request ID}}",
       "inputs": [
         {
           "name": "Signature Request ID",
@@ -41,7 +41,7 @@
       "name": "HelloSign Signature Request Retrieve",
       "description": "GET /v3/signature_request/{signature_request_id}",
       "method": "GET",
-      "path": "/v3/signature_request/{signature_request_id}",
+      "path": "/v3/signature_request/{{inputs.Signature Request ID}}",
       "inputs": [
         {
           "name": "Signature Request ID",

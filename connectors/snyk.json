@@ -27,7 +27,7 @@
       "name": "Snyk Issue List",
       "description": "GET /rest/orgs/{org_id}/issues?version=2024-06-10",
       "method": "GET",
-      "path": "/rest/orgs/{org_id}/issues?version=2024-06-10",
+      "path": "/rest/orgs/{{inputs.Org ID}}/issues?version=2024-06-10",
       "inputs": [
         {
           "name": "Org ID",
@@ -47,7 +47,7 @@
       "name": "Snyk Project List",
       "description": "GET /rest/orgs/{org_id}/projects?version=2024-06-10",
       "method": "GET",
-      "path": "/rest/orgs/{org_id}/projects?version=2024-06-10",
+      "path": "/rest/orgs/{{inputs.Org ID}}/projects?version=2024-06-10",
       "inputs": [
         {
           "name": "Org ID",

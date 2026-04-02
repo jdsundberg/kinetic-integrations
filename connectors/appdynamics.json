@@ -50,7 +50,7 @@
       "name": "AppDynamics Health Violations",
       "description": "GET /controller/rest/applications/{applicationId}/problems/healthrule-violations?output=JSON",
       "method": "GET",
-      "path": "/controller/rest/applications/{applicationId}/problems/healthrule-violations?output=JSON",
+      "path": "/controller/rest/applications/{{inputs.Applicationid}}/problems/healthrule-violations?output=JSON",
       "inputs": [
         {
           "name": "Application ID",
