@@ -35,9 +35,9 @@
     {
       "id": "document_download",
       "name": "DocuSign Document Download",
-      "description": "GET /restapi/v2.1/accounts//envelopes/<%= @inputs['Envelope Id'] %>/documents/<%= @inputs['Document Id'] %>",
+      "description": "GET /restapi/v2.1/accounts//envelopes/{{inputs.Envelope Id}}/documents/{{inputs.Document Id}}",
       "method": "GET",
-      "path": "/restapi/v2.1/accounts/envelopes/<%= @inputs['Envelope Id'] %>/documents/<%= @inputs['Document Id'] %>",
+      "path": "/restapi/v2.1/accounts/envelopes/{{inputs.Envelope Id}}/documents/{{inputs.Document Id}}",
       "inputs": [
         {
           "name": "Envelope Id",
@@ -125,9 +125,9 @@
     {
       "id": "envelope_retrieve",
       "name": "DocuSign Envelope Retrieve",
-      "description": "GET /restapi/v2.1/accounts//envelopes/<%= @inputs['Envelope Id'] %>",
+      "description": "GET /restapi/v2.1/accounts//envelopes/{{inputs.Envelope Id}}",
       "method": "GET",
-      "path": "/restapi/v2.1/accounts/envelopes/<%= @inputs['Envelope Id'] %>",
+      "path": "/restapi/v2.1/accounts/envelopes/{{inputs.Envelope Id}}",
       "inputs": [
         {
           "name": "Envelope Id",
@@ -176,9 +176,9 @@
     {
       "id": "envelope_send",
       "name": "DocuSign Envelope Send",
-      "description": "PUT /restapi/v2.1/accounts//envelopes/<%= @inputs['Envelope Id'] %>",
+      "description": "PUT /restapi/v2.1/accounts//envelopes/{{inputs.Envelope Id}}",
       "method": "PUT",
-      "path": "/restapi/v2.1/accounts/envelopes/<%= @inputs['Envelope Id'] %>",
+      "path": "/restapi/v2.1/accounts/envelopes/{{inputs.Envelope Id}}",
       "inputs": [
         {
           "name": "Envelope Id",
@@ -212,9 +212,9 @@
     {
       "id": "recipient_add",
       "name": "DocuSign Recipient Add",
-      "description": "POST /restapi/v2.1/accounts//envelopes/<%= @inputs['Envelope Id'] %>/recipients",
+      "description": "POST /restapi/v2.1/accounts//envelopes/{{inputs.Envelope Id}}/recipients",
       "method": "POST",
-      "path": "/restapi/v2.1/accounts/envelopes/<%= @inputs['Envelope Id'] %>/recipients",
+      "path": "/restapi/v2.1/accounts/envelopes/{{inputs.Envelope Id}}/recipients",
       "inputs": [
         {
           "name": "Envelope Id",
@@ -268,9 +268,9 @@
     {
       "id": "template_retrieve",
       "name": "DocuSign Template Retrieve",
-      "description": "GET /restapi/v2.1/accounts//templates/<%= @inputs['Template Id'] %>",
+      "description": "GET /restapi/v2.1/accounts//templates/{{inputs.Template Id}}",
       "method": "GET",
-      "path": "/restapi/v2.1/accounts/templates/<%= @inputs['Template Id'] %>",
+      "path": "/restapi/v2.1/accounts/templates/{{inputs.Template Id}}",
       "inputs": [
         {
           "name": "Template Id",

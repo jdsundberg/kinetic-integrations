@@ -100,9 +100,9 @@
     {
       "id": "org_retrieve",
       "name": "Workday Organization Retrieve",
-      "description": "GET /api/v1/organizations/<%= @inputs['Org Id'] %>",
+      "description": "GET /api/v1/organizations/{{inputs.Org Id}}",
       "method": "GET",
-      "path": "/api/v1/organizations/<%= @inputs['Org Id'] %>",
+      "path": "/api/v1/organizations/{{inputs.Org Id}}",
       "inputs": [
         {
           "name": "Org Id",
@@ -291,9 +291,9 @@
     {
       "id": "worker_retrieve",
       "name": "Workday Worker Retrieve",
-      "description": "GET /api/v1/workers/<%= @inputs['Worker Id'] %>",
+      "description": "GET /api/v1/workers/{{inputs.Worker Id}}",
       "method": "GET",
-      "path": "/api/v1/workers/<%= @inputs['Worker Id'] %>",
+      "path": "/api/v1/workers/{{inputs.Worker Id}}",
       "inputs": [
         {
           "name": "Worker Id",

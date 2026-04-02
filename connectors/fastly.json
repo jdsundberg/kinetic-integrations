@@ -29,9 +29,9 @@
     {
       "id": "backend_add",
       "name": "Fastly Backend Add",
-      "description": "POST https://api.fastly.com/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/backend",
+      "description": "POST https://api.fastly.com/service/{{inputs.Service Id}}/version/{{inputs.Version}}/backend",
       "method": "POST",
-      "path": "/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/backend",
+      "path": "/service/{{inputs.Service Id}}/version/{{inputs.Version}}/backend",
       "inputs": [
         {
           "name": "Service Id",
@@ -99,9 +99,9 @@
     {
       "id": "domain_add",
       "name": "Fastly Domain Add",
-      "description": "POST https://api.fastly.com/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/domain",
+      "description": "POST https://api.fastly.com/service/{{inputs.Service Id}}/version/{{inputs.Version}}/domain",
       "method": "POST",
-      "path": "/service/<%= @inputs['Service Id'] %>/version/<%= @inputs['Version'] %>/domain",
+      "path": "/service/{{inputs.Service Id}}/version/{{inputs.Version}}/domain",
       "inputs": [
         {
           "name": "Service Id",
@@ -154,9 +154,9 @@
     {
       "id": "purge_all",
       "name": "Fastly Purge All",
-      "description": "POST https://api.fastly.com/service/<%= @inputs['Service Id'] %>/purge_all",
+      "description": "POST https://api.fastly.com/service/{{inputs.Service Id}}/purge_all",
       "method": "POST",
-      "path": "/service/<%= @inputs['Service Id'] %>/purge_all",
+      "path": "/service/{{inputs.Service Id}}/purge_all",
       "inputs": [
         {
           "name": "Service Id",

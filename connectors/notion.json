@@ -31,9 +31,9 @@
     {
       "id": "block_append",
       "name": "Notion Block Append",
-      "description": "PATCH https://api.notion.com/v1/blocks/<%= @inputs['Block Id'] %>/children",
+      "description": "PATCH https://api.notion.com/v1/blocks/{{inputs.Block Id}}/children",
       "method": "PATCH",
-      "path": "/v1/blocks/<%= @inputs['Block Id'] %>/children",
+      "path": "/v1/blocks/{{inputs.Block Id}}/children",
       "inputs": [
         {
           "name": "Block Id",
@@ -114,9 +114,9 @@
     {
       "id": "database_query",
       "name": "Notion Database Query",
-      "description": "POST https://api.notion.com/v1/databases/<%= @inputs['Database Id'] %>/query",
+      "description": "POST https://api.notion.com/v1/databases/{{inputs.Database Id}}/query",
       "method": "POST",
-      "path": "/v1/databases/<%= @inputs['Database Id'] %>/query",
+      "path": "/v1/databases/{{inputs.Database Id}}/query",
       "inputs": [
         {
           "name": "Database Id",
@@ -224,9 +224,9 @@
     {
       "id": "page_update",
       "name": "Notion Page Update",
-      "description": "PATCH https://api.notion.com/v1/pages/<%= @inputs['Page Id'] %>",
+      "description": "PATCH https://api.notion.com/v1/pages/{{inputs.Page Id}}",
       "method": "PATCH",
-      "path": "/v1/pages/<%= @inputs['Page Id'] %>",
+      "path": "/v1/pages/{{inputs.Page Id}}",
       "inputs": [
         {
           "name": "Page Id",

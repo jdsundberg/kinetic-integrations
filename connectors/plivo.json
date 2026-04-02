@@ -93,7 +93,7 @@
       "name": "Plivo Message Retrieve",
       "description": "Plivo Message Retrieve.",
       "method": "GET",
-      "path": "/v1/Account/Message/<%= @inputs['Message Uuid'] %>/",
+      "path": "/v1/Account/Message/{{inputs.Message Uuid}}/",
       "inputs": [
         {
           "name": "Message Uuid",
@@ -140,7 +140,7 @@
       "name": "Plivo Number Search",
       "description": "Plivo Number Search.",
       "method": "GET",
-      "path": "/v1/Account/PhoneNumber/?country_iso=<%= @inputs['Country Iso'] %>&type=<%= @inputs['Type'] %>&limit=<%= @inputs['Limit'] %>",
+      "path": "/v1/Account/PhoneNumber/?country_iso={{inputs.Country Iso}}&type={{inputs.Type}}&limit={{inputs.Limit}}",
       "inputs": [
         {
           "name": "Country Iso",

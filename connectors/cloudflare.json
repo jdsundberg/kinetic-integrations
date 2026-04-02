@@ -31,9 +31,9 @@
     {
       "id": "dns_create",
       "name": "Cloudflare DNS Create",
-      "description": "POST https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
+      "description": "POST https://api.cloudflare.com/client/v4/zones/{{inputs.Zone Id}}/dns_records",
       "method": "POST",
-      "path": "/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records",
+      "path": "/client/v4/zones/{{inputs.Zone Id}}/dns_records",
       "inputs": [
         {
           "name": "Zone Id",
@@ -100,9 +100,9 @@
     {
       "id": "dns_delete",
       "name": "Cloudflare DNS Delete",
-      "description": "DELETE https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "description": "DELETE https://api.cloudflare.com/client/v4/zones/{{inputs.Zone Id}}/dns_records/{{inputs.Record Id}}",
       "method": "DELETE",
-      "path": "/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "path": "/client/v4/zones/{{inputs.Zone Id}}/dns_records/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Zone Id",
@@ -135,9 +135,9 @@
     {
       "id": "dns_update",
       "name": "Cloudflare DNS Update",
-      "description": "PUT https://api.cloudflare.com/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "description": "PUT https://api.cloudflare.com/client/v4/zones/{{inputs.Zone Id}}/dns_records/{{inputs.Record Id}}",
       "method": "PUT",
-      "path": "/client/v4/zones/<%= @inputs['Zone Id'] %>/dns_records/<%= @inputs['Record Id'] %>",
+      "path": "/client/v4/zones/{{inputs.Zone Id}}/dns_records/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Zone Id",
@@ -223,9 +223,9 @@
     {
       "id": "zone_list",
       "name": "Cloudflare Zone List",
-      "description": "GET https://api.cloudflare.com/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
+      "description": "GET https://api.cloudflare.com/client/v4/zones?name={{inputs.Name}}&page={{inputs.Page}}&per_page={{inputs.Per Page}}",
       "method": "GET",
-      "path": "/client/v4/zones?name=<%= @inputs['Name'] %>&page=<%= @inputs['Page'] %>&per_page=<%= @inputs['Per Page'] %>",
+      "path": "/client/v4/zones?name={{inputs.Name}}&page={{inputs.Page}}&per_page={{inputs.Per Page}}",
       "inputs": [
         {
           "name": "Name",

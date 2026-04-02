@@ -213,9 +213,9 @@
     {
       "id": "contact_update",
       "name": "HubSpot Contact Update",
-      "description": "PATCH https://api.hubapi.com/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
+      "description": "PATCH https://api.hubapi.com/crm/v3/objects/contacts/{{inputs.Contact Id}}",
       "method": "PATCH",
-      "path": "/crm/v3/objects/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/crm/v3/objects/contacts/{{inputs.Contact Id}}",
       "inputs": [
         {
           "name": "Contact Id",
@@ -344,9 +344,9 @@
     {
       "id": "deal_update",
       "name": "HubSpot Deal Update",
-      "description": "PATCH https://api.hubapi.com/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
+      "description": "PATCH https://api.hubapi.com/crm/v3/objects/deals/{{inputs.Deal Id}}",
       "method": "PATCH",
-      "path": "/crm/v3/objects/deals/<%= @inputs['Deal Id'] %>",
+      "path": "/crm/v3/objects/deals/{{inputs.Deal Id}}",
       "inputs": [
         {
           "name": "Deal Id",
@@ -441,9 +441,9 @@
     {
       "id": "list_add_contact",
       "name": "HubSpot List Add Contact",
-      "description": "PUT https://api.hubapi.com/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
+      "description": "PUT https://api.hubapi.com/contacts/v1/lists/{{inputs.List Id}}/add",
       "method": "PUT",
-      "path": "/contacts/v1/lists/<%= @inputs['List Id'] %>/add",
+      "path": "/contacts/v1/lists/{{inputs.List Id}}/add",
       "inputs": [
         {
           "name": "List Id",

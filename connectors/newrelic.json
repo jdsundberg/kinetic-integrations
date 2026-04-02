@@ -40,9 +40,9 @@
     {
       "id": "alert_create",
       "name": "New Relic Alert Create",
-      "description": "POST https://api.newrelic.com/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
+      "description": "POST https://api.newrelic.com/v2/alerts_conditions/policies/{{inputs.Policy Id}}.json",
       "method": "POST",
-      "path": "/v2/alerts_conditions/policies/<%= @inputs['Policy Id'] %>.json",
+      "path": "/v2/alerts_conditions/policies/{{inputs.Policy Id}}.json",
       "inputs": [
         {
           "name": "Policy Id",
@@ -142,9 +142,9 @@
     {
       "id": "deployment_create",
       "name": "New Relic Deployment Create",
-      "description": "POST https://api.newrelic.com/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
+      "description": "POST https://api.newrelic.com/v2/applications/{{inputs.App Id}}/deployments.json",
       "method": "POST",
-      "path": "/v2/applications/<%= @inputs['App Id'] %>/deployments.json",
+      "path": "/v2/applications/{{inputs.App Id}}/deployments.json",
       "inputs": [
         {
           "name": "App Id",

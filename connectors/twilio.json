@@ -135,7 +135,7 @@
       "name": "Twilio Message Retrieve",
       "description": "Twilio Message Retrieve.",
       "method": "GET",
-      "path": "/2010-04-01/Accounts/Messages/<%= @inputs['Message Sid'] %>.json",
+      "path": "/2010-04-01/Accounts/Messages/{{inputs.Message Sid}}.json",
       "inputs": [
         {
           "name": "Message Sid",
@@ -184,9 +184,9 @@
     {
       "id": "number_lookup",
       "name": "Twilio Number Lookup",
-      "description": "GET https://lookups.twilio.com/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
+      "description": "GET https://lookups.twilio.com/v2/PhoneNumbers/{{inputs.Phone Number}}",
       "method": "GET",
-      "path": "/v2/PhoneNumbers/<%= @inputs['Phone Number'] %>",
+      "path": "/v2/PhoneNumbers/{{inputs.Phone Number}}",
       "inputs": [
         {
           "name": "Phone Number",
@@ -296,9 +296,9 @@
     {
       "id": "verify_check",
       "name": "Twilio Verify Check",
-      "description": "POST https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
+      "description": "POST https://verify.twilio.com/v2/Services/{{inputs.Service Sid}}/VerificationCheck",
       "method": "POST",
-      "path": "/v2/Services/<%= @inputs['Service Sid'] %>/VerificationCheck",
+      "path": "/v2/Services/{{inputs.Service Sid}}/VerificationCheck",
       "inputs": [
         {
           "name": "Service Sid",
@@ -346,9 +346,9 @@
     {
       "id": "verify_send",
       "name": "Twilio Verify Send",
-      "description": "POST https://verify.twilio.com/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
+      "description": "POST https://verify.twilio.com/v2/Services/{{inputs.Service Sid}}/Verifications",
       "method": "POST",
-      "path": "/v2/Services/<%= @inputs['Service Sid'] %>/Verifications",
+      "path": "/v2/Services/{{inputs.Service Sid}}/Verifications",
       "inputs": [
         {
           "name": "Service Sid",

@@ -91,9 +91,9 @@
     {
       "id": "account_retrieve",
       "name": "Salesforce Account Retrieve",
-      "description": "GET /services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "description": "GET /services/data/v59.0/sobjects/Account/{{inputs.Record Id}}",
       "method": "GET",
-      "path": "/services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "path": "/services/data/v59.0/sobjects/Account/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Id",
@@ -138,9 +138,9 @@
     {
       "id": "account_update",
       "name": "Salesforce Account Update",
-      "description": "PATCH /services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "description": "PATCH /services/data/v59.0/sobjects/Account/{{inputs.Record Id}}",
       "method": "PATCH",
-      "path": "/services/data/v59.0/sobjects/Account/<%= @inputs['Record Id'] %>",
+      "path": "/services/data/v59.0/sobjects/Account/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Id",
@@ -317,9 +317,9 @@
     {
       "id": "contact_retrieve",
       "name": "Salesforce Contact Retrieve",
-      "description": "GET /services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "description": "GET /services/data/v59.0/sobjects/Contact/{{inputs.Record Id}}",
       "method": "GET",
-      "path": "/services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "path": "/services/data/v59.0/sobjects/Contact/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Id",
@@ -364,9 +364,9 @@
     {
       "id": "contact_update",
       "name": "Salesforce Contact Update",
-      "description": "PATCH /services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "description": "PATCH /services/data/v59.0/sobjects/Contact/{{inputs.Record Id}}",
       "method": "PATCH",
-      "path": "/services/data/v59.0/sobjects/Contact/<%= @inputs['Record Id'] %>",
+      "path": "/services/data/v59.0/sobjects/Contact/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Id",
@@ -477,9 +477,9 @@
     {
       "id": "opportunity_update",
       "name": "Salesforce Opportunity Update",
-      "description": "PATCH /services/data/v59.0/sobjects/Opportunity/<%= @inputs['Record Id'] %>",
+      "description": "PATCH /services/data/v59.0/sobjects/Opportunity/{{inputs.Record Id}}",
       "method": "PATCH",
-      "path": "/services/data/v59.0/sobjects/Opportunity/<%= @inputs['Record Id'] %>",
+      "path": "/services/data/v59.0/sobjects/Opportunity/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Id",
@@ -524,9 +524,9 @@
     {
       "id": "soql_query",
       "name": "Salesforce SOQL Query",
-      "description": "GET /services/data/v59.0/query?q=<%= @inputs['Query'] %>",
+      "description": "GET /services/data/v59.0/query?q={{inputs.Query}}",
       "method": "GET",
-      "path": "/services/data/v59.0/query?q=<%= @inputs['Query'] %>",
+      "path": "/services/data/v59.0/query?q={{inputs.Query}}",
       "inputs": [
         {
           "name": "Query",

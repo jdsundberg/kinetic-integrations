@@ -146,9 +146,9 @@
     {
       "id": "card_move",
       "name": "Trello Card Move",
-      "description": "PUT https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "description": "PUT https://api.trello.com/1/cards/{{inputs.Card Id}}",
       "method": "PUT",
-      "path": "/1/cards/<%= @inputs['Card Id'] %>",
+      "path": "/1/cards/{{inputs.Card Id}}",
       "inputs": [
         {
           "name": "Card Id",
@@ -192,9 +192,9 @@
     {
       "id": "card_update",
       "name": "Trello Card Update",
-      "description": "PUT https://api.trello.com/1/cards/<%= @inputs['Card Id'] %>",
+      "description": "PUT https://api.trello.com/1/cards/{{inputs.Card Id}}",
       "method": "PUT",
-      "path": "/1/cards/<%= @inputs['Card Id'] %>",
+      "path": "/1/cards/{{inputs.Card Id}}",
       "inputs": [
         {
           "name": "Card Id",
@@ -299,9 +299,9 @@
     {
       "id": "member_add",
       "name": "Trello Member Add",
-      "description": "PUT https://api.trello.com/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
+      "description": "PUT https://api.trello.com/1/boards/{{inputs.Board Id}}/members/{{inputs.Member Id}}",
       "method": "PUT",
-      "path": "/1/boards/<%= @inputs['Board Id'] %>/members/<%= @inputs['Member Id'] %>",
+      "path": "/1/boards/{{inputs.Board Id}}/members/{{inputs.Member Id}}",
       "inputs": [
         {
           "name": "Board Id",

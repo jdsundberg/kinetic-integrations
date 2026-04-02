@@ -41,9 +41,9 @@
     {
       "id": "datasource_publish",
       "name": "Tableau Datasource Publish",
-      "description": "POST /api/3.21/sites//datasources?overwrite=<%= @inputs['Overwrite'] %>",
+      "description": "POST /api/3.21/sites//datasources?overwrite={{inputs.Overwrite}}",
       "method": "POST",
-      "path": "/api/3.21/sites/datasources?overwrite=<%= @inputs['Overwrite'] %>",
+      "path": "/api/3.21/sites/datasources?overwrite={{inputs.Overwrite}}",
       "inputs": [
         {
           "name": "Name",
@@ -155,9 +155,9 @@
     {
       "id": "view_retrieve",
       "name": "Tableau View Retrieve",
-      "description": "GET /api/3.21/sites//views/<%= @inputs['View Id'] %>",
+      "description": "GET /api/3.21/sites//views/{{inputs.View Id}}",
       "method": "GET",
-      "path": "/api/3.21/sites/views/<%= @inputs['View Id'] %>",
+      "path": "/api/3.21/sites/views/{{inputs.View Id}}",
       "inputs": [
         {
           "name": "View Id",
@@ -202,9 +202,9 @@
     {
       "id": "workbook_publish",
       "name": "Tableau Workbook Publish",
-      "description": "POST /api/3.21/sites//workbooks?overwrite=<%= @inputs['Overwrite'] %>",
+      "description": "POST /api/3.21/sites//workbooks?overwrite={{inputs.Overwrite}}",
       "method": "POST",
-      "path": "/api/3.21/sites/workbooks?overwrite=<%= @inputs['Overwrite'] %>",
+      "path": "/api/3.21/sites/workbooks?overwrite={{inputs.Overwrite}}",
       "inputs": [
         {
           "name": "Name",

@@ -31,7 +31,7 @@
       "name": "OneLogin App Assign",
       "description": "OneLogin App Assign.",
       "method": "POST",
-      "path": "/api/2/users/<%= @inputs['User Id'] %>/apps",
+      "path": "/api/2/users/{{inputs.User Id}}/apps",
       "inputs": [
         {
           "name": "User Id",
@@ -165,7 +165,7 @@
       "name": "OneLogin User Deactivate",
       "description": "OneLogin User Deactivate.",
       "method": "PUT",
-      "path": "/api/2/users/<%= @inputs['User Id'] %>/set_state",
+      "path": "/api/2/users/{{inputs.User Id}}/set_state",
       "inputs": [
         {
           "name": "User Id",
@@ -206,7 +206,7 @@
       "name": "OneLogin User Retrieve",
       "description": "OneLogin User Retrieve.",
       "method": "GET",
-      "path": "/api/2/users/<%= @inputs['User Id'] %>",
+      "path": "/api/2/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",
@@ -257,7 +257,7 @@
       "name": "OneLogin User Update",
       "description": "OneLogin User Update.",
       "method": "PUT",
-      "path": "/api/2/users/<%= @inputs['User Id'] %>",
+      "path": "/api/2/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",

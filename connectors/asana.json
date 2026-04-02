@@ -25,9 +25,9 @@
     {
       "id": "project_add_member",
       "name": "Asana Project Add Member",
-      "description": "POST https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
+      "description": "POST https://app.asana.com/api/1.0/projects/{{inputs.Project Gid}}/addMembers",
       "method": "POST",
-      "path": "/api/1.0/projects/<%= @inputs['Project Gid'] %>/addMembers",
+      "path": "/api/1.0/projects/{{inputs.Project Gid}}/addMembers",
       "inputs": [
         {
           "name": "Project Gid",
@@ -122,9 +122,9 @@
     {
       "id": "section_create",
       "name": "Asana Section Create",
-      "description": "POST https://app.asana.com/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
+      "description": "POST https://app.asana.com/api/1.0/projects/{{inputs.Project Gid}}/sections",
       "method": "POST",
-      "path": "/api/1.0/projects/<%= @inputs['Project Gid'] %>/sections",
+      "path": "/api/1.0/projects/{{inputs.Project Gid}}/sections",
       "inputs": [
         {
           "name": "Project Gid",
@@ -209,9 +209,9 @@
     {
       "id": "task_add_comment",
       "name": "Asana Task Add Comment",
-      "description": "POST https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
+      "description": "POST https://app.asana.com/api/1.0/tasks/{{inputs.Task Gid}}/stories",
       "method": "POST",
-      "path": "/api/1.0/tasks/<%= @inputs['Task Gid'] %>/stories",
+      "path": "/api/1.0/tasks/{{inputs.Task Gid}}/stories",
       "inputs": [
         {
           "name": "Task Gid",
@@ -315,9 +315,9 @@
     {
       "id": "task_update",
       "name": "Asana Task Update",
-      "description": "PUT https://app.asana.com/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
+      "description": "PUT https://app.asana.com/api/1.0/tasks/{{inputs.Task Gid}}",
       "method": "PUT",
-      "path": "/api/1.0/tasks/<%= @inputs['Task Gid'] %>",
+      "path": "/api/1.0/tasks/{{inputs.Task Gid}}",
       "inputs": [
         {
           "name": "Task Gid",

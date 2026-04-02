@@ -90,9 +90,9 @@
     {
       "id": "contact_update",
       "name": "Intercom Contact Update",
-      "description": "PUT https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>",
+      "description": "PUT https://api.intercom.io/contacts/{{inputs.Contact Id}}",
       "method": "PUT",
-      "path": "/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/contacts/{{inputs.Contact Id}}",
       "inputs": [
         {
           "name": "Contact Id",
@@ -244,9 +244,9 @@
     {
       "id": "note_create",
       "name": "Intercom Note Create",
-      "description": "POST https://api.intercom.io/contacts/<%= @inputs['Contact Id'] %>/notes",
+      "description": "POST https://api.intercom.io/contacts/{{inputs.Contact Id}}/notes",
       "method": "POST",
-      "path": "/contacts/<%= @inputs['Contact Id'] %>/notes",
+      "path": "/contacts/{{inputs.Contact Id}}/notes",
       "inputs": [
         {
           "name": "Contact Id",

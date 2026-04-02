@@ -151,9 +151,9 @@
     {
       "id": "customer_retrieve",
       "name": "Stripe Customer Retrieve",
-      "description": "GET https://api.stripe.com/v1/customers/<%= @inputs['Customer Id'] %>",
+      "description": "GET https://api.stripe.com/v1/customers/{{inputs.Customer Id}}",
       "method": "GET",
-      "path": "/v1/customers/<%= @inputs['Customer Id'] %>",
+      "path": "/v1/customers/{{inputs.Customer Id}}",
       "inputs": [
         {
           "name": "Customer Id",

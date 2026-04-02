@@ -114,9 +114,9 @@
     {
       "id": "device_retrieve",
       "name": "Jamf Pro Device Retrieve",
-      "description": "GET /api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
+      "description": "GET /api/v1/computers-inventory/{{inputs.Device Id}}",
       "method": "GET",
-      "path": "/api/v1/computers-inventory/<%= @inputs['Device Id'] %>",
+      "path": "/api/v1/computers-inventory/{{inputs.Device Id}}",
       "inputs": [
         {
           "name": "Device Id",

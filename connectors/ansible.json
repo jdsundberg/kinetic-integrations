@@ -141,9 +141,9 @@
     {
       "id": "job_launch",
       "name": "Ansible Tower Job Launch",
-      "description": "POST /api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
+      "description": "POST /api/v2/job_templates/{{inputs.Template Id}}/launch/",
       "method": "POST",
-      "path": "/api/v2/job_templates/<%= @inputs['Template Id'] %>/launch/",
+      "path": "/api/v2/job_templates/{{inputs.Template Id}}/launch/",
       "inputs": [
         {
           "name": "Template Id",
@@ -201,9 +201,9 @@
     {
       "id": "template_retrieve",
       "name": "Ansible Tower Template Retrieve",
-      "description": "GET /api/v2/job_templates/<%= @inputs['Template Id'] %>/",
+      "description": "GET /api/v2/job_templates/{{inputs.Template Id}}/",
       "method": "GET",
-      "path": "/api/v2/job_templates/<%= @inputs['Template Id'] %>/",
+      "path": "/api/v2/job_templates/{{inputs.Template Id}}/",
       "inputs": [
         {
           "name": "Template Id",

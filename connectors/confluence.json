@@ -46,9 +46,9 @@
     {
       "id": "comment_add",
       "name": "Confluence Comment Add",
-      "description": "POST /api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
+      "description": "POST /api/v2/pages/{{inputs.Page Id}}/footer-comments",
       "method": "POST",
-      "path": "/api/v2/pages/<%= @inputs['Page Id'] %>/footer-comments",
+      "path": "/api/v2/pages/{{inputs.Page Id}}/footer-comments",
       "inputs": [
         {
           "name": "Page Id",
@@ -147,9 +147,9 @@
     {
       "id": "page_retrieve",
       "name": "Confluence Page Retrieve",
-      "description": "GET /api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
+      "description": "GET /api/v2/pages/{{inputs.Page Id}}?body-format=storage",
       "method": "GET",
-      "path": "/api/v2/pages/<%= @inputs['Page Id'] %>?body-format=storage",
+      "path": "/api/v2/pages/{{inputs.Page Id}}?body-format=storage",
       "inputs": [
         {
           "name": "Page Id",
@@ -194,9 +194,9 @@
     {
       "id": "page_update",
       "name": "Confluence Page Update",
-      "description": "PUT /api/v2/pages/<%= @inputs['Page Id'] %>",
+      "description": "PUT /api/v2/pages/{{inputs.Page Id}}",
       "method": "PUT",
-      "path": "/api/v2/pages/<%= @inputs['Page Id'] %>",
+      "path": "/api/v2/pages/{{inputs.Page Id}}",
       "inputs": [
         {
           "name": "Page Id",
@@ -245,9 +245,9 @@
     {
       "id": "search",
       "name": "Confluence Search",
-      "description": "GET /api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
+      "description": "GET /api/v2/search?cql={{inputs.Cql}}&limit={{inputs.Limit}}",
       "method": "GET",
-      "path": "/api/v2/search?cql=<%= @inputs['Cql'] %>&limit=<%= @inputs['Limit'] %>",
+      "path": "/api/v2/search?cql={{inputs.Cql}}&limit={{inputs.Limit}}",
       "inputs": [
         {
           "name": "Cql",

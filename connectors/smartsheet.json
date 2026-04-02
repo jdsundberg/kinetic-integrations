@@ -24,9 +24,9 @@
     {
       "id": "row_add",
       "name": "Smartsheet Row Add",
-      "description": "POST https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "description": "POST https://api.smartsheet.com/2.0/sheets/{{inputs.Sheet Id}}/rows",
       "method": "POST",
-      "path": "/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "path": "/2.0/sheets/{{inputs.Sheet Id}}/rows",
       "inputs": [
         {
           "name": "Sheet Id",
@@ -79,9 +79,9 @@
     {
       "id": "row_update",
       "name": "Smartsheet Row Update",
-      "description": "PUT https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "description": "PUT https://api.smartsheet.com/2.0/sheets/{{inputs.Sheet Id}}/rows",
       "method": "PUT",
-      "path": "/2.0/sheets/<%= @inputs['Sheet Id'] %>/rows",
+      "path": "/2.0/sheets/{{inputs.Sheet Id}}/rows",
       "inputs": [
         {
           "name": "Sheet Id",
@@ -120,9 +120,9 @@
     {
       "id": "share_create",
       "name": "Smartsheet Share Create",
-      "description": "POST https://api.smartsheet.com/2.0/sheets/<%= @inputs['Sheet Id'] %>/shares",
+      "description": "POST https://api.smartsheet.com/2.0/sheets/{{inputs.Sheet Id}}/shares",
       "method": "POST",
-      "path": "/2.0/sheets/<%= @inputs['Sheet Id'] %>/shares",
+      "path": "/2.0/sheets/{{inputs.Sheet Id}}/shares",
       "inputs": [
         {
           "name": "Sheet Id",

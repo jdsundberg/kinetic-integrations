@@ -31,7 +31,7 @@
       "name": "Basecamp Comment Add",
       "description": "Basecamp Comment Add.",
       "method": "POST",
-      "path": "/buckets/<%= @inputs['Project Id'] %>/recordings/<%= @inputs['Recording Id'] %>/comments.json",
+      "path": "/buckets/{{inputs.Project Id}}/recordings/{{inputs.Recording Id}}/comments.json",
       "inputs": [
         {
           "name": "Project Id",
@@ -81,7 +81,7 @@
       "name": "Basecamp Message Create",
       "description": "Basecamp Message Create.",
       "method": "POST",
-      "path": "/buckets/<%= @inputs['Project Id'] %>/message_boards/<%= @inputs['Message Board Id'] %>/messages.json",
+      "path": "/buckets/{{inputs.Project Id}}/message_boards/{{inputs.Message Board Id}}/messages.json",
       "inputs": [
         {
           "name": "Project Id",
@@ -204,7 +204,7 @@
       "name": "Basecamp Todo Create",
       "description": "Basecamp Todo Create.",
       "method": "POST",
-      "path": "/buckets/<%= @inputs['Project Id'] %>/todolists/<%= @inputs['Todolist Id'] %>/todos.json",
+      "path": "/buckets/{{inputs.Project Id}}/todolists/{{inputs.Todolist Id}}/todos.json",
       "inputs": [
         {
           "name": "Project Id",

@@ -100,9 +100,9 @@
     {
       "id": "object_download",
       "name": "GCP Cloud Storage Object Download",
-      "description": "GET https://storage.googleapis.com/storage/v1/b/<%= @inputs['Bucket'] %>/o/<%= @inputs['Object Name'] %>?alt=media",
+      "description": "GET https://storage.googleapis.com/storage/v1/b/{{inputs.Bucket}}/o/{{inputs.Object Name}}?alt=media",
       "method": "GET",
-      "path": "/storage/v1/b/<%= @inputs['Bucket'] %>/o/<%= @inputs['Object Name'] %>?alt=media",
+      "path": "/storage/v1/b/{{inputs.Bucket}}/o/{{inputs.Object Name}}?alt=media",
       "inputs": [
         {
           "name": "Bucket",
@@ -135,9 +135,9 @@
     {
       "id": "object_list",
       "name": "GCP Cloud Storage Object List",
-      "description": "GET https://storage.googleapis.com/storage/v1/b/<%= @inputs['Bucket'] %>/o?prefix=<%= @inputs['Prefix'] %>&maxResults=<%= @inputs['Max Results'] %>",
+      "description": "GET https://storage.googleapis.com/storage/v1/b/{{inputs.Bucket}}/o?prefix={{inputs.Prefix}}&maxResults={{inputs.Max Results}}",
       "method": "GET",
-      "path": "/storage/v1/b/<%= @inputs['Bucket'] %>/o?prefix=<%= @inputs['Prefix'] %>&maxResults=<%= @inputs['Max Results'] %>",
+      "path": "/storage/v1/b/{{inputs.Bucket}}/o?prefix={{inputs.Prefix}}&maxResults={{inputs.Max Results}}",
       "inputs": [
         {
           "name": "Bucket",
@@ -178,9 +178,9 @@
     {
       "id": "object_upload",
       "name": "GCP Cloud Storage Object Upload",
-      "description": "POST https://storage.googleapis.com/upload/storage/v1/b/<%= @inputs['Bucket'] %>/o?uploadType=media&name=<%= @inputs['Object Name'] %>",
+      "description": "POST https://storage.googleapis.com/upload/storage/v1/b/{{inputs.Bucket}}/o?uploadType=media&name={{inputs.Object Name}}",
       "method": "POST",
-      "path": "/upload/storage/v1/b/<%= @inputs['Bucket'] %>/o?uploadType=media&name=<%= @inputs['Object Name'] %>",
+      "path": "/upload/storage/v1/b/{{inputs.Bucket}}/o?uploadType=media&name={{inputs.Object Name}}",
       "inputs": [
         {
           "name": "Bucket",

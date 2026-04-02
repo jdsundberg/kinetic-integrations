@@ -30,9 +30,9 @@
     {
       "id": "image_list",
       "name": "Docker Hub Image List",
-      "description": "GET https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/?page_size=<%= @inputs['Page Size'] %>",
+      "description": "GET https://hub.docker.com/v2/repositories/{{inputs.Namespace}}/?page_size={{inputs.Page Size}}",
       "method": "GET",
-      "path": "/v2/repositories/<%= @inputs['Namespace'] %>/?page_size=<%= @inputs['Page Size'] %>",
+      "path": "/v2/repositories/{{inputs.Namespace}}/?page_size={{inputs.Page Size}}",
       "inputs": [
         {
           "name": "Namespace",
@@ -73,9 +73,9 @@
     {
       "id": "repository_create",
       "name": "Docker Hub Repository Create",
-      "description": "POST https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/",
+      "description": "POST https://hub.docker.com/v2/repositories/{{inputs.Namespace}}/",
       "method": "POST",
-      "path": "/v2/repositories/<%= @inputs['Namespace'] %>/",
+      "path": "/v2/repositories/{{inputs.Namespace}}/",
       "inputs": [
         {
           "name": "Namespace",
@@ -129,9 +129,9 @@
     {
       "id": "tag_list",
       "name": "Docker Hub Tag List",
-      "description": "GET https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/tags?page_size=<%= @inputs['Page Size'] %>",
+      "description": "GET https://hub.docker.com/v2/repositories/{{inputs.Namespace}}/{{inputs.Repository}}/tags?page_size={{inputs.Page Size}}",
       "method": "GET",
-      "path": "/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/tags?page_size=<%= @inputs['Page Size'] %>",
+      "path": "/v2/repositories/{{inputs.Namespace}}/{{inputs.Repository}}/tags?page_size={{inputs.Page Size}}",
       "inputs": [
         {
           "name": "Namespace",
@@ -190,9 +190,9 @@
     {
       "id": "webhook_create",
       "name": "Docker Hub Webhook Create",
-      "description": "POST https://hub.docker.com/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/webhooks/",
+      "description": "POST https://hub.docker.com/v2/repositories/{{inputs.Namespace}}/{{inputs.Repository}}/webhooks/",
       "method": "POST",
-      "path": "/v2/repositories/<%= @inputs['Namespace'] %>/<%= @inputs['Repository'] %>/webhooks/",
+      "path": "/v2/repositories/{{inputs.Namespace}}/{{inputs.Repository}}/webhooks/",
       "inputs": [
         {
           "name": "Namespace",

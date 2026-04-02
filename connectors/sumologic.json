@@ -91,9 +91,9 @@
     {
       "id": "log_send",
       "name": "Sumo Logic Log Send",
-      "description": "POST <%= @inputs['Collector Url'] %>",
+      "description": "POST {{inputs.Collector Url}}",
       "method": "POST",
-      "path": "/<%= @inputs['Collector Url'] %>",
+      "path": "/{{inputs.Collector Url}}",
       "inputs": [
         {
           "name": "Collector Url",
@@ -191,7 +191,7 @@
       "name": "Sumo Logic Source Create",
       "description": "Sumo Logic Source Create.",
       "method": "POST",
-      "path": "/api/v1/collectors/<%= @inputs['Collector Id'] %>/sources",
+      "path": "/api/v1/collectors/{{inputs.Collector Id}}/sources",
       "inputs": [
         {
           "name": "Collector Id",

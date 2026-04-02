@@ -139,9 +139,9 @@
     {
       "id": "drive_share",
       "name": "Google Drive Share",
-      "description": "POST https://www.googleapis.com/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
+      "description": "POST https://www.googleapis.com/drive/v3/files/{{inputs.File Id}}/permissions",
       "method": "POST",
-      "path": "/drive/v3/files/<%= @inputs['File Id'] %>/permissions",
+      "path": "/drive/v3/files/{{inputs.File Id}}/permissions",
       "inputs": [
         {
           "name": "File Id",
@@ -195,9 +195,9 @@
     {
       "id": "group_add_member",
       "name": "Google Group Add Member",
-      "description": "POST https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
+      "description": "POST https://admin.googleapis.com/admin/directory/v1/groups/{{inputs.Group Key}}/members",
       "method": "POST",
-      "path": "/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members",
+      "path": "/admin/directory/v1/groups/{{inputs.Group Key}}/members",
       "inputs": [
         {
           "name": "Group Key",
@@ -245,9 +245,9 @@
     {
       "id": "group_remove_member",
       "name": "Google Group Remove Member",
-      "description": "DELETE https://admin.googleapis.com/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
+      "description": "DELETE https://admin.googleapis.com/admin/directory/v1/groups/{{inputs.Group Key}}/members/{{inputs.Member Key}}",
       "method": "DELETE",
-      "path": "/admin/directory/v1/groups/<%= @inputs['Group Key'] %>/members/<%= @inputs['Member Key'] %>",
+      "path": "/admin/directory/v1/groups/{{inputs.Group Key}}/members/{{inputs.Member Key}}",
       "inputs": [
         {
           "name": "Group Key",
@@ -425,9 +425,9 @@
     {
       "id": "user_retrieve",
       "name": "Google User Retrieve",
-      "description": "GET https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "description": "GET https://admin.googleapis.com/admin/directory/v1/users/{{inputs.User Key}}",
       "method": "GET",
-      "path": "/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "path": "/admin/directory/v1/users/{{inputs.User Key}}",
       "inputs": [
         {
           "name": "User Key",
@@ -472,9 +472,9 @@
     {
       "id": "user_suspend",
       "name": "Google User Suspend",
-      "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/{{inputs.User Key}}",
       "method": "PUT",
-      "path": "/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "path": "/admin/directory/v1/users/{{inputs.User Key}}",
       "inputs": [
         {
           "name": "User Key",
@@ -512,9 +512,9 @@
     {
       "id": "user_update",
       "name": "Google User Update",
-      "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "description": "PUT https://admin.googleapis.com/admin/directory/v1/users/{{inputs.User Key}}",
       "method": "PUT",
-      "path": "/admin/directory/v1/users/<%= @inputs['User Key'] %>",
+      "path": "/admin/directory/v1/users/{{inputs.User Key}}",
       "inputs": [
         {
           "name": "User Key",

@@ -52,7 +52,7 @@
       "name": "GCP Pub/Sub Publish",
       "description": "GCP Pub/Sub Publish.",
       "method": "POST",
-      "path": "/v1/projects/topics/<%= @inputs['Topic Id'] %>:publish",
+      "path": "/v1/projects/topics/{{inputs.Topic Id}}:publish",
       "inputs": [
         {
           "name": "Topic Id",
@@ -94,7 +94,7 @@
       "name": "GCP Pub/Sub Pull",
       "description": "GCP Pub/Sub Pull.",
       "method": "POST",
-      "path": "/v1/projects/subscriptions/<%= @inputs['Subscription Id'] %>:pull",
+      "path": "/v1/projects/subscriptions/{{inputs.Subscription Id}}:pull",
       "inputs": [
         {
           "name": "Subscription Id",
@@ -131,7 +131,7 @@
       "name": "GCP Pub/Sub Subscription Create",
       "description": "GCP Pub/Sub Subscription Create.",
       "method": "PUT",
-      "path": "/v1/projects/subscriptions/<%= @inputs['Subscription Id'] %>",
+      "path": "/v1/projects/subscriptions/{{inputs.Subscription Id}}",
       "inputs": [
         {
           "name": "Subscription Id",
@@ -200,7 +200,7 @@
       "name": "GCP Pub/Sub Topic Create",
       "description": "GCP Pub/Sub Topic Create.",
       "method": "PUT",
-      "path": "/v1/projects/topics/<%= @inputs['Topic Id'] %>",
+      "path": "/v1/projects/topics/{{inputs.Topic Id}}",
       "inputs": [
         {
           "name": "Topic Id",

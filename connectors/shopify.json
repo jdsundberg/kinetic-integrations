@@ -102,9 +102,9 @@
     {
       "id": "customer_retrieve",
       "name": "Shopify Customer Retrieve",
-      "description": "GET /admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
+      "description": "GET /admin/api/2024-01/customers/{{inputs.Customer Id}}.json",
       "method": "GET",
-      "path": "/admin/api/2024-01/customers/<%= @inputs['Customer Id'] %>.json",
+      "path": "/admin/api/2024-01/customers/{{inputs.Customer Id}}.json",
       "inputs": [
         {
           "name": "Customer Id",
@@ -153,9 +153,9 @@
     {
       "id": "fulfillment_create",
       "name": "Shopify Fulfillment Create",
-      "description": "POST /admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
+      "description": "POST /admin/api/2024-01/orders/{{inputs.Order Id}}/fulfillments.json",
       "method": "POST",
-      "path": "/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>/fulfillments.json",
+      "path": "/admin/api/2024-01/orders/{{inputs.Order Id}}/fulfillments.json",
       "inputs": [
         {
           "name": "Order Id",
@@ -250,9 +250,9 @@
     {
       "id": "order_retrieve",
       "name": "Shopify Order Retrieve",
-      "description": "GET /admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "description": "GET /admin/api/2024-01/orders/{{inputs.Order Id}}.json",
       "method": "GET",
-      "path": "/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "path": "/admin/api/2024-01/orders/{{inputs.Order Id}}.json",
       "inputs": [
         {
           "name": "Order Id",
@@ -297,9 +297,9 @@
     {
       "id": "order_update",
       "name": "Shopify Order Update",
-      "description": "PUT /admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "description": "PUT /admin/api/2024-01/orders/{{inputs.Order Id}}.json",
       "method": "PUT",
-      "path": "/admin/api/2024-01/orders/<%= @inputs['Order Id'] %>.json",
+      "path": "/admin/api/2024-01/orders/{{inputs.Order Id}}.json",
       "inputs": [
         {
           "name": "Order Id",
@@ -413,9 +413,9 @@
     {
       "id": "product_update",
       "name": "Shopify Product Update",
-      "description": "PUT /admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
+      "description": "PUT /admin/api/2024-01/products/{{inputs.Product Id}}.json",
       "method": "PUT",
-      "path": "/admin/api/2024-01/products/<%= @inputs['Product Id'] %>.json",
+      "path": "/admin/api/2024-01/products/{{inputs.Product Id}}.json",
       "inputs": [
         {
           "name": "Product Id",

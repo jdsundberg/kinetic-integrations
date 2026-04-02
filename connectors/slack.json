@@ -455,9 +455,9 @@
     {
       "id": "user_lookup",
       "name": "Slack User Lookup",
-      "description": "GET https://slack.com/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
+      "description": "GET https://slack.com/api/users.lookupByEmail?email={{inputs.Email}}",
       "method": "GET",
-      "path": "/api/users.lookupByEmail?email=<%= @inputs['Email'] %>",
+      "path": "/api/users.lookupByEmail?email={{inputs.Email}}",
       "inputs": [
         {
           "name": "Email",

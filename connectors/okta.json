@@ -41,9 +41,9 @@
     {
       "id": "app_assign",
       "name": "Okta App Assign User",
-      "description": "PUT /api/v1/apps/<%= @inputs['App Id'] %>/users/<%= @inputs['User Id'] %>",
+      "description": "PUT /api/v1/apps/{{inputs.App Id}}/users/{{inputs.User Id}}",
       "method": "PUT",
-      "path": "/api/v1/apps/<%= @inputs['App Id'] %>/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v1/apps/{{inputs.App Id}}/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "App Id",
@@ -82,9 +82,9 @@
     {
       "id": "group_add_member",
       "name": "Okta Group Add Member",
-      "description": "PUT /api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "description": "PUT /api/v1/groups/{{inputs.Group Id}}/users/{{inputs.User Id}}",
       "method": "PUT",
-      "path": "/api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v1/groups/{{inputs.Group Id}}/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "Group Id",
@@ -160,9 +160,9 @@
     {
       "id": "group_remove_member",
       "name": "Okta Group Remove Member",
-      "description": "DELETE /api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "description": "DELETE /api/v1/groups/{{inputs.Group Id}}/users/{{inputs.User Id}}",
       "method": "DELETE",
-      "path": "/api/v1/groups/<%= @inputs['Group Id'] %>/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v1/groups/{{inputs.Group Id}}/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "Group Id",
@@ -213,9 +213,9 @@
     {
       "id": "user_create",
       "name": "Okta User Create",
-      "description": "POST /api/v1/users?activate=<%= @inputs['Activate'] %>",
+      "description": "POST /api/v1/users?activate={{inputs.Activate}}",
       "method": "POST",
-      "path": "/api/v1/users?activate=<%= @inputs['Activate'] %>",
+      "path": "/api/v1/users?activate={{inputs.Activate}}",
       "inputs": [
         {
           "name": "First Name",
@@ -278,9 +278,9 @@
     {
       "id": "user_deactivate",
       "name": "Okta User Deactivate",
-      "description": "POST /api/v1/users/<%= @inputs['User Id'] %>/lifecycle/deactivate",
+      "description": "POST /api/v1/users/{{inputs.User Id}}/lifecycle/deactivate",
       "method": "POST",
-      "path": "/api/v1/users/<%= @inputs['User Id'] %>/lifecycle/deactivate",
+      "path": "/api/v1/users/{{inputs.User Id}}/lifecycle/deactivate",
       "inputs": [
         {
           "name": "User Id",
@@ -310,9 +310,9 @@
     {
       "id": "user_retrieve",
       "name": "Okta User Retrieve",
-      "description": "GET /api/v1/users/<%= @inputs['User Id'] %>",
+      "description": "GET /api/v1/users/{{inputs.User Id}}",
       "method": "GET",
-      "path": "/api/v1/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v1/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",
@@ -361,9 +361,9 @@
     {
       "id": "user_update",
       "name": "Okta User Update",
-      "description": "POST /api/v1/users/<%= @inputs['User Id'] %>",
+      "description": "POST /api/v1/users/{{inputs.User Id}}",
       "method": "POST",
-      "path": "/api/v1/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v1/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",

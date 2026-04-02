@@ -24,9 +24,9 @@
     {
       "id": "alert_acknowledge",
       "name": "Opsgenie Alert Acknowledge",
-      "description": "POST https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
+      "description": "POST https://api.opsgenie.com/v2/alerts/{{inputs.Alert Id}}/acknowledge",
       "method": "POST",
-      "path": "/v2/alerts/<%= @inputs['Alert Id'] %>/acknowledge",
+      "path": "/v2/alerts/{{inputs.Alert Id}}/acknowledge",
       "inputs": [
         {
           "name": "Alert Id",
@@ -70,9 +70,9 @@
     {
       "id": "alert_close",
       "name": "Opsgenie Alert Close",
-      "description": "POST https://api.opsgenie.com/v2/alerts/<%= @inputs['Alert Id'] %>/close",
+      "description": "POST https://api.opsgenie.com/v2/alerts/{{inputs.Alert Id}}/close",
       "method": "POST",
-      "path": "/v2/alerts/<%= @inputs['Alert Id'] %>/close",
+      "path": "/v2/alerts/{{inputs.Alert Id}}/close",
       "inputs": [
         {
           "name": "Alert Id",

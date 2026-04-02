@@ -46,9 +46,9 @@
     {
       "id": "macro_apply",
       "name": "Zendesk Macro Apply",
-      "description": "GET /api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
+      "description": "GET /api/v2/tickets/{{inputs.Ticket Id}}/macros/{{inputs.Macro Id}}/apply",
       "method": "GET",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/macros/<%= @inputs['Macro Id'] %>/apply",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}/macros/{{inputs.Macro Id}}/apply",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -131,9 +131,9 @@
     {
       "id": "search",
       "name": "Zendesk Search",
-      "description": "GET /api/v2/search?query=<%= @inputs['Query'] %>",
+      "description": "GET /api/v2/search?query={{inputs.Query}}",
       "method": "GET",
-      "path": "/api/v2/search?query=<%= @inputs['Query'] %>",
+      "path": "/api/v2/search?query={{inputs.Query}}",
       "inputs": [
         {
           "name": "Query",
@@ -192,9 +192,9 @@
     {
       "id": "ticket_add_comment",
       "name": "Zendesk Ticket Add Comment",
-      "description": "PUT /api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "description": "PUT /api/v2/tickets/{{inputs.Ticket Id}}",
       "method": "PUT",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -304,9 +304,9 @@
     {
       "id": "ticket_update",
       "name": "Zendesk Ticket Update",
-      "description": "PUT /api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "description": "PUT /api/v2/tickets/{{inputs.Ticket Id}}",
       "method": "PUT",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -420,9 +420,9 @@
     {
       "id": "user_retrieve",
       "name": "Zendesk User Retrieve",
-      "description": "GET /api/v2/users/<%= @inputs['User Id'] %>",
+      "description": "GET /api/v2/users/{{inputs.User Id}}",
       "method": "GET",
-      "path": "/api/v2/users/<%= @inputs['User Id'] %>",
+      "path": "/api/v2/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",

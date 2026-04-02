@@ -197,9 +197,9 @@
     {
       "id": "shift_create",
       "name": "xMatters Shift Create",
-      "description": "POST /api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
+      "description": "POST /api/xm/1/groups/{{inputs.Group Id}}/shifts",
       "method": "POST",
-      "path": "/api/xm/1/groups/<%= @inputs['Group Id'] %>/shifts",
+      "path": "/api/xm/1/groups/{{inputs.Group Id}}/shifts",
       "inputs": [
         {
           "name": "Group Id",

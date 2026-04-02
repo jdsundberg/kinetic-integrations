@@ -46,9 +46,9 @@
     {
       "id": "board_retrieve",
       "name": "Jira Board Retrieve",
-      "description": "GET /rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
+      "description": "GET /rest/agile/1.0/board/{{inputs.Board Id}}",
       "method": "GET",
-      "path": "/rest/agile/1.0/board/<%= @inputs['Board Id'] %>",
+      "path": "/rest/agile/1.0/board/{{inputs.Board Id}}",
       "inputs": [
         {
           "name": "Board Id",
@@ -89,9 +89,9 @@
     {
       "id": "issue_add_comment",
       "name": "Jira Issue Add Comment",
-      "description": "POST /rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
+      "description": "POST /rest/api/3/issue/{{inputs.Issue Key}}/comment",
       "method": "POST",
-      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>/comment",
+      "path": "/rest/api/3/issue/{{inputs.Issue Key}}/comment",
       "inputs": [
         {
           "name": "Issue Key",
@@ -200,9 +200,9 @@
     {
       "id": "issue_retrieve",
       "name": "Jira Issue Retrieve",
-      "description": "GET /rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "description": "GET /rest/api/3/issue/{{inputs.Issue Key}}",
       "method": "GET",
-      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "path": "/rest/api/3/issue/{{inputs.Issue Key}}",
       "inputs": [
         {
           "name": "Issue Key",
@@ -309,9 +309,9 @@
     {
       "id": "issue_transition",
       "name": "Jira Issue Transition",
-      "description": "POST /rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
+      "description": "POST /rest/api/3/issue/{{inputs.Issue Key}}/transitions",
       "method": "POST",
-      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>/transitions",
+      "path": "/rest/api/3/issue/{{inputs.Issue Key}}/transitions",
       "inputs": [
         {
           "name": "Issue Key",
@@ -346,9 +346,9 @@
     {
       "id": "issue_update",
       "name": "Jira Issue Update",
-      "description": "PUT /rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "description": "PUT /rest/api/3/issue/{{inputs.Issue Key}}",
       "method": "PUT",
-      "path": "/rest/api/3/issue/<%= @inputs['Issue Key'] %>",
+      "path": "/rest/api/3/issue/{{inputs.Issue Key}}",
       "inputs": [
         {
           "name": "Issue Key",
@@ -403,9 +403,9 @@
     {
       "id": "project_retrieve",
       "name": "Jira Project Retrieve",
-      "description": "GET /rest/api/3/project/<%= @inputs['Project Key'] %>",
+      "description": "GET /rest/api/3/project/{{inputs.Project Key}}",
       "method": "GET",
-      "path": "/rest/api/3/project/<%= @inputs['Project Key'] %>",
+      "path": "/rest/api/3/project/{{inputs.Project Key}}",
       "inputs": [
         {
           "name": "Project Key",
@@ -506,9 +506,9 @@
     {
       "id": "sprint_update",
       "name": "Jira Sprint Update",
-      "description": "PUT /rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
+      "description": "PUT /rest/agile/1.0/sprint/{{inputs.Sprint Id}}",
       "method": "PUT",
-      "path": "/rest/agile/1.0/sprint/<%= @inputs['Sprint Id'] %>",
+      "path": "/rest/agile/1.0/sprint/{{inputs.Sprint Id}}",
       "inputs": [
         {
           "name": "Sprint Id",

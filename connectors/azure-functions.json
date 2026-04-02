@@ -42,7 +42,7 @@
       "name": "Azure Functions Function Create",
       "description": "Azure Functions Function Create.",
       "method": "PUT",
-      "path": "/admin/functions/<%= @inputs['Function Name'] %>",
+      "path": "/admin/functions/{{inputs.Function Name}}",
       "inputs": [
         {
           "name": "Function Name",
@@ -114,7 +114,7 @@
       "name": "Azure Functions Invoke",
       "description": "Azure Functions Invoke.",
       "method": "POST",
-      "path": "/api/<%= @inputs['Function Name'] %>",
+      "path": "/api/{{inputs.Function Name}}",
       "inputs": [
         {
           "name": "Function Name",
@@ -155,7 +155,7 @@
       "name": "Azure Functions Key Retrieve",
       "description": "Azure Functions Key Retrieve.",
       "method": "GET",
-      "path": "/admin/functions/<%= @inputs['Function Name'] %>/keys",
+      "path": "/admin/functions/{{inputs.Function Name}}/keys",
       "inputs": [
         {
           "name": "Function Name",

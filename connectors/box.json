@@ -80,9 +80,9 @@
     {
       "id": "file_download",
       "name": "Box File Download",
-      "description": "GET https://api.box.com/2.0/files/<%= @inputs['File Id'] %>/content",
+      "description": "GET https://api.box.com/2.0/files/{{inputs.File Id}}/content",
       "method": "GET",
-      "path": "/2.0/files/<%= @inputs['File Id'] %>/content",
+      "path": "/2.0/files/{{inputs.File Id}}/content",
       "inputs": [
         {
           "name": "File Id",
@@ -214,9 +214,9 @@
     {
       "id": "share_create",
       "name": "Box Shared Link Create",
-      "description": "PUT https://api.box.com/2.0/files/<%= @inputs['File Id'] %>",
+      "description": "PUT https://api.box.com/2.0/files/{{inputs.File Id}}",
       "method": "PUT",
-      "path": "/2.0/files/<%= @inputs['File Id'] %>",
+      "path": "/2.0/files/{{inputs.File Id}}",
       "inputs": [
         {
           "name": "File Id",

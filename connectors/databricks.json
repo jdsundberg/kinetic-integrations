@@ -128,9 +128,9 @@
     {
       "id": "notebook_export",
       "name": "Databricks Notebook Export",
-      "description": "GET /api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
+      "description": "GET /api/2.1/workspace/export?path={{inputs.Notebook Path}}&format={{inputs.Format}}",
       "method": "GET",
-      "path": "/api/2.1/workspace/export?path=<%= @inputs['Notebook Path'] %>&format=<%= @inputs['Format'] %>",
+      "path": "/api/2.1/workspace/export?path={{inputs.Notebook Path}}&format={{inputs.Format}}",
       "inputs": [
         {
           "name": "Notebook Path",

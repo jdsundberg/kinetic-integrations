@@ -30,9 +30,9 @@
     {
       "id": "campaign_trigger",
       "name": "Marketo Campaign Trigger",
-      "description": "POST /rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
+      "description": "POST /rest/v1/campaigns/{{inputs.Campaign Id}}/trigger.json",
       "method": "POST",
-      "path": "/rest/v1/campaigns/<%= @inputs['Campaign Id'] %>/trigger.json",
+      "path": "/rest/v1/campaigns/{{inputs.Campaign Id}}/trigger.json",
       "inputs": [
         {
           "name": "Campaign Id",
@@ -151,9 +151,9 @@
     {
       "id": "lead_merge",
       "name": "Marketo Lead Merge",
-      "description": "POST /rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
+      "description": "POST /rest/v1/leads/{{inputs.Winning Lead Id}}/merge.json?leadId={{inputs.Losing Lead Id}}",
       "method": "POST",
-      "path": "/rest/v1/leads/<%= @inputs['Winning Lead Id'] %>/merge.json?leadId=<%= @inputs['Losing Lead Id'] %>",
+      "path": "/rest/v1/leads/{{inputs.Winning Lead Id}}/merge.json?leadId={{inputs.Losing Lead Id}}",
       "inputs": [
         {
           "name": "Winning Lead Id",
@@ -272,9 +272,9 @@
     {
       "id": "list_add_lead",
       "name": "Marketo List Add Lead",
-      "description": "POST /rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
+      "description": "POST /rest/v1/lists/{{inputs.List Id}}/leads.json",
       "method": "POST",
-      "path": "/rest/v1/lists/<%= @inputs['List Id'] %>/leads.json",
+      "path": "/rest/v1/lists/{{inputs.List Id}}/leads.json",
       "inputs": [
         {
           "name": "List Id",

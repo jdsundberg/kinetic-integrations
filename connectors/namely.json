@@ -111,7 +111,7 @@
       "name": "Namely Employee Retrieve",
       "description": "Namely Employee Retrieve.",
       "method": "GET",
-      "path": "/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "path": "/api/v1/profiles/{{inputs.Profile Id}}",
       "inputs": [
         {
           "name": "Profile Id",
@@ -166,7 +166,7 @@
       "name": "Namely Employee Update",
       "description": "Namely Employee Update.",
       "method": "PUT",
-      "path": "/api/v1/profiles/<%= @inputs['Profile Id'] %>",
+      "path": "/api/v1/profiles/{{inputs.Profile Id}}",
       "inputs": [
         {
           "name": "Profile Id",
@@ -227,7 +227,7 @@
       "name": "Namely Report Retrieve",
       "description": "Namely Report Retrieve.",
       "method": "GET",
-      "path": "/api/v1/reports/<%= @inputs['Report Id'] %>",
+      "path": "/api/v1/reports/{{inputs.Report Id}}",
       "inputs": [
         {
           "name": "Report Id",

@@ -30,9 +30,9 @@
     {
       "id": "record_create",
       "name": "NetSuite Record Create",
-      "description": "POST /services/rest/record/v1/<%= @inputs['Record Type'] %>",
+      "description": "POST /services/rest/record/v1/{{inputs.Record Type}}",
       "method": "POST",
-      "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>",
+      "path": "/services/rest/record/v1/{{inputs.Record Type}}",
       "inputs": [
         {
           "name": "Record Type",
@@ -71,9 +71,9 @@
     {
       "id": "record_retrieve",
       "name": "NetSuite Record Retrieve",
-      "description": "GET /services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "description": "GET /services/rest/record/v1/{{inputs.Record Type}}/{{inputs.Record Id}}",
       "method": "GET",
-      "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "path": "/services/rest/record/v1/{{inputs.Record Type}}/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Type",
@@ -114,9 +114,9 @@
     {
       "id": "record_update",
       "name": "NetSuite Record Update",
-      "description": "PATCH /services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "description": "PATCH /services/rest/record/v1/{{inputs.Record Type}}/{{inputs.Record Id}}",
       "method": "PATCH",
-      "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>/<%= @inputs['Record Id'] %>",
+      "path": "/services/rest/record/v1/{{inputs.Record Type}}/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Record Type",
@@ -156,9 +156,9 @@
     {
       "id": "saved_search",
       "name": "NetSuite Saved Search Run",
-      "description": "GET /services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
+      "description": "GET /services/rest/record/v1/{{inputs.Record Type}}?savedSearchId={{inputs.Saved Search Id}}",
       "method": "GET",
-      "path": "/services/rest/record/v1/<%= @inputs['Record Type'] %>?savedSearchId=<%= @inputs['Saved Search Id'] %>",
+      "path": "/services/rest/record/v1/{{inputs.Record Type}}?savedSearchId={{inputs.Saved Search Id}}",
       "inputs": [
         {
           "name": "Record Type",

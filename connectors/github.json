@@ -30,9 +30,9 @@
     {
       "id": "action_trigger",
       "name": "GitHub Action Workflow Dispatch",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/actions/workflows/{{inputs.Workflow Id}}/dispatches",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/actions/workflows/<%= @inputs['Workflow Id'] %>/dispatches",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/actions/workflows/{{inputs.Workflow Id}}/dispatches",
       "inputs": [
         {
           "name": "Owner",
@@ -82,9 +82,9 @@
     {
       "id": "branch_create",
       "name": "GitHub Branch Create",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/git/refs",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/git/refs",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/git/refs",
       "inputs": [
         {
           "name": "Owner",
@@ -133,9 +133,9 @@
     {
       "id": "issue_add_comment",
       "name": "GitHub Issue Add Comment",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/issues/{{inputs.Issue Number}}/comments",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>/comments",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/issues/{{inputs.Issue Number}}/comments",
       "inputs": [
         {
           "name": "Owner",
@@ -184,9 +184,9 @@
     {
       "id": "issue_create",
       "name": "GitHub Issue Create",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/issues",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/issues",
       "inputs": [
         {
           "name": "Owner",
@@ -249,9 +249,9 @@
     {
       "id": "issue_update",
       "name": "GitHub Issue Update",
-      "description": "PATCH /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
+      "description": "PATCH /repos/{{inputs.Owner}}/{{inputs.Repo}}/issues/{{inputs.Issue Number}}",
       "method": "PATCH",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/issues/<%= @inputs['Issue Number'] %>",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/issues/{{inputs.Issue Number}}",
       "inputs": [
         {
           "name": "Owner",
@@ -315,9 +315,9 @@
     {
       "id": "pr_create",
       "name": "GitHub Pull Request Create",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/pulls",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/pulls",
       "inputs": [
         {
           "name": "Owner",
@@ -385,9 +385,9 @@
     {
       "id": "pr_merge",
       "name": "GitHub Pull Request Merge",
-      "description": "PUT /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
+      "description": "PUT /repos/{{inputs.Owner}}/{{inputs.Repo}}/pulls/{{inputs.Pr Number}}/merge",
       "method": "PUT",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/pulls/<%= @inputs['Pr Number'] %>/merge",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/pulls/{{inputs.Pr Number}}/merge",
       "inputs": [
         {
           "name": "Owner",
@@ -450,9 +450,9 @@
     {
       "id": "release_create",
       "name": "GitHub Release Create",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/releases",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/releases",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/releases",
       "inputs": [
         {
           "name": "Owner",
@@ -593,9 +593,9 @@
     {
       "id": "webhook_create",
       "name": "GitHub Webhook Create",
-      "description": "POST /repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
+      "description": "POST /repos/{{inputs.Owner}}/{{inputs.Repo}}/hooks",
       "method": "POST",
-      "path": "/repos/<%= @inputs['Owner'] %>/<%= @inputs['Repo'] %>/hooks",
+      "path": "/repos/{{inputs.Owner}}/{{inputs.Repo}}/hooks",
       "inputs": [
         {
           "name": "Owner",

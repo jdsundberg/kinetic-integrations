@@ -41,9 +41,9 @@
     {
       "id": "build_info",
       "name": "Jenkins Build Info",
-      "description": "GET /job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
+      "description": "GET /job/{{inputs.Job Name}}/{{inputs.Build Number}}/api/json",
       "method": "GET",
-      "path": "/job/<%= @inputs['Job Name'] %>/<%= @inputs['Build Number'] %>/api/json",
+      "path": "/job/{{inputs.Job Name}}/{{inputs.Build Number}}/api/json",
       "inputs": [
         {
           "name": "Job Name",
@@ -96,9 +96,9 @@
     {
       "id": "job_retrieve",
       "name": "Jenkins Job Retrieve",
-      "description": "GET /job/<%= @inputs['Job Name'] %>/api/json",
+      "description": "GET /job/{{inputs.Job Name}}/api/json",
       "method": "GET",
-      "path": "/job/<%= @inputs['Job Name'] %>/api/json",
+      "path": "/job/{{inputs.Job Name}}/api/json",
       "inputs": [
         {
           "name": "Job Name",
@@ -147,9 +147,9 @@
     {
       "id": "job_trigger",
       "name": "Jenkins Job Trigger",
-      "description": "POST /job/<%= @inputs['Job Name'] %>/buildWithParameters",
+      "description": "POST /job/{{inputs.Job Name}}/buildWithParameters",
       "method": "POST",
-      "path": "/job/<%= @inputs['Job Name'] %>/buildWithParameters",
+      "path": "/job/{{inputs.Job Name}}/buildWithParameters",
       "inputs": [
         {
           "name": "Job Name",

@@ -41,9 +41,9 @@
     {
       "id": "agent_retrieve",
       "name": "Freshdesk Agent Retrieve",
-      "description": "GET /api/v2/agents/<%= @inputs['Agent Id'] %>",
+      "description": "GET /api/v2/agents/{{inputs.Agent Id}}",
       "method": "GET",
-      "path": "/api/v2/agents/<%= @inputs['Agent Id'] %>",
+      "path": "/api/v2/agents/{{inputs.Agent Id}}",
       "inputs": [
         {
           "name": "Agent Id",
@@ -148,9 +148,9 @@
     {
       "id": "contact_update",
       "name": "Freshdesk Contact Update",
-      "description": "PUT /api/v2/contacts/<%= @inputs['Contact Id'] %>",
+      "description": "PUT /api/v2/contacts/{{inputs.Contact Id}}",
       "method": "PUT",
-      "path": "/api/v2/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/api/v2/contacts/{{inputs.Contact Id}}",
       "inputs": [
         {
           "name": "Contact Id",
@@ -293,9 +293,9 @@
     {
       "id": "ticket_reply",
       "name": "Freshdesk Ticket Reply",
-      "description": "POST /api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
+      "description": "POST /api/v2/tickets/{{inputs.Ticket Id}}/reply",
       "method": "POST",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/reply",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}/reply",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -334,9 +334,9 @@
     {
       "id": "ticket_update",
       "name": "Freshdesk Ticket Update",
-      "description": "PUT /api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "description": "PUT /api/v2/tickets/{{inputs.Ticket Id}}",
       "method": "PUT",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}",
       "inputs": [
         {
           "name": "Ticket Id",

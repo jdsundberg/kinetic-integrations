@@ -39,9 +39,9 @@
     {
       "id": "campaign_activate",
       "name": "Eloqua Campaign Activate",
-      "description": "POST /api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
+      "description": "POST /api/REST/2.0/assets/campaign/active/{{inputs.Campaign Id}}",
       "method": "POST",
-      "path": "/api/REST/2.0/assets/campaign/active/<%= @inputs['Campaign Id'] %>",
+      "path": "/api/REST/2.0/assets/campaign/active/{{inputs.Campaign Id}}",
       "inputs": [
         {
           "name": "Campaign Id",
@@ -163,9 +163,9 @@
     {
       "id": "contact_update",
       "name": "Eloqua Contact Update",
-      "description": "PUT /api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
+      "description": "PUT /api/REST/2.0/data/contact/{{inputs.Contact Id}}",
       "method": "PUT",
-      "path": "/api/REST/2.0/data/contact/<%= @inputs['Contact Id'] %>",
+      "path": "/api/REST/2.0/data/contact/{{inputs.Contact Id}}",
       "inputs": [
         {
           "name": "Contact Id",
@@ -284,9 +284,9 @@
     {
       "id": "form_submit",
       "name": "Eloqua Form Submit",
-      "description": "POST /api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
+      "description": "POST /api/REST/2.0/data/form/{{inputs.Form Id}}",
       "method": "POST",
-      "path": "/api/REST/2.0/data/form/<%= @inputs['Form Id'] %>",
+      "path": "/api/REST/2.0/data/form/{{inputs.Form Id}}",
       "inputs": [
         {
           "name": "Form Id",

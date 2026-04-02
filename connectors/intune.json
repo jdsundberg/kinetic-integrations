@@ -24,9 +24,9 @@
     {
       "id": "app_assign",
       "name": "Microsoft Intune App Assign",
-      "description": "POST https://graph.microsoft.com/v1.0/deviceAppManagement/mobileApps/<%= @inputs['App Id'] %>/assign",
+      "description": "POST https://graph.microsoft.com/v1.0/deviceAppManagement/mobileApps/{{inputs.App Id}}/assign",
       "method": "POST",
-      "path": "/v1.0/deviceAppManagement/mobileApps/<%= @inputs['App Id'] %>/assign",
+      "path": "/v1.0/deviceAppManagement/mobileApps/{{inputs.App Id}}/assign",
       "inputs": [
         {
           "name": "App Id",
@@ -154,9 +154,9 @@
     {
       "id": "device_retrieve",
       "name": "Microsoft Intune Device Retrieve",
-      "description": "GET https://graph.microsoft.com/v1.0/deviceManagement/managedDevices/<%= @inputs['Device Id'] %>",
+      "description": "GET https://graph.microsoft.com/v1.0/deviceManagement/managedDevices/{{inputs.Device Id}}",
       "method": "GET",
-      "path": "/v1.0/deviceManagement/managedDevices/<%= @inputs['Device Id'] %>",
+      "path": "/v1.0/deviceManagement/managedDevices/{{inputs.Device Id}}",
       "inputs": [
         {
           "name": "Device Id",

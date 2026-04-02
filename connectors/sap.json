@@ -34,9 +34,9 @@
     {
       "id": "bapi_call",
       "name": "SAP BAPI Call",
-      "description": "POST /sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "description": "POST /sap/opu/odata/sap/{{inputs.Service Name}}/{{inputs.Entity Set}}",
       "method": "POST",
-      "path": "/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "path": "/sap/opu/odata/sap/{{inputs.Service Name}}/{{inputs.Entity Set}}",
       "inputs": [
         {
           "name": "Service Name",
@@ -80,9 +80,9 @@
     {
       "id": "idoc_send",
       "name": "SAP IDoc Send",
-      "description": "POST /sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "description": "POST /sap/opu/odata/sap/{{inputs.Service Name}}/{{inputs.Entity Set}}",
       "method": "POST",
-      "path": "/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Entity Set'] %>",
+      "path": "/sap/opu/odata/sap/{{inputs.Service Name}}/{{inputs.Entity Set}}",
       "inputs": [
         {
           "name": "Service Name",
@@ -135,9 +135,9 @@
     {
       "id": "material_retrieve",
       "name": "SAP Material Retrieve",
-      "description": "GET /sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
+      "description": "GET /sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('{{inputs.Material Number}}')",
       "method": "GET",
-      "path": "/sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('<%= @inputs['Material Number'] %>')",
+      "path": "/sap/opu/odata/sap/API_PRODUCT_SRV/A_Product('{{inputs.Material Number}}')",
       "inputs": [
         {
           "name": "Material Number",
@@ -270,9 +270,9 @@
     {
       "id": "rfc_call",
       "name": "SAP RFC Call",
-      "description": "POST /sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
+      "description": "POST /sap/opu/odata/sap/{{inputs.Service Name}}/{{inputs.Function Import}}",
       "method": "POST",
-      "path": "/sap/opu/odata/sap/<%= @inputs['Service Name'] %>/<%= @inputs['Function Import'] %>",
+      "path": "/sap/opu/odata/sap/{{inputs.Service Name}}/{{inputs.Function Import}}",
       "inputs": [
         {
           "name": "Service Name",

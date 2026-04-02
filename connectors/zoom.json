@@ -25,9 +25,9 @@
     {
       "id": "meeting_create",
       "name": "Zoom Meeting Create",
-      "description": "POST https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/meetings",
+      "description": "POST https://api.zoom.us/v2/users/{{inputs.User Id}}/meetings",
       "method": "POST",
-      "path": "/v2/users/<%= @inputs['User Id'] %>/meetings",
+      "path": "/v2/users/{{inputs.User Id}}/meetings",
       "inputs": [
         {
           "name": "User Id",
@@ -108,9 +108,9 @@
     {
       "id": "meeting_delete",
       "name": "Zoom Meeting Delete",
-      "description": "DELETE https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "description": "DELETE https://api.zoom.us/v2/meetings/{{inputs.Meeting Id}}",
       "method": "DELETE",
-      "path": "/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "path": "/v2/meetings/{{inputs.Meeting Id}}",
       "inputs": [
         {
           "name": "Meeting Id",
@@ -147,9 +147,9 @@
     {
       "id": "meeting_update",
       "name": "Zoom Meeting Update",
-      "description": "PATCH https://api.zoom.us/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "description": "PATCH https://api.zoom.us/v2/meetings/{{inputs.Meeting Id}}",
       "method": "PATCH",
-      "path": "/v2/meetings/<%= @inputs['Meeting Id'] %>",
+      "path": "/v2/meetings/{{inputs.Meeting Id}}",
       "inputs": [
         {
           "name": "Meeting Id",
@@ -209,9 +209,9 @@
     {
       "id": "recording_list",
       "name": "Zoom Recording List",
-      "description": "GET https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/recordings",
+      "description": "GET https://api.zoom.us/v2/users/{{inputs.User Id}}/recordings",
       "method": "GET",
-      "path": "/v2/users/<%= @inputs['User Id'] %>/recordings",
+      "path": "/v2/users/{{inputs.User Id}}/recordings",
       "inputs": [
         {
           "name": "User Id",
@@ -342,9 +342,9 @@
     {
       "id": "webinar_create",
       "name": "Zoom Webinar Create",
-      "description": "POST https://api.zoom.us/v2/users/<%= @inputs['User Id'] %>/webinars",
+      "description": "POST https://api.zoom.us/v2/users/{{inputs.User Id}}/webinars",
       "method": "POST",
-      "path": "/v2/users/<%= @inputs['User Id'] %>/webinars",
+      "path": "/v2/users/{{inputs.User Id}}/webinars",
       "inputs": [
         {
           "name": "User Id",

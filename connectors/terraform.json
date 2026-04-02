@@ -85,9 +85,9 @@
     {
       "id": "state_retrieve",
       "name": "Terraform Cloud State Retrieve",
-      "description": "GET https://app.terraform.io/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/current-state-version",
+      "description": "GET https://app.terraform.io/api/v2/workspaces/{{inputs.Workspace Id}}/current-state-version",
       "method": "GET",
-      "path": "/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/current-state-version",
+      "path": "/api/v2/workspaces/{{inputs.Workspace Id}}/current-state-version",
       "inputs": [
         {
           "name": "Workspace Id",
@@ -146,9 +146,9 @@
     {
       "id": "variable_set",
       "name": "Terraform Cloud Variable Set",
-      "description": "POST https://app.terraform.io/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/vars",
+      "description": "POST https://app.terraform.io/api/v2/workspaces/{{inputs.Workspace Id}}/vars",
       "method": "POST",
-      "path": "/api/v2/workspaces/<%= @inputs['Workspace Id'] %>/vars",
+      "path": "/api/v2/workspaces/{{inputs.Workspace Id}}/vars",
       "inputs": [
         {
           "name": "Workspace Id",
@@ -212,9 +212,9 @@
     {
       "id": "workspace_create",
       "name": "Terraform Cloud Workspace Create",
-      "description": "POST https://app.terraform.io/api/v2/organizations/<%= @inputs['Organization'] %>/workspaces",
+      "description": "POST https://app.terraform.io/api/v2/organizations/{{inputs.Organization}}/workspaces",
       "method": "POST",
-      "path": "/api/v2/organizations/<%= @inputs['Organization'] %>/workspaces",
+      "path": "/api/v2/organizations/{{inputs.Organization}}/workspaces",
       "inputs": [
         {
           "name": "Organization",

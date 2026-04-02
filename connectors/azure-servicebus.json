@@ -37,7 +37,7 @@
       "name": "Azure Service Bus Message Receive",
       "description": "Azure Service Bus Message Receive.",
       "method": "POST",
-      "path": "/<%= @inputs['Queue Name'] %>/messages/head?timeout=<%= @inputs['Timeout'] %>",
+      "path": "/{{inputs.Queue Name}}/messages/head?timeout={{inputs.Timeout}}",
       "inputs": [
         {
           "name": "Queue Name",
@@ -82,7 +82,7 @@
       "name": "Azure Service Bus Message Send",
       "description": "Azure Service Bus Message Send.",
       "method": "POST",
-      "path": "/<%= @inputs['Queue Name'] %>/messages",
+      "path": "/{{inputs.Queue Name}}/messages",
       "inputs": [
         {
           "name": "Queue Name",
@@ -134,7 +134,7 @@
       "name": "Azure Service Bus Queue Create",
       "description": "Azure Service Bus Queue Create.",
       "method": "PUT",
-      "path": "/<%= @inputs['Queue Name'] %>",
+      "path": "/{{inputs.Queue Name}}",
       "inputs": [
         {
           "name": "Queue Name",
@@ -203,7 +203,7 @@
       "name": "Azure Service Bus Topic Create",
       "description": "Azure Service Bus Topic Create.",
       "method": "PUT",
-      "path": "/<%= @inputs['Topic Name'] %>",
+      "path": "/{{inputs.Topic Name}}",
       "inputs": [
         {
           "name": "Topic Name",

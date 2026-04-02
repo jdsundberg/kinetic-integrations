@@ -180,9 +180,9 @@
     {
       "id": "payment_capture",
       "name": "PayPal Payment Capture",
-      "description": "POST https://api-m.paypal.com/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
+      "description": "POST https://api-m.paypal.com/v2/payments/authorizations/{{inputs.Authorization Id}}/capture",
       "method": "POST",
-      "path": "/v2/payments/authorizations/<%= @inputs['Authorization Id'] %>/capture",
+      "path": "/v2/payments/authorizations/{{inputs.Authorization Id}}/capture",
       "inputs": [
         {
           "name": "Authorization Id",
@@ -371,9 +371,9 @@
     {
       "id": "refund_create",
       "name": "PayPal Refund Create",
-      "description": "POST https://api-m.paypal.com/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
+      "description": "POST https://api-m.paypal.com/v2/payments/captures/{{inputs.Capture Id}}/refund",
       "method": "POST",
-      "path": "/v2/payments/captures/<%= @inputs['Capture Id'] %>/refund",
+      "path": "/v2/payments/captures/{{inputs.Capture Id}}/refund",
       "inputs": [
         {
           "name": "Capture Id",

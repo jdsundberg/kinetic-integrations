@@ -107,7 +107,7 @@
       "name": "Mailchimp Campaign Send",
       "description": "Mailchimp Campaign Send.",
       "method": "POST",
-      "path": "/3.0/campaigns/<%= @inputs['Campaign Id'] %>/actions/send",
+      "path": "/3.0/campaigns/{{inputs.Campaign Id}}/actions/send",
       "inputs": [
         {
           "name": "Campaign Id",
@@ -229,7 +229,7 @@
       "name": "Mailchimp Subscriber Add",
       "description": "Mailchimp Subscriber Add.",
       "method": "POST",
-      "path": "/3.0/lists/<%= @inputs['List Id'] %>/members",
+      "path": "/3.0/lists/{{inputs.List Id}}/members",
       "inputs": [
         {
           "name": "List Id",
@@ -298,7 +298,7 @@
       "name": "Mailchimp Subscriber Update",
       "description": "Mailchimp Subscriber Update.",
       "method": "PATCH",
-      "path": "/3.0/lists/<%= @inputs['List Id'] %>/members/<%= @inputs['Subscriber Hash'] %>",
+      "path": "/3.0/lists/{{inputs.List Id}}/members/{{inputs.Subscriber Hash}}",
       "inputs": [
         {
           "name": "List Id",

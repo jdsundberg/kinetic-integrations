@@ -217,9 +217,9 @@
     {
       "id": "incident_resolve",
       "name": "PagerDuty Incident Resolve",
-      "description": "PUT https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "description": "PUT https://api.pagerduty.com/incidents/{{inputs.Incident Id}}",
       "method": "PUT",
-      "path": "/incidents/<%= @inputs['Incident Id'] %>",
+      "path": "/incidents/{{inputs.Incident Id}}",
       "inputs": [
         {
           "name": "Incident Id",
@@ -263,9 +263,9 @@
     {
       "id": "incident_update",
       "name": "PagerDuty Incident Update",
-      "description": "PUT https://api.pagerduty.com/incidents/<%= @inputs['Incident Id'] %>",
+      "description": "PUT https://api.pagerduty.com/incidents/{{inputs.Incident Id}}",
       "method": "PUT",
-      "path": "/incidents/<%= @inputs['Incident Id'] %>",
+      "path": "/incidents/{{inputs.Incident Id}}",
       "inputs": [
         {
           "name": "Incident Id",

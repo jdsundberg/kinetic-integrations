@@ -226,9 +226,9 @@
     {
       "id": "person_retrieve",
       "name": "Webex Person Retrieve",
-      "description": "GET https://webexapis.com/v1/people/<%= @inputs['Person Id'] %>",
+      "description": "GET https://webexapis.com/v1/people/{{inputs.Person Id}}",
       "method": "GET",
-      "path": "/v1/people/<%= @inputs['Person Id'] %>",
+      "path": "/v1/people/{{inputs.Person Id}}",
       "inputs": [
         {
           "name": "Person Id",

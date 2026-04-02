@@ -103,7 +103,7 @@
       "name": "GCP BigQuery Job Retrieve",
       "description": "GCP BigQuery Job Retrieve.",
       "method": "GET",
-      "path": "/bigquery/v2/projects/jobs/<%= @inputs['Job Id'] %>",
+      "path": "/bigquery/v2/projects/jobs/{{inputs.Job Id}}",
       "inputs": [
         {
           "name": "Job Id",
@@ -213,7 +213,7 @@
       "name": "GCP BigQuery Table Create",
       "description": "GCP BigQuery Table Create.",
       "method": "POST",
-      "path": "/bigquery/v2/projects/datasets/<%= @inputs['Dataset Id'] %>/tables",
+      "path": "/bigquery/v2/projects/datasets/{{inputs.Dataset Id}}/tables",
       "inputs": [
         {
           "name": "Dataset Id",

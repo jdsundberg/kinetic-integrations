@@ -96,9 +96,9 @@
     {
       "id": "change_request_update",
       "name": "ServiceNow Change Request Update",
-      "description": "PATCH /api/now/table/change_request/<%= @inputs['Sys Id'] %>",
+      "description": "PATCH /api/now/table/change_request/{{inputs.Sys Id}}",
       "method": "PATCH",
-      "path": "/api/now/table/change_request/<%= @inputs['Sys Id'] %>",
+      "path": "/api/now/table/change_request/{{inputs.Sys Id}}",
       "inputs": [
         {
           "name": "Sys Id",
@@ -147,9 +147,9 @@
     {
       "id": "ci_retrieve",
       "name": "ServiceNow CI Retrieve",
-      "description": "GET /api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "description": "GET /api/now/table/cmdb_ci/{{inputs.Sys Id}}",
       "method": "GET",
-      "path": "/api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "path": "/api/now/table/cmdb_ci/{{inputs.Sys Id}}",
       "inputs": [
         {
           "name": "Sys Id",
@@ -190,9 +190,9 @@
     {
       "id": "ci_update",
       "name": "ServiceNow CI Update",
-      "description": "PATCH /api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "description": "PATCH /api/now/table/cmdb_ci/{{inputs.Sys Id}}",
       "method": "PATCH",
-      "path": "/api/now/table/cmdb_ci/<%= @inputs['Sys Id'] %>",
+      "path": "/api/now/table/cmdb_ci/{{inputs.Sys Id}}",
       "inputs": [
         {
           "name": "Sys Id",
@@ -241,9 +241,9 @@
     {
       "id": "incident_close",
       "name": "ServiceNow Incident Close",
-      "description": "PATCH /api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "description": "PATCH /api/now/table/incident/{{inputs.Sys Id}}",
       "method": "PATCH",
-      "path": "/api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "path": "/api/now/table/incident/{{inputs.Sys Id}}",
       "inputs": [
         {
           "name": "Sys Id",
@@ -357,9 +357,9 @@
     {
       "id": "incident_retrieve",
       "name": "ServiceNow Incident Retrieve",
-      "description": "GET /api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "description": "GET /api/now/table/incident/{{inputs.Sys Id}}",
       "method": "GET",
-      "path": "/api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "path": "/api/now/table/incident/{{inputs.Sys Id}}",
       "inputs": [
         {
           "name": "Sys Id",
@@ -404,9 +404,9 @@
     {
       "id": "incident_update",
       "name": "ServiceNow Incident Update",
-      "description": "PATCH /api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "description": "PATCH /api/now/table/incident/{{inputs.Sys Id}}",
       "method": "PATCH",
-      "path": "/api/now/table/incident/<%= @inputs['Sys Id'] %>",
+      "path": "/api/now/table/incident/{{inputs.Sys Id}}",
       "inputs": [
         {
           "name": "Sys Id",
@@ -549,9 +549,9 @@
     {
       "id": "user_retrieve",
       "name": "ServiceNow User Retrieve",
-      "description": "GET /api/now/table/sys_user?sysparm_query=user_name=<%= @inputs['Username'] %>",
+      "description": "GET /api/now/table/sys_user?sysparm_query=user_name={{inputs.Username}}",
       "method": "GET",
-      "path": "/api/now/table/sys_user?sysparm_query=user_name=<%= @inputs['Username'] %>",
+      "path": "/api/now/table/sys_user?sysparm_query=user_name={{inputs.Username}}",
       "inputs": [
         {
           "name": "Username",

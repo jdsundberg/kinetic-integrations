@@ -99,9 +99,9 @@
     {
       "id": "assignment_update",
       "name": "Oracle HCM Assignment Update",
-      "description": "PATCH /hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
+      "description": "PATCH /hcmRestApi/resources/11.13.18.05/workers/{{inputs.Person Id}}/child/assignments/{{inputs.Assignment Id}}",
       "method": "PATCH",
-      "path": "/hcmRestApi/resources/11.13.18.05/workers/<%= @inputs['Person Id'] %>/child/assignments/<%= @inputs['Assignment Id'] %>",
+      "path": "/hcmRestApi/resources/11.13.18.05/workers/{{inputs.Person Id}}/child/assignments/{{inputs.Assignment Id}}",
       "inputs": [
         {
           "name": "Person Id",
@@ -170,9 +170,9 @@
     {
       "id": "job_retrieve",
       "name": "Oracle HCM Job Retrieve",
-      "description": "GET /hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
+      "description": "GET /hcmRestApi/resources/11.13.18.05/jobs?q=JobCode={{inputs.Job Code}}",
       "method": "GET",
-      "path": "/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode=<%= @inputs['Job Code'] %>",
+      "path": "/hcmRestApi/resources/11.13.18.05/jobs?q=JobCode={{inputs.Job Code}}",
       "inputs": [
         {
           "name": "Job Code",
@@ -310,9 +310,9 @@
     {
       "id": "worker_retrieve",
       "name": "Oracle HCM Worker Retrieve",
-      "description": "GET /hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
+      "description": "GET /hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber={{inputs.Person Number}}",
       "method": "GET",
-      "path": "/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber=<%= @inputs['Person Number'] %>",
+      "path": "/hcmRestApi/resources/11.13.18.05/workers?q=PersonNumber={{inputs.Person Number}}",
       "inputs": [
         {
           "name": "Person Number",

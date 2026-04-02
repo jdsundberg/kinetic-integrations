@@ -119,7 +119,7 @@
       "name": "BambooHR Employee Retrieve",
       "description": "BambooHR Employee Retrieve.",
       "method": "GET",
-      "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>/?fields=<%= @inputs['Fields'] %>",
+      "path": "/api/gateway.php/v1/employees/{{inputs.Employee Id}}/?fields={{inputs.Fields}}",
       "inputs": [
         {
           "name": "Employee Id",
@@ -178,7 +178,7 @@
       "name": "BambooHR Employee Update",
       "description": "BambooHR Employee Update.",
       "method": "POST",
-      "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>",
+      "path": "/api/gateway.php/v1/employees/{{inputs.Employee Id}}",
       "inputs": [
         {
           "name": "Employee Id",
@@ -309,7 +309,7 @@
       "name": "BambooHR Time Off Request",
       "description": "BambooHR Time Off Request.",
       "method": "PUT",
-      "path": "/api/gateway.php/v1/employees/<%= @inputs['Employee Id'] %>/time_off/request/",
+      "path": "/api/gateway.php/v1/employees/{{inputs.Employee Id}}/time_off/request/",
       "inputs": [
         {
           "name": "Employee Id",

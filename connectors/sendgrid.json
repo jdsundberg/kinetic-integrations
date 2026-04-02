@@ -192,9 +192,9 @@
     {
       "id": "list_add_contact",
       "name": "SendGrid List Add Contact",
-      "description": "PUT https://api.sendgrid.com/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
+      "description": "PUT https://api.sendgrid.com/v3/marketing/lists/{{inputs.List Id}}/contacts",
       "method": "PUT",
-      "path": "/v3/marketing/lists/<%= @inputs['List Id'] %>/contacts",
+      "path": "/v3/marketing/lists/{{inputs.List Id}}/contacts",
       "inputs": [
         {
           "name": "List Id",
@@ -269,9 +269,9 @@
     {
       "id": "stats_retrieve",
       "name": "SendGrid Stats Retrieve",
-      "description": "GET https://api.sendgrid.com/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
+      "description": "GET https://api.sendgrid.com/v3/stats?start_date={{inputs.Start Date}}&end_date={{inputs.End Date}}",
       "method": "GET",
-      "path": "/v3/stats?start_date=<%= @inputs['Start Date'] %>&end_date=<%= @inputs['End Date'] %>",
+      "path": "/v3/stats?start_date={{inputs.Start Date}}&end_date={{inputs.End Date}}",
       "inputs": [
         {
           "name": "Start Date",
@@ -336,9 +336,9 @@
     {
       "id": "template_retrieve",
       "name": "SendGrid Template Retrieve",
-      "description": "GET https://api.sendgrid.com/v3/templates/<%= @inputs['Template Id'] %>",
+      "description": "GET https://api.sendgrid.com/v3/templates/{{inputs.Template Id}}",
       "method": "GET",
-      "path": "/v3/templates/<%= @inputs['Template Id'] %>",
+      "path": "/v3/templates/{{inputs.Template Id}}",
       "inputs": [
         {
           "name": "Template Id",

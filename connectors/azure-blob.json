@@ -42,7 +42,7 @@
       "name": "Azure Blob Blob Download",
       "description": "Azure Blob Blob Download.",
       "method": "GET",
-      "path": "/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "path": "/{{inputs.Container}}/{{inputs.Blob Name}}",
       "inputs": [
         {
           "name": "Container",
@@ -85,7 +85,7 @@
       "name": "Azure Blob Blob List",
       "description": "Azure Blob Blob List.",
       "method": "GET",
-      "path": "/<%= @inputs['Container'] %>?restype=container&comp=list&prefix=<%= @inputs['Prefix'] %>&maxresults=<%= @inputs['Max Results'] %>",
+      "path": "/{{inputs.Container}}?restype=container&comp=list&prefix={{inputs.Prefix}}&maxresults={{inputs.Max Results}}",
       "inputs": [
         {
           "name": "Container",
@@ -124,7 +124,7 @@
       "name": "Azure Blob Blob Upload",
       "description": "Azure Blob Blob Upload.",
       "method": "PUT",
-      "path": "/<%= @inputs['Container'] %>/<%= @inputs['Blob Name'] %>",
+      "path": "/{{inputs.Container}}/{{inputs.Blob Name}}",
       "inputs": [
         {
           "name": "Container",
@@ -175,7 +175,7 @@
       "name": "Azure Blob Container Create",
       "description": "Azure Blob Container Create.",
       "method": "PUT",
-      "path": "/<%= @inputs['Container'] %>?restype=container",
+      "path": "/{{inputs.Container}}?restype=container",
       "inputs": [
         {
           "name": "Container",

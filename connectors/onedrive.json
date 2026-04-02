@@ -45,9 +45,9 @@
     {
       "id": "file_download",
       "name": "OneDrive File Download",
-      "description": "GET https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/content",
+      "description": "GET https://graph.microsoft.com/v1.0/me/drive/items/{{inputs.Item Id}}/content",
       "method": "GET",
-      "path": "/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/content",
+      "path": "/v1.0/me/drive/items/{{inputs.Item Id}}/content",
       "inputs": [
         {
           "name": "Item Id",
@@ -76,9 +76,9 @@
     {
       "id": "file_move",
       "name": "OneDrive File Move",
-      "description": "PATCH https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>",
+      "description": "PATCH https://graph.microsoft.com/v1.0/me/drive/items/{{inputs.Item Id}}",
       "method": "PATCH",
-      "path": "/v1.0/me/drive/items/<%= @inputs['Item Id'] %>",
+      "path": "/v1.0/me/drive/items/{{inputs.Item Id}}",
       "inputs": [
         {
           "name": "Item Id",
@@ -126,9 +126,9 @@
     {
       "id": "file_search",
       "name": "OneDrive File Search",
-      "description": "GET https://graph.microsoft.com/v1.0/me/drive/root/search(q='<%= @inputs['Query'] %>')",
+      "description": "GET https://graph.microsoft.com/v1.0/me/drive/root/search(q='{{inputs.Query}}')",
       "method": "GET",
-      "path": "/v1.0/me/drive/root/search(q='<%= @inputs['Query'] %>')",
+      "path": "/v1.0/me/drive/root/search(q='{{inputs.Query}}')",
       "inputs": [
         {
           "name": "Query",
@@ -161,9 +161,9 @@
     {
       "id": "file_upload",
       "name": "OneDrive File Upload",
-      "description": "PUT https://graph.microsoft.com/v1.0/me/drive/root:/<%= @inputs['File Path'] %>:/content",
+      "description": "PUT https://graph.microsoft.com/v1.0/me/drive/root:/{{inputs.File Path}}:/content",
       "method": "PUT",
-      "path": "/v1.0/me/drive/root:/<%= @inputs['File Path'] %>:/content",
+      "path": "/v1.0/me/drive/root:/{{inputs.File Path}}:/content",
       "inputs": [
         {
           "name": "File Path",
@@ -215,9 +215,9 @@
     {
       "id": "folder_create",
       "name": "OneDrive Folder Create",
-      "description": "POST https://graph.microsoft.com/v1.0/me/drive/root<%= @inputs['Parent Path'] %>/children",
+      "description": "POST https://graph.microsoft.com/v1.0/me/drive/root{{inputs.Parent Path}}/children",
       "method": "POST",
-      "path": "/v1.0/me/drive/root<%= @inputs['Parent Path'] %>/children",
+      "path": "/v1.0/me/drive/root{{inputs.Parent Path}}/children",
       "inputs": [
         {
           "name": "Name",
@@ -260,9 +260,9 @@
     {
       "id": "share_create",
       "name": "OneDrive Sharing Link Create",
-      "description": "POST https://graph.microsoft.com/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/createLink",
+      "description": "POST https://graph.microsoft.com/v1.0/me/drive/items/{{inputs.Item Id}}/createLink",
       "method": "POST",
-      "path": "/v1.0/me/drive/items/<%= @inputs['Item Id'] %>/createLink",
+      "path": "/v1.0/me/drive/items/{{inputs.Item Id}}/createLink",
       "inputs": [
         {
           "name": "Item Id",

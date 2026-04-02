@@ -75,9 +75,9 @@
     {
       "id": "document_get",
       "name": "Elasticsearch Document Get",
-      "description": "GET /<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "description": "GET /{{inputs.Index}}/_doc/{{inputs.Document Id}}",
       "method": "GET",
-      "path": "/<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "path": "/{{inputs.Index}}/_doc/{{inputs.Document Id}}",
       "inputs": [
         {
           "name": "Index",
@@ -126,9 +126,9 @@
     {
       "id": "document_index",
       "name": "Elasticsearch Document Index",
-      "description": "POST /<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "description": "POST /{{inputs.Index}}/_doc/{{inputs.Document Id}}",
       "method": "POST",
-      "path": "/<%= @inputs['Index'] %>/_doc/<%= @inputs['Document Id'] %>",
+      "path": "/{{inputs.Index}}/_doc/{{inputs.Document Id}}",
       "inputs": [
         {
           "name": "Index",
@@ -180,9 +180,9 @@
     {
       "id": "document_search",
       "name": "Elasticsearch Document Search",
-      "description": "POST /<%= @inputs['Index'] %>/_search",
+      "description": "POST /{{inputs.Index}}/_search",
       "method": "POST",
-      "path": "/<%= @inputs['Index'] %>/_search",
+      "path": "/{{inputs.Index}}/_search",
       "inputs": [
         {
           "name": "Index",
@@ -235,9 +235,9 @@
     {
       "id": "index_create",
       "name": "Elasticsearch Index Create",
-      "description": "PUT /<%= @inputs['Index'] %>",
+      "description": "PUT /{{inputs.Index}}",
       "method": "PUT",
-      "path": "/<%= @inputs['Index'] %>",
+      "path": "/{{inputs.Index}}",
       "inputs": [
         {
           "name": "Index",

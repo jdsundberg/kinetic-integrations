@@ -96,9 +96,9 @@
     {
       "id": "asset_update",
       "name": "Freshservice Asset Update",
-      "description": "PUT /api/v2/assets/<%= @inputs['Asset Id'] %>",
+      "description": "PUT /api/v2/assets/{{inputs.Asset Id}}",
       "method": "PUT",
-      "path": "/api/v2/assets/<%= @inputs['Asset Id'] %>",
+      "path": "/api/v2/assets/{{inputs.Asset Id}}",
       "inputs": [
         {
           "name": "Asset Id",
@@ -288,9 +288,9 @@
     {
       "id": "ticket_note",
       "name": "Freshservice Ticket Add Note",
-      "description": "POST /api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
+      "description": "POST /api/v2/tickets/{{inputs.Ticket Id}}/notes",
       "method": "POST",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>/notes",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}/notes",
       "inputs": [
         {
           "name": "Ticket Id",
@@ -334,9 +334,9 @@
     {
       "id": "ticket_update",
       "name": "Freshservice Ticket Update",
-      "description": "PUT /api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "description": "PUT /api/v2/tickets/{{inputs.Ticket Id}}",
       "method": "PUT",
-      "path": "/api/v2/tickets/<%= @inputs['Ticket Id'] %>",
+      "path": "/api/v2/tickets/{{inputs.Ticket Id}}",
       "inputs": [
         {
           "name": "Ticket Id",

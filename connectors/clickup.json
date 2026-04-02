@@ -31,9 +31,9 @@
     {
       "id": "comment_create",
       "name": "ClickUp Comment Create",
-      "description": "POST https://api.clickup.com/api/v2/task/<%= @inputs['Task Id'] %>/comment",
+      "description": "POST https://api.clickup.com/api/v2/task/{{inputs.Task Id}}/comment",
       "method": "POST",
-      "path": "/api/v2/task/<%= @inputs['Task Id'] %>/comment",
+      "path": "/api/v2/task/{{inputs.Task Id}}/comment",
       "inputs": [
         {
           "name": "Task Id",
@@ -73,9 +73,9 @@
     {
       "id": "folder_create",
       "name": "ClickUp Folder Create",
-      "description": "POST https://api.clickup.com/api/v2/space/<%= @inputs['Space Id'] %>/folder",
+      "description": "POST https://api.clickup.com/api/v2/space/{{inputs.Space Id}}/folder",
       "method": "POST",
-      "path": "/api/v2/space/<%= @inputs['Space Id'] %>/folder",
+      "path": "/api/v2/space/{{inputs.Space Id}}/folder",
       "inputs": [
         {
           "name": "Space Id",
@@ -114,9 +114,9 @@
     {
       "id": "list_create",
       "name": "ClickUp List Create",
-      "description": "POST https://api.clickup.com/api/v2/folder/<%= @inputs['Folder Id'] %>/list",
+      "description": "POST https://api.clickup.com/api/v2/folder/{{inputs.Folder Id}}/list",
       "method": "POST",
-      "path": "/api/v2/folder/<%= @inputs['Folder Id'] %>/list",
+      "path": "/api/v2/folder/{{inputs.Folder Id}}/list",
       "inputs": [
         {
           "name": "Folder Id",
@@ -165,9 +165,9 @@
     {
       "id": "space_create",
       "name": "ClickUp Space Create",
-      "description": "POST https://api.clickup.com/api/v2/team/<%= @inputs['Team Id'] %>/space",
+      "description": "POST https://api.clickup.com/api/v2/team/{{inputs.Team Id}}/space",
       "method": "POST",
-      "path": "/api/v2/team/<%= @inputs['Team Id'] %>/space",
+      "path": "/api/v2/team/{{inputs.Team Id}}/space",
       "inputs": [
         {
           "name": "Team Id",
@@ -211,9 +211,9 @@
     {
       "id": "task_create",
       "name": "ClickUp Task Create",
-      "description": "POST https://api.clickup.com/api/v2/list/<%= @inputs['List Id'] %>/task",
+      "description": "POST https://api.clickup.com/api/v2/list/{{inputs.List Id}}/task",
       "method": "POST",
-      "path": "/api/v2/list/<%= @inputs['List Id'] %>/task",
+      "path": "/api/v2/list/{{inputs.List Id}}/task",
       "inputs": [
         {
           "name": "List Id",
@@ -281,9 +281,9 @@
     {
       "id": "task_update",
       "name": "ClickUp Task Update",
-      "description": "PUT https://api.clickup.com/api/v2/task/<%= @inputs['Task Id'] %>",
+      "description": "PUT https://api.clickup.com/api/v2/task/{{inputs.Task Id}}",
       "method": "PUT",
-      "path": "/api/v2/task/<%= @inputs['Task Id'] %>",
+      "path": "/api/v2/task/{{inputs.Task Id}}",
       "inputs": [
         {
           "name": "Task Id",

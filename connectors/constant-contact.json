@@ -100,9 +100,9 @@
     {
       "id": "campaign_send",
       "name": "Constant Contact Campaign Send",
-      "description": "POST https://api.cc.email/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
+      "description": "POST https://api.cc.email/v3/emails/activities/{{inputs.Campaign Activity Id}}/schedules",
       "method": "POST",
-      "path": "/v3/emails/activities/<%= @inputs['Campaign Activity Id'] %>/schedules",
+      "path": "/v3/emails/activities/{{inputs.Campaign Activity Id}}/schedules",
       "inputs": [
         {
           "name": "Campaign Activity Id",
@@ -216,9 +216,9 @@
     {
       "id": "contact_update",
       "name": "Constant Contact Contact Update",
-      "description": "PUT https://api.cc.email/v3/contacts/<%= @inputs['Contact Id'] %>",
+      "description": "PUT https://api.cc.email/v3/contacts/{{inputs.Contact Id}}",
       "method": "PUT",
-      "path": "/v3/contacts/<%= @inputs['Contact Id'] %>",
+      "path": "/v3/contacts/{{inputs.Contact Id}}",
       "inputs": [
         {
           "name": "Contact Id",

@@ -30,9 +30,9 @@
     {
       "id": "record_create",
       "name": "Airtable Record Create",
-      "description": "POST https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
+      "description": "POST https://api.airtable.com/v0/{{inputs.Base Id}}/{{inputs.Table Name}}",
       "method": "POST",
-      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>",
+      "path": "/v0/{{inputs.Base Id}}/{{inputs.Table Name}}",
       "inputs": [
         {
           "name": "Base Id",
@@ -80,9 +80,9 @@
     {
       "id": "record_list",
       "name": "Airtable Record List",
-      "description": "GET https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
+      "description": "GET https://api.airtable.com/v0/{{inputs.Base Id}}/{{inputs.Table Name}}?maxRecords={{inputs.Max Records}}&view={{inputs.View}}",
       "method": "GET",
-      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>?maxRecords=<%= @inputs['Max Records'] %>&view=<%= @inputs['View'] %>",
+      "path": "/v0/{{inputs.Base Id}}/{{inputs.Table Name}}?maxRecords={{inputs.Max Records}}&view={{inputs.View}}",
       "inputs": [
         {
           "name": "Base Id",
@@ -131,9 +131,9 @@
     {
       "id": "record_retrieve",
       "name": "Airtable Record Retrieve",
-      "description": "GET https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "description": "GET https://api.airtable.com/v0/{{inputs.Base Id}}/{{inputs.Table Name}}/{{inputs.Record Id}}",
       "method": "GET",
-      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "path": "/v0/{{inputs.Base Id}}/{{inputs.Table Name}}/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Base Id",
@@ -182,9 +182,9 @@
     {
       "id": "record_update",
       "name": "Airtable Record Update",
-      "description": "PATCH https://api.airtable.com/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "description": "PATCH https://api.airtable.com/v0/{{inputs.Base Id}}/{{inputs.Table Name}}/{{inputs.Record Id}}",
       "method": "PATCH",
-      "path": "/v0/<%= @inputs['Base Id'] %>/<%= @inputs['Table Name'] %>/<%= @inputs['Record Id'] %>",
+      "path": "/v0/{{inputs.Base Id}}/{{inputs.Table Name}}/{{inputs.Record Id}}",
       "inputs": [
         {
           "name": "Base Id",

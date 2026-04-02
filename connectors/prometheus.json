@@ -69,9 +69,9 @@
     {
       "id": "query",
       "name": "Prometheus Query",
-      "description": "GET /api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
+      "description": "GET /api/v1/query?query={{inputs.Query}}&time={{inputs.Time}}",
       "method": "GET",
-      "path": "/api/v1/query?query=<%= @inputs['Query'] %>&time=<%= @inputs['Time'] %>",
+      "path": "/api/v1/query?query={{inputs.Query}}&time={{inputs.Time}}",
       "inputs": [
         {
           "name": "Query",
@@ -112,9 +112,9 @@
     {
       "id": "series_list",
       "name": "Prometheus Series List",
-      "description": "GET /api/v1/series?match[]=<%= @inputs['Match'] %>",
+      "description": "GET /api/v1/series?match[]={{inputs.Match}}",
       "method": "GET",
-      "path": "/api/v1/series?match[]=<%= @inputs['Match'] %>",
+      "path": "/api/v1/series?match[]={{inputs.Match}}",
       "inputs": [
         {
           "name": "Match",
@@ -155,9 +155,9 @@
     {
       "id": "target_list",
       "name": "Prometheus Target List",
-      "description": "GET /api/v1/targets?state=<%= @inputs['State'] %>",
+      "description": "GET /api/v1/targets?state={{inputs.State}}",
       "method": "GET",
-      "path": "/api/v1/targets?state=<%= @inputs['State'] %>",
+      "path": "/api/v1/targets?state={{inputs.State}}",
       "inputs": [
         {
           "name": "State",

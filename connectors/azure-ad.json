@@ -90,9 +90,9 @@
     {
       "id": "group_add_member",
       "name": "Azure AD Group Add Member",
-      "description": "POST https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
+      "description": "POST https://graph.microsoft.com/v1.0/groups/{{inputs.Group Id}}/members/$ref",
       "method": "POST",
-      "path": "/v1.0/groups/<%= @inputs['Group Id'] %>/members/$ref",
+      "path": "/v1.0/groups/{{inputs.Group Id}}/members/$ref",
       "inputs": [
         {
           "name": "Group Id",
@@ -183,9 +183,9 @@
     {
       "id": "group_list_members",
       "name": "Azure AD Group List Members",
-      "description": "GET https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members",
+      "description": "GET https://graph.microsoft.com/v1.0/groups/{{inputs.Group Id}}/members",
       "method": "GET",
-      "path": "/v1.0/groups/<%= @inputs['Group Id'] %>/members",
+      "path": "/v1.0/groups/{{inputs.Group Id}}/members",
       "inputs": [
         {
           "name": "Group Id",
@@ -218,9 +218,9 @@
     {
       "id": "group_remove_member",
       "name": "Azure AD Group Remove Member",
-      "description": "DELETE https://graph.microsoft.com/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
+      "description": "DELETE https://graph.microsoft.com/v1.0/groups/{{inputs.Group Id}}/members/{{inputs.User Id}}/$ref",
       "method": "DELETE",
-      "path": "/v1.0/groups/<%= @inputs['Group Id'] %>/members/<%= @inputs['User Id'] %>/$ref",
+      "path": "/v1.0/groups/{{inputs.Group Id}}/members/{{inputs.User Id}}/$ref",
       "inputs": [
         {
           "name": "Group Id",
@@ -253,9 +253,9 @@
     {
       "id": "license_assign",
       "name": "Azure AD License Assign",
-      "description": "POST https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
+      "description": "POST https://graph.microsoft.com/v1.0/users/{{inputs.User Id}}/assignLicense",
       "method": "POST",
-      "path": "/v1.0/users/<%= @inputs['User Id'] %>/assignLicense",
+      "path": "/v1.0/users/{{inputs.User Id}}/assignLicense",
       "inputs": [
         {
           "name": "User Id",
@@ -382,9 +382,9 @@
     {
       "id": "user_delete",
       "name": "Azure AD User Delete",
-      "description": "DELETE https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "description": "DELETE https://graph.microsoft.com/v1.0/users/{{inputs.User Id}}",
       "method": "DELETE",
-      "path": "/v1.0/users/<%= @inputs['User Id'] %>",
+      "path": "/v1.0/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",
@@ -413,9 +413,9 @@
     {
       "id": "user_retrieve",
       "name": "Azure AD User Retrieve",
-      "description": "GET https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "description": "GET https://graph.microsoft.com/v1.0/users/{{inputs.User Id}}",
       "method": "GET",
-      "path": "/v1.0/users/<%= @inputs['User Id'] %>",
+      "path": "/v1.0/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",
@@ -468,9 +468,9 @@
     {
       "id": "user_update",
       "name": "Azure AD User Update",
-      "description": "PATCH https://graph.microsoft.com/v1.0/users/<%= @inputs['User Id'] %>",
+      "description": "PATCH https://graph.microsoft.com/v1.0/users/{{inputs.User Id}}",
       "method": "PATCH",
-      "path": "/v1.0/users/<%= @inputs['User Id'] %>",
+      "path": "/v1.0/users/{{inputs.User Id}}",
       "inputs": [
         {
           "name": "User Id",

@@ -237,9 +237,9 @@
     {
       "id": "search_results",
       "name": "Splunk Search Results",
-      "description": "GET /services/search/jobs/<%= @inputs['Search Id'] %>/results?output_mode=json&count=<%= @inputs['Count'] %>",
+      "description": "GET /services/search/jobs/{{inputs.Search Id}}/results?output_mode=json&count={{inputs.Count}}",
       "method": "GET",
-      "path": "/services/search/jobs/<%= @inputs['Search Id'] %>/results?output_mode=json&count=<%= @inputs['Count'] %>",
+      "path": "/services/search/jobs/{{inputs.Search Id}}/results?output_mode=json&count={{inputs.Count}}",
       "inputs": [
         {
           "name": "Search Id",

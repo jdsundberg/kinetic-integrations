@@ -30,9 +30,9 @@
     {
       "id": "campaign_assign",
       "name": "Pardot Campaign Assign",
-      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/{{inputs.Prospect Id}}",
       "method": "PATCH",
-      "path": "/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "path": "/api/v5/objects/prospects/{{inputs.Prospect Id}}",
       "inputs": [
         {
           "name": "Prospect Id",
@@ -116,9 +116,9 @@
     {
       "id": "prospect_assign",
       "name": "Pardot Prospect Assign",
-      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/{{inputs.Prospect Id}}",
       "method": "PATCH",
-      "path": "/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "path": "/api/v5/objects/prospects/{{inputs.Prospect Id}}",
       "inputs": [
         {
           "name": "Prospect Id",
@@ -247,9 +247,9 @@
     {
       "id": "prospect_update",
       "name": "Pardot Prospect Update",
-      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "description": "PATCH https://pi.pardot.com/api/v5/objects/prospects/{{inputs.Prospect Id}}",
       "method": "PATCH",
-      "path": "/api/v5/objects/prospects/<%= @inputs['Prospect Id'] %>",
+      "path": "/api/v5/objects/prospects/{{inputs.Prospect Id}}",
       "inputs": [
         {
           "name": "Prospect Id",

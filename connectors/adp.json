@@ -25,9 +25,9 @@
     {
       "id": "event_notify",
       "name": "ADP Event Notification",
-      "description": "POST https://api.adp.com/events/hr/v1/<%= @inputs['Event Type'] %>",
+      "description": "POST https://api.adp.com/events/hr/v1/{{inputs.Event Type}}",
       "method": "POST",
-      "path": "/events/hr/v1/<%= @inputs['Event Type'] %>",
+      "path": "/events/hr/v1/{{inputs.Event Type}}",
       "inputs": [
         {
           "name": "Event Type",
@@ -81,9 +81,9 @@
     {
       "id": "org_retrieve",
       "name": "ADP Organization Retrieve",
-      "description": "GET https://api.adp.com/core/v1/organization-departments/<%= @inputs['Department Code'] %>",
+      "description": "GET https://api.adp.com/core/v1/organization-departments/{{inputs.Department Code}}",
       "method": "GET",
-      "path": "/core/v1/organization-departments/<%= @inputs['Department Code'] %>",
+      "path": "/core/v1/organization-departments/{{inputs.Department Code}}",
       "inputs": [
         {
           "name": "Department Code",
@@ -120,9 +120,9 @@
     {
       "id": "pay_data_retrieve",
       "name": "ADP Pay Data Retrieve",
-      "description": "GET https://api.adp.com/payroll/v1/workers/<%= @inputs['Associate Oid'] %>/pay-distributions",
+      "description": "GET https://api.adp.com/payroll/v1/workers/{{inputs.Associate Oid}}/pay-distributions",
       "method": "GET",
-      "path": "/payroll/v1/workers/<%= @inputs['Associate Oid'] %>/pay-distributions",
+      "path": "/payroll/v1/workers/{{inputs.Associate Oid}}/pay-distributions",
       "inputs": [
         {
           "name": "Associate Oid",
@@ -249,9 +249,9 @@
     {
       "id": "worker_retrieve",
       "name": "ADP Worker Retrieve",
-      "description": "GET https://api.adp.com/hr/v2/workers/<%= @inputs['Associate Oid'] %>",
+      "description": "GET https://api.adp.com/hr/v2/workers/{{inputs.Associate Oid}}",
       "method": "GET",
-      "path": "/hr/v2/workers/<%= @inputs['Associate Oid'] %>",
+      "path": "/hr/v2/workers/{{inputs.Associate Oid}}",
       "inputs": [
         {
           "name": "Associate Oid",

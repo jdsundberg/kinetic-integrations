@@ -425,7 +425,7 @@
       "name": "Datadog Monitor Update",
       "description": "Datadog Monitor Update.",
       "method": "PUT",
-      "path": "/v1/monitor/<%= @inputs['Monitor Id'] %>",
+      "path": "/v1/monitor/{{inputs.Monitor Id}}",
       "inputs": [
         {
           "name": "Monitor Id",
