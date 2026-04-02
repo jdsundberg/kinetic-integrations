@@ -2,7 +2,7 @@
 
 A publishable library of integration connectors and routines for the [Kinetic Platform](https://kineticdata.com).
 
-**155 connectors** (145 named + 10 generic) with **844 pre-built routines** across 16 categories.
+**200+ connectors** (named + generic) with **1000+ pre-built routines** across dozens of categories.
 
 ## Structure
 
@@ -30,22 +30,22 @@ The [Integration Catalog](https://github.com/jdsundberg/kinetic-admin-tools) adm
 
 | Category | Connectors |
 |---|---|
-| Cloud & Infrastructure | 20 |
-| Accounting | 19 |
-| Tax Software | 25 |
-| Observability & Analytics | 16 |
-| DevOps & Collaboration | 16 |
-| Communication | 8 |
-| ITSM & Service Management | 6 |
-| HR & People | 6 |
-| Security & Identity | 5 |
-| Finance & Payments | 5 |
-| Email & Marketing | 6 |
-| Documents & Storage | 5 |
-| Data & Analytics | 5 |
-| CRM & Sales | 2 |
-| Commerce & Content | 1 |
-| Generic | 10 |
+| Cloud & Infrastructure | 20+ |
+| Accounting | 19+ |
+| Tax Software | 25+ |
+| Observability & Analytics | 16+ |
+| DevOps & Collaboration | 16+ |
+| Communication | 8+ |
+| ITSM & Service Management | 6+ |
+| HR & People | 6+ |
+| Security & Identity | 5+ |
+| Finance & Payments | 5+ |
+| Email & Marketing | 6+ |
+| Documents & Storage | 5+ |
+| Data & Analytics | 5+ |
+| CRM & Sales | 2+ |
+| Commerce & Content | 1+ |
+| Generic | 10+ |
 
 ## Generic Connectors
 
