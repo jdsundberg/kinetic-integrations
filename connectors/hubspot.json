@@ -4,7 +4,7 @@
   "version": 1,
   "category": "CRM & Sales",
   "baseUrl": "https://api.hubapi.com",
-  "description": "Hubspot integration with 11 pre-built routines.",
+  "description": "Hubspot integration with 25 pre-built routines.",
   "auth": {
     "type": "bearer",
     "properties": [
@@ -144,6 +144,100 @@
         {
           "name": "Contact JSON",
           "path": "contact_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_get",
+      "name": "HubSpot Contact Get",
+      "description": "GET https://api.hubapi.com/crm/v3/objects/contacts/{{inputs.Contact Id}}",
+      "method": "GET",
+      "path": "/crm/v3/objects/contacts/{{inputs.Contact Id}}?properties=firstname,lastname,email,phone,company,lifecyclestage,jobtitle",
+      "inputs": [
+        {
+          "name": "Contact Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Contact ID",
+          "path": "contact_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_search",
+      "name": "HubSpot Contact Search",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/contacts/search",
+      "method": "POST",
+      "path": "/crm/v3/objects/contacts/search",
+      "inputs": [
+        {
+          "name": "Property",
+          "required": true,
+          "description": "Property to search (e.g., lastname, email, firstname, company)"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "description": "Value to search for"
+        },
+        {
+          "name": "Operator",
+          "required": false,
+          "description": "Search operator: EQ, CONTAINS_TOKEN, GT, LT, etc. Default: CONTAINS_TOKEN"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
         },
         {
           "name": "Response Body",
@@ -576,6 +670,484 @@
         {
           "name": "Created At",
           "path": "created_at"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "company_get",
+      "name": "HubSpot Company Get",
+      "description": "GET https://api.hubapi.com/crm/v3/objects/companies/{{inputs.Company Id}}",
+      "method": "GET",
+      "path": "/crm/v3/objects/companies/{{inputs.Company Id}}?properties=name,domain,industry,phone,city,state,country,numberofemployees,annualrevenue",
+      "inputs": [
+        {
+          "name": "Company Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Company ID",
+          "path": "company_id"
+        },
+        {
+          "name": "Name",
+          "path": "name"
+        },
+        {
+          "name": "Domain",
+          "path": "domain"
+        },
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "company_search",
+      "name": "HubSpot Company Search",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/companies/search",
+      "method": "POST",
+      "path": "/crm/v3/objects/companies/search",
+      "inputs": [
+        {
+          "name": "Property",
+          "required": true,
+          "description": "Property to search (e.g., name, domain, industry)"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "description": "Value to search for"
+        },
+        {
+          "name": "Operator",
+          "required": false,
+          "description": "Search operator: EQ, CONTAINS_TOKEN, GT, LT. Default: CONTAINS_TOKEN"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "company_list",
+      "name": "HubSpot Company List",
+      "description": "GET https://api.hubapi.com/crm/v3/objects/companies",
+      "method": "GET",
+      "path": "/crm/v3/objects/companies?limit=100&properties=name,domain,industry,city,state",
+      "inputs": [
+        {
+          "name": "After",
+          "required": false,
+          "description": "Pagination cursor for next page"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "description": "Number of results (default 100, max 100)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Next After",
+          "path": "next_after"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "contact_list",
+      "name": "HubSpot Contact List",
+      "description": "GET https://api.hubapi.com/crm/v3/objects/contacts",
+      "method": "GET",
+      "path": "/crm/v3/objects/contacts?limit=100&properties=firstname,lastname,email,phone,company,lifecyclestage",
+      "inputs": [
+        {
+          "name": "After",
+          "required": false,
+          "description": "Pagination cursor for next page"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "description": "Number of results (default 100, max 100)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Next After",
+          "path": "next_after"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "deal_get",
+      "name": "HubSpot Deal Get",
+      "description": "GET https://api.hubapi.com/crm/v3/objects/deals/{{inputs.Deal Id}}",
+      "method": "GET",
+      "path": "/crm/v3/objects/deals/{{inputs.Deal Id}}?properties=dealname,dealstage,pipeline,amount,closedate,createdate",
+      "inputs": [
+        {
+          "name": "Deal Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Deal ID",
+          "path": "deal_id"
+        },
+        {
+          "name": "Deal Name",
+          "path": "deal_name"
+        },
+        {
+          "name": "Deal Stage",
+          "path": "deal_stage"
+        },
+        {
+          "name": "Amount",
+          "path": "amount"
+        },
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "deal_search",
+      "name": "HubSpot Deal Search",
+      "description": "POST https://api.hubapi.com/crm/v3/objects/deals/search",
+      "method": "POST",
+      "path": "/crm/v3/objects/deals/search",
+      "inputs": [
+        {
+          "name": "Property",
+          "required": true,
+          "description": "Property to search (e.g., dealname, dealstage, pipeline, amount)"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "description": "Value to search for"
+        },
+        {
+          "name": "Operator",
+          "required": false,
+          "description": "Search operator: EQ, CONTAINS_TOKEN, GT, LT. Default: CONTAINS_TOKEN"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "deal_list",
+      "name": "HubSpot Deal List",
+      "description": "GET https://api.hubapi.com/crm/v3/objects/deals",
+      "method": "GET",
+      "path": "/crm/v3/objects/deals?limit=100&properties=dealname,dealstage,pipeline,amount,closedate",
+      "inputs": [
+        {
+          "name": "After",
+          "required": false,
+          "description": "Pagination cursor for next page"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "description": "Number of results (default 100, max 100)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Total",
+          "path": "total"
+        },
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Next After",
+          "path": "next_after"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "owner_list",
+      "name": "HubSpot Owner List",
+      "description": "GET https://api.hubapi.com/crm/v3/owners",
+      "method": "GET",
+      "path": "/crm/v3/owners?limit=100",
+      "inputs": [
+        {
+          "name": "After",
+          "required": false,
+          "description": "Pagination cursor for next page"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "description": "Filter by owner email"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results JSON",
+          "path": "results_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "owner_get",
+      "name": "HubSpot Owner Get",
+      "description": "GET https://api.hubapi.com/crm/v3/owners/{{inputs.Owner Id}}",
+      "method": "GET",
+      "path": "/crm/v3/owners/{{inputs.Owner Id}}",
+      "inputs": [
+        {
+          "name": "Owner Id",
+          "required": true,
+          "pathParam": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Owner ID",
+          "path": "owner_id"
+        },
+        {
+          "name": "Email",
+          "path": "email"
+        },
+        {
+          "name": "First Name",
+          "path": "first_name"
+        },
+        {
+          "name": "Last Name",
+          "path": "last_name"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "schema_contacts",
+      "name": "HubSpot Contact Schema",
+      "description": "GET https://api.hubapi.com/crm/v3/properties/contacts",
+      "method": "GET",
+      "path": "/crm/v3/properties/contacts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "schema_companies",
+      "name": "HubSpot Company Schema",
+      "description": "GET https://api.hubapi.com/crm/v3/properties/companies",
+      "method": "GET",
+      "path": "/crm/v3/properties/companies",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Handler Error Message",
+          "path": "handler_error_message"
+        }
+      ]
+    },
+    {
+      "id": "schema_deals",
+      "name": "HubSpot Deal Schema",
+      "description": "GET https://api.hubapi.com/crm/v3/properties/deals",
+      "method": "GET",
+      "path": "/crm/v3/properties/deals",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Properties JSON",
+          "path": "properties_json"
         },
         {
           "name": "Response Body",
