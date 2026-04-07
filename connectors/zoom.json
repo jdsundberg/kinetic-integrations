@@ -413,5 +413,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.zoom.us"
 }

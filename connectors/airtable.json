@@ -248,5 +248,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.airtable.com"
 }

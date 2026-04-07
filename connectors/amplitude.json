@@ -88,5 +88,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://amplitude.com"
 }

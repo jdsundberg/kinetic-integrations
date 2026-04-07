@@ -270,5 +270,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://www.wrike.com"
 }

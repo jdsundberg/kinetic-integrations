@@ -229,5 +229,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.victorops.com"
 }

@@ -417,5 +417,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://app.asana.com"
 }

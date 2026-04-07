@@ -361,5 +361,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.clickup.com"
 }

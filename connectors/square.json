@@ -446,5 +446,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://connect.squareup.com"
 }

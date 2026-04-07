@@ -401,5 +401,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.monday.com"
 }

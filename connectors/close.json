@@ -64,5 +64,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.close.com"
 }

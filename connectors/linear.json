@@ -367,5 +367,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.linear.app"
 }

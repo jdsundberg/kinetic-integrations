@@ -267,5 +267,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.cloudflare.com"
 }

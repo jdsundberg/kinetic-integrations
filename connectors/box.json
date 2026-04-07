@@ -343,5 +343,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.box.com"
 }

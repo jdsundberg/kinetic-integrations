@@ -495,5 +495,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://slack.com"
 }

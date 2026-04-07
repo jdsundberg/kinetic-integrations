@@ -494,5 +494,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.datadoghq.com"
 }

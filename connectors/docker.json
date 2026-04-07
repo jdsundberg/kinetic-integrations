@@ -238,5 +238,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://hub.docker.com"
 }

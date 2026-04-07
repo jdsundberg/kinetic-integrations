@@ -89,5 +89,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://driftapi.com"
 }

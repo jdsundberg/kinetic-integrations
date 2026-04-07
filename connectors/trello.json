@@ -356,5 +356,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.trello.com"
 }

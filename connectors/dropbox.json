@@ -333,5 +333,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.dropboxapi.com"
 }

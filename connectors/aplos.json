@@ -312,5 +312,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://www.aplos.com"
 }

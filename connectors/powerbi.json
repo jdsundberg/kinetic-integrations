@@ -196,5 +196,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.powerbi.com"
 }

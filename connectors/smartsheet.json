@@ -240,5 +240,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.smartsheet.com"
 }

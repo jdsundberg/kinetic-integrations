@@ -243,5 +243,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.bigpanda.io"
 }

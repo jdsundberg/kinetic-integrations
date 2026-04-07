@@ -478,5 +478,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.stripe.com"
 }

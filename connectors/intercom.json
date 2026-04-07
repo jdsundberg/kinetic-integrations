@@ -341,5 +341,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.intercom.io"
 }

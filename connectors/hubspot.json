@@ -3,6 +3,7 @@
   "service": "Hubspot",
   "version": 1,
   "category": "CRM & Sales",
+  "baseUrl": "https://api.hubapi.com",
   "description": "Hubspot integration with 11 pre-built routines.",
   "auth": {
     "type": "bearer",

@@ -116,5 +116,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.openai.com"
 }

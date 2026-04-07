@@ -251,5 +251,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.fastly.com"
 }

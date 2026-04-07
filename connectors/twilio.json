@@ -393,5 +393,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://conversations.twilio.com"
 }

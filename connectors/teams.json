@@ -528,5 +528,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://graph.microsoft.com"
 }

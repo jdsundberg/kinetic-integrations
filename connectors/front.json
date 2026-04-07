@@ -88,5 +88,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api2.frontapp.com"
 }

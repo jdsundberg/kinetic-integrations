@@ -252,5 +252,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://storage.googleapis.com"
 }

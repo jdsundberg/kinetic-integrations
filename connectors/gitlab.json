@@ -421,5 +421,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://gitlab.com"
 }

@@ -418,5 +418,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.bitbucket.org"
 }

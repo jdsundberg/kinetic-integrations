@@ -338,5 +338,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.cc.email"
 }

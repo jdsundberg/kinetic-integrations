@@ -389,5 +389,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://webexapis.com"
 }

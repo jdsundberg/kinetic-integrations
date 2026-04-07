@@ -335,5 +335,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.notion.com"
 }
