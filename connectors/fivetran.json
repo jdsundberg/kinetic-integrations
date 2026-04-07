@@ -84,5 +84,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.fivetran.com"
 }

@@ -232,5 +232,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://pubsub.googleapis.com"
 }

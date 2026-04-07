@@ -59,5 +59,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.totango.com"
 }

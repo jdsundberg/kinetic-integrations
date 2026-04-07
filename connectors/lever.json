@@ -83,5 +83,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.lever.co"
 }

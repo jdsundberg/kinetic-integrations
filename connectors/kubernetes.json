@@ -260,5 +260,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://CLUSTER.k8s.local"
 }

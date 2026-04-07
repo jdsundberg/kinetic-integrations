@@ -268,5 +268,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://3.basecampapi.com"
 }

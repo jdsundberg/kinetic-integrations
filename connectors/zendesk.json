@@ -464,5 +464,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://SUBDOMAIN.zendesk.com"
 }

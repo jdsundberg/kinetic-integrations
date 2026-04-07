@@ -229,5 +229,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://ACCOUNT.blob.core.windows.net"
 }

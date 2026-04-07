@@ -323,5 +323,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.freeagent.com"
 }

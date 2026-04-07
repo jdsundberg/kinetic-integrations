@@ -84,5 +84,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://SUBDOMAIN.loggly.com"
 }

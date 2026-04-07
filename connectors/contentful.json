@@ -105,5 +105,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://cdn.contentful.com"
 }

@@ -328,5 +328,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://books.zoho.com"
 }

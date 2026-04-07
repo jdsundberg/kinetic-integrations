@@ -295,5 +295,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://lambda.REGION.amazonaws.com"
 }

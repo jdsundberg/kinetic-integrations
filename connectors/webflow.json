@@ -85,5 +85,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.webflow.com"
 }

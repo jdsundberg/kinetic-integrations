@@ -118,5 +118,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "ldaps://LDAPHOST:636"
 }

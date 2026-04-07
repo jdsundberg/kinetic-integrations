@@ -155,5 +155,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.freshbooks.com"
 }

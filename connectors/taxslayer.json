@@ -206,5 +206,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.taxslayer.com"
 }

@@ -312,5 +312,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.digits.com"
 }

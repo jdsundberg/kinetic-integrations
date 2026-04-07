@@ -83,5 +83,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "jdbc:oracle:thin:@HOST:1521:DB"
 }

@@ -352,5 +352,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://DATACENTER.successfactors.com"
 }

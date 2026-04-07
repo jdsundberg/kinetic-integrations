@@ -206,5 +206,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.ultimatetax.com"
 }

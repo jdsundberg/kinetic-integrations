@@ -148,5 +148,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.crowdstrike.com"
 }

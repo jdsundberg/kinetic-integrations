@@ -244,5 +244,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://NAMESPACE.servicebus.windows.net"
 }

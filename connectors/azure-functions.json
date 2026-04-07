@@ -203,5 +203,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://APPNAME.azurewebsites.net"
 }

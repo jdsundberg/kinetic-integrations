@@ -237,5 +237,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://INSTANCE.cloud.databricks.com"
 }

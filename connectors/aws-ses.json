@@ -247,5 +247,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://email.REGION.amazonaws.com"
 }

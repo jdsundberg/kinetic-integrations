@@ -138,5 +138,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://management.azure.com"
 }

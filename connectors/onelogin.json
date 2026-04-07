@@ -318,5 +318,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://SUBDOMAIN.onelogin.com"
 }

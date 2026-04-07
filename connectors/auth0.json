@@ -306,5 +306,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://TENANT.auth0.com"
 }

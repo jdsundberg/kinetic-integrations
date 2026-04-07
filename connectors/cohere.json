@@ -98,5 +98,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.cohere.ai"
 }

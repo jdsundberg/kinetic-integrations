@@ -102,5 +102,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://platform.ringcentral.com"
 }

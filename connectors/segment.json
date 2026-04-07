@@ -94,5 +94,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.segment.io"
 }

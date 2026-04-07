@@ -188,5 +188,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.xero.com"
 }

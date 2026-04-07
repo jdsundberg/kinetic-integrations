@@ -419,5 +419,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://DOMAIN.okta.com"
 }

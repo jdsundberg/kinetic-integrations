@@ -489,5 +489,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://STORE.myshopify.com"
 }

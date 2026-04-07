@@ -387,5 +387,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://DOMAIN.freshdesk.com"
 }

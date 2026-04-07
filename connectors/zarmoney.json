@@ -317,5 +317,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.zarmoney.com"
 }

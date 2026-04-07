@@ -83,5 +83,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "jdbc:sqlserver://HOST:1433;databaseName=DB"
 }

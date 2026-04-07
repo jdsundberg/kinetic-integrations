@@ -82,5 +82,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.paylocity.com"
 }

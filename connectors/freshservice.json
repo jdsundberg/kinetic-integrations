@@ -383,5 +383,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://DOMAIN.freshservice.com"
 }

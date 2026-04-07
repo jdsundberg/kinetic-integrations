@@ -79,5 +79,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://SUBDOMAIN.workable.com"
 }

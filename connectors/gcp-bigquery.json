@@ -277,5 +277,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://bigquery.googleapis.com"
 }

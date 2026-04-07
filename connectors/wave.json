@@ -317,5 +317,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://gql.waveapps.com"
 }

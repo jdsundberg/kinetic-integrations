@@ -74,5 +74,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.lightstep.com"
 }

@@ -233,5 +233,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://sns.REGION.amazonaws.com"
 }

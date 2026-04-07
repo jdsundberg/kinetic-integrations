@@ -69,5 +69,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://sellingpartnerapi-na.amazon.com"
 }

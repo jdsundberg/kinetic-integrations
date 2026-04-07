@@ -87,5 +87,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.linkedin.com"
 }

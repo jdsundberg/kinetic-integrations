@@ -264,5 +264,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.REGION.sumologic.com"
 }

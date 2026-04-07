@@ -582,5 +582,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://SITE.atlassian.net"
 }

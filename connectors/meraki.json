@@ -72,5 +72,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.meraki.com"
 }

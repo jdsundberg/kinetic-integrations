@@ -80,5 +80,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.snyk.io"
 }

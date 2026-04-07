@@ -167,5 +167,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.bill.com"
 }

@@ -241,5 +241,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://dynamodb.REGION.amazonaws.com"
 }

@@ -337,5 +337,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.businesscentral.dynamics.com"
 }

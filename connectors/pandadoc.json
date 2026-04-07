@@ -126,5 +126,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.pandadoc.com"
 }

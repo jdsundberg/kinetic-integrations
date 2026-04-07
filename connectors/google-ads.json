@@ -89,5 +89,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://googleads.googleapis.com"
 }

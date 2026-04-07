@@ -102,5 +102,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://harvest.greenhouse.io"
 }

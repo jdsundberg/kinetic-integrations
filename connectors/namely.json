@@ -344,5 +344,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://COMPANY.namely.com"
 }

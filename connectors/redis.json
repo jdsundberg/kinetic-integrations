@@ -124,5 +124,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://HOST:PORT"
 }

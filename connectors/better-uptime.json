@@ -67,5 +67,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://betteruptime.com"
 }

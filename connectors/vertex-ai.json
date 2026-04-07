@@ -99,5 +99,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://REGION-aiplatform.googleapis.com"
 }

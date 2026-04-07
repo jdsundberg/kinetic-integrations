@@ -247,5 +247,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.plivo.com"
 }

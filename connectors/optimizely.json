@@ -79,5 +79,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.optimizely.com"
 }

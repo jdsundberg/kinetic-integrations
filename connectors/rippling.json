@@ -53,5 +53,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.rippling.com"
 }

@@ -98,5 +98,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://mixpanel.com"
 }

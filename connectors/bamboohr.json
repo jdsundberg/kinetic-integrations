@@ -370,5 +370,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.bamboohr.com"
 }

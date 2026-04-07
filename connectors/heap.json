@@ -89,5 +89,6 @@
       ],
       "outputs": []
     }
-  ]
+  ],
+  "baseUrl": "https://heapanalytics.com"
 }

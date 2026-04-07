@@ -113,5 +113,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://api.hellosign.com"
 }

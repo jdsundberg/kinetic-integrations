@@ -293,5 +293,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://ACCOUNT.snowflakecomputing.com"
 }

@@ -264,5 +264,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://ACCOUNTID.suitetalk.api.netsuite.com"
 }

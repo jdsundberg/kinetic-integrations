@@ -259,5 +259,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://SITE.online.tableau.com"
 }

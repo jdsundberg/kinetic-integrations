@@ -83,5 +83,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "jdbc:sqlite:PATH"
 }

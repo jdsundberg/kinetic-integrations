@@ -252,5 +252,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://sqs.REGION.amazonaws.com"
 }

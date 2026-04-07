@@ -98,5 +98,6 @@
         }
       ]
     }
-  ]
+  ],
+  "baseUrl": "https://analyticsdata.googleapis.com"
 }
