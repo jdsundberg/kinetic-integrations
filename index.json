@@ -991,7 +991,7 @@
       "service": "Kinetic Core API",
       "category": "Cloud & Infrastructure",
       "auth": "basic",
-      "routines": 29,
+      "routines": 26,
       "description": "Kinetic Platform Core API \u2014 manage submissions, forms, kapps, users, teams, and space configuration. Pre-installed on every Kinetic instance."
     },
     {
