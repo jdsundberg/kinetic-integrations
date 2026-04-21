@@ -2021,6 +2021,14 @@
       "description": "Vault integration with 3 pre-built routines."
     },
     {
+      "id": "veeam-vspc",
+      "service": "Veeam Vspc",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 30,
+      "description": "Veeam Vspc integration with 30 pre-built routines."
+    },
+    {
       "id": "vertex-ai",
       "service": "Vertex Ai",
       "category": "Other",
