@@ -1,0 +1,30 @@
+{
+  "_source": "synthesized — Huntress incident report envelope + payload",
+  "_event": "report.sent",
+  "event_type": "report.sent",
+  "sent_at": "2026-04-21T15:55:44Z",
+  "payload": {
+    "incident_report_id": 7482901,
+    "account_id": 330,
+    "organization_id": 42,
+    "organization_name": "Acme Corporation",
+    "agent_id": 9921,
+    "hostname": "LAPTOP-CFO-01",
+    "status": "sent",
+    "severity": "high",
+    "subject": "Suspicious PowerShell activity on LAPTOP-CFO-01",
+    "summary": "A threat actor appears to have executed an obfuscated PowerShell command that downloaded and ran a secondary payload. The process chain was: winword.exe → cmd.exe → powershell.exe -encoded <...>.",
+    "indicators_of_compromise": [
+      { "type": "sha256", "value": "b8f1a...ccc" },
+      { "type": "ip", "value": "185.220.101.44" }
+    ],
+    "remediations": [
+      "Isolate LAPTOP-CFO-01 from the network",
+      "Collect RAM image + disk image for forensics",
+      "Reset credentials for user on this device",
+      "Scan other endpoints for the sha256 indicator above"
+    ],
+    "url": "https://dashboard.huntress.io/incidents/7482901",
+    "published_at": "2026-04-21T15:55:44Z"
+  }
+}
