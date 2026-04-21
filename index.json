@@ -997,6 +997,14 @@
       "description": "Hubspot integration with 11 pre-built routines."
     },
     {
+      "id": "huntress",
+      "service": "Huntress",
+      "category": "Security & IAM",
+      "auth": "basic",
+      "routines": 16,
+      "description": "Huntress integration with 16 pre-built routines."
+    },
+    {
       "id": "icims",
       "service": "Icims",
       "category": "HR & People",
