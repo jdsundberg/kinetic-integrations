@@ -2021,6 +2021,14 @@
       "description": "Vault integration with 3 pre-built routines."
     },
     {
+      "id": "veeam-vbr",
+      "service": "Veeam Vbr",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 33,
+      "description": "Veeam Vbr integration with 33 pre-built routines."
+    },
+    {
       "id": "veeam-vspc",
       "service": "Veeam Vspc",
       "category": "ITSM & Service Management",
