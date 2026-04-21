@@ -1,0 +1,80 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "AcmeApp", "version": "1.0.0" },
+  "servers": [{ "url": "https://api.acme.test/v1" }],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": { "type": "http", "scheme": "basic" }
+    },
+    "schemas": {
+      "Ticket": {
+        "type": "object",
+        "required": ["subject"],
+        "properties": {
+          "id": { "type": "integer" },
+          "subject": { "type": "string" },
+          "status": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/tickets": {
+      "get": {
+        "operationId": "listTickets",
+        "summary": "List tickets",
+        "tags": ["Tickets"],
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer" } },
+          { "name": "status", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Ticket" } }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTicket",
+        "summary": "Create ticket",
+        "tags": ["Tickets"],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Ticket" } } }
+        },
+        "responses": {
+          "201": {
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Ticket" } } }
+          }
+        }
+      }
+    },
+    "/tickets/{id}": {
+      "get": {
+        "operationId": "getTicket",
+        "summary": "Retrieve ticket",
+        "tags": ["Tickets"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Ticket" } } }
+          }
+        }
+      }
+    },
+    "/admin/dangerous": {
+      "post": {
+        "operationId": "dangerousAdminOp",
+        "tags": ["Admin"],
+        "responses": { "204": { "description": "no content" } }
+      }
+    }
+  }
+}
