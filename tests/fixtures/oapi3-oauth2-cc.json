@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "ClientCredsApp", "version": "1.0" },
+  "servers": [{ "url": "https://api.cc.test" }],
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://api.cc.test/oauth/token",
+            "scopes": { "read": "Read data", "write": "Write data" }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/things": {
+      "get": {
+        "operationId": "listThings",
+        "summary": "List things",
+        "responses": { "200": { "content": { "application/json": { "schema": { "type": "array", "items": { "type": "object" } } } } } }
+      }
+    }
+  }
+}
