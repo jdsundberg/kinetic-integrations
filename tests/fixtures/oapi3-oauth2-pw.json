@@ -1,0 +1,26 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "PasswordGrantApp", "version": "1.0" },
+  "servers": [{ "url": "https://api.pw.test" }],
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "tokenUrl": "https://api.pw.test/oauth/token"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/status": {
+      "get": {
+        "operationId": "getStatus",
+        "summary": "System status",
+        "responses": { "200": { "content": { "application/json": { "schema": { "type": "object" } } } } }
+      }
+    }
+  }
+}
