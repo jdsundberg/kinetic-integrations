@@ -1,0 +1,26 @@
+{
+  "_source": "synthesized from documented CW Manage callback envelope",
+  "_event": "ticket.added",
+  "_queryParams": "?id=145782&action=added&type=ticket&memberId=apicaller",
+  "ID": 145782,
+  "Action": "added",
+  "Type": "ticket",
+  "MemberID": "apicaller",
+  "Entity": {
+    "id": 145782,
+    "summary": "Printer offline - finance floor",
+    "recordType": "ServiceTicket",
+    "board": { "id": 12, "name": "Service Desk - Tier 1" },
+    "status": { "id": 1, "name": "New" },
+    "priority": { "id": 3, "name": "Priority 3 - Normal" },
+    "company": { "id": 812, "identifier": "ACMECORP", "name": "Acme Corporation" },
+    "site": { "id": 1, "name": "Main" },
+    "contact": { "id": 4221, "name": "Pat Finance" },
+    "contactEmailAddress": "pat.finance@acme.example.com",
+    "type": { "id": 15, "name": "Hardware" },
+    "source": { "id": 2, "name": "Portal" },
+    "initialDescription": "HP OfficeJet Pro in finance can't be reached. Web UI times out.",
+    "dateEntered": "2026-04-21T14:40:11Z",
+    "enteredBy": "apicaller"
+  }
+}
