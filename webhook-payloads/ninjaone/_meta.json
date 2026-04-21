@@ -1,0 +1,42 @@
+{
+  "service": "NinjaOne",
+  "featureName": "Webhooks (Activities)",
+  "docsUrl": "https://app.ninjarmm.com/apidocs/",
+
+  "registration": {
+    "methods": ["UI"],
+    "uiPath": "Administration > Apps > Webhooks (or Administration > General > Webhooks, depending on version)",
+    "note": "No public API to register webhooks programmatically. Configure a URL, tick the activity types you care about, set optional custom headers."
+  },
+
+  "signing": {
+    "algorithm": "HMAC-SHA256",
+    "header": "X-NinjaOne-Signature",
+    "format": "hex(hmac_sha256(secret, raw_request_body))",
+    "encoding": "hex",
+    "optional": true,
+    "note": "HMAC verification is opt-in per webhook config. If you enable signing, NinjaOne sends the hex-encoded SHA-256 HMAC. If you don't enable signing, add a static bearer token via the webhook's custom headers for lightweight authentication."
+  },
+
+  "transport": {
+    "contentType": "application/json",
+    "method": "POST",
+    "retries": "Exponential backoff for ~24h on non-2xx responses"
+  },
+
+  "eventCategories": [
+    "DEVICE (online/offline, registered, agent updated)",
+    "CONDITION (custom monitoring conditions triggered/reset)",
+    "PATCH (patch scan results, install succeeded/failed)",
+    "ANTIVIRUS (threat detected, scan completed)",
+    "SOFTWARE (install/uninstall observed)",
+    "JOB (script run completed)",
+    "TICKETING (ticket created, ticket updated)"
+  ],
+
+  "notes": [
+    "NinjaOne ships activities via a uniform Activity envelope. The 'activityType' + 'statusCode' fields identify the specific event.",
+    "activityTime is a Unix timestamp with millisecond fraction (as a float).",
+    "Payload shapes below follow NinjaOne's documented activity schema. Specific field combinations vary per activity type."
+  ]
+}
