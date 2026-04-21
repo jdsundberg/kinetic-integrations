@@ -1,0 +1,23 @@
+{
+  "_source": "synthesized — Pax8 Partner Webhooks envelope + Subscriptions API shape",
+  "_event": "subscription.created",
+  "eventId": "evt_01HXYZABC0123456789DEF01K",
+  "eventType": "subscription.created",
+  "eventTimestamp": "2026-04-21T15:42:01.123Z",
+  "partnerId": "c-Partner-abc123",
+  "data": {
+    "subscriptionId": "sub_01HXYZNEW00000000000000",
+    "companyId": "c-AcmeCorp-abc123",
+    "productId": "prod_01J7FAKEPROD0123456789",
+    "productName": "Microsoft 365 Business Premium (Annual)",
+    "vendorName": "Microsoft",
+    "quantity": 25,
+    "billingTerm": "Annual",
+    "commitmentTermId": "ct_01H5ANNUAL00000000000000",
+    "status": "Active",
+    "startDate": "2026-04-21",
+    "nextRenewalDate": "2027-04-21",
+    "unitPrice": 22.0,
+    "currency": "USD"
+  }
+}
