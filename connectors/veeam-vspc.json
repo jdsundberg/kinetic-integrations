@@ -3,30 +3,42 @@
   "service": "Veeam VSPC",
   "version": 1,
   "category": "ITSM & Service Management",
-  "description": "Veeam Service Provider Console integration with 28 pre-built routines covering organizations (tenants), companies, locations, sites, backup servers, jobs (start/stop/enable/disable), backups, sessions, alarms, managed/discovered computers, licensing, and invoices — the MSP multi-tenant control plane for Veeam.",
+  "description": "Veeam Service Provider Console integration with 28 pre-built routines covering organizations (tenants), companies, locations, sites, backup servers, jobs (start/stop/enable/disable), backups, sessions, alarms, managed/discovered computers, licensing, and invoices \u2014 the MSP multi-tenant control plane for Veeam.",
   "auth": {
-    "type": "oauth2",
+    "type": "oauth2_password",
     "properties": [
       {
         "name": "api_url",
         "required": true,
-        "description": "VSPC server API base URL, e.g. https://vspc.example.com:1280. The connector appends /api/v3/... to this base."
+        "description": "Veeam VSPC server API base URL (used both for OAuth2 token request and API calls)."
+      },
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint path (relative to api_url) or full URL. Default: /token.",
+        "defaultValue": "/token"
       },
       {
         "name": "username",
         "required": true,
-        "description": "VSPC portal administrator or reseller/company user with API access."
+        "description": "Veeam VSPC user with REST API access."
       },
       {
         "name": "password",
         "required": true,
-        "description": "Password for the VSPC user.",
+        "description": "Password.",
         "encrypted": true
       },
       {
-        "name": "verify_tls",
+        "name": "client_id",
         "required": false,
-        "description": "Whether to verify the TLS certificate. Default true. Set false only for lab/self-signed deployments."
+        "description": "OAuth2 client ID if the server requires one. Leave blank otherwise."
+      },
+      {
+        "name": "client_secret",
+        "required": false,
+        "description": "OAuth2 client secret if the server requires one.",
+        "encrypted": true
       }
     ]
   },
@@ -46,8 +58,14 @@
       "path": "/api/v3/about",
       "inputs": [],
       "outputs": [
-        { "name": "Response Code", "path": "response_code" },
-        { "name": "Connected", "path": "connected" }
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
       ]
     },
     {
@@ -57,15 +75,39 @@
       "method": "GET",
       "path": "/api/v3/organizations",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Meta", "path": "meta" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Meta",
+          "path": "meta"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -75,11 +117,21 @@
       "method": "GET",
       "path": "/api/v3/organizations/{{inputs.Organization UID}}",
       "inputs": [
-        { "name": "Organization UID", "required": true, "mapTo": "Organization UID" }
+        {
+          "name": "Organization UID",
+          "required": true,
+          "mapTo": "Organization UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -89,15 +141,39 @@
       "method": "GET",
       "path": "/api/v3/organizations/companies",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Meta", "path": "meta" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Meta",
+          "path": "meta"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -107,11 +183,21 @@
       "method": "GET",
       "path": "/api/v3/organizations/companies/{{inputs.Company UID}}",
       "inputs": [
-        { "name": "Company UID", "required": true, "mapTo": "Company UID" }
+        {
+          "name": "Company UID",
+          "required": true,
+          "mapTo": "Company UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -121,23 +207,80 @@
       "method": "POST",
       "path": "/api/v3/organizations/companies",
       "inputs": [
-        { "name": "Name", "required": true, "mapTo": "name" },
-        { "name": "Alias", "required": false, "mapTo": "alias" },
-        { "name": "Tax ID", "required": false, "mapTo": "taxId" },
-        { "name": "Website", "required": false, "mapTo": "website" },
-        { "name": "Email", "required": false, "mapTo": "email" },
-        { "name": "Phone", "required": false, "mapTo": "phone" },
-        { "name": "Country", "required": false, "mapTo": "country" },
-        { "name": "State", "required": false, "mapTo": "state" },
-        { "name": "City", "required": false, "mapTo": "city" },
-        { "name": "Street", "required": false, "mapTo": "street" },
-        { "name": "Zip Code", "required": false, "mapTo": "zipCode" },
-        { "name": "Reseller UID", "required": false, "mapTo": "resellerUid" }
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "name"
+        },
+        {
+          "name": "Alias",
+          "required": false,
+          "mapTo": "alias"
+        },
+        {
+          "name": "Tax ID",
+          "required": false,
+          "mapTo": "taxId"
+        },
+        {
+          "name": "Website",
+          "required": false,
+          "mapTo": "website"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "phone"
+        },
+        {
+          "name": "Country",
+          "required": false,
+          "mapTo": "country"
+        },
+        {
+          "name": "State",
+          "required": false,
+          "mapTo": "state"
+        },
+        {
+          "name": "City",
+          "required": false,
+          "mapTo": "city"
+        },
+        {
+          "name": "Street",
+          "required": false,
+          "mapTo": "street"
+        },
+        {
+          "name": "Zip Code",
+          "required": false,
+          "mapTo": "zipCode"
+        },
+        {
+          "name": "Reseller UID",
+          "required": false,
+          "mapTo": "resellerUid"
+        }
       ],
       "outputs": [
-        { "name": "Company UID", "path": "instanceUid" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Company UID",
+          "path": "instanceUid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -147,16 +290,46 @@
       "method": "PATCH",
       "path": "/api/v3/organizations/companies/{{inputs.Company UID}}",
       "inputs": [
-        { "name": "Company UID", "required": true, "mapTo": "Company UID" },
-        { "name": "Name", "required": false, "mapTo": "name" },
-        { "name": "Alias", "required": false, "mapTo": "alias" },
-        { "name": "Email", "required": false, "mapTo": "email" },
-        { "name": "Phone", "required": false, "mapTo": "phone" },
-        { "name": "Status", "required": false, "mapTo": "status" }
+        {
+          "name": "Company UID",
+          "required": true,
+          "mapTo": "Company UID"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "name"
+        },
+        {
+          "name": "Alias",
+          "required": false,
+          "mapTo": "alias"
+        },
+        {
+          "name": "Email",
+          "required": false,
+          "mapTo": "email"
+        },
+        {
+          "name": "Phone",
+          "required": false,
+          "mapTo": "phone"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "status"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -166,10 +339,17 @@
       "method": "DELETE",
       "path": "/api/v3/organizations/companies/{{inputs.Company UID}}",
       "inputs": [
-        { "name": "Company UID", "required": true, "mapTo": "Company UID" }
+        {
+          "name": "Company UID",
+          "required": true,
+          "mapTo": "Company UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -179,12 +359,25 @@
       "method": "GET",
       "path": "/api/v3/organizations/companies/{{inputs.Company UID}}/sites",
       "inputs": [
-        { "name": "Company UID", "required": true, "mapTo": "Company UID" }
+        {
+          "name": "Company UID",
+          "required": true,
+          "mapTo": "Company UID"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -194,13 +387,30 @@
       "method": "GET",
       "path": "/api/v3/organizations/locations",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -210,13 +420,30 @@
       "method": "GET",
       "path": "/api/v3/organizations/resellers",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -226,13 +453,30 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/sites",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -242,14 +486,35 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -259,11 +524,21 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers/{{inputs.Backup Server UID}}",
       "inputs": [
-        { "name": "Backup Server UID", "required": true, "mapTo": "Backup Server UID" }
+        {
+          "name": "Backup Server UID",
+          "required": true,
+          "mapTo": "Backup Server UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -273,12 +548,25 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers/{{inputs.Backup Server UID}}/repositories",
       "inputs": [
-        { "name": "Backup Server UID", "required": true, "mapTo": "Backup Server UID" }
+        {
+          "name": "Backup Server UID",
+          "required": true,
+          "mapTo": "Backup Server UID"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -288,14 +576,35 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers/jobs",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -305,11 +614,21 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -319,11 +638,21 @@
       "method": "POST",
       "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/start",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -333,11 +662,21 @@
       "method": "POST",
       "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/stop",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -347,11 +686,21 @@
       "method": "POST",
       "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/enable",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -361,11 +710,21 @@
       "method": "POST",
       "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/disable",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -375,14 +734,35 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers/backups",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -392,14 +772,35 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupServers/sessions",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -409,14 +810,35 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/backupAgents/managedComputers",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -426,13 +848,30 @@
       "method": "GET",
       "path": "/api/v3/infrastructure/discovery/computers",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -442,14 +881,35 @@
       "method": "GET",
       "path": "/api/v3/alarms/active",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -459,11 +919,21 @@
       "method": "GET",
       "path": "/api/v3/alarms/active/{{inputs.Alarm UID}}",
       "inputs": [
-        { "name": "Alarm UID", "required": true, "mapTo": "Alarm UID" }
+        {
+          "name": "Alarm UID",
+          "required": true,
+          "mapTo": "Alarm UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -473,12 +943,26 @@
       "method": "POST",
       "path": "/api/v3/alarms/active/{{inputs.Alarm UID}}/resolve",
       "inputs": [
-        { "name": "Alarm UID", "required": true, "mapTo": "Alarm UID" },
-        { "name": "Comment", "required": false, "mapTo": "comment" }
+        {
+          "name": "Alarm UID",
+          "required": true,
+          "mapTo": "Alarm UID"
+        },
+        {
+          "name": "Comment",
+          "required": false,
+          "mapTo": "comment"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -489,8 +973,14 @@
       "path": "/api/v3/licensing",
       "inputs": [],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -500,14 +990,35 @@
       "method": "GET",
       "path": "/api/v3/invoices",
       "inputs": [
-        { "name": "Limit", "required": false, "mapTo": "limit" },
-        { "name": "Offset", "required": false, "mapTo": "offset" },
-        { "name": "Filter", "required": false, "mapTo": "filter" }
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        },
+        {
+          "name": "Filter",
+          "required": false,
+          "mapTo": "filter"
+        }
       ],
       "outputs": [
-        { "name": "Data", "path": "data" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     }
   ]
