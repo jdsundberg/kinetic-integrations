@@ -1,0 +1,52 @@
+{
+  "service": "ConnectWise Manage (PSA)",
+  "featureName": "Callbacks",
+  "docsUrl": "https://developer.connectwise.com/Products/ConnectWise_PSA/Webhooks",
+  "availableSince": "Long-standing — part of the system/callbacks API",
+
+  "registration": {
+    "methods": ["UI", "API"],
+    "uiPath": "System > Setup Tables > My Callbacks (permissions-dependent)",
+    "apiEndpoint": "POST /v4_6_release/apis/3.0/system/callbacks",
+    "registrationBody": {
+      "description": "Kinetic ingest",
+      "url": "https://kinetic.example.com/app/api/v1/kapps/webhooks/webApis/cw-manage-ingest",
+      "objectId": 0,
+      "type": "ticket",
+      "level": "status",
+      "memberId": "apicaller"
+    }
+  },
+
+  "signing": {
+    "algorithm": "HMAC-MD5",
+    "header": "X-CW-Signature",
+    "format": "base64(hmac_md5(secret, raw_request_body))",
+    "encoding": "base64",
+    "note": "CW Manage's signing is weaker than HMAC-SHA256 used by modern services. When feasible, also protect the callback URL with Basic auth credentials embedded in the registered URL."
+  },
+
+  "transport": {
+    "contentType": "application/json",
+    "method": "POST",
+    "queryParameters": "CW Manage appends ?id={entityId}&action={action}&type={type}&memberId={user} to the target URL, ALONGSIDE the body. Receivers should read query params for routing.",
+    "timeout": "Approximately 5 seconds. Non-2xx or slow responses cause aggressive retries that show up under Audit Trail > Callback Activity.",
+    "retries": "Retries visible in UI; failed deliveries don't disable the callback automatically."
+  },
+
+  "supportedTypes": [
+    "ticket", "company", "contact", "opportunity", "project", "projectTicket",
+    "activity", "agreement", "configuration", "invoice", "member", "expenseEntry", "timeEntry"
+  ],
+  "levels": [
+    "status",
+    "owner",
+    "company"
+  ],
+
+  "notes": [
+    "Payload shape below reflects the modern JSON callback body. Older deployments may send XML — configure Accept header on the receiver.",
+    "The 'Entity' field may be absent for minimal callbacks; receivers that need the full record should GET /service/tickets/{id} using API credentials.",
+    "All samples are synthesized from the documented envelope and representative GET responses."
+  ]
+}
