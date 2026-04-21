@@ -1,0 +1,30 @@
+{
+  "_source": "synthesized from documented envelope; EntityFields shows only changed fields",
+  "_event": "Ticket.updated",
+  "Id": 18437,
+  "AccountId": 812,
+  "Action": "updated",
+  "EntityType": "Ticket",
+  "PersonId": 29441,
+  "PersonType": "Resource",
+  "SequenceNumber": 9876543284,
+  "Entity": {
+    "id": 18437,
+    "ticketNumber": "T20260421.0001",
+    "title": "Email not syncing on CFO laptop",
+    "companyID": 812,
+    "contactID": 4221,
+    "assignedResourceID": 29441,
+    "queueID": 29682833,
+    "status": 5,
+    "priority": 2,
+    "resolution": "Rebuilt Outlook profile; mail flow restored. Root cause: cached Autodiscover.",
+    "resolvedDateTime": "2026-04-21T17:12:44.000Z",
+    "lastActivityDate": "2026-04-21T17:12:44.000Z"
+  },
+  "EntityFields": [
+    { "Name": "status", "Value": "5" },
+    { "Name": "resolution", "Value": "Rebuilt Outlook profile; mail flow restored. Root cause: cached Autodiscover." },
+    { "Name": "resolvedDateTime", "Value": "2026-04-21T17:12:44.000Z" }
+  ]
+}
