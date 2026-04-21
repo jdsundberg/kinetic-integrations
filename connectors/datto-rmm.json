@@ -1,0 +1,531 @@
+{
+  "id": "datto-rmm",
+  "service": "Datto RMM",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Datto RMM integration with 30 pre-built routines covering sites, devices, alerts, jobs, components, audits, quick jobs, UDFs, and warranty — the operational surface an MSP needs to monitor and control endpoints across customer sites.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "api_url",
+        "required": true,
+        "description": "Datto RMM platform API URL. Format: https://{platform}-api.centrastage.net/api (e.g. https://pinotage-api.centrastage.net/api, merlot, vidal, syrah, zinfandel, concord). Found in the Datto RMM UI under Setup > Global Settings > API."
+      },
+      {
+        "name": "api_key",
+        "required": true,
+        "description": "Datto RMM API Key (used as the 'username' in the OAuth2 password grant).",
+        "encrypted": true
+      },
+      {
+        "name": "api_secret_key",
+        "required": true,
+        "description": "Datto RMM API Secret Key (used as the 'password' in the OAuth2 password grant).",
+        "encrypted": true
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0072CE\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">DR</text></svg>",
+  "docsUrl": "https://help.datto.com/s/article/KB363124686",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "baseUrl": "https://PLATFORM-api.centrastage.net/api",
+  "routines": [
+    {
+      "id": "test",
+      "name": "Datto RMM Connection Test",
+      "description": "GET /v2/account",
+      "method": "GET",
+      "path": "/v2/account",
+      "inputs": [],
+      "outputs": [
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Connected", "path": "connected" }
+      ]
+    },
+    {
+      "id": "account_retrieve",
+      "name": "Datto RMM Account Retrieve",
+      "description": "GET /v2/account",
+      "method": "GET",
+      "path": "/v2/account",
+      "inputs": [],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_users_list",
+      "name": "Datto RMM Account Users List",
+      "description": "GET /v2/account/users",
+      "method": "GET",
+      "path": "/v2/account/users",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Users", "path": "users" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_variables_list",
+      "name": "Datto RMM Account Variables List",
+      "description": "GET /v2/account/variables",
+      "method": "GET",
+      "path": "/v2/account/variables",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Variables", "path": "variables" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_components_list",
+      "name": "Datto RMM Account Components List",
+      "description": "GET /v2/account/components",
+      "method": "GET",
+      "path": "/v2/account/components",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Components", "path": "components" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_sites_list",
+      "name": "Datto RMM Account Sites List",
+      "description": "GET /v2/account/sites",
+      "method": "GET",
+      "path": "/v2/account/sites",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Sites", "path": "sites" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_devices_list",
+      "name": "Datto RMM Account Devices List",
+      "description": "GET /v2/account/devices",
+      "method": "GET",
+      "path": "/v2/account/devices",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" },
+        { "name": "Hostname", "required": false, "mapTo": "hostname" },
+        { "name": "Filter ID", "required": false, "mapTo": "filterId" }
+      ],
+      "outputs": [
+        { "name": "Devices", "path": "devices" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_open_alerts",
+      "name": "Datto RMM Account Open Alerts",
+      "description": "GET /v2/account/alerts/open",
+      "method": "GET",
+      "path": "/v2/account/alerts/open",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" },
+        { "name": "Muted", "required": false, "mapTo": "muted" }
+      ],
+      "outputs": [
+        { "name": "Alerts", "path": "alerts" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "account_resolved_alerts",
+      "name": "Datto RMM Account Resolved Alerts",
+      "description": "GET /v2/account/alerts/resolved",
+      "method": "GET",
+      "path": "/v2/account/alerts/resolved",
+      "inputs": [
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Alerts", "path": "alerts" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_retrieve",
+      "name": "Datto RMM Site Retrieve",
+      "description": "GET /v2/site/{{inputs.Site UID}}",
+      "method": "GET",
+      "path": "/v2/site/{{inputs.Site UID}}",
+      "inputs": [
+        { "name": "Site UID", "required": true, "mapTo": "Site UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_create",
+      "name": "Datto RMM Site Create",
+      "description": "PUT /v2/site",
+      "method": "PUT",
+      "path": "/v2/site",
+      "inputs": [
+        { "name": "Name", "required": true, "mapTo": "name" },
+        { "name": "Description", "required": false, "mapTo": "description" },
+        { "name": "Notes", "required": false, "mapTo": "notes" },
+        { "name": "On Demand", "required": false, "mapTo": "onDemand" },
+        { "name": "Splashtop Auto Install", "required": false, "mapTo": "splashtopAutoInstall" },
+        { "name": "Proxy Settings", "required": false, "mapTo": "proxySettings" }
+      ],
+      "outputs": [
+        { "name": "Site UID", "path": "uid" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_update",
+      "name": "Datto RMM Site Update",
+      "description": "POST /v2/site/{{inputs.Site UID}}",
+      "method": "POST",
+      "path": "/v2/site/{{inputs.Site UID}}",
+      "inputs": [
+        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
+        { "name": "Name", "required": false, "mapTo": "name" },
+        { "name": "Description", "required": false, "mapTo": "description" },
+        { "name": "Notes", "required": false, "mapTo": "notes" },
+        { "name": "On Demand", "required": false, "mapTo": "onDemand" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_devices_list",
+      "name": "Datto RMM Site Devices List",
+      "description": "GET /v2/site/{{inputs.Site UID}}/devices",
+      "method": "GET",
+      "path": "/v2/site/{{inputs.Site UID}}/devices",
+      "inputs": [
+        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Devices", "path": "devices" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_open_alerts",
+      "name": "Datto RMM Site Open Alerts",
+      "description": "GET /v2/site/{{inputs.Site UID}}/alerts/open",
+      "method": "GET",
+      "path": "/v2/site/{{inputs.Site UID}}/alerts/open",
+      "inputs": [
+        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" },
+        { "name": "Muted", "required": false, "mapTo": "muted" }
+      ],
+      "outputs": [
+        { "name": "Alerts", "path": "alerts" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_resolved_alerts",
+      "name": "Datto RMM Site Resolved Alerts",
+      "description": "GET /v2/site/{{inputs.Site UID}}/alerts/resolved",
+      "method": "GET",
+      "path": "/v2/site/{{inputs.Site UID}}/alerts/resolved",
+      "inputs": [
+        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" }
+      ],
+      "outputs": [
+        { "name": "Alerts", "path": "alerts" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "site_variables_list",
+      "name": "Datto RMM Site Variables List",
+      "description": "GET /v2/site/{{inputs.Site UID}}/variables",
+      "method": "GET",
+      "path": "/v2/site/{{inputs.Site UID}}/variables",
+      "inputs": [
+        { "name": "Site UID", "required": true, "mapTo": "Site UID" }
+      ],
+      "outputs": [
+        { "name": "Variables", "path": "variables" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_retrieve",
+      "name": "Datto RMM Device Retrieve",
+      "description": "GET /v2/device/{{inputs.Device UID}}",
+      "method": "GET",
+      "path": "/v2/device/{{inputs.Device UID}}",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_retrieve_by_id",
+      "name": "Datto RMM Device Retrieve by ID",
+      "description": "GET /v2/device/id/{{inputs.Device ID}}",
+      "method": "GET",
+      "path": "/v2/device/id/{{inputs.Device ID}}",
+      "inputs": [
+        { "name": "Device ID", "required": true, "mapTo": "Device ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_retrieve_by_hostname",
+      "name": "Datto RMM Device Retrieve by Hostname",
+      "description": "GET /v2/device/hostname/{{inputs.Hostname}}",
+      "method": "GET",
+      "path": "/v2/device/hostname/{{inputs.Hostname}}",
+      "inputs": [
+        { "name": "Hostname", "required": true, "mapTo": "Hostname" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_open_alerts",
+      "name": "Datto RMM Device Open Alerts",
+      "description": "GET /v2/device/{{inputs.Device UID}}/alerts/open",
+      "method": "GET",
+      "path": "/v2/device/{{inputs.Device UID}}/alerts/open",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
+        { "name": "Page", "required": false, "mapTo": "page" },
+        { "name": "Max", "required": false, "mapTo": "max" },
+        { "name": "Muted", "required": false, "mapTo": "muted" }
+      ],
+      "outputs": [
+        { "name": "Alerts", "path": "alerts" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_audit",
+      "name": "Datto RMM Device Audit",
+      "description": "GET /v2/audit/device/{{inputs.Device UID}}",
+      "method": "GET",
+      "path": "/v2/audit/device/{{inputs.Device UID}}",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_software_audit",
+      "name": "Datto RMM Device Software Audit",
+      "description": "GET /v2/audit/device/{{inputs.Device UID}}/software",
+      "method": "GET",
+      "path": "/v2/audit/device/{{inputs.Device UID}}/software",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" }
+      ],
+      "outputs": [
+        { "name": "Software", "path": "software" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_move_site",
+      "name": "Datto RMM Device Move to Site",
+      "description": "POST /v2/device/{{inputs.Device UID}}/move/site/{{inputs.Target Site UID}}",
+      "method": "POST",
+      "path": "/v2/device/{{inputs.Device UID}}/move/site/{{inputs.Target Site UID}}",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
+        { "name": "Target Site UID", "required": true, "mapTo": "Target Site UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_quick_job",
+      "name": "Datto RMM Device Quick Job",
+      "description": "PUT /v2/device/{{inputs.Device UID}}/quickjob",
+      "method": "PUT",
+      "path": "/v2/device/{{inputs.Device UID}}/quickjob",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
+        { "name": "Job Name", "required": true, "mapTo": "jobName" },
+        { "name": "Job Component UID", "required": true, "mapTo": "jobComponent.uid" },
+        { "name": "Job Component Variables", "required": false, "mapTo": "jobComponent.variables" }
+      ],
+      "outputs": [
+        { "name": "Job UID", "path": "uid" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_set_udf",
+      "name": "Datto RMM Device Set UDF",
+      "description": "POST /v2/device/{{inputs.Device UID}}/udf",
+      "method": "POST",
+      "path": "/v2/device/{{inputs.Device UID}}/udf",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
+        { "name": "UDF Number", "required": true, "mapTo": "udfNumber" },
+        { "name": "Value", "required": true, "mapTo": "value" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "device_set_warranty",
+      "name": "Datto RMM Device Set Warranty",
+      "description": "POST /v2/device/{{inputs.Device UID}}/warranty",
+      "method": "POST",
+      "path": "/v2/device/{{inputs.Device UID}}/warranty",
+      "inputs": [
+        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
+        { "name": "Warranty Date", "required": true, "mapTo": "warrantyDate" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "alert_retrieve",
+      "name": "Datto RMM Alert Retrieve",
+      "description": "GET /v2/alert/{{inputs.Alert UID}}",
+      "method": "GET",
+      "path": "/v2/alert/{{inputs.Alert UID}}",
+      "inputs": [
+        { "name": "Alert UID", "required": true, "mapTo": "Alert UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "alert_resolve",
+      "name": "Datto RMM Alert Resolve",
+      "description": "POST /v2/alert/{{inputs.Alert UID}}/resolve",
+      "method": "POST",
+      "path": "/v2/alert/{{inputs.Alert UID}}/resolve",
+      "inputs": [
+        { "name": "Alert UID", "required": true, "mapTo": "Alert UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "alert_mute",
+      "name": "Datto RMM Alert Mute",
+      "description": "POST /v2/alert/{{inputs.Alert UID}}/mute",
+      "method": "POST",
+      "path": "/v2/alert/{{inputs.Alert UID}}/mute",
+      "inputs": [
+        { "name": "Alert UID", "required": true, "mapTo": "Alert UID" },
+        { "name": "Duration", "required": false, "mapTo": "duration" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_retrieve",
+      "name": "Datto RMM Job Retrieve",
+      "description": "GET /v2/job/{{inputs.Job UID}}",
+      "method": "GET",
+      "path": "/v2/job/{{inputs.Job UID}}",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_results",
+      "name": "Datto RMM Job Results",
+      "description": "GET /v2/job/{{inputs.Job UID}}/results",
+      "method": "GET",
+      "path": "/v2/job/{{inputs.Job UID}}/results",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Results", "path": "results" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    }
+  ]
+}
