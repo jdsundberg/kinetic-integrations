@@ -491,6 +491,14 @@
       "description": "Datadog integration with 9 pre-built routines."
     },
     {
+      "id": "datto-rmm",
+      "service": "Datto Rmm",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 31,
+      "description": "Datto Rmm integration with 31 pre-built routines."
+    },
+    {
       "id": "dayforce",
       "service": "Dayforce",
       "category": "Other",
