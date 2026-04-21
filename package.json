@@ -1,0 +1,17 @@
+{
+  "name": "kinetic-integrations",
+  "version": "0.1.0",
+  "description": "Publishable integration connector and routine library for the Kinetic Platform, plus a swagger2kinetic generator.",
+  "type": "module",
+  "bin": {
+    "swagger2kinetic": "./bin/swagger2kinetic.mjs"
+  },
+  "scripts": {
+    "test": "node tests/test.mjs",
+    "generate": "node bin/swagger2kinetic.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}
