@@ -1,0 +1,39 @@
+{
+  "service": "Autotask",
+  "featureName": "Notification Webhooks",
+  "docsUrl": "https://ww19.autotask.net/help/DeveloperHelp/Content/APIs/REST/REST_API_Home.htm",
+  "availableSince": "Autotask REST API v1.6.6.0",
+
+  "registration": {
+    "methods": ["UI", "API"],
+    "uiPath": "Admin > Extensions & Integrations > Integrations > Notification Webhooks",
+    "apiEndpoint": "POST /V1.0/{Entity}WebhookConfiguration (per entity, e.g. /TicketWebhookConfiguration). Separate endpoints configure which fields trigger (/TicketWebhookField) and which are excluded from the payload (/TicketWebhookExcludedResource)."
+  },
+
+  "signing": {
+    "algorithm": "HMAC-SHA1",
+    "header": "X-Autotask-RequestSignature",
+    "format": "base64(hmac_sha1(secret, raw_request_body))",
+    "secretConfiguredPerWebhook": true,
+    "optionalBasicAuth": "Webhook config can additionally require HTTP Basic username/password on the receiving URL"
+  },
+
+  "transport": {
+    "contentType": "application/json",
+    "method": "POST",
+    "batching": "Yes — Autotask may POST an array of entity change events in a single request when multiple events fire within a short window. The payload may be a single object OR an array of objects.",
+    "ordering": "Not guaranteed. Use SequenceNumber to detect out-of-order deliveries.",
+    "retries": "Autotask retries with exponential backoff for up to 48h on non-2xx responses, then disables the webhook."
+  },
+
+  "supportedEntities": [
+    "Ticket", "TicketNote", "Company", "Contact", "ConfigurationItem",
+    "Opportunity", "Task", "TimeEntry", "Project", "Contract", "Resource",
+    "ServiceCall", "Quote", "Invoice", "ExpenseReport"
+  ],
+
+  "notes": [
+    "Payload envelope schema is described in Autotask's 'Notification Webhooks' help section. The Entity subobject shape matches what GET /{Entity}/{id} returns.",
+    "All sample payloads in this directory are synthesized from the documented envelope + representative GET responses. Field values are illustrative."
+  ]
+}
