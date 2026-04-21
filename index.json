@@ -1341,6 +1341,14 @@
       "description": "Newrelic integration with 6 pre-built routines."
     },
     {
+      "id": "ninjaone",
+      "service": "NinjaOne",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 31,
+      "description": "NinjaOne integration with 31 pre-built routines."
+    },
+    {
       "id": "notion",
       "service": "Notion",
       "category": "DevOps & Collaboration",
