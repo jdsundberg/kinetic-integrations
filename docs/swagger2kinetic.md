@@ -1,8 +1,23 @@
 # swagger2kinetic
 
-Generate Kinetic connector JSON from an OpenAPI 3.x or Swagger 2.0 specification.
+Generate a Kinetic connector JSON — **both the connection handler auth config AND a full set of pre-built routines (one per HTTP operation)** — from an OpenAPI 3.x or Swagger 2.0 specification.
 
 Zero runtime dependencies — pure Node built-ins.
+
+## What it produces
+
+Given a vendor's OpenAPI spec, the tool emits a `connectors/<id>.json` document that the Kinetic integration catalog can install directly. The document contains:
+
+1. **`auth` block** — derived from `components.securitySchemes`. Maps to `basic`, `bearer`, `apikey`, `oauth2`, or `oauth2_password` with every property tagged with an explicit `role` field (`username`, `password`, `access_token`, etc.) so the build process picks the right generator.
+2. **`routines[]`** — **one routine per HTTP operation in the spec**. For Petstore (19 operations) → 20 routines; for Freshdesk-class APIs (~120 operations) you'd typically filter down to 15–30 via `--include-tags`. Each routine has:
+   - `id` from `operationId` (slugified)
+   - `name` humanized from `summary`
+   - `method`, `path` verbatim
+   - `inputs[]` built from `parameters` + request body top-level fields
+   - `outputs[]` — the canonical three (`response_body`, `response_code`, `handler_error_message`) plus the top 5 scalar response fields, ranked with `id`/`name`/`status`/`email` first
+3. **Synthetic `test` routine** — automatically added as the first entry. Picks the first GET on a path with no path params, for connection verification.
+4. **`baseUrl`** — from `servers[0].url` (OpenAPI 3) or `host` + `basePath` + `schemes[0]` (Swagger 2).
+5. **A manifest file** alongside the connector — records source URL, filters applied, operationIds selected, warnings, and generator version. Use it for regeneration when the vendor updates their spec.
 
 ## Install / run
 
@@ -52,7 +67,7 @@ Produces:
 - `connectors/example.json` — the connector body
 - `connectors/example.json.manifest.json` — generation metadata (operations selected, source URL, warnings)
 
-## What gets generated
+## Auth type mapping
 
 **Auth:** inferred from `components.securitySchemes` (or `securityDefinitions` for Swagger 2). Supported:
 - `http.basic` → `basic` with `username`/`password`
@@ -62,6 +77,8 @@ Produces:
 - `oauth2.password` → `oauth2_password` with `token_url`/`username`/`password` (+ optional `client_id`/`client_secret`)
 
 Every property gets a `role:` field populated, so the build-process auto-detects semantics even if the spec uses odd field names downstream.
+
+## Routine generation detail
 
 **Routines:** one per HTTP operation matching the filters. Each routine:
 - `method`, `path` taken directly from the spec
