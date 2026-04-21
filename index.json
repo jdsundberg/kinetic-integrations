@@ -1469,6 +1469,14 @@
       "description": "Patriot integration with 9 pre-built routines."
     },
     {
+      "id": "pax8",
+      "service": "Pax8",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 22,
+      "description": "Pax8 integration with 22 pre-built routines."
+    },
+    {
       "id": "paycom",
       "service": "Paycom",
       "category": "HR & People",
