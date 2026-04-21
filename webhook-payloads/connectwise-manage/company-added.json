@@ -1,0 +1,27 @@
+{
+  "_source": "synthesized — company-level callback example",
+  "_event": "company.added",
+  "_queryParams": "?id=1024&action=added&type=company&memberId=apisales",
+  "ID": 1024,
+  "Action": "added",
+  "Type": "company",
+  "MemberID": "apisales",
+  "Entity": {
+    "id": 1024,
+    "identifier": "NEWCO",
+    "name": "Newco Analytics",
+    "status": { "id": 1, "name": "Active" },
+    "types": [{ "id": 2, "name": "Client" }],
+    "addressLine1": "200 W Adams St",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60606",
+    "country": { "id": 1, "name": "United States" },
+    "phoneNumber": "312-555-0182",
+    "website": "newcoanalytics.example.com",
+    "territoryManager": { "id": 48, "name": "Lindsay Chen" },
+    "annualRevenue": 8200000,
+    "numberOfEmployees": 42,
+    "dateAcquired": "2026-04-21"
+  }
+}
