@@ -1,0 +1,41 @@
+{
+  "service": "Huntress",
+  "featureName": "Webhooks",
+  "docsUrl": "https://api.huntress.io/docs#webhooks",
+
+  "registration": {
+    "methods": ["UI"],
+    "uiPath": "Account Settings > Integrations > Webhooks",
+    "note": "No documented public API to register webhooks programmatically."
+  },
+
+  "signing": {
+    "algorithm": "HMAC-SHA256",
+    "header": "X-Huntress-Signature",
+    "format": "hex(hmac_sha256(secret, raw_request_body))",
+    "encoding": "hex",
+    "note": "Secret is shown ONCE at webhook creation. Store immediately. Signature is computed over the exact raw request body (no whitespace normalization)."
+  },
+
+  "transport": {
+    "contentType": "application/json",
+    "method": "POST",
+    "timeout": "Receiver must respond 2xx within ~5 seconds. Slow responses cause aggressive retry + eventual webhook suspension.",
+    "retries": "Exponential backoff"
+  },
+
+  "supportedEventTypes": [
+    "report.sent",
+    "report.updated",
+    "report.closed",
+    "agent.created",
+    "agent.updated",
+    "billing_report.ready"
+  ],
+
+  "notes": [
+    "Huntress wraps all events in an envelope with 'event_type' + 'sent_at' + 'payload'.",
+    "The 'payload' object mirrors the corresponding REST resource (incident_report, agent, etc.).",
+    "Incident reports are the critical event for MSPs doing MDR → PSA ticket creation."
+  ]
+}
