@@ -1,0 +1,22 @@
+{
+  "_source": "synthesized — CONDITION activity (memory threshold)",
+  "_event": "CONDITION.TRIGGERED",
+  "id": 884120092,
+  "activityTime": 1713712501.448,
+  "deviceId": 9921,
+  "organizationId": 42,
+  "locationId": 7,
+  "deviceDisplayName": "DC01-ACME",
+  "sourceConfigUid": "cond-mem-90",
+  "sourceName": "Memory usage over 90%",
+  "sourceUid": "ninja.condition.memory",
+  "activityType": "CONDITION",
+  "activityResult": "FAILURE",
+  "statusCode": "TRIGGERED",
+  "statusDescription": "Condition triggered: Memory usage > 90% for 5 minutes",
+  "topic": "CONDITION",
+  "subject": "Memory usage over 90%",
+  "priority": "HIGH",
+  "content": "Used 14.8 GB / 16.0 GB (92.5%) sustained for 5m",
+  "conditionId": 1008
+}
