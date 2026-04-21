@@ -1,0 +1,43 @@
+{
+  "_source": "synthesized batched delivery — Autotask may combine multiple entity changes into a single POST",
+  "_event": "batch (Ticket.updated, TicketNote.created)",
+  "_note": "When batched, the top-level payload is an array, not an object. Some integrations unconditionally wrap in { Items: [...] } — verify receiver-side against your tenant's observed behavior.",
+  "Items": [
+    {
+      "Id": 18437,
+      "AccountId": 812,
+      "Action": "updated",
+      "EntityType": "Ticket",
+      "PersonId": 29441,
+      "PersonType": "Resource",
+      "SequenceNumber": 9876543301,
+      "Entity": {
+        "id": 18437,
+        "status": 8,
+        "lastActivityDate": "2026-04-21T17:14:02.000Z"
+      },
+      "EntityFields": [
+        { "Name": "status", "Value": "8" }
+      ]
+    },
+    {
+      "Id": 55021,
+      "AccountId": 812,
+      "Action": "created",
+      "EntityType": "TicketNote",
+      "PersonId": 29441,
+      "PersonType": "Resource",
+      "SequenceNumber": 9876543302,
+      "Entity": {
+        "id": 55021,
+        "ticketID": 18437,
+        "title": "Closing ticket",
+        "description": "Confirmed with user mail is flowing. Closing.",
+        "noteType": 1,
+        "publish": 1,
+        "creatorResourceID": 29441,
+        "createDateTime": "2026-04-21T17:14:02.000Z"
+      }
+    }
+  ]
+}
