@@ -1,0 +1,37 @@
+{
+  "_source": "synthesized from documented envelope + GET /Tickets/{id} response shape",
+  "_event": "Ticket.created",
+  "Id": 18437,
+  "AccountId": 812,
+  "Action": "created",
+  "EntityType": "Ticket",
+  "PersonId": 29441,
+  "PersonType": "Resource",
+  "SequenceNumber": 9876543210,
+  "Entity": {
+    "id": 18437,
+    "ticketNumber": "T20260421.0001",
+    "title": "Email not syncing on CFO laptop",
+    "description": "CFO reports that Outlook has not received new email since ~9:30 AM. Tried restart; no change.",
+    "companyID": 812,
+    "contactID": 4221,
+    "assignedResourceID": 29441,
+    "queueID": 29682833,
+    "status": 1,
+    "priority": 2,
+    "issueType": 8,
+    "subIssueType": 154,
+    "ticketType": 1,
+    "source": 8,
+    "configurationItemID": 10023,
+    "contractID": 208,
+    "createDate": "2026-04-21T14:32:18.000Z",
+    "dueDateTime": "2026-04-21T18:00:00.000Z",
+    "lastActivityDate": "2026-04-21T14:32:18.000Z"
+  },
+  "EntityFields": [
+    { "Name": "status", "Value": "1" },
+    { "Name": "priority", "Value": "2" },
+    { "Name": "title", "Value": "Email not syncing on CFO laptop" }
+  ]
+}
