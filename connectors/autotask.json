@@ -1,0 +1,895 @@
+{
+  "id": "autotask",
+  "service": "Autotask",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Autotask PSA integration with 36 pre-built routines covering tickets, companies, contacts, contracts, configuration items, projects, tasks, time entries, expenses, opportunities, quotes, invoices, and service calls.",
+  "auth": {
+    "type": "basic",
+    "properties": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "Autotask API user username (typically an email-like string created under Admin > Resources (Users) > API User)."
+      },
+      {
+        "name": "secret",
+        "required": true,
+        "description": "Autotask API user secret (password).",
+        "encrypted": true
+      },
+      {
+        "name": "integration_code",
+        "required": true,
+        "description": "Autotask ApiIntegrationCode (tracking identifier). Sent with every request as the ApiIntegrationCode header.",
+        "encrypted": true
+      },
+      {
+        "name": "zone_url",
+        "required": true,
+        "description": "Zone-specific base URL for this Autotask account, e.g. https://webservices14.autotask.net/ATServicesRest. Retrieve via GET /ATServicesRest/V1.0/zoneInformation?user=<username>."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#E31E24\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">AT</text></svg>",
+  "docsUrl": "https://ww19.autotask.net/help/DeveloperHelp/Content/APIs/REST/REST_API_Home.htm",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "baseUrl": "https://ZONE.autotask.net/ATServicesRest",
+  "routines": [
+    {
+      "id": "test",
+      "name": "Autotask Connection Test",
+      "description": "GET /V1.0/Version",
+      "method": "GET",
+      "path": "/V1.0/Version",
+      "inputs": [],
+      "outputs": [
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Connected", "path": "connected" }
+      ]
+    },
+    {
+      "id": "ticket_create",
+      "name": "Autotask Ticket Create",
+      "description": "POST /V1.0/Tickets",
+      "method": "POST",
+      "path": "/V1.0/Tickets",
+      "inputs": [
+        { "name": "Title", "required": true, "mapTo": "title" },
+        { "name": "Description", "required": true, "mapTo": "description" },
+        { "name": "Company ID", "required": true, "mapTo": "companyID" },
+        { "name": "Status", "required": true, "mapTo": "status" },
+        { "name": "Priority", "required": true, "mapTo": "priority" },
+        { "name": "Queue ID", "required": false, "mapTo": "queueID" },
+        { "name": "Assigned Resource ID", "required": false, "mapTo": "assignedResourceID" },
+        { "name": "Contact ID", "required": false, "mapTo": "contactID" },
+        { "name": "Issue Type", "required": false, "mapTo": "issueType" },
+        { "name": "Sub Issue Type", "required": false, "mapTo": "subIssueType" },
+        { "name": "Ticket Type", "required": false, "mapTo": "ticketType" },
+        { "name": "Due Date Time", "required": false, "mapTo": "dueDateTime" },
+        { "name": "Source", "required": false, "mapTo": "source" },
+        { "name": "Configuration Item ID", "required": false, "mapTo": "configurationItemID" },
+        { "name": "Contract ID", "required": false, "mapTo": "contractID" }
+      ],
+      "outputs": [
+        { "name": "Ticket ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "ticket_update",
+      "name": "Autotask Ticket Update",
+      "description": "PATCH /V1.0/Tickets",
+      "method": "PATCH",
+      "path": "/V1.0/Tickets",
+      "inputs": [
+        { "name": "Ticket ID", "required": true, "mapTo": "id" },
+        { "name": "Status", "required": false, "mapTo": "status" },
+        { "name": "Priority", "required": false, "mapTo": "priority" },
+        { "name": "Assigned Resource ID", "required": false, "mapTo": "assignedResourceID" },
+        { "name": "Queue ID", "required": false, "mapTo": "queueID" },
+        { "name": "Title", "required": false, "mapTo": "title" },
+        { "name": "Description", "required": false, "mapTo": "description" },
+        { "name": "Resolution", "required": false, "mapTo": "resolution" },
+        { "name": "Due Date Time", "required": false, "mapTo": "dueDateTime" }
+      ],
+      "outputs": [
+        { "name": "Ticket ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "ticket_retrieve",
+      "name": "Autotask Ticket Retrieve",
+      "description": "GET /V1.0/Tickets/{{inputs.Ticket ID}}",
+      "method": "GET",
+      "path": "/V1.0/Tickets/{{inputs.Ticket ID}}",
+      "inputs": [
+        { "name": "Ticket ID", "required": true, "mapTo": "Ticket ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "ticket_search",
+      "name": "Autotask Ticket Search",
+      "description": "POST /V1.0/Tickets/query",
+      "method": "POST",
+      "path": "/V1.0/Tickets/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" },
+        { "name": "Include Fields", "required": false, "mapTo": "IncludeFields" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "ticket_note_create",
+      "name": "Autotask Ticket Note Create",
+      "description": "POST /V1.0/Tickets/{{inputs.Ticket ID}}/Notes",
+      "method": "POST",
+      "path": "/V1.0/Tickets/{{inputs.Ticket ID}}/Notes",
+      "inputs": [
+        { "name": "Ticket ID", "required": true, "mapTo": "Ticket ID" },
+        { "name": "Title", "required": true, "mapTo": "title" },
+        { "name": "Description", "required": true, "mapTo": "description" },
+        { "name": "Note Type", "required": true, "mapTo": "noteType" },
+        { "name": "Publish", "required": true, "mapTo": "publish" },
+        { "name": "Creator Resource ID", "required": false, "mapTo": "creatorResourceID" }
+      ],
+      "outputs": [
+        { "name": "Note ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "ticket_attachment_upload",
+      "name": "Autotask Ticket Attachment Upload",
+      "description": "POST /V1.0/TicketAttachments",
+      "method": "POST",
+      "path": "/V1.0/TicketAttachments",
+      "inputs": [
+        { "name": "Parent ID", "required": true, "mapTo": "parentID" },
+        { "name": "Title", "required": true, "mapTo": "title" },
+        { "name": "Full Path", "required": true, "mapTo": "fullPath" },
+        { "name": "Attach Type", "required": true, "mapTo": "attachType" },
+        { "name": "Publish", "required": true, "mapTo": "publish" },
+        { "name": "Data (Base64)", "required": true, "mapTo": "data" },
+        { "name": "Content Type", "required": false, "mapTo": "contentType" }
+      ],
+      "outputs": [
+        { "name": "Attachment ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "company_create",
+      "name": "Autotask Company Create",
+      "description": "POST /V1.0/Companies",
+      "method": "POST",
+      "path": "/V1.0/Companies",
+      "inputs": [
+        { "name": "Company Name", "required": true, "mapTo": "companyName" },
+        { "name": "Company Type", "required": true, "mapTo": "companyType" },
+        { "name": "Owner Resource ID", "required": true, "mapTo": "ownerResourceID" },
+        { "name": "Phone", "required": true, "mapTo": "phone" },
+        { "name": "Address 1", "required": false, "mapTo": "address1" },
+        { "name": "Address 2", "required": false, "mapTo": "address2" },
+        { "name": "City", "required": false, "mapTo": "city" },
+        { "name": "State", "required": false, "mapTo": "state" },
+        { "name": "Postal Code", "required": false, "mapTo": "postalCode" },
+        { "name": "Country ID", "required": false, "mapTo": "countryID" },
+        { "name": "Web Address", "required": false, "mapTo": "webAddress" },
+        { "name": "Classification", "required": false, "mapTo": "classification" }
+      ],
+      "outputs": [
+        { "name": "Company ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "company_update",
+      "name": "Autotask Company Update",
+      "description": "PATCH /V1.0/Companies",
+      "method": "PATCH",
+      "path": "/V1.0/Companies",
+      "inputs": [
+        { "name": "Company ID", "required": true, "mapTo": "id" },
+        { "name": "Company Name", "required": false, "mapTo": "companyName" },
+        { "name": "Phone", "required": false, "mapTo": "phone" },
+        { "name": "Owner Resource ID", "required": false, "mapTo": "ownerResourceID" },
+        { "name": "Is Active", "required": false, "mapTo": "isActive" },
+        { "name": "Classification", "required": false, "mapTo": "classification" }
+      ],
+      "outputs": [
+        { "name": "Company ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "company_retrieve",
+      "name": "Autotask Company Retrieve",
+      "description": "GET /V1.0/Companies/{{inputs.Company ID}}",
+      "method": "GET",
+      "path": "/V1.0/Companies/{{inputs.Company ID}}",
+      "inputs": [
+        { "name": "Company ID", "required": true, "mapTo": "Company ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "company_search",
+      "name": "Autotask Company Search",
+      "description": "POST /V1.0/Companies/query",
+      "method": "POST",
+      "path": "/V1.0/Companies/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" },
+        { "name": "Include Fields", "required": false, "mapTo": "IncludeFields" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "company_note_create",
+      "name": "Autotask Company Note Create",
+      "description": "POST /V1.0/Companies/{{inputs.Company ID}}/Notes",
+      "method": "POST",
+      "path": "/V1.0/Companies/{{inputs.Company ID}}/Notes",
+      "inputs": [
+        { "name": "Company ID", "required": true, "mapTo": "Company ID" },
+        { "name": "Title", "required": true, "mapTo": "title" },
+        { "name": "Note", "required": true, "mapTo": "note" },
+        { "name": "Note Type", "required": true, "mapTo": "noteType" },
+        { "name": "Action Type", "required": true, "mapTo": "actionType" }
+      ],
+      "outputs": [
+        { "name": "Note ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "contact_create",
+      "name": "Autotask Contact Create",
+      "description": "POST /V1.0/Contacts",
+      "method": "POST",
+      "path": "/V1.0/Contacts",
+      "inputs": [
+        { "name": "Company ID", "required": true, "mapTo": "companyID" },
+        { "name": "First Name", "required": true, "mapTo": "firstName" },
+        { "name": "Last Name", "required": true, "mapTo": "lastName" },
+        { "name": "Email Address", "required": false, "mapTo": "emailAddress" },
+        { "name": "Phone", "required": false, "mapTo": "phone" },
+        { "name": "Mobile Phone", "required": false, "mapTo": "mobilePhone" },
+        { "name": "Title", "required": false, "mapTo": "title" },
+        { "name": "Is Active", "required": false, "mapTo": "isActive" }
+      ],
+      "outputs": [
+        { "name": "Contact ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Handler Error Message", "path": "handler_error_message" }
+      ]
+    },
+    {
+      "id": "contact_update",
+      "name": "Autotask Contact Update",
+      "description": "PATCH /V1.0/Contacts",
+      "method": "PATCH",
+      "path": "/V1.0/Contacts",
+      "inputs": [
+        { "name": "Contact ID", "required": true, "mapTo": "id" },
+        { "name": "First Name", "required": false, "mapTo": "firstName" },
+        { "name": "Last Name", "required": false, "mapTo": "lastName" },
+        { "name": "Email Address", "required": false, "mapTo": "emailAddress" },
+        { "name": "Phone", "required": false, "mapTo": "phone" },
+        { "name": "Is Active", "required": false, "mapTo": "isActive" }
+      ],
+      "outputs": [
+        { "name": "Contact ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "contact_retrieve",
+      "name": "Autotask Contact Retrieve",
+      "description": "GET /V1.0/Contacts/{{inputs.Contact ID}}",
+      "method": "GET",
+      "path": "/V1.0/Contacts/{{inputs.Contact ID}}",
+      "inputs": [
+        { "name": "Contact ID", "required": true, "mapTo": "Contact ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "contact_search",
+      "name": "Autotask Contact Search",
+      "description": "POST /V1.0/Contacts/query",
+      "method": "POST",
+      "path": "/V1.0/Contacts/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" },
+        { "name": "Include Fields", "required": false, "mapTo": "IncludeFields" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "configuration_item_create",
+      "name": "Autotask Configuration Item Create",
+      "description": "POST /V1.0/ConfigurationItems",
+      "method": "POST",
+      "path": "/V1.0/ConfigurationItems",
+      "inputs": [
+        { "name": "Company ID", "required": true, "mapTo": "companyID" },
+        { "name": "Product ID", "required": true, "mapTo": "productID" },
+        { "name": "Reference Title", "required": true, "mapTo": "referenceTitle" },
+        { "name": "Serial Number", "required": false, "mapTo": "serialNumber" },
+        { "name": "Install Date", "required": false, "mapTo": "installDate" },
+        { "name": "Warranty Expiration Date", "required": false, "mapTo": "warrantyExpirationDate" },
+        { "name": "Configuration Item Type", "required": false, "mapTo": "configurationItemType" },
+        { "name": "Contract ID", "required": false, "mapTo": "contractID" },
+        { "name": "Location", "required": false, "mapTo": "location" }
+      ],
+      "outputs": [
+        { "name": "Configuration Item ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "configuration_item_update",
+      "name": "Autotask Configuration Item Update",
+      "description": "PATCH /V1.0/ConfigurationItems",
+      "method": "PATCH",
+      "path": "/V1.0/ConfigurationItems",
+      "inputs": [
+        { "name": "Configuration Item ID", "required": true, "mapTo": "id" },
+        { "name": "Reference Title", "required": false, "mapTo": "referenceTitle" },
+        { "name": "Serial Number", "required": false, "mapTo": "serialNumber" },
+        { "name": "Install Date", "required": false, "mapTo": "installDate" },
+        { "name": "Warranty Expiration Date", "required": false, "mapTo": "warrantyExpirationDate" },
+        { "name": "Is Active", "required": false, "mapTo": "isActive" },
+        { "name": "Contract ID", "required": false, "mapTo": "contractID" }
+      ],
+      "outputs": [
+        { "name": "Configuration Item ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "configuration_item_retrieve",
+      "name": "Autotask Configuration Item Retrieve",
+      "description": "GET /V1.0/ConfigurationItems/{{inputs.Configuration Item ID}}",
+      "method": "GET",
+      "path": "/V1.0/ConfigurationItems/{{inputs.Configuration Item ID}}",
+      "inputs": [
+        { "name": "Configuration Item ID", "required": true, "mapTo": "Configuration Item ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "configuration_item_search",
+      "name": "Autotask Configuration Item Search",
+      "description": "POST /V1.0/ConfigurationItems/query",
+      "method": "POST",
+      "path": "/V1.0/ConfigurationItems/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" },
+        { "name": "Include Fields", "required": false, "mapTo": "IncludeFields" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "contract_retrieve",
+      "name": "Autotask Contract Retrieve",
+      "description": "GET /V1.0/Contracts/{{inputs.Contract ID}}",
+      "method": "GET",
+      "path": "/V1.0/Contracts/{{inputs.Contract ID}}",
+      "inputs": [
+        { "name": "Contract ID", "required": true, "mapTo": "Contract ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "contract_search",
+      "name": "Autotask Contract Search",
+      "description": "POST /V1.0/Contracts/query",
+      "method": "POST",
+      "path": "/V1.0/Contracts/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" },
+        { "name": "Include Fields", "required": false, "mapTo": "IncludeFields" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "project_create",
+      "name": "Autotask Project Create",
+      "description": "POST /V1.0/Projects",
+      "method": "POST",
+      "path": "/V1.0/Projects",
+      "inputs": [
+        { "name": "Project Name", "required": true, "mapTo": "projectName" },
+        { "name": "Company ID", "required": true, "mapTo": "companyID" },
+        { "name": "Type", "required": true, "mapTo": "type" },
+        { "name": "Status", "required": true, "mapTo": "status" },
+        { "name": "Project Lead Resource ID", "required": false, "mapTo": "projectLeadResourceID" },
+        { "name": "Start Date Time", "required": false, "mapTo": "startDateTime" },
+        { "name": "End Date Time", "required": false, "mapTo": "endDateTime" },
+        { "name": "Contract ID", "required": false, "mapTo": "contractID" },
+        { "name": "Description", "required": false, "mapTo": "description" }
+      ],
+      "outputs": [
+        { "name": "Project ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "project_retrieve",
+      "name": "Autotask Project Retrieve",
+      "description": "GET /V1.0/Projects/{{inputs.Project ID}}",
+      "method": "GET",
+      "path": "/V1.0/Projects/{{inputs.Project ID}}",
+      "inputs": [
+        { "name": "Project ID", "required": true, "mapTo": "Project ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "project_search",
+      "name": "Autotask Project Search",
+      "description": "POST /V1.0/Projects/query",
+      "method": "POST",
+      "path": "/V1.0/Projects/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "task_create",
+      "name": "Autotask Project Task Create",
+      "description": "POST /V1.0/Tasks",
+      "method": "POST",
+      "path": "/V1.0/Tasks",
+      "inputs": [
+        { "name": "Project ID", "required": true, "mapTo": "projectID" },
+        { "name": "Title", "required": true, "mapTo": "title" },
+        { "name": "Status", "required": true, "mapTo": "status" },
+        { "name": "Description", "required": false, "mapTo": "description" },
+        { "name": "Assigned Resource ID", "required": false, "mapTo": "assignedResourceID" },
+        { "name": "Start Date Time", "required": false, "mapTo": "startDateTime" },
+        { "name": "End Date Time", "required": false, "mapTo": "endDateTime" },
+        { "name": "Estimated Hours", "required": false, "mapTo": "estimatedHours" }
+      ],
+      "outputs": [
+        { "name": "Task ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "task_update",
+      "name": "Autotask Project Task Update",
+      "description": "PATCH /V1.0/Tasks",
+      "method": "PATCH",
+      "path": "/V1.0/Tasks",
+      "inputs": [
+        { "name": "Task ID", "required": true, "mapTo": "id" },
+        { "name": "Status", "required": false, "mapTo": "status" },
+        { "name": "Percent Complete", "required": false, "mapTo": "percentComplete" },
+        { "name": "Assigned Resource ID", "required": false, "mapTo": "assignedResourceID" },
+        { "name": "End Date Time", "required": false, "mapTo": "endDateTime" }
+      ],
+      "outputs": [
+        { "name": "Task ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "task_search",
+      "name": "Autotask Project Task Search",
+      "description": "POST /V1.0/Tasks/query",
+      "method": "POST",
+      "path": "/V1.0/Tasks/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "time_entry_create",
+      "name": "Autotask Time Entry Create",
+      "description": "POST /V1.0/TimeEntries",
+      "method": "POST",
+      "path": "/V1.0/TimeEntries",
+      "inputs": [
+        { "name": "Resource ID", "required": true, "mapTo": "resourceID" },
+        { "name": "Date Worked", "required": true, "mapTo": "dateWorked" },
+        { "name": "Hours Worked", "required": true, "mapTo": "hoursWorked" },
+        { "name": "Ticket ID", "required": false, "mapTo": "ticketID" },
+        { "name": "Task ID", "required": false, "mapTo": "taskID" },
+        { "name": "Summary Notes", "required": false, "mapTo": "summaryNotes" },
+        { "name": "Internal Notes", "required": false, "mapTo": "internalNotes" },
+        { "name": "Role ID", "required": false, "mapTo": "roleID" },
+        { "name": "Billable To Account", "required": false, "mapTo": "billableToAccount" },
+        { "name": "Start Date Time", "required": false, "mapTo": "startDateTime" },
+        { "name": "End Date Time", "required": false, "mapTo": "endDateTime" }
+      ],
+      "outputs": [
+        { "name": "Time Entry ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "time_entry_search",
+      "name": "Autotask Time Entry Search",
+      "description": "POST /V1.0/TimeEntries/query",
+      "method": "POST",
+      "path": "/V1.0/TimeEntries/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "expense_report_create",
+      "name": "Autotask Expense Report Create",
+      "description": "POST /V1.0/ExpenseReports",
+      "method": "POST",
+      "path": "/V1.0/ExpenseReports",
+      "inputs": [
+        { "name": "Name", "required": true, "mapTo": "name" },
+        { "name": "Submitter Resource ID", "required": true, "mapTo": "submitterID" },
+        { "name": "Week Ending", "required": true, "mapTo": "weekEnding" },
+        { "name": "Period Ending", "required": false, "mapTo": "periodEnding" },
+        { "name": "Business Purpose", "required": false, "mapTo": "businessPurpose" }
+      ],
+      "outputs": [
+        { "name": "Expense Report ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "expense_item_create",
+      "name": "Autotask Expense Item Create",
+      "description": "POST /V1.0/ExpenseItems",
+      "method": "POST",
+      "path": "/V1.0/ExpenseItems",
+      "inputs": [
+        { "name": "Expense Report ID", "required": true, "mapTo": "expenseReportID" },
+        { "name": "Description", "required": true, "mapTo": "description" },
+        { "name": "Expense Category", "required": true, "mapTo": "expenseCategory" },
+        { "name": "Expense Date", "required": true, "mapTo": "expenseDate" },
+        { "name": "Payment Type", "required": true, "mapTo": "paymentType" },
+        { "name": "Have Receipt", "required": true, "mapTo": "haveReceipt" },
+        { "name": "Billable To Account", "required": true, "mapTo": "billableToAccount" },
+        { "name": "Expense Amount", "required": false, "mapTo": "expenseAmount" },
+        { "name": "Miles", "required": false, "mapTo": "miles" },
+        { "name": "Company ID", "required": false, "mapTo": "companyID" },
+        { "name": "Project ID", "required": false, "mapTo": "projectID" }
+      ],
+      "outputs": [
+        { "name": "Expense Item ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "opportunity_create",
+      "name": "Autotask Opportunity Create",
+      "description": "POST /V1.0/Opportunities",
+      "method": "POST",
+      "path": "/V1.0/Opportunities",
+      "inputs": [
+        { "name": "Title", "required": true, "mapTo": "title" },
+        { "name": "Company ID", "required": true, "mapTo": "companyID" },
+        { "name": "Owner Resource ID", "required": true, "mapTo": "ownerResourceID" },
+        { "name": "Stage", "required": true, "mapTo": "stage" },
+        { "name": "Status", "required": true, "mapTo": "status" },
+        { "name": "Amount", "required": true, "mapTo": "amount" },
+        { "name": "Cost", "required": true, "mapTo": "cost" },
+        { "name": "Probability", "required": true, "mapTo": "probability" },
+        { "name": "Projected Close Date", "required": true, "mapTo": "projectedCloseDate" },
+        { "name": "Use Quote Totals", "required": true, "mapTo": "useQuoteTotals" },
+        { "name": "Lead Source", "required": false, "mapTo": "leadSource" },
+        { "name": "Contact ID", "required": false, "mapTo": "contactID" },
+        { "name": "Description", "required": false, "mapTo": "description" }
+      ],
+      "outputs": [
+        { "name": "Opportunity ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "opportunity_update",
+      "name": "Autotask Opportunity Update",
+      "description": "PATCH /V1.0/Opportunities",
+      "method": "PATCH",
+      "path": "/V1.0/Opportunities",
+      "inputs": [
+        { "name": "Opportunity ID", "required": true, "mapTo": "id" },
+        { "name": "Stage", "required": false, "mapTo": "stage" },
+        { "name": "Status", "required": false, "mapTo": "status" },
+        { "name": "Amount", "required": false, "mapTo": "amount" },
+        { "name": "Probability", "required": false, "mapTo": "probability" },
+        { "name": "Projected Close Date", "required": false, "mapTo": "projectedCloseDate" }
+      ],
+      "outputs": [
+        { "name": "Opportunity ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "opportunity_search",
+      "name": "Autotask Opportunity Search",
+      "description": "POST /V1.0/Opportunities/query",
+      "method": "POST",
+      "path": "/V1.0/Opportunities/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "quote_create",
+      "name": "Autotask Quote Create",
+      "description": "POST /V1.0/Quotes",
+      "method": "POST",
+      "path": "/V1.0/Quotes",
+      "inputs": [
+        { "name": "Name", "required": true, "mapTo": "name" },
+        { "name": "Opportunity ID", "required": true, "mapTo": "opportunityID" },
+        { "name": "Effective Date", "required": true, "mapTo": "effectiveDate" },
+        { "name": "Expiration Date", "required": true, "mapTo": "expirationDate" },
+        { "name": "Bill To Location ID", "required": true, "mapTo": "billToLocationID" },
+        { "name": "Ship To Location ID", "required": true, "mapTo": "shipToLocationID" },
+        { "name": "Sold To Location ID", "required": true, "mapTo": "soldToLocationID" },
+        { "name": "Contact ID", "required": false, "mapTo": "contactID" },
+        { "name": "Payment Type", "required": false, "mapTo": "paymentType" },
+        { "name": "Description", "required": false, "mapTo": "description" }
+      ],
+      "outputs": [
+        { "name": "Quote ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "quote_item_create",
+      "name": "Autotask Quote Item Create",
+      "description": "POST /V1.0/QuoteItems",
+      "method": "POST",
+      "path": "/V1.0/QuoteItems",
+      "inputs": [
+        { "name": "Quote ID", "required": true, "mapTo": "quoteID" },
+        { "name": "Type", "required": true, "mapTo": "type" },
+        { "name": "Quantity", "required": true, "mapTo": "quantity" },
+        { "name": "Unit Price", "required": true, "mapTo": "unitPrice" },
+        { "name": "Unit Cost", "required": false, "mapTo": "unitCost" },
+        { "name": "Product ID", "required": false, "mapTo": "productID" },
+        { "name": "Service ID", "required": false, "mapTo": "serviceID" },
+        { "name": "Description", "required": false, "mapTo": "description" },
+        { "name": "Line Discount Percent", "required": false, "mapTo": "lineDiscountPercent" }
+      ],
+      "outputs": [
+        { "name": "Quote Item ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "resource_retrieve",
+      "name": "Autotask Resource Retrieve",
+      "description": "GET /V1.0/Resources/{{inputs.Resource ID}}",
+      "method": "GET",
+      "path": "/V1.0/Resources/{{inputs.Resource ID}}",
+      "inputs": [
+        { "name": "Resource ID", "required": true, "mapTo": "Resource ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "resource_search",
+      "name": "Autotask Resource Search",
+      "description": "POST /V1.0/Resources/query",
+      "method": "POST",
+      "path": "/V1.0/Resources/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "product_search",
+      "name": "Autotask Product Search",
+      "description": "POST /V1.0/Products/query",
+      "method": "POST",
+      "path": "/V1.0/Products/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "invoice_retrieve",
+      "name": "Autotask Invoice Retrieve",
+      "description": "GET /V1.0/Invoices/{{inputs.Invoice ID}}",
+      "method": "GET",
+      "path": "/V1.0/Invoices/{{inputs.Invoice ID}}",
+      "inputs": [
+        { "name": "Invoice ID", "required": true, "mapTo": "Invoice ID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "invoice_search",
+      "name": "Autotask Invoice Search",
+      "description": "POST /V1.0/Invoices/query",
+      "method": "POST",
+      "path": "/V1.0/Invoices/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "service_call_create",
+      "name": "Autotask Service Call Create",
+      "description": "POST /V1.0/ServiceCalls",
+      "method": "POST",
+      "path": "/V1.0/ServiceCalls",
+      "inputs": [
+        { "name": "Company ID", "required": true, "mapTo": "companyID" },
+        { "name": "Start Date Time", "required": true, "mapTo": "startDateTime" },
+        { "name": "End Date Time", "required": true, "mapTo": "endDateTime" },
+        { "name": "Status", "required": true, "mapTo": "status" },
+        { "name": "Description", "required": false, "mapTo": "description" },
+        { "name": "Duration", "required": false, "mapTo": "duration" },
+        { "name": "Location ID", "required": false, "mapTo": "locationID" }
+      ],
+      "outputs": [
+        { "name": "Service Call ID", "path": "itemId" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "service_call_search",
+      "name": "Autotask Service Call Search",
+      "description": "POST /V1.0/ServiceCalls/query",
+      "method": "POST",
+      "path": "/V1.0/ServiceCalls/query",
+      "inputs": [
+        { "name": "Filter JSON", "required": true, "mapTo": "filter" },
+        { "name": "Max Records", "required": false, "mapTo": "MaxRecords" }
+      ],
+      "outputs": [
+        { "name": "Items", "path": "items" },
+        { "name": "Page Details", "path": "pageDetails" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    }
+  ]
+}
