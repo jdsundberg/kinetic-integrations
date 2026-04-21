@@ -3,26 +3,44 @@
   "service": "Datto RMM",
   "version": 1,
   "category": "ITSM & Service Management",
-  "description": "Datto RMM integration with 30 pre-built routines covering sites, devices, alerts, jobs, components, audits, quick jobs, UDFs, and warranty — the operational surface an MSP needs to monitor and control endpoints across customer sites.",
+  "description": "Datto RMM integration with 30 pre-built routines covering sites, devices, alerts, jobs, components, audits, quick jobs, UDFs, and warranty \u2014 the operational surface an MSP needs to monitor and control endpoints across customer sites.",
   "auth": {
-    "type": "oauth2",
+    "type": "oauth2_password",
     "properties": [
       {
         "name": "api_url",
         "required": true,
-        "description": "Datto RMM platform API URL. Format: https://{platform}-api.centrastage.net/api (e.g. https://pinotage-api.centrastage.net/api, merlot, vidal, syrah, zinfandel, concord). Found in the Datto RMM UI under Setup > Global Settings > API."
+        "description": "Datto RMM platform API URL. Format: https://{platform}-api.centrastage.net/api (pinotage, merlot, vidal, syrah, zinfandel, concord). Found in the Datto RMM UI under Setup > Global Settings > API."
       },
       {
-        "name": "api_key",
+        "name": "token_url",
         "required": true,
-        "description": "Datto RMM API Key (used as the 'username' in the OAuth2 password grant).",
+        "description": "OAuth2 token endpoint. For Datto RMM use /auth/oauth/token.",
+        "defaultValue": "/auth/oauth/token"
+      },
+      {
+        "name": "username",
+        "required": true,
+        "description": "Datto RMM API Key (treated as the OAuth2 password-grant username).",
         "encrypted": true
       },
       {
-        "name": "api_secret_key",
+        "name": "password",
         "required": true,
-        "description": "Datto RMM API Secret Key (used as the 'password' in the OAuth2 password grant).",
+        "description": "Datto RMM API Secret Key (treated as the OAuth2 password-grant password).",
         "encrypted": true
+      },
+      {
+        "name": "client_id",
+        "required": true,
+        "description": "OAuth2 client_id. Datto RMM uses the literal value 'public-client'.",
+        "defaultValue": "public-client"
+      },
+      {
+        "name": "client_secret",
+        "required": true,
+        "description": "OAuth2 client_secret. Datto RMM uses the literal value 'public'.",
+        "defaultValue": "public"
       }
     ]
   },
@@ -42,8 +60,14 @@
       "path": "/v2/account",
       "inputs": [],
       "outputs": [
-        { "name": "Response Code", "path": "response_code" },
-        { "name": "Connected", "path": "connected" }
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
       ]
     },
     {
@@ -54,8 +78,14 @@
       "path": "/v2/account",
       "inputs": [],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -65,14 +95,34 @@
       "method": "GET",
       "path": "/v2/account/users",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Users", "path": "users" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Users",
+          "path": "users"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -82,13 +132,30 @@
       "method": "GET",
       "path": "/v2/account/variables",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Variables", "path": "variables" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Variables",
+          "path": "variables"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -98,14 +165,34 @@
       "method": "GET",
       "path": "/v2/account/components",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Components", "path": "components" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Components",
+          "path": "components"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -115,14 +202,34 @@
       "method": "GET",
       "path": "/v2/account/sites",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Sites", "path": "sites" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Sites",
+          "path": "sites"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -132,16 +239,44 @@
       "method": "GET",
       "path": "/v2/account/devices",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" },
-        { "name": "Hostname", "required": false, "mapTo": "hostname" },
-        { "name": "Filter ID", "required": false, "mapTo": "filterId" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        },
+        {
+          "name": "Hostname",
+          "required": false,
+          "mapTo": "hostname"
+        },
+        {
+          "name": "Filter ID",
+          "required": false,
+          "mapTo": "filterId"
+        }
       ],
       "outputs": [
-        { "name": "Devices", "path": "devices" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Devices",
+          "path": "devices"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -151,15 +286,39 @@
       "method": "GET",
       "path": "/v2/account/alerts/open",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" },
-        { "name": "Muted", "required": false, "mapTo": "muted" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        },
+        {
+          "name": "Muted",
+          "required": false,
+          "mapTo": "muted"
+        }
       ],
       "outputs": [
-        { "name": "Alerts", "path": "alerts" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Alerts",
+          "path": "alerts"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -169,14 +328,34 @@
       "method": "GET",
       "path": "/v2/account/alerts/resolved",
       "inputs": [
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Alerts", "path": "alerts" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Alerts",
+          "path": "alerts"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -186,11 +365,21 @@
       "method": "GET",
       "path": "/v2/site/{{inputs.Site UID}}",
       "inputs": [
-        { "name": "Site UID", "required": true, "mapTo": "Site UID" }
+        {
+          "name": "Site UID",
+          "required": true,
+          "mapTo": "Site UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -200,17 +389,50 @@
       "method": "PUT",
       "path": "/v2/site",
       "inputs": [
-        { "name": "Name", "required": true, "mapTo": "name" },
-        { "name": "Description", "required": false, "mapTo": "description" },
-        { "name": "Notes", "required": false, "mapTo": "notes" },
-        { "name": "On Demand", "required": false, "mapTo": "onDemand" },
-        { "name": "Splashtop Auto Install", "required": false, "mapTo": "splashtopAutoInstall" },
-        { "name": "Proxy Settings", "required": false, "mapTo": "proxySettings" }
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "description"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "notes"
+        },
+        {
+          "name": "On Demand",
+          "required": false,
+          "mapTo": "onDemand"
+        },
+        {
+          "name": "Splashtop Auto Install",
+          "required": false,
+          "mapTo": "splashtopAutoInstall"
+        },
+        {
+          "name": "Proxy Settings",
+          "required": false,
+          "mapTo": "proxySettings"
+        }
       ],
       "outputs": [
-        { "name": "Site UID", "path": "uid" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Site UID",
+          "path": "uid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -220,15 +442,41 @@
       "method": "POST",
       "path": "/v2/site/{{inputs.Site UID}}",
       "inputs": [
-        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
-        { "name": "Name", "required": false, "mapTo": "name" },
-        { "name": "Description", "required": false, "mapTo": "description" },
-        { "name": "Notes", "required": false, "mapTo": "notes" },
-        { "name": "On Demand", "required": false, "mapTo": "onDemand" }
+        {
+          "name": "Site UID",
+          "required": true,
+          "mapTo": "Site UID"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "name"
+        },
+        {
+          "name": "Description",
+          "required": false,
+          "mapTo": "description"
+        },
+        {
+          "name": "Notes",
+          "required": false,
+          "mapTo": "notes"
+        },
+        {
+          "name": "On Demand",
+          "required": false,
+          "mapTo": "onDemand"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -238,15 +486,39 @@
       "method": "GET",
       "path": "/v2/site/{{inputs.Site UID}}/devices",
       "inputs": [
-        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Site UID",
+          "required": true,
+          "mapTo": "Site UID"
+        },
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Devices", "path": "devices" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Devices",
+          "path": "devices"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -256,16 +528,44 @@
       "method": "GET",
       "path": "/v2/site/{{inputs.Site UID}}/alerts/open",
       "inputs": [
-        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" },
-        { "name": "Muted", "required": false, "mapTo": "muted" }
+        {
+          "name": "Site UID",
+          "required": true,
+          "mapTo": "Site UID"
+        },
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        },
+        {
+          "name": "Muted",
+          "required": false,
+          "mapTo": "muted"
+        }
       ],
       "outputs": [
-        { "name": "Alerts", "path": "alerts" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Alerts",
+          "path": "alerts"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -275,15 +575,39 @@
       "method": "GET",
       "path": "/v2/site/{{inputs.Site UID}}/alerts/resolved",
       "inputs": [
-        { "name": "Site UID", "required": true, "mapTo": "Site UID" },
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" }
+        {
+          "name": "Site UID",
+          "required": true,
+          "mapTo": "Site UID"
+        },
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        }
       ],
       "outputs": [
-        { "name": "Alerts", "path": "alerts" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Alerts",
+          "path": "alerts"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -293,12 +617,25 @@
       "method": "GET",
       "path": "/v2/site/{{inputs.Site UID}}/variables",
       "inputs": [
-        { "name": "Site UID", "required": true, "mapTo": "Site UID" }
+        {
+          "name": "Site UID",
+          "required": true,
+          "mapTo": "Site UID"
+        }
       ],
       "outputs": [
-        { "name": "Variables", "path": "variables" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Variables",
+          "path": "variables"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -308,11 +645,21 @@
       "method": "GET",
       "path": "/v2/device/{{inputs.Device UID}}",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -322,11 +669,21 @@
       "method": "GET",
       "path": "/v2/device/id/{{inputs.Device ID}}",
       "inputs": [
-        { "name": "Device ID", "required": true, "mapTo": "Device ID" }
+        {
+          "name": "Device ID",
+          "required": true,
+          "mapTo": "Device ID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -336,11 +693,21 @@
       "method": "GET",
       "path": "/v2/device/hostname/{{inputs.Hostname}}",
       "inputs": [
-        { "name": "Hostname", "required": true, "mapTo": "Hostname" }
+        {
+          "name": "Hostname",
+          "required": true,
+          "mapTo": "Hostname"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -350,16 +717,44 @@
       "method": "GET",
       "path": "/v2/device/{{inputs.Device UID}}/alerts/open",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
-        { "name": "Page", "required": false, "mapTo": "page" },
-        { "name": "Max", "required": false, "mapTo": "max" },
-        { "name": "Muted", "required": false, "mapTo": "muted" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        },
+        {
+          "name": "Page",
+          "required": false,
+          "mapTo": "page"
+        },
+        {
+          "name": "Max",
+          "required": false,
+          "mapTo": "max"
+        },
+        {
+          "name": "Muted",
+          "required": false,
+          "mapTo": "muted"
+        }
       ],
       "outputs": [
-        { "name": "Alerts", "path": "alerts" },
-        { "name": "Page Details", "path": "pageDetails" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Alerts",
+          "path": "alerts"
+        },
+        {
+          "name": "Page Details",
+          "path": "pageDetails"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -369,11 +764,21 @@
       "method": "GET",
       "path": "/v2/audit/device/{{inputs.Device UID}}",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -383,12 +788,25 @@
       "method": "GET",
       "path": "/v2/audit/device/{{inputs.Device UID}}/software",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        }
       ],
       "outputs": [
-        { "name": "Software", "path": "software" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Software",
+          "path": "software"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -398,12 +816,26 @@
       "method": "POST",
       "path": "/v2/device/{{inputs.Device UID}}/move/site/{{inputs.Target Site UID}}",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
-        { "name": "Target Site UID", "required": true, "mapTo": "Target Site UID" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        },
+        {
+          "name": "Target Site UID",
+          "required": true,
+          "mapTo": "Target Site UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -413,15 +845,40 @@
       "method": "PUT",
       "path": "/v2/device/{{inputs.Device UID}}/quickjob",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
-        { "name": "Job Name", "required": true, "mapTo": "jobName" },
-        { "name": "Job Component UID", "required": true, "mapTo": "jobComponent.uid" },
-        { "name": "Job Component Variables", "required": false, "mapTo": "jobComponent.variables" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        },
+        {
+          "name": "Job Name",
+          "required": true,
+          "mapTo": "jobName"
+        },
+        {
+          "name": "Job Component UID",
+          "required": true,
+          "mapTo": "jobComponent.uid"
+        },
+        {
+          "name": "Job Component Variables",
+          "required": false,
+          "mapTo": "jobComponent.variables"
+        }
       ],
       "outputs": [
-        { "name": "Job UID", "path": "uid" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Job UID",
+          "path": "uid"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -431,13 +888,31 @@
       "method": "POST",
       "path": "/v2/device/{{inputs.Device UID}}/udf",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
-        { "name": "UDF Number", "required": true, "mapTo": "udfNumber" },
-        { "name": "Value", "required": true, "mapTo": "value" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        },
+        {
+          "name": "UDF Number",
+          "required": true,
+          "mapTo": "udfNumber"
+        },
+        {
+          "name": "Value",
+          "required": true,
+          "mapTo": "value"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -447,12 +922,26 @@
       "method": "POST",
       "path": "/v2/device/{{inputs.Device UID}}/warranty",
       "inputs": [
-        { "name": "Device UID", "required": true, "mapTo": "Device UID" },
-        { "name": "Warranty Date", "required": true, "mapTo": "warrantyDate" }
+        {
+          "name": "Device UID",
+          "required": true,
+          "mapTo": "Device UID"
+        },
+        {
+          "name": "Warranty Date",
+          "required": true,
+          "mapTo": "warrantyDate"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -462,11 +951,21 @@
       "method": "GET",
       "path": "/v2/alert/{{inputs.Alert UID}}",
       "inputs": [
-        { "name": "Alert UID", "required": true, "mapTo": "Alert UID" }
+        {
+          "name": "Alert UID",
+          "required": true,
+          "mapTo": "Alert UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -476,11 +975,21 @@
       "method": "POST",
       "path": "/v2/alert/{{inputs.Alert UID}}/resolve",
       "inputs": [
-        { "name": "Alert UID", "required": true, "mapTo": "Alert UID" }
+        {
+          "name": "Alert UID",
+          "required": true,
+          "mapTo": "Alert UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -490,12 +999,26 @@
       "method": "POST",
       "path": "/v2/alert/{{inputs.Alert UID}}/mute",
       "inputs": [
-        { "name": "Alert UID", "required": true, "mapTo": "Alert UID" },
-        { "name": "Duration", "required": false, "mapTo": "duration" }
+        {
+          "name": "Alert UID",
+          "required": true,
+          "mapTo": "Alert UID"
+        },
+        {
+          "name": "Duration",
+          "required": false,
+          "mapTo": "duration"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -505,11 +1028,21 @@
       "method": "GET",
       "path": "/v2/job/{{inputs.Job UID}}",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     },
     {
@@ -519,12 +1052,25 @@
       "method": "GET",
       "path": "/v2/job/{{inputs.Job UID}}/results",
       "inputs": [
-        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+        {
+          "name": "Job UID",
+          "required": true,
+          "mapTo": "Job UID"
+        }
       ],
       "outputs": [
-        { "name": "Results", "path": "results" },
-        { "name": "Response Body", "path": "response_body" },
-        { "name": "Response Code", "path": "response_code" }
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
       ]
     }
   ]
