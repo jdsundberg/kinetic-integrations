@@ -1,0 +1,30 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "BearerApp", "version": "2.0.0" },
+  "servers": [{ "url": "https://api.bearer.test" }],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" }
+    }
+  },
+  "paths": {
+    "/me": {
+      "get": {
+        "operationId": "getMe",
+        "summary": "Current user",
+        "responses": {
+          "200": {
+            "content": { "application/json": { "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "email": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            } } }
+          }
+        }
+      }
+    }
+  }
+}
