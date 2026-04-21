@@ -1,0 +1,23 @@
+{
+  "_source": "synthesized — TICKETING activity for ticket creation",
+  "_event": "TICKETING.TICKET_CREATED",
+  "id": 884120104,
+  "activityTime": 1713712612.004,
+  "organizationId": 42,
+  "locationId": 7,
+  "sourceName": "Ticketing",
+  "sourceUid": "ninja.ticket.created",
+  "activityType": "TICKETING",
+  "activityResult": "SUCCESS",
+  "statusCode": "CREATED",
+  "statusDescription": "Ticket created",
+  "topic": "TICKET",
+  "subject": "DC01-ACME: Memory usage over 90%",
+  "priority": "HIGH",
+  "ticketId": 77841,
+  "ticketNumber": "T-77841",
+  "clientId": 42,
+  "requesterUid": "auto-ticketing",
+  "assignedAppUserId": null,
+  "status": "NEW"
+}
