@@ -1645,6 +1645,14 @@
       "description": "Redis integration with 4 pre-built routines."
     },
     {
+      "id": "rewst",
+      "service": "Rewst",
+      "category": "ITSM & Service Management",
+      "auth": "bearer",
+      "routines": 18,
+      "description": "Rewst integration with 18 pre-built routines."
+    },
+    {
       "id": "ringcentral",
       "service": "Ringcentral",
       "category": "Communication",
