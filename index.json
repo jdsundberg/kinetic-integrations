@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-04-01",
+  "updated": "2026-04-21",
   "connectors": [
     {
       "id": "accountedge",
@@ -129,6 +129,14 @@
       "auth": "bearer",
       "routines": 6,
       "description": "Auth0 integration with 6 pre-built routines."
+    },
+    {
+      "id": "autotask",
+      "service": "Autotask",
+      "category": "ITSM & Service Management",
+      "auth": "basic",
+      "routines": 44,
+      "description": "Autotask integration with 44 pre-built routines."
     },
     {
       "id": "aws-dynamodb",
@@ -745,6 +753,96 @@
       "auth": "jwt",
       "routines": 5,
       "description": "Gcp Storage integration with 5 pre-built routines."
+    },
+    {
+      "id": "generic-apikey-header",
+      "service": "Generic REST (API Key Header)",
+      "category": "Generic",
+      "auth": "apikey_header",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using an API key sent in a custom header."
+    },
+    {
+      "id": "generic-apikey-query",
+      "service": "Generic REST (API Key Query)",
+      "category": "Generic",
+      "auth": "apikey_query",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using an API key in the query string."
+    },
+    {
+      "id": "generic-aws-v4",
+      "service": "Generic AWS (Signature V4)",
+      "category": "Generic",
+      "auth": "aws",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any AWS service using IAM Signature V4 authentication."
+    },
+    {
+      "id": "generic-basic",
+      "service": "Generic REST (Basic Auth)",
+      "category": "Generic",
+      "auth": "basic",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using username and password."
+    },
+    {
+      "id": "generic-bearer",
+      "service": "Generic REST (Bearer Token)",
+      "category": "Generic",
+      "auth": "bearer",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using a bearer token."
+    },
+    {
+      "id": "generic-jwt-rsa",
+      "service": "Generic REST (JWT RSA-SHA256)",
+      "category": "Generic",
+      "auth": "jwt",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using a signed JWT (Google Service Accounts, custom JWT auth)."
+    },
+    {
+      "id": "generic-mtls",
+      "service": "Generic REST (Mutual TLS)",
+      "category": "Generic",
+      "auth": "mtls",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API requiring mutual TLS (client certificate authentication)."
+    },
+    {
+      "id": "generic-noauth",
+      "service": "Generic REST (No Auth)",
+      "category": "Generic",
+      "auth": "noauth",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any public or internal REST API that requires no authentication."
+    },
+    {
+      "id": "generic-oauth2-client",
+      "service": "Generic REST (OAuth2 Client Credentials)",
+      "category": "Generic",
+      "auth": "oauth2",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using OAuth2 client credentials flow (machine-to-machine)."
+    },
+    {
+      "id": "generic-oauth2-refresh",
+      "service": "Generic REST (OAuth2 Refresh Token)",
+      "category": "Generic",
+      "auth": "oauth2_refresh",
+      "routines": 0,
+      "generic": true,
+      "description": "Connect to any REST API using an OAuth2 refresh token (user-context)."
     },
     {
       "id": "genesys",
@@ -2089,96 +2187,6 @@
       "auth": "bearer",
       "routines": 3,
       "description": "Zscaler integration with 3 pre-built routines."
-    },
-    {
-      "id": "generic-aws-v4",
-      "service": "Generic AWS (Signature V4)",
-      "category": "Generic",
-      "auth": "aws",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any AWS service using IAM Signature V4 authentication."
-    },
-    {
-      "id": "generic-apikey-header",
-      "service": "Generic REST (API Key Header)",
-      "category": "Generic",
-      "auth": "apikey_header",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using an API key sent in a custom header."
-    },
-    {
-      "id": "generic-apikey-query",
-      "service": "Generic REST (API Key Query)",
-      "category": "Generic",
-      "auth": "apikey_query",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using an API key in the query string."
-    },
-    {
-      "id": "generic-basic",
-      "service": "Generic REST (Basic Auth)",
-      "category": "Generic",
-      "auth": "basic",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using username and password."
-    },
-    {
-      "id": "generic-bearer",
-      "service": "Generic REST (Bearer Token)",
-      "category": "Generic",
-      "auth": "bearer",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using a bearer token."
-    },
-    {
-      "id": "generic-jwt-rsa",
-      "service": "Generic REST (JWT RSA-SHA256)",
-      "category": "Generic",
-      "auth": "jwt",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using a signed JWT (Google Service Accounts, custom JWT auth)."
-    },
-    {
-      "id": "generic-mtls",
-      "service": "Generic REST (Mutual TLS)",
-      "category": "Generic",
-      "auth": "mtls",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API requiring mutual TLS (client certificate authentication)."
-    },
-    {
-      "id": "generic-noauth",
-      "service": "Generic REST (No Auth)",
-      "category": "Generic",
-      "auth": "noauth",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any public or internal REST API that requires no authentication."
-    },
-    {
-      "id": "generic-oauth2-client",
-      "service": "Generic REST (OAuth2 Client Credentials)",
-      "category": "Generic",
-      "auth": "oauth2",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using OAuth2 client credentials flow (machine-to-machine)."
-    },
-    {
-      "id": "generic-oauth2-refresh",
-      "service": "Generic REST (OAuth2 Refresh Token)",
-      "category": "Generic",
-      "auth": "oauth2_refresh",
-      "routines": 0,
-      "generic": true,
-      "description": "Connect to any REST API using an OAuth2 refresh token (user-context)."
     }
   ]
 }
