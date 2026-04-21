@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "KeyedApp", "version": "1.0" },
+  "servers": [{ "url": "https://api.keyed.test/v2" }],
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": { "type": "apiKey", "in": "header", "name": "X-Custom-Key" }
+    }
+  },
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "listItems",
+        "summary": "List items",
+        "responses": { "200": { "content": { "application/json": { "schema": { "type": "array", "items": { "type": "object" } } } } } }
+      }
+    }
+  }
+}
