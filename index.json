@@ -411,6 +411,14 @@
       "description": "Confluence integration with 7 pre-built routines."
     },
     {
+      "id": "connectwise-manage",
+      "service": "Connectwise Manage",
+      "category": "ITSM & Service Management",
+      "auth": "basic",
+      "routines": 40,
+      "description": "Connectwise Manage integration with 40 pre-built routines."
+    },
+    {
       "id": "constant-contact",
       "service": "Constant Contact",
       "category": "Email & Marketing",
