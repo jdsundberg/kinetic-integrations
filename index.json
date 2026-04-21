@@ -11,6 +11,14 @@
       "description": "Accountedge integration with 9 pre-built routines."
     },
     {
+      "id": "acronis",
+      "service": "Acronis Cyber Protect",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 24,
+      "description": "Acronis Cyber Protect integration with 24 pre-built routines."
+    },
+    {
       "id": "acumatica",
       "service": "Acumatica",
       "category": "Accounting",
