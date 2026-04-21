@@ -3,37 +3,599 @@
   "service": "Rewst",
   "version": 1,
   "category": "ITSM & Service Management",
-  "description": "Rewst MSP automation platform integration with 18 pre-built routines covering workflow triggers (webhook), workflow runs, workflows, organizations (child tenants), users, roles, forms (submit), integrations, and org variables — the MSP-native automation layer.",
+  "description": "Rewst MSP automation platform integration with 18 pre-built routines covering workflow triggers (webhook), workflow runs, workflows, organizations (child tenants), users, roles, forms (submit), integrations, and org variables \u2014 the MSP-native automation layer.",
   "auth": {
     "type": "bearer",
     "properties": [
-      { "name": "api_url", "required": true, "description": "Rewst API base URL. Typically https://engine.rewst.io or the tenant-specific host https://{tenant-id}.rewst.io. Ask in Rewst UI under Settings > API." },
-      { "name": "api_token", "required": true, "description": "Rewst API token (bearer). Generated in the Rewst portal under Org Settings > Integrations > API Keys.", "encrypted": true },
-      { "name": "org_id", "required": true, "description": "Rewst parent organization ID (the MSP's tenant UUID). Found in the URL of the Rewst portal after login." }
+      {
+        "name": "api_url",
+        "required": true,
+        "description": "Rewst API base URL. Typically https://engine.rewst.io or the tenant-specific host https://{tenant-id}.rewst.io. Ask in Rewst UI under Settings > API."
+      },
+      {
+        "name": "access_token",
+        "required": true,
+        "description": "Rewst API access token (bearer). Generated in the Rewst portal under Org Settings > Integrations > API Keys.",
+        "encrypted": true
+      },
+      {
+        "name": "org_id",
+        "required": true,
+        "description": "Rewst parent organization ID (the MSP's tenant UUID). Found in the URL of the Rewst portal after login."
+      }
     ]
   },
   "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#0B1F3A\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">R</text></svg>",
   "docsUrl": "https://docs.rewst.io/",
-  "defaultHeaders": { "Accept": "application/json", "Content-Type": "application/json" },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
   "baseUrl": "https://engine.rewst.io",
   "routines": [
-    { "id": "test", "name": "Rewst Connection Test", "description": "GET /api/v1/me", "method": "GET", "path": "/api/v1/me", "inputs": [], "outputs": [{"name":"Response Code","path":"response_code"},{"name":"Connected","path":"connected"}] },
-    { "id": "workflow_trigger_webhook", "name": "Rewst Trigger Workflow (Webhook)", "description": "POST /webhooks/{{inputs.Webhook ID}}/trigger/{{inputs.Trigger ID}} — fire a workflow via its webhook trigger. Body is arbitrary JSON passed into the workflow context.", "method": "POST", "path": "/webhooks/{{inputs.Webhook ID}}/trigger/{{inputs.Trigger ID}}", "inputs": [{"name":"Webhook ID","required":true,"mapTo":"Webhook ID"},{"name":"Trigger ID","required":true,"mapTo":"Trigger ID"},{"name":"Payload","required":false,"mapTo":"payload"}], "outputs": [{"name":"Run ID","path":"run_id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "workflows_list", "name": "Rewst Workflows List", "description": "GET /api/v1/workflows", "method": "GET", "path": "/api/v1/workflows", "inputs": [{"name":"Organization ID","required":false,"mapTo":"organization_id"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "workflow_retrieve", "name": "Rewst Workflow Retrieve", "description": "GET /api/v1/workflows/{{inputs.Workflow ID}}", "method": "GET", "path": "/api/v1/workflows/{{inputs.Workflow ID}}", "inputs": [{"name":"Workflow ID","required":true,"mapTo":"Workflow ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "workflow_runs_list", "name": "Rewst Workflow Runs List", "description": "GET /api/v1/workflow-runs", "method": "GET", "path": "/api/v1/workflow-runs", "inputs": [{"name":"Workflow ID","required":false,"mapTo":"workflow_id"},{"name":"Organization ID","required":false,"mapTo":"organization_id"},{"name":"Status","required":false,"mapTo":"status"},{"name":"Started After","required":false,"mapTo":"started_after"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "workflow_run_retrieve", "name": "Rewst Workflow Run Retrieve", "description": "GET /api/v1/workflow-runs/{{inputs.Run ID}}", "method": "GET", "path": "/api/v1/workflow-runs/{{inputs.Run ID}}", "inputs": [{"name":"Run ID","required":true,"mapTo":"Run ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "workflow_run_cancel", "name": "Rewst Workflow Run Cancel", "description": "POST /api/v1/workflow-runs/{{inputs.Run ID}}/cancel", "method": "POST", "path": "/api/v1/workflow-runs/{{inputs.Run ID}}/cancel", "inputs": [{"name":"Run ID","required":true,"mapTo":"Run ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organizations_list", "name": "Rewst Organizations List (Child Tenants)", "description": "GET /api/v1/organizations", "method": "GET", "path": "/api/v1/organizations", "inputs": [{"name":"Parent ID","required":false,"mapTo":"parent_id"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_retrieve", "name": "Rewst Organization Retrieve", "description": "GET /api/v1/organizations/{{inputs.Organization ID}}", "method": "GET", "path": "/api/v1/organizations/{{inputs.Organization ID}}", "inputs": [{"name":"Organization ID","required":true,"mapTo":"Organization ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_create", "name": "Rewst Organization Create", "description": "POST /api/v1/organizations", "method": "POST", "path": "/api/v1/organizations", "inputs": [{"name":"Name","required":true,"mapTo":"name"},{"name":"Parent ID","required":false,"mapTo":"parent_id"},{"name":"External ID","required":false,"mapTo":"external_id"}], "outputs": [{"name":"Organization ID","path":"id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_update", "name": "Rewst Organization Update", "description": "PATCH /api/v1/organizations/{{inputs.Organization ID}}", "method": "PATCH", "path": "/api/v1/organizations/{{inputs.Organization ID}}", "inputs": [{"name":"Organization ID","required":true,"mapTo":"Organization ID"},{"name":"Name","required":false,"mapTo":"name"},{"name":"External ID","required":false,"mapTo":"external_id"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_variables_list", "name": "Rewst Organization Variables List", "description": "GET /api/v1/organizations/{{inputs.Organization ID}}/variables", "method": "GET", "path": "/api/v1/organizations/{{inputs.Organization ID}}/variables", "inputs": [{"name":"Organization ID","required":true,"mapTo":"Organization ID"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "users_list", "name": "Rewst Users List", "description": "GET /api/v1/users", "method": "GET", "path": "/api/v1/users", "inputs": [{"name":"Organization ID","required":false,"mapTo":"organization_id"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "user_retrieve", "name": "Rewst User Retrieve", "description": "GET /api/v1/users/{{inputs.User ID}}", "method": "GET", "path": "/api/v1/users/{{inputs.User ID}}", "inputs": [{"name":"User ID","required":true,"mapTo":"User ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "roles_list", "name": "Rewst Roles List", "description": "GET /api/v1/roles", "method": "GET", "path": "/api/v1/roles", "inputs": [{"name":"Organization ID","required":false,"mapTo":"organization_id"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "forms_list", "name": "Rewst Forms List", "description": "GET /api/v1/forms", "method": "GET", "path": "/api/v1/forms", "inputs": [{"name":"Organization ID","required":false,"mapTo":"organization_id"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "form_submit", "name": "Rewst Form Submit", "description": "POST /api/v1/forms/{{inputs.Form ID}}/submit", "method": "POST", "path": "/api/v1/forms/{{inputs.Form ID}}/submit", "inputs": [{"name":"Form ID","required":true,"mapTo":"Form ID"},{"name":"Submission Data","required":true,"mapTo":"data"}], "outputs": [{"name":"Submission ID","path":"id"},{"name":"Run ID","path":"run_id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "integrations_list", "name": "Rewst Integrations List", "description": "GET /api/v1/integrations", "method": "GET", "path": "/api/v1/integrations", "inputs": [{"name":"Organization ID","required":false,"mapTo":"organization_id"}], "outputs": [{"name":"Data","path":"data"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] }
+    {
+      "id": "test",
+      "name": "Rewst Connection Test",
+      "description": "GET /api/v1/me",
+      "method": "GET",
+      "path": "/api/v1/me",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "workflow_trigger_webhook",
+      "name": "Rewst Trigger Workflow (Webhook)",
+      "description": "POST /webhooks/{{inputs.Webhook ID}}/trigger/{{inputs.Trigger ID}} \u2014 fire a workflow via its webhook trigger. Body is arbitrary JSON passed into the workflow context.",
+      "method": "POST",
+      "path": "/webhooks/{{inputs.Webhook ID}}/trigger/{{inputs.Trigger ID}}",
+      "inputs": [
+        {
+          "name": "Webhook ID",
+          "required": true,
+          "mapTo": "Webhook ID"
+        },
+        {
+          "name": "Trigger ID",
+          "required": true,
+          "mapTo": "Trigger ID"
+        },
+        {
+          "name": "Payload",
+          "required": false,
+          "mapTo": "payload"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Run ID",
+          "path": "run_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "workflows_list",
+      "name": "Rewst Workflows List",
+      "description": "GET /api/v1/workflows",
+      "method": "GET",
+      "path": "/api/v1/workflows",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": false,
+          "mapTo": "organization_id"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "workflow_retrieve",
+      "name": "Rewst Workflow Retrieve",
+      "description": "GET /api/v1/workflows/{{inputs.Workflow ID}}",
+      "method": "GET",
+      "path": "/api/v1/workflows/{{inputs.Workflow ID}}",
+      "inputs": [
+        {
+          "name": "Workflow ID",
+          "required": true,
+          "mapTo": "Workflow ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "workflow_runs_list",
+      "name": "Rewst Workflow Runs List",
+      "description": "GET /api/v1/workflow-runs",
+      "method": "GET",
+      "path": "/api/v1/workflow-runs",
+      "inputs": [
+        {
+          "name": "Workflow ID",
+          "required": false,
+          "mapTo": "workflow_id"
+        },
+        {
+          "name": "Organization ID",
+          "required": false,
+          "mapTo": "organization_id"
+        },
+        {
+          "name": "Status",
+          "required": false,
+          "mapTo": "status"
+        },
+        {
+          "name": "Started After",
+          "required": false,
+          "mapTo": "started_after"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "workflow_run_retrieve",
+      "name": "Rewst Workflow Run Retrieve",
+      "description": "GET /api/v1/workflow-runs/{{inputs.Run ID}}",
+      "method": "GET",
+      "path": "/api/v1/workflow-runs/{{inputs.Run ID}}",
+      "inputs": [
+        {
+          "name": "Run ID",
+          "required": true,
+          "mapTo": "Run ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "workflow_run_cancel",
+      "name": "Rewst Workflow Run Cancel",
+      "description": "POST /api/v1/workflow-runs/{{inputs.Run ID}}/cancel",
+      "method": "POST",
+      "path": "/api/v1/workflow-runs/{{inputs.Run ID}}/cancel",
+      "inputs": [
+        {
+          "name": "Run ID",
+          "required": true,
+          "mapTo": "Run ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organizations_list",
+      "name": "Rewst Organizations List (Child Tenants)",
+      "description": "GET /api/v1/organizations",
+      "method": "GET",
+      "path": "/api/v1/organizations",
+      "inputs": [
+        {
+          "name": "Parent ID",
+          "required": false,
+          "mapTo": "parent_id"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_retrieve",
+      "name": "Rewst Organization Retrieve",
+      "description": "GET /api/v1/organizations/{{inputs.Organization ID}}",
+      "method": "GET",
+      "path": "/api/v1/organizations/{{inputs.Organization ID}}",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": true,
+          "mapTo": "Organization ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_create",
+      "name": "Rewst Organization Create",
+      "description": "POST /api/v1/organizations",
+      "method": "POST",
+      "path": "/api/v1/organizations",
+      "inputs": [
+        {
+          "name": "Name",
+          "required": true,
+          "mapTo": "name"
+        },
+        {
+          "name": "Parent ID",
+          "required": false,
+          "mapTo": "parent_id"
+        },
+        {
+          "name": "External ID",
+          "required": false,
+          "mapTo": "external_id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Organization ID",
+          "path": "id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_update",
+      "name": "Rewst Organization Update",
+      "description": "PATCH /api/v1/organizations/{{inputs.Organization ID}}",
+      "method": "PATCH",
+      "path": "/api/v1/organizations/{{inputs.Organization ID}}",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": true,
+          "mapTo": "Organization ID"
+        },
+        {
+          "name": "Name",
+          "required": false,
+          "mapTo": "name"
+        },
+        {
+          "name": "External ID",
+          "required": false,
+          "mapTo": "external_id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_variables_list",
+      "name": "Rewst Organization Variables List",
+      "description": "GET /api/v1/organizations/{{inputs.Organization ID}}/variables",
+      "method": "GET",
+      "path": "/api/v1/organizations/{{inputs.Organization ID}}/variables",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": true,
+          "mapTo": "Organization ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "users_list",
+      "name": "Rewst Users List",
+      "description": "GET /api/v1/users",
+      "method": "GET",
+      "path": "/api/v1/users",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": false,
+          "mapTo": "organization_id"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "user_retrieve",
+      "name": "Rewst User Retrieve",
+      "description": "GET /api/v1/users/{{inputs.User ID}}",
+      "method": "GET",
+      "path": "/api/v1/users/{{inputs.User ID}}",
+      "inputs": [
+        {
+          "name": "User ID",
+          "required": true,
+          "mapTo": "User ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "roles_list",
+      "name": "Rewst Roles List",
+      "description": "GET /api/v1/roles",
+      "method": "GET",
+      "path": "/api/v1/roles",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": false,
+          "mapTo": "organization_id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "forms_list",
+      "name": "Rewst Forms List",
+      "description": "GET /api/v1/forms",
+      "method": "GET",
+      "path": "/api/v1/forms",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": false,
+          "mapTo": "organization_id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "form_submit",
+      "name": "Rewst Form Submit",
+      "description": "POST /api/v1/forms/{{inputs.Form ID}}/submit",
+      "method": "POST",
+      "path": "/api/v1/forms/{{inputs.Form ID}}/submit",
+      "inputs": [
+        {
+          "name": "Form ID",
+          "required": true,
+          "mapTo": "Form ID"
+        },
+        {
+          "name": "Submission Data",
+          "required": true,
+          "mapTo": "data"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Submission ID",
+          "path": "id"
+        },
+        {
+          "name": "Run ID",
+          "path": "run_id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "integrations_list",
+      "name": "Rewst Integrations List",
+      "description": "GET /api/v1/integrations",
+      "method": "GET",
+      "path": "/api/v1/integrations",
+      "inputs": [
+        {
+          "name": "Organization ID",
+          "required": false,
+          "mapTo": "organization_id"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Data",
+          "path": "data"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    }
   ]
 }
