@@ -2021,6 +2021,14 @@
       "description": "Vault integration with 3 pre-built routines."
     },
     {
+      "id": "veeam-vb365",
+      "service": "Veeam Vb365",
+      "category": "ITSM & Service Management",
+      "auth": "oauth2",
+      "routines": 28,
+      "description": "Veeam Vb365 integration with 28 pre-built routines."
+    },
+    {
       "id": "veeam-vbr",
       "service": "Veeam Vbr",
       "category": "ITSM & Service Management",
