@@ -2,7 +2,7 @@
 
 A publishable library of integration connectors and routines for the [Kinetic Platform](https://kineticdata.com).
 
-**200+ connectors** (named + generic) with **1000+ pre-built routines** across dozens of categories.
+**280+ connectors** (named + generic) with **1000+ pre-built routines** across dozens of categories.
 
 ## Structure
 
@@ -16,6 +16,51 @@ connectors/
 ```
 
 Each connector JSON file is self-contained — it includes the connector definition (auth type, connection properties) and all of its routines (method, path, inputs, outputs).
+
+
+## Tooling
+
+Beyond the connector library, this repo ships two CLI tools (zero runtime dependencies, Node 18+ built-ins only):
+
+### `bin/swagger2kinetic.mjs` — generate connectors from OpenAPI specs
+
+Given a vendor's OpenAPI 3.x or Swagger 2.0 JSON, generates a full connector document: auth block + one routine per HTTP operation + connection-test routine + manifest. Filters by tag or operationId; caps routine count; resolves `$ref`s safely.
+
+```bash
+node bin/swagger2kinetic.mjs \
+  --spec https://api.example.com/openapi.json \
+  --id example \
+  --category "ITSM & Service Management" \
+  --include-tags "Tickets,Contacts" \
+  --max-routines 20
+```
+
+Produces `connectors/example.json` + `connectors/example.json.manifest.json`. See [`docs/swagger2kinetic.md`](docs/swagger2kinetic.md) for the full option list and behavior.
+
+### `bin/webhook-push.mjs` — replay webhook payloads into a Kinetic receiver
+
+Local-dev harness for building webhook-receiving WebAPIs. Reads a payload JSON + a sibling `_meta.json` describing the vendor's signing algorithm (HMAC-SHA1 / SHA256 / MD5), computes the correct signature header, and POSTs to your receiver URL.
+
+```bash
+node bin/webhook-push.mjs \
+  --to https://your-space.kinetics.com/app/api/v1/kapps/webhooks/webApis/autotask-ingest \
+  --payload webhook-payloads/autotask/ticket-created.json \
+  --secret "$AUTOTASK_WEBHOOK_SECRET"
+```
+
+### `webhook-payloads/` — sample webhook fixture library
+
+Reference payloads for the strongest-documented MSP services (Autotask, ConnectWise Manage, NinjaOne, Pax8, Huntress, Acronis). Each service directory has one `_meta.json` (signing config, registration method, supported events) plus 2-3 example payloads annotated with their provenance. Usable directly as receiver-side test fixtures, or replayed via `webhook-push.mjs`.
+
+See [`docs/webhooks-msp.md`](docs/webhooks-msp.md) for the broader per-service webhook capability reference (13 MSP services).
+
+### Tests
+
+```bash
+npm test
+```
+
+Runs the swagger2kinetic fixture test suite (9 cases covering all auth styles, Swagger 2.0, circular refs, and filters).
 
 ## Usage
 
@@ -64,7 +109,7 @@ For systems without a named connector, use a generic:
 
 ## Contributing
 
-Add a connector: create `connectors/your-service.json` following the schema in the design doc, then submit a PR.
+Add a connector: create `connectors/your-service.json` following the schema in the design doc (or generate from an OpenAPI spec via `swagger2kinetic`), then submit a PR.
 
 ## License
 
