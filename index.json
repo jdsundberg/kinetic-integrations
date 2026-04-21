@@ -1037,6 +1037,14 @@
       "description": "Intune integration with 7 pre-built routines."
     },
     {
+      "id": "itglue",
+      "service": "IT Glue",
+      "category": "ITSM & Service Management",
+      "auth": "apikey",
+      "routines": 23,
+      "description": "IT Glue integration with 23 pre-built routines."
+    },
+    {
       "id": "jackson-hewitt",
       "service": "Jackson Hewitt",
       "category": "Tax Software",
