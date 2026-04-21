@@ -1,0 +1,33 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "CircularApp", "version": "1.0" },
+  "servers": [{ "url": "https://api.circ.test" }],
+  "components": {
+    "securitySchemes": {
+      "bearer": { "type": "http", "scheme": "bearer" }
+    },
+    "schemas": {
+      "Node": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "parent": { "$ref": "#/components/schemas/Node" },
+          "children": { "type": "array", "items": { "$ref": "#/components/schemas/Node" } }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/nodes/{id}": {
+      "get": {
+        "operationId": "getNode",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Node" } } }
+          }
+        }
+      }
+    }
+  }
+}
