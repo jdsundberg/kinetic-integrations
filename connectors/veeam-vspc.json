@@ -1,0 +1,514 @@
+{
+  "id": "veeam-vspc",
+  "service": "Veeam VSPC",
+  "version": 1,
+  "category": "ITSM & Service Management",
+  "description": "Veeam Service Provider Console integration with 28 pre-built routines covering organizations (tenants), companies, locations, sites, backup servers, jobs (start/stop/enable/disable), backups, sessions, alarms, managed/discovered computers, licensing, and invoices — the MSP multi-tenant control plane for Veeam.",
+  "auth": {
+    "type": "oauth2",
+    "properties": [
+      {
+        "name": "api_url",
+        "required": true,
+        "description": "VSPC server API base URL, e.g. https://vspc.example.com:1280. The connector appends /api/v3/... to this base."
+      },
+      {
+        "name": "username",
+        "required": true,
+        "description": "VSPC portal administrator or reseller/company user with API access."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password for the VSPC user.",
+        "encrypted": true
+      },
+      {
+        "name": "verify_tls",
+        "required": false,
+        "description": "Whether to verify the TLS certificate. Default true. Set false only for lab/self-signed deployments."
+      }
+    ]
+  },
+  "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#00B336\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">VSPC</text></svg>",
+  "docsUrl": "https://helpcenter.veeam.com/docs/vac/rest/overview.html",
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "baseUrl": "https://VSPC-HOST:1280",
+  "routines": [
+    {
+      "id": "test",
+      "name": "Veeam VSPC Connection Test",
+      "description": "GET /api/v3/about",
+      "method": "GET",
+      "path": "/api/v3/about",
+      "inputs": [],
+      "outputs": [
+        { "name": "Response Code", "path": "response_code" },
+        { "name": "Connected", "path": "connected" }
+      ]
+    },
+    {
+      "id": "organizations_list",
+      "name": "Veeam VSPC Organizations List",
+      "description": "GET /api/v3/organizations",
+      "method": "GET",
+      "path": "/api/v3/organizations",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Meta", "path": "meta" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "organization_retrieve",
+      "name": "Veeam VSPC Organization Retrieve",
+      "description": "GET /api/v3/organizations/{{inputs.Organization UID}}",
+      "method": "GET",
+      "path": "/api/v3/organizations/{{inputs.Organization UID}}",
+      "inputs": [
+        { "name": "Organization UID", "required": true, "mapTo": "Organization UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "companies_list",
+      "name": "Veeam VSPC Companies List",
+      "description": "GET /api/v3/organizations/companies",
+      "method": "GET",
+      "path": "/api/v3/organizations/companies",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Meta", "path": "meta" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "company_retrieve",
+      "name": "Veeam VSPC Company Retrieve",
+      "description": "GET /api/v3/organizations/companies/{{inputs.Company UID}}",
+      "method": "GET",
+      "path": "/api/v3/organizations/companies/{{inputs.Company UID}}",
+      "inputs": [
+        { "name": "Company UID", "required": true, "mapTo": "Company UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "company_create",
+      "name": "Veeam VSPC Company Create",
+      "description": "POST /api/v3/organizations/companies",
+      "method": "POST",
+      "path": "/api/v3/organizations/companies",
+      "inputs": [
+        { "name": "Name", "required": true, "mapTo": "name" },
+        { "name": "Alias", "required": false, "mapTo": "alias" },
+        { "name": "Tax ID", "required": false, "mapTo": "taxId" },
+        { "name": "Website", "required": false, "mapTo": "website" },
+        { "name": "Email", "required": false, "mapTo": "email" },
+        { "name": "Phone", "required": false, "mapTo": "phone" },
+        { "name": "Country", "required": false, "mapTo": "country" },
+        { "name": "State", "required": false, "mapTo": "state" },
+        { "name": "City", "required": false, "mapTo": "city" },
+        { "name": "Street", "required": false, "mapTo": "street" },
+        { "name": "Zip Code", "required": false, "mapTo": "zipCode" },
+        { "name": "Reseller UID", "required": false, "mapTo": "resellerUid" }
+      ],
+      "outputs": [
+        { "name": "Company UID", "path": "instanceUid" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "company_update",
+      "name": "Veeam VSPC Company Update",
+      "description": "PATCH /api/v3/organizations/companies/{{inputs.Company UID}}",
+      "method": "PATCH",
+      "path": "/api/v3/organizations/companies/{{inputs.Company UID}}",
+      "inputs": [
+        { "name": "Company UID", "required": true, "mapTo": "Company UID" },
+        { "name": "Name", "required": false, "mapTo": "name" },
+        { "name": "Alias", "required": false, "mapTo": "alias" },
+        { "name": "Email", "required": false, "mapTo": "email" },
+        { "name": "Phone", "required": false, "mapTo": "phone" },
+        { "name": "Status", "required": false, "mapTo": "status" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "company_delete",
+      "name": "Veeam VSPC Company Delete",
+      "description": "DELETE /api/v3/organizations/companies/{{inputs.Company UID}}",
+      "method": "DELETE",
+      "path": "/api/v3/organizations/companies/{{inputs.Company UID}}",
+      "inputs": [
+        { "name": "Company UID", "required": true, "mapTo": "Company UID" }
+      ],
+      "outputs": [
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "company_sites_list",
+      "name": "Veeam VSPC Company Sites List",
+      "description": "GET /api/v3/organizations/companies/{{inputs.Company UID}}/sites",
+      "method": "GET",
+      "path": "/api/v3/organizations/companies/{{inputs.Company UID}}/sites",
+      "inputs": [
+        { "name": "Company UID", "required": true, "mapTo": "Company UID" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "locations_list",
+      "name": "Veeam VSPC Locations List",
+      "description": "GET /api/v3/organizations/locations",
+      "method": "GET",
+      "path": "/api/v3/organizations/locations",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "resellers_list",
+      "name": "Veeam VSPC Resellers List",
+      "description": "GET /api/v3/organizations/resellers",
+      "method": "GET",
+      "path": "/api/v3/organizations/resellers",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "sites_list",
+      "name": "Veeam VSPC Sites List",
+      "description": "GET /api/v3/infrastructure/sites",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/sites",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "backup_servers_list",
+      "name": "Veeam VSPC Backup Servers List",
+      "description": "GET /api/v3/infrastructure/backupServers",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "backup_server_retrieve",
+      "name": "Veeam VSPC Backup Server Retrieve",
+      "description": "GET /api/v3/infrastructure/backupServers/{{inputs.Backup Server UID}}",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers/{{inputs.Backup Server UID}}",
+      "inputs": [
+        { "name": "Backup Server UID", "required": true, "mapTo": "Backup Server UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "backup_server_repositories",
+      "name": "Veeam VSPC Backup Server Repositories",
+      "description": "GET /api/v3/infrastructure/backupServers/{{inputs.Backup Server UID}}/repositories",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers/{{inputs.Backup Server UID}}/repositories",
+      "inputs": [
+        { "name": "Backup Server UID", "required": true, "mapTo": "Backup Server UID" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "jobs_list",
+      "name": "Veeam VSPC Jobs List",
+      "description": "GET /api/v3/infrastructure/backupServers/jobs",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers/jobs",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_retrieve",
+      "name": "Veeam VSPC Job Retrieve",
+      "description": "GET /api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_start",
+      "name": "Veeam VSPC Job Start",
+      "description": "POST /api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/start",
+      "method": "POST",
+      "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/start",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_stop",
+      "name": "Veeam VSPC Job Stop",
+      "description": "POST /api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/stop",
+      "method": "POST",
+      "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/stop",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_enable",
+      "name": "Veeam VSPC Job Enable",
+      "description": "POST /api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/enable",
+      "method": "POST",
+      "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/enable",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "job_disable",
+      "name": "Veeam VSPC Job Disable",
+      "description": "POST /api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/disable",
+      "method": "POST",
+      "path": "/api/v3/infrastructure/backupServers/jobs/{{inputs.Job UID}}/disable",
+      "inputs": [
+        { "name": "Job UID", "required": true, "mapTo": "Job UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "backups_list",
+      "name": "Veeam VSPC Backups List",
+      "description": "GET /api/v3/infrastructure/backupServers/backups",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers/backups",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "sessions_list",
+      "name": "Veeam VSPC Sessions List",
+      "description": "GET /api/v3/infrastructure/backupServers/sessions",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupServers/sessions",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "managed_computers_list",
+      "name": "Veeam VSPC Managed Computers List",
+      "description": "GET /api/v3/infrastructure/backupAgents/managedComputers",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/backupAgents/managedComputers",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "discovered_computers_list",
+      "name": "Veeam VSPC Discovered Computers List",
+      "description": "GET /api/v3/infrastructure/discovery/computers",
+      "method": "GET",
+      "path": "/api/v3/infrastructure/discovery/computers",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "alarms_active",
+      "name": "Veeam VSPC Active Alarms",
+      "description": "GET /api/v3/alarms/active",
+      "method": "GET",
+      "path": "/api/v3/alarms/active",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "alarm_retrieve",
+      "name": "Veeam VSPC Alarm Retrieve",
+      "description": "GET /api/v3/alarms/active/{{inputs.Alarm UID}}",
+      "method": "GET",
+      "path": "/api/v3/alarms/active/{{inputs.Alarm UID}}",
+      "inputs": [
+        { "name": "Alarm UID", "required": true, "mapTo": "Alarm UID" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "alarm_resolve",
+      "name": "Veeam VSPC Alarm Resolve",
+      "description": "POST /api/v3/alarms/active/{{inputs.Alarm UID}}/resolve",
+      "method": "POST",
+      "path": "/api/v3/alarms/active/{{inputs.Alarm UID}}/resolve",
+      "inputs": [
+        { "name": "Alarm UID", "required": true, "mapTo": "Alarm UID" },
+        { "name": "Comment", "required": false, "mapTo": "comment" }
+      ],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "licensing_summary",
+      "name": "Veeam VSPC Licensing Summary",
+      "description": "GET /api/v3/licensing",
+      "method": "GET",
+      "path": "/api/v3/licensing",
+      "inputs": [],
+      "outputs": [
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    },
+    {
+      "id": "invoices_list",
+      "name": "Veeam VSPC Invoices List",
+      "description": "GET /api/v3/invoices",
+      "method": "GET",
+      "path": "/api/v3/invoices",
+      "inputs": [
+        { "name": "Limit", "required": false, "mapTo": "limit" },
+        { "name": "Offset", "required": false, "mapTo": "offset" },
+        { "name": "Filter", "required": false, "mapTo": "filter" }
+      ],
+      "outputs": [
+        { "name": "Data", "path": "data" },
+        { "name": "Response Body", "path": "response_body" },
+        { "name": "Response Code", "path": "response_code" }
+      ]
+    }
+  ]
+}
