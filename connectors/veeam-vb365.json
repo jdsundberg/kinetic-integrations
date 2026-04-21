@@ -5,46 +5,864 @@
   "category": "ITSM & Service Management",
   "description": "Veeam Backup for Microsoft 365 integration with 28 pre-built routines covering organizations, jobs (start/stop/enable/disable), backup proxies, repositories, restore sessions (mailbox/OneDrive/SharePoint/Teams), users, groups, sites, audit events, and licensing.",
   "auth": {
-    "type": "oauth2",
+    "type": "oauth2_password",
     "properties": [
-      { "name": "api_url", "required": true, "description": "VB365 server REST API base URL, e.g. https://vb365.example.com:4443. Connector appends /v7/... to this base." },
-      { "name": "username", "required": true, "description": "VB365 admin user." },
-      { "name": "password", "required": true, "description": "Password.", "encrypted": true },
-      { "name": "verify_tls", "required": false, "description": "Verify TLS cert. Default true." }
+      {
+        "name": "api_url",
+        "required": true,
+        "description": "Veeam VB365 server API base URL (used both for OAuth2 token request and API calls)."
+      },
+      {
+        "name": "token_url",
+        "required": true,
+        "description": "OAuth2 token endpoint path (relative to api_url) or full URL. Default: /v7/token.",
+        "defaultValue": "/v7/token"
+      },
+      {
+        "name": "username",
+        "required": true,
+        "description": "Veeam VB365 user with REST API access."
+      },
+      {
+        "name": "password",
+        "required": true,
+        "description": "Password.",
+        "encrypted": true
+      },
+      {
+        "name": "client_id",
+        "required": false,
+        "description": "OAuth2 client ID if the server requires one. Leave blank otherwise."
+      },
+      {
+        "name": "client_secret",
+        "required": false,
+        "description": "OAuth2 client secret if the server requires one.",
+        "encrypted": true
+      }
     ]
   },
   "icon": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"12\" fill=\"#00B336\"/><text x=\"12\" y=\"16.5\" text-anchor=\"middle\" font-size=\"8\" font-weight=\"700\" font-family=\"sans-serif\" fill=\"white\">VB365</text></svg>",
   "docsUrl": "https://helpcenter.veeam.com/docs/vbo365/rest/overview.html",
-  "defaultHeaders": { "Accept": "application/json", "Content-Type": "application/json" },
+  "defaultHeaders": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
   "baseUrl": "https://VB365-HOST:4443",
   "routines": [
-    { "id": "test", "name": "Veeam VB365 Connection Test", "description": "GET /v7/ServerComponents", "method": "GET", "path": "/v7/ServerComponents", "inputs": [], "outputs": [{"name":"Response Code","path":"response_code"},{"name":"Connected","path":"connected"}] },
-    { "id": "organizations_list", "name": "Veeam VB365 Organizations List", "description": "GET /v7/Organizations", "method": "GET", "path": "/v7/Organizations", "inputs": [], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_retrieve", "name": "Veeam VB365 Organization Retrieve", "description": "GET /v7/Organizations/{{inputs.Org ID}}", "method": "GET", "path": "/v7/Organizations/{{inputs.Org ID}}", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_users", "name": "Veeam VB365 Organization Users", "description": "GET /v7/Organizations/{{inputs.Org ID}}/Users", "method": "GET", "path": "/v7/Organizations/{{inputs.Org ID}}/Users", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"},{"name":"Display Name","required":false,"mapTo":"displayName"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_groups", "name": "Veeam VB365 Organization Groups", "description": "GET /v7/Organizations/{{inputs.Org ID}}/Groups", "method": "GET", "path": "/v7/Organizations/{{inputs.Org ID}}/Groups", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_sites", "name": "Veeam VB365 Organization SharePoint Sites", "description": "GET /v7/Organizations/{{inputs.Org ID}}/Sites", "method": "GET", "path": "/v7/Organizations/{{inputs.Org ID}}/Sites", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "organization_teams", "name": "Veeam VB365 Organization Teams", "description": "GET /v7/Organizations/{{inputs.Org ID}}/Teams", "method": "GET", "path": "/v7/Organizations/{{inputs.Org ID}}/Teams", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "jobs_list", "name": "Veeam VB365 Jobs List", "description": "GET /v7/Jobs", "method": "GET", "path": "/v7/Jobs", "inputs": [{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "job_retrieve", "name": "Veeam VB365 Job Retrieve", "description": "GET /v7/Jobs/{{inputs.Job ID}}", "method": "GET", "path": "/v7/Jobs/{{inputs.Job ID}}", "inputs": [{"name":"Job ID","required":true,"mapTo":"Job ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "job_start", "name": "Veeam VB365 Job Start", "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (start)", "method": "POST", "path": "/v7/Jobs/{{inputs.Job ID}}/Action", "inputs": [{"name":"Job ID","required":true,"mapTo":"Job ID"},{"name":"Action","required":true,"mapTo":"action"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "job_stop", "name": "Veeam VB365 Job Stop", "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (stop)", "method": "POST", "path": "/v7/Jobs/{{inputs.Job ID}}/Action", "inputs": [{"name":"Job ID","required":true,"mapTo":"Job ID"},{"name":"Action","required":true,"mapTo":"action"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "job_enable", "name": "Veeam VB365 Job Enable", "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (enable)", "method": "POST", "path": "/v7/Jobs/{{inputs.Job ID}}/Action", "inputs": [{"name":"Job ID","required":true,"mapTo":"Job ID"},{"name":"Action","required":true,"mapTo":"action"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "job_disable", "name": "Veeam VB365 Job Disable", "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (disable)", "method": "POST", "path": "/v7/Jobs/{{inputs.Job ID}}/Action", "inputs": [{"name":"Job ID","required":true,"mapTo":"Job ID"},{"name":"Action","required":true,"mapTo":"action"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "job_sessions", "name": "Veeam VB365 Job Sessions", "description": "GET /v7/Jobs/{{inputs.Job ID}}/JobSessions", "method": "GET", "path": "/v7/Jobs/{{inputs.Job ID}}/JobSessions", "inputs": [{"name":"Job ID","required":true,"mapTo":"Job ID"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "proxies_list", "name": "Veeam VB365 Backup Proxies List", "description": "GET /v7/Proxies", "method": "GET", "path": "/v7/Proxies", "inputs": [], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "repositories_list", "name": "Veeam VB365 Backup Repositories List", "description": "GET /v7/BackupRepositories", "method": "GET", "path": "/v7/BackupRepositories", "inputs": [], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "object_storage_repositories", "name": "Veeam VB365 Object Storage Repositories", "description": "GET /v7/ObjectStorageRepositories", "method": "GET", "path": "/v7/ObjectStorageRepositories", "inputs": [], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "restore_sessions_list", "name": "Veeam VB365 Restore Sessions List", "description": "GET /v7/RestoreSessions", "method": "GET", "path": "/v7/RestoreSessions", "inputs": [{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "restore_session_retrieve", "name": "Veeam VB365 Restore Session Retrieve", "description": "GET /v7/RestoreSessions/{{inputs.Session ID}}", "method": "GET", "path": "/v7/RestoreSessions/{{inputs.Session ID}}", "inputs": [{"name":"Session ID","required":true,"mapTo":"Session ID"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "restore_session_stop", "name": "Veeam VB365 Restore Session Stop", "description": "POST /v7/RestoreSessions/{{inputs.Session ID}}/Action (stop)", "method": "POST", "path": "/v7/RestoreSessions/{{inputs.Session ID}}/Action", "inputs": [{"name":"Session ID","required":true,"mapTo":"Session ID"},{"name":"Action","required":true,"mapTo":"action"}], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "explore_start_mailbox", "name": "Veeam VB365 Start Mailbox Restore", "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreExchangeItems)", "method": "POST", "path": "/v7/Organizations/{{inputs.Org ID}}/Action", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"},{"name":"Action","required":true,"mapTo":"action"},{"name":"Restore Point ID","required":true,"mapTo":"restorePointId"},{"name":"Reason","required":false,"mapTo":"reason"}], "outputs": [{"name":"Session ID","path":"id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "explore_start_onedrive", "name": "Veeam VB365 Start OneDrive Restore", "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreOneDriveItems)", "method": "POST", "path": "/v7/Organizations/{{inputs.Org ID}}/Action", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"},{"name":"Action","required":true,"mapTo":"action"},{"name":"Restore Point ID","required":true,"mapTo":"restorePointId"}], "outputs": [{"name":"Session ID","path":"id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "explore_start_sharepoint", "name": "Veeam VB365 Start SharePoint Restore", "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreSharePointItems)", "method": "POST", "path": "/v7/Organizations/{{inputs.Org ID}}/Action", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"},{"name":"Action","required":true,"mapTo":"action"},{"name":"Restore Point ID","required":true,"mapTo":"restorePointId"}], "outputs": [{"name":"Session ID","path":"id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "explore_start_teams", "name": "Veeam VB365 Start Teams Restore", "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreTeamsItems)", "method": "POST", "path": "/v7/Organizations/{{inputs.Org ID}}/Action", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"},{"name":"Action","required":true,"mapTo":"action"},{"name":"Restore Point ID","required":true,"mapTo":"restorePointId"}], "outputs": [{"name":"Session ID","path":"id"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "restore_points_list", "name": "Veeam VB365 Restore Points List", "description": "GET /v7/Organizations/{{inputs.Org ID}}/RestorePoints", "method": "GET", "path": "/v7/Organizations/{{inputs.Org ID}}/RestorePoints", "inputs": [{"name":"Org ID","required":true,"mapTo":"Org ID"},{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "audit_events_list", "name": "Veeam VB365 Audit Events List", "description": "GET /v7/AuditEvents", "method": "GET", "path": "/v7/AuditEvents", "inputs": [{"name":"Limit","required":false,"mapTo":"limit"},{"name":"Offset","required":false,"mapTo":"offset"}], "outputs": [{"name":"Results","path":"results"},{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "license_retrieve", "name": "Veeam VB365 License Retrieve", "description": "GET /v7/License", "method": "GET", "path": "/v7/License", "inputs": [], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] },
-    { "id": "statistics", "name": "Veeam VB365 Statistics", "description": "GET /v7/Statistics", "method": "GET", "path": "/v7/Statistics", "inputs": [], "outputs": [{"name":"Response Body","path":"response_body"},{"name":"Response Code","path":"response_code"}] }
+    {
+      "id": "test",
+      "name": "Veeam VB365 Connection Test",
+      "description": "GET /v7/ServerComponents",
+      "method": "GET",
+      "path": "/v7/ServerComponents",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        },
+        {
+          "name": "Connected",
+          "path": "connected"
+        }
+      ]
+    },
+    {
+      "id": "organizations_list",
+      "name": "Veeam VB365 Organizations List",
+      "description": "GET /v7/Organizations",
+      "method": "GET",
+      "path": "/v7/Organizations",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_retrieve",
+      "name": "Veeam VB365 Organization Retrieve",
+      "description": "GET /v7/Organizations/{{inputs.Org ID}}",
+      "method": "GET",
+      "path": "/v7/Organizations/{{inputs.Org ID}}",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_users",
+      "name": "Veeam VB365 Organization Users",
+      "description": "GET /v7/Organizations/{{inputs.Org ID}}/Users",
+      "method": "GET",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Users",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        },
+        {
+          "name": "Display Name",
+          "required": false,
+          "mapTo": "displayName"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_groups",
+      "name": "Veeam VB365 Organization Groups",
+      "description": "GET /v7/Organizations/{{inputs.Org ID}}/Groups",
+      "method": "GET",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Groups",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_sites",
+      "name": "Veeam VB365 Organization SharePoint Sites",
+      "description": "GET /v7/Organizations/{{inputs.Org ID}}/Sites",
+      "method": "GET",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Sites",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "organization_teams",
+      "name": "Veeam VB365 Organization Teams",
+      "description": "GET /v7/Organizations/{{inputs.Org ID}}/Teams",
+      "method": "GET",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Teams",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "jobs_list",
+      "name": "Veeam VB365 Jobs List",
+      "description": "GET /v7/Jobs",
+      "method": "GET",
+      "path": "/v7/Jobs",
+      "inputs": [
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "job_retrieve",
+      "name": "Veeam VB365 Job Retrieve",
+      "description": "GET /v7/Jobs/{{inputs.Job ID}}",
+      "method": "GET",
+      "path": "/v7/Jobs/{{inputs.Job ID}}",
+      "inputs": [
+        {
+          "name": "Job ID",
+          "required": true,
+          "mapTo": "Job ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "job_start",
+      "name": "Veeam VB365 Job Start",
+      "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (start)",
+      "method": "POST",
+      "path": "/v7/Jobs/{{inputs.Job ID}}/Action",
+      "inputs": [
+        {
+          "name": "Job ID",
+          "required": true,
+          "mapTo": "Job ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "job_stop",
+      "name": "Veeam VB365 Job Stop",
+      "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (stop)",
+      "method": "POST",
+      "path": "/v7/Jobs/{{inputs.Job ID}}/Action",
+      "inputs": [
+        {
+          "name": "Job ID",
+          "required": true,
+          "mapTo": "Job ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "job_enable",
+      "name": "Veeam VB365 Job Enable",
+      "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (enable)",
+      "method": "POST",
+      "path": "/v7/Jobs/{{inputs.Job ID}}/Action",
+      "inputs": [
+        {
+          "name": "Job ID",
+          "required": true,
+          "mapTo": "Job ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "job_disable",
+      "name": "Veeam VB365 Job Disable",
+      "description": "POST /v7/Jobs/{{inputs.Job ID}}/Action (disable)",
+      "method": "POST",
+      "path": "/v7/Jobs/{{inputs.Job ID}}/Action",
+      "inputs": [
+        {
+          "name": "Job ID",
+          "required": true,
+          "mapTo": "Job ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "job_sessions",
+      "name": "Veeam VB365 Job Sessions",
+      "description": "GET /v7/Jobs/{{inputs.Job ID}}/JobSessions",
+      "method": "GET",
+      "path": "/v7/Jobs/{{inputs.Job ID}}/JobSessions",
+      "inputs": [
+        {
+          "name": "Job ID",
+          "required": true,
+          "mapTo": "Job ID"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "proxies_list",
+      "name": "Veeam VB365 Backup Proxies List",
+      "description": "GET /v7/Proxies",
+      "method": "GET",
+      "path": "/v7/Proxies",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "repositories_list",
+      "name": "Veeam VB365 Backup Repositories List",
+      "description": "GET /v7/BackupRepositories",
+      "method": "GET",
+      "path": "/v7/BackupRepositories",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "object_storage_repositories",
+      "name": "Veeam VB365 Object Storage Repositories",
+      "description": "GET /v7/ObjectStorageRepositories",
+      "method": "GET",
+      "path": "/v7/ObjectStorageRepositories",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "restore_sessions_list",
+      "name": "Veeam VB365 Restore Sessions List",
+      "description": "GET /v7/RestoreSessions",
+      "method": "GET",
+      "path": "/v7/RestoreSessions",
+      "inputs": [
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "restore_session_retrieve",
+      "name": "Veeam VB365 Restore Session Retrieve",
+      "description": "GET /v7/RestoreSessions/{{inputs.Session ID}}",
+      "method": "GET",
+      "path": "/v7/RestoreSessions/{{inputs.Session ID}}",
+      "inputs": [
+        {
+          "name": "Session ID",
+          "required": true,
+          "mapTo": "Session ID"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "restore_session_stop",
+      "name": "Veeam VB365 Restore Session Stop",
+      "description": "POST /v7/RestoreSessions/{{inputs.Session ID}}/Action (stop)",
+      "method": "POST",
+      "path": "/v7/RestoreSessions/{{inputs.Session ID}}/Action",
+      "inputs": [
+        {
+          "name": "Session ID",
+          "required": true,
+          "mapTo": "Session ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "explore_start_mailbox",
+      "name": "Veeam VB365 Start Mailbox Restore",
+      "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreExchangeItems)",
+      "method": "POST",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Action",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        },
+        {
+          "name": "Restore Point ID",
+          "required": true,
+          "mapTo": "restorePointId"
+        },
+        {
+          "name": "Reason",
+          "required": false,
+          "mapTo": "reason"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Session ID",
+          "path": "id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "explore_start_onedrive",
+      "name": "Veeam VB365 Start OneDrive Restore",
+      "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreOneDriveItems)",
+      "method": "POST",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Action",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        },
+        {
+          "name": "Restore Point ID",
+          "required": true,
+          "mapTo": "restorePointId"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Session ID",
+          "path": "id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "explore_start_sharepoint",
+      "name": "Veeam VB365 Start SharePoint Restore",
+      "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreSharePointItems)",
+      "method": "POST",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Action",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        },
+        {
+          "name": "Restore Point ID",
+          "required": true,
+          "mapTo": "restorePointId"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Session ID",
+          "path": "id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "explore_start_teams",
+      "name": "Veeam VB365 Start Teams Restore",
+      "description": "POST /v7/Organizations/{{inputs.Org ID}}/Action (startExploreTeamsItems)",
+      "method": "POST",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/Action",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        },
+        {
+          "name": "Action",
+          "required": true,
+          "mapTo": "action"
+        },
+        {
+          "name": "Restore Point ID",
+          "required": true,
+          "mapTo": "restorePointId"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Session ID",
+          "path": "id"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "restore_points_list",
+      "name": "Veeam VB365 Restore Points List",
+      "description": "GET /v7/Organizations/{{inputs.Org ID}}/RestorePoints",
+      "method": "GET",
+      "path": "/v7/Organizations/{{inputs.Org ID}}/RestorePoints",
+      "inputs": [
+        {
+          "name": "Org ID",
+          "required": true,
+          "mapTo": "Org ID"
+        },
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "audit_events_list",
+      "name": "Veeam VB365 Audit Events List",
+      "description": "GET /v7/AuditEvents",
+      "method": "GET",
+      "path": "/v7/AuditEvents",
+      "inputs": [
+        {
+          "name": "Limit",
+          "required": false,
+          "mapTo": "limit"
+        },
+        {
+          "name": "Offset",
+          "required": false,
+          "mapTo": "offset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "path": "results"
+        },
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "license_retrieve",
+      "name": "Veeam VB365 License Retrieve",
+      "description": "GET /v7/License",
+      "method": "GET",
+      "path": "/v7/License",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    },
+    {
+      "id": "statistics",
+      "name": "Veeam VB365 Statistics",
+      "description": "GET /v7/Statistics",
+      "method": "GET",
+      "path": "/v7/Statistics",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Response Body",
+          "path": "response_body"
+        },
+        {
+          "name": "Response Code",
+          "path": "response_code"
+        }
+      ]
+    }
   ]
 }
