@@ -1,0 +1,51 @@
+{
+  "service": "Acronis Cyber Protect Cloud",
+  "featureName": "Event Service subscriptions",
+  "docsUrl": "https://developer.acronis.com/doc/events/v2/guide/",
+  "availableSince": "Event Service v2 (newer); legacy Alert Manager webhooks are being deprecated.",
+
+  "registration": {
+    "methods": ["UI", "API"],
+    "uiPath": "Management Portal > Integrations > Webhooks (newer UI surface).",
+    "apiEndpoint": "POST /api/event_service/v2/subscriptions",
+    "registrationBody": {
+      "tenant_id": "00000000-0000-0000-0000-000000000000",
+      "event_type_patterns": ["resource.backup.*", "security.*"],
+      "target": {
+        "type": "https",
+        "url": "https://kinetic.example.com/app/api/v1/kapps/webhooks/webApis/acronis-ingest",
+        "headers": { "Authorization": "Bearer {receiver_token}" }
+      },
+      "subscribe_to_descendants": true
+    }
+  },
+
+  "signing": {
+    "algorithm": "none-or-HMAC-SHA256",
+    "header": "X-Acronis-Signature",
+    "format": "hex(hmac_sha256(secret, raw_request_body))",
+    "encoding": "hex",
+    "note": "By default, Acronis authenticates the webhook using a bearer token stored in subscription.target.headers (which it sends to your receiver). Optional HMAC signing can be enabled at subscription creation."
+  },
+
+  "transport": {
+    "contentType": "application/json",
+    "method": "POST",
+    "retries": "Exponential backoff. Failed events are replayable via 'list events' with a time range."
+  },
+
+  "supportedEventCategories": [
+    "resource.backup.* (started, completed, failed, warning)",
+    "resource.recovery.*",
+    "resource.protection_plan.*",
+    "security.* (malware detected, security alert raised)",
+    "tenant.* (tenant created, tenant disabled)",
+    "user.* (user created, user password changed)"
+  ],
+
+  "notes": [
+    "Per-tenant subscription model. MSPs managing many customer tenants either register per-tenant or use 'subscribe_to_descendants: true' on a root subscription.",
+    "Acronis uses UUIDs for all resource identifiers.",
+    "Two parallel systems exist — Event Service (modern) and Alert Manager (legacy). Prefer Event Service for new integrations."
+  ]
+}
