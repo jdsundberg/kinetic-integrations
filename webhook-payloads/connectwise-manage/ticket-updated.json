@@ -1,0 +1,19 @@
+{
+  "_source": "synthesized — status-change callback (level=status)",
+  "_event": "ticket.updated",
+  "_queryParams": "?id=145782&action=updated&type=ticket&memberId=jdoe",
+  "ID": 145782,
+  "Action": "updated",
+  "Type": "ticket",
+  "MemberID": "jdoe",
+  "Entity": {
+    "id": 145782,
+    "summary": "Printer offline - finance floor",
+    "status": { "id": 5, "name": "Resolved" },
+    "priority": { "id": 3, "name": "Priority 3 - Normal" },
+    "company": { "id": 812, "identifier": "ACMECORP", "name": "Acme Corporation" },
+    "resolution": "Printer power-cycled; network interface reconnected. Added to monitored devices.",
+    "closedDate": "2026-04-21T17:02:33Z",
+    "closedBy": "jdoe"
+  }
+}
