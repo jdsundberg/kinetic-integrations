@@ -1,0 +1,48 @@
+{
+  "service": "Pax8",
+  "featureName": "Partner Webhooks",
+  "docsUrl": "https://docs.pax8.com/docs/webhooks",
+  "availableSince": "2023",
+
+  "registration": {
+    "methods": ["UI", "API"],
+    "uiPath": "Pax8 Admin > Settings > Webhooks",
+    "apiEndpoint": "POST /v1/webhooks",
+    "registrationBody": {
+      "url": "https://kinetic.example.com/app/api/v1/kapps/webhooks/webApis/pax8-ingest",
+      "eventTypes": ["subscription.created", "subscription.updated", "subscription.cancelled"]
+    }
+  },
+
+  "signing": {
+    "algorithm": "HMAC-SHA256",
+    "header": "x-pax8-signature",
+    "format": "hex(hmac_sha256(secret, raw_request_body))",
+    "encoding": "hex",
+    "note": "Shared secret is returned exactly once when the webhook is registered via API or UI. Store it immediately — Pax8 will not re-show it."
+  },
+
+  "transport": {
+    "contentType": "application/json",
+    "method": "POST",
+    "retries": "Pax8 retries on 5xx/4xx (except 4xx with explicit 'invalid payload' reason) for up to 24h.",
+    "ordering": "Event timestamps are reliable; use eventId for idempotency keys (monotonically allocated, stable across retries)."
+  },
+
+  "supportedEventTypes": [
+    "subscription.created",
+    "subscription.updated",
+    "subscription.cancelled",
+    "subscription.reactivated",
+    "company.created",
+    "company.updated",
+    "order.completed",
+    "usage_report.ready"
+  ],
+
+  "notes": [
+    "Event envelope is consistent across event types; only the 'data' subobject changes shape.",
+    "usage_report.ready is the critical monthly event for MSPs doing usage-based billing — fires once per partner.",
+    "All samples synthesized from Pax8's documented event envelope + REST API response shapes for the matching resources."
+  ]
+}
