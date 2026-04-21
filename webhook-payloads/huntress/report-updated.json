@@ -1,0 +1,18 @@
+{
+  "_source": "synthesized — analyst updates the report with additional context",
+  "_event": "report.updated",
+  "event_type": "report.updated",
+  "sent_at": "2026-04-21T17:22:18Z",
+  "payload": {
+    "incident_report_id": 7482901,
+    "organization_id": 42,
+    "agent_id": 9921,
+    "hostname": "LAPTOP-CFO-01",
+    "status": "sent",
+    "severity": "critical",
+    "previous_severity": "high",
+    "update_type": "severity_escalated",
+    "summary_addition": "Analyst confirmed lateral-movement attempt to DC01-ACME. Elevating severity to critical. See Huntress SOC notes for timeline.",
+    "url": "https://dashboard.huntress.io/incidents/7482901"
+  }
+}
