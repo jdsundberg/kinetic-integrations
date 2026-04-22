@@ -36,16 +36,36 @@ Every payload file has a `_source` field at the top that declares provenance:
 
 Treat synthesized payloads as **structurally accurate, valuationally illustrative**. Field names and types should match production; specific values (IDs, timestamps, strings) are made-up and intentionally use `.test` / `.example` domain names where URLs appear.
 
+
+## Receiver-side security model
+
+Webhook receivers on Kinetic are **`POST` WebAPIs on the `ingest` kapp**, one per vendor (e.g. `/app/kapps/ingest/webApis/autotask-ingest`). Access is controlled via kapp-level Security Policy Definitions:
+
+| Vendor | Receiver URL | Who can call it |
+|---|---|---|
+| autotask | `.../webApis/autotask-ingest` | `webhook-autotask-sa` only |
+| connectwise-manage | `.../webApis/connectwise-manage-ingest` | `webhook-connectwise-manage-sa` only |
+| ninjaone | `.../webApis/ninjaone-ingest` | `webhook-ninjaone-sa` only |
+| pax8 | `.../webApis/pax8-ingest` | `webhook-pax8-sa` only |
+| acronis | `.../webApis/acronis-ingest` | `webhook-acronis-sa` only |
+| huntress | `.../webApis/huntress-ingest` | any authenticated user (HMAC verification TODO — Huntress vendor UI doesn't support Basic/Bearer auth headers) |
+
+Each non-Huntress webApi has a kapp-level SPD of `type: "Kapp"` with rule `identity('username') === '<vendor-sa>'` bound to the `Execution` endpoint. Space admins bypass all policies by design, so `john` (admin) can call any URL — vendors must be given the scoped service account credentials, never an admin.
+
+**On the vendor side**, configure the webhook with Basic auth (Autotask, ConnectWise Manage) or a custom `Authorization: Bearer <base64(user:pw)>` header (NinjaOne, Pax8, Acronis). Huntress has no auth config in its UI — it'll be switched to HMAC verification in a follow-up.
+
 ## Replaying a payload
 
 Use `bin/webhook-push.mjs` from the repo root:
 
 ```bash
 node bin/webhook-push.mjs \
-  --to https://your-space.kinetics.com/app/api/v1/kapps/webhooks/webApis/autotask-ingest \
+  --to https://your-space.kinetics.com/app/kapps/ingest/webApis/autotask-ingest \
   --payload webhook-payloads/autotask/ticket-created.json \
-  --secret <your-autotask-shared-secret>
+  --basic "webhook-autotask-sa:$AUTOTASK_SA_PW"
 ```
+
+The `--basic user:pw` flag sends HTTP Basic auth, which is what the receiver SPD checks. For vendors that also expect a signature header, add `--secret <hmac-secret>` — the push tool auto-reads the `_meta.json` in the sibling directory to compute the signature with the correct algorithm.
 
 The tool reads `_meta.json` from the sibling directory, computes the signature per the algorithm declared there, and sets the right header automatically. Add `--dry-run` to preview the request without actually POSTing, `--verbose` to see full request + response detail.
 
